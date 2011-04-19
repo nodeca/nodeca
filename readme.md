@@ -1,1 +1,1 @@
-Coming soon. Planing started.
+Planing started. See wiki for details
