@@ -1,4 +1,6 @@
-Planing started. See wiki for details
+Planing started. See [wiki](https://github.com/nodeca/nodeca/wiki) for details
+
+[Screenshots](https://github.com/nodeca/nodeca-design)
 
 Discussions
 -----------
