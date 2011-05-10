@@ -10,12 +10,29 @@ Skins is additional layer over templates, suited to conveniently operate with we
 (!) Skinner does NOT depends on template engine. It allows proper merge, override & patch of skin sources:
 
 - templates override / add / patch
-- binaries add / override (useful for skin images, smiles)
+- binaries add / override (useful for images, smiles)
 - CLI tool to test consistency
 
 We suppose, that skins sources are placed in file system, and located in several directories. That allows easy
-deployment of your modifications with `git push`. Keep your custom modifications/extentions in separate filders,
+deployment of your modifications with `git push`. Keep your custom modifications/extentions in separate folders,
 then build final result from several paths with skinner!
+
+Typical skinner use scenario:
+
+- you run node process
+- skinner scans provided paths, finds skins / modifications, calculates build rules
+- skinner generates skin resources:
+  - copy static files to public directory, according to defined rules in skin configs
+  - make transformations on template files
+  - write down final templates to defined paths, or return them as hash
+- your script compiles returned templates (optional)
+- run listen loop
+
+Benefits:
+
+- easy maintenance/deployment/testing. All in small independent repos, node-style :)
+- simple dependencies testing, with detailed log & statistics
+- joined templates instead of multiple peaces - better rendering speed
 
 Skin source
 ===========
@@ -72,13 +89,13 @@ WARNING! It's not recommended to add new templates in inherited skins (wich not 
     ---
       id: mobile
       type: extend
-      templatesSrc: './templates'
+      templates: './templates'
       shared: './shared'
       static: './images'
 
 This config does NOT create new skin. It says, we should take skin `mobile` and add/override
 
-### Sample 5 Disable Skin
+### Sample 5. Disable Skin
 
     ---
       id: mobile
@@ -106,15 +123,15 @@ and simultaneously disable current skin.
         id: mobile
         type: extend
         folder: './mob.ext'
-        templatesSrc: './templates'
+        templates: './templates'
         shared: './shared'
         static: './images'
-        enable: 0
+        disable: 1
       -
         id: mobile
         type: new
         folder: './mob'
-        templatesSrc: './templates'
+        templates: './templates'
         shared: './shared'
         static: './images'
 
@@ -124,13 +141,60 @@ Patches
 =======
 
 Skin templates can be not only overriden, but also patched. Make the same file, as for template,
-but add `.patch` extention. That will be simple unified diffs, applyed with patch command.
+but add `.patch` extention. That will be simple `unified diffs`, applyed with `patch` command.
 
 There only exclution is, when we need just add data to the start or to the end of template. Then
-.patch file should start with ##BEGIN## or ##END##, and 'what to add' on next lines
+.patch file should start with ##BEGIN## or ##END##, and 'what to add' on next lines.
+
+Examples:
 
 Config setting full list
 ========================
+
+### id
+
+Skin id. If not set, then config directory name will be used
+
+### type
+
+Mandatory. Skin type - (new|extend|inherit).
+
+- new - full root skin, with all files included
+- extend - changes existing skin
+- inherit - child skin, slightly modifies parent
+
+### parent
+
+Parent id for inherited skins
+
+### ignore
+
+Regex for ignored files. Example: `/.*(txt|md)/i`
+
+### templates
+
+relative path to templates directory
+
+### static
+
+relative path to static files
+
+### shared
+
+relative path to shared static files (common for all skins)
+
+### folder
+
+Relative root folder for skin directories. Useful, when packing several skins in single pack
+
+### disable
+
+Set 1, to exclude all skin data from final results. For example, when you wish to add several childrens,
+but hide parent.
+
+### options
+
+Free-style structure, passed to final result. For example, you can define skin description, sort order and so on.
 
 API
 ===
@@ -142,8 +206,39 @@ CLI tool
 Skinner has CLI utility, that allows to check all skins dependencies, conflicts, and provides
 statistics.
 
+### Detected errors
+
+- no enabled skins
+- duplicated template filesnames (from different folders)
+- can't add new template in inherited skin
+- try to modify not existing file
+- failed to apply patch
+- no permissions
+
+### Statistics
+
+total:
+
+- templates
+- files
+- build time
+
+for each skin:
+
+- description + dependencies (if other skins extend it)
+- total templates
+- total files
+- list of modified files
+  - source
+  - who overrides (list of skins)
+- list of added files
+  - source
+  - who added
+
+
 Todo
 ====
 
 1. Specify API
-2. Specify CLI tools features & params
+2. Specify CLI tool features & params
+3. ? Consider embedding templates, to make single file
