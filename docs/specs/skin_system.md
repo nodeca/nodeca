@@ -44,7 +44,7 @@ Each skin consists of directory with templates, static files and yaml config `sk
     ---
       id: mobile
       type: new
-      ignore: /.*(txt|md)/i
+      ignore: /.*(txt|md)$/i
 
 - `id` - skin id
 - `type` (mandatory) - means, that it's a 'root' skin with full files set
@@ -137,8 +137,17 @@ and simultaneously disable current skin.
 
 `folder` - defines offset for skin root. So, every skin data will be in it's own subfolder.
 
-Patches
-=======
+Patches & overrides
+===================
+
+Override happens, when file with the same name & the same subfolder, as in parent, found.
+Subfolders are relative to base prefix (see directives `templates`, `static`, `shared`, `folder` in config).
+
+If you wish to apply patch - make file with appropriate name & location, but add `.patch` extentions.
+For example `./templates/forum/index.jade.patch`. Template needs sevaral patches, ordered by priorities,
+add weigth prior to extention, like `./templates/forum/index.jade.45.patch`.
+
+Note, that patch weights are global. That
 
 Skin templates can be not only overriden, but also patched. Make the same file, as for template,
 but add `.patch` extention. That will be simple `unified diffs`, applyed with `patch` command.
@@ -169,23 +178,23 @@ Parent id for inherited skins
 
 ### ignore
 
-Regex for ignored files. Example: `/.*(txt|md)/i`
+Regex for ignored files. Example: `/.*(txt|md)$/i`
 
 ### templates
 
-relative path to templates directory
+Relative path to templates directory. './' by default.
 
 ### static
 
-relative path to static files
+Relative path to static files, specific for this skin. If missed - means, that skin have no static files.
 
 ### shared
 
-relative path to shared static files (common for all skins)
+Relative path to shared static files (common for all skins). If missed - means, that skin have no shared files.
 
 ### folder
 
-Relative root folder for skin directories. Useful, when packing several skins in single pack
+Relative root folder for skin directories. Useful, when packing several skins in single pack. './' by default.
 
 ### disable
 
