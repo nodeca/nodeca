@@ -223,6 +223,7 @@ statistics.
 - try to modify not existing file
 - failed to apply patch
 - no permissions
+- patch error (file not found or apply error)
 
 ### Statistics
 
