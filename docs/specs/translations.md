@@ -20,6 +20,11 @@ It has lack of some features:
 Proposed changes
 ================
 
+All changes have 2 points:
+
+1. We need SIMPLE format for translators
+2. We need compatible phrases format both templates and code (for example, JSON/XML output don't need templates)
+
 Plurals
 -------
 
