@@ -11,15 +11,14 @@ To start development easier you will need:
 
 ## Prepare your environment
 
-### Install git
+### Install node
 
-Under Debian-based distros, execute (with rights of super-user):
+Install build dependencies of node:
 
-    # apt-get install git
+    # apg-get build-dep nodejs
 
-### Install nvm and node
-
-Under normla user, clone `nvm` into your $HOME dir:
+We use [nvm](https://github.com/creationix/nvm) for manipulating node instances.
+Install `nvm` into your $HOME dir:
 
     $ git clone git://github.com/creationix/nvm.git ~/.nvm
 
@@ -35,51 +34,28 @@ Open new shell session. Check that `nvm` was successfully loaded:
     $ type nvm | head -n1
     nvm is a function
 
-In most cases you will need install development tools in order to build `node`.
-On Debian-based systems you may try:
-
-    # apt-get build-dep node
-
-Synchronize list of available node versions and install the one you need (e.g.
-stable):
+If everything is OK, synchronize list of available node versions and install the
+one you need (e.g. stable):
 
     $ nvm sync
     $ nvm install stable
 
-#### List of node build dependencies
 
-In order to build (install) node you will need to have these packages installed:
+### Install PDoc
 
-    # apt-get install devscripts cdbs debhelper dh-buildinfo python libev-dev \
-                      libv8-dev scons libc-ares-dev binutils libssl-dev \
-                      pkg-config bash-completion curl
-
-### Install Ruby and PDoc
-
-The easiest way to install Ruby is to use package manager:
+Install Ruby and RubyGems:
 
     # apt-get install ruby rubygems
 
-Once you have ruby and rubygems installed, install `pdoc` gem:
-
-    # gem install pdoc
-
-
-#### Installing PDoc
-
-At the moment of writing this README, `pdoc`'s gem in the main repo is outdated
-and works very strange. So, probably you will need to build and install your
-own gem. That's much more easier than it sounds:
+Build and install PDoc gem
 
     $ git clone git://github.com/tobie/pdoc.git
     $ git checkout 0.2.1
     $ gem build ./pdoc.gemspec
-    $ gem install ./pdoc-0.2.1.gem
+    # gem install ./pdoc-0.2.1.gem
 
 
-## Start developing
-
-### Coding Style
+## Coding Style
 
 We use [Google's JavaScript coding style](http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml)
 as our coding standards.
@@ -87,32 +63,82 @@ as our coding standards.
 Code documentation should be written in format of [PDoc](http://pdoc.com). See
 [PDoc Syntax](http://pdoc.org/syntax.html) for details about it.
 
-You should document ALL public visible methods and properties that you are
-assigning to the object|function|whatever. Functions and variables which are
-out of visible scope should be documented inline (with double slash) in
-freestyle (but keep in mind that this part of code probably will read a human
-after you), e.g.:
+You should document ANY method|property that might be reached from the outside.
+You may want to mark property as _protected_, but make sure to document it in
+order to avoid any collisions and misunderstandings. E.g.:
 
-    // returns something uselfull from the object
-    var get_usefull = function (obj) {
-      // ...
-    }
+    /**
+     *  Human#__heart__ -> Heart
+     *
+     *  **PRIVATE**
+     *  Very important part of instance.
+     **/
+
+Do not document (with PDoc) anything that is not reachable outside. Comment them
+inline with reasonable comments:
+
+    Human.prototype.think = funtion think() {
+      // Instace of [[Idea]]
+      var idea;
+    };
+
+Do not document HOW (algorithm) function works. Document WHAT does it doing.
+For example, this documentation is shit:
+
+    /**
+     *  Human#walk(steps) -> Void
+     *
+     *  Get active leg, get control over the leg, turn it to the new position,
+     *  switch active leg, reduce amount of steps by one, repeat until steps
+     *  counter reach zero.
+     **/
+
+Instead of literal explanation of source code (who needs to know the algorithm
+can read source code without any problem), describe what it does:
+
+    /**
+     *  Human#walk(steps) -> Void
+     *
+     *  Moves instance forward on specified amount of `steps`.
+     */
+
+If your method use some formula, put it into the description:
+
+    /**
+     *  log(number[, base = 10]) -> Number
+     *  - number (Number): Logarithm number
+     *  - base (Number): Base of logarithm
+     *
+     *  Returns logarithm of `numer` to the `base`.
+     *
+     *  ##### Formula
+     *
+     *  base^x = number
+     **/
 
 
-### Using Makefile
+## Scripts and functions
 
-We are using [Makefile](scripts/Makefile) and set of [helper
-scripts](scripts/support/) for repeated tasks.
+Under [scripts](scripts/) directory you will find scripts and utilities for
+making your dev-days a little bit easier:
 
+- [Makefile](scripts/Makefile) contains often-used tasks:
+  - `make test` runs all test suites
+  - `make docs` updates API documentation in `./doc/`
+  - `make gh-pages` updates gh-pages branch with latest API documentation
+- [support/generate-docs.rb](scripts/support/generate-docs.rb) PDoc runner
 
-In order to run test suites for your project execute:
+Simply copy contents of [scripts](scripts/) directory into root of your new
+project to make your life shiner.
 
-    $ make test
+Once you put scripts into your project's root, open `support/generate-docs.rb`
+and edit some variables to fit your project:
 
-In order to regenerate API docs:
+    PROJECT_NAME="nodeca"
+    GITHUB_NAME="nodeca/nodeca"
 
-    $ make docs
+For example if you are developing `nodeca-blogs` and your repo is available on
+GitHub as `https://github.com/ixti/nodeca-blogs/` set variables as:
 
-In order to update `gh-pages` with latest API docs:
-
-    $ make gh-pages
+    PROJECT_NAME="nodeca-blogs"
+    GITHUB_NAME="ixti/nodeca-blogs"

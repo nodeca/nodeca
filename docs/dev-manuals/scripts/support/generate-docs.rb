@@ -1,6 +1,15 @@
 #!/usr/bin/env ruby
 
 
+PROJECT_NAME="nodeca"
+GITHUB_NAME="nodeca/nodeca"
+
+
+################################################################################
+##  !!!  DO NOT EDIT BELOW THIS LINE UNLESS YOU KNOW WHAT YOU ARE DOING  !!!  ##
+################################################################################
+
+
 begin
   require 'pdoc'
 rescue LoadError
@@ -42,11 +51,11 @@ module PDocHelper
       :markdown_parser => :bluecloth,
       :src_code_text => "View source on GitHub &rarr;",
       :src_code_href => proc { |obj|
-        "https://github.com/nodeca/nodeca/blob/#{current_head}/#{obj.file}#L#{obj.line_number}"
+        "https://github.com/#{GITHUB_NAME}/blob/#{current_head}/#{obj.file}#L#{obj.line_number}"
       },
       :pretty_urls => true,
       :bust_cache => true,
-      :name => 'nodeca',
+      :name => PROJECT_NAME,
       :version => version
     })
   end
