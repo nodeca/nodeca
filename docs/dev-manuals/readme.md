@@ -79,6 +79,26 @@ own gem. That's much more easier than it sounds:
 
 ## Start developing
 
+### Coding Style
+
+We use [Google's JavaScript coding style](http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml)
+as our coding standards.
+
+Code documentation should be written in format of [PDoc](http://pdoc.com). See
+[PDoc Syntax](http://pdoc.org/syntax.html) for details about it.
+
+You should document ALL public visible methods and properties that you are
+assigning to the object|function|whatever. Functions and variables which are
+out of visible scope should be documented inline (with double slash) in
+freestyle (but keep in mind that this part of code probably will read a human
+after you), e.g.:
+
+    // returns something uselfull from the object
+    var get_usefull = function (obj) {
+      // ...
+    }
+
+
 ### Using Makefile
 
 We are using [Makefile](scripts/Makefile) and set of [helper
