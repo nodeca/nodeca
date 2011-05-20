@@ -62,7 +62,7 @@ order to avoid any collisions and misunderstandings. E.g.:
     /**
      *  Human#__heart__ -> Heart
      *
-     *  **PRIVATE**
+     *  **PROTECTED**
      *  Very important part of instance.
      **/
 
