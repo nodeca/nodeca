@@ -1,14 +1,6 @@
 Developers' Manuals
 ===================
 
-To start development easier you will need:
-
-- git
-- [node](https://github.com/joyent/node)
-- [nvm](https://github.com/creationix/nvm)
-- [pdoc](https://github.com/tobie/pdoc)
-
-
 ## Prepare your environment
 
 ### Install node
