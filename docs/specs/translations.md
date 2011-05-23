@@ -17,6 +17,11 @@ It has lack of some features:
   - compile such phrases when added, to find ready result by phrase hash
 - instruments to make lang files (similar to wordpress makepot.php)
 
+See also:
+
+- https://github.com/naholyr/node-jus-i18n
+- https://github.com/ricardobeat/node-polyglot
+
 Proposed changes
 ================
 
