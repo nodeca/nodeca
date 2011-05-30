@@ -134,6 +134,7 @@ alternative to https://webtranslateit.com/ .
 ### Later
 
 - babelfish-like auto translator https://github.com/jbasdf/babelphish/tree/master/lib
+  use http://mymemory.translated.net , since google API discontinued
 - replace loginza service with owns.
   - Facefook, Google, vKontakte, Yandex, Mailru
   - nodeca
