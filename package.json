@@ -10,6 +10,7 @@
     "nodeca-lib": "https://github.com/nodeca/nodeca-lib/tarball/master",
     "nodeca-users": "https://github.com/nodeca/nodeca-users/tarball/master",
     "nodeca-translate": "https://github.com/nodeca/nodeca-translate/tarball/master",
+    "express": ">= 2.3.4"
   },
   "dev-dependencies":
   {
