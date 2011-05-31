@@ -55,6 +55,73 @@ as our coding standards.
 Code documentation should be written in format of [PDoc](http://pdoc.com). See
 [PDoc Syntax](http://pdoc.org/syntax.html) for details about it.
 
+**NOTICE**
+The rules stated in this document override rules stated in the above documents
+if there is a conflict.
+
+### Hashes
+
+Keep the hash keys tight with no whitespace before or after them. Use one space
+after each comma.
+
+    # Good
+    {color: 'blue', part: hat}
+
+    # Bad
+    { color: 'blue', part: hat}
+    { color: 'blue', part: hat }
+    {color: 'blue',part: hat}
+
+Large hashes should be broken up so each key is on one line. This is also useful
+for hashes that are changed often, git can track a single key change easily
+since it's on a single line.
+
+    # Good
+    issue_attributes = {
+      subject: 'Code standards',
+      description: 'Bar'
+    }
+    
+    # Good, passing a hash style
+    issue_attributes({
+      subject: 'Code standards',
+      description: 'Bar'
+    })
+
+    # Bad
+    issue_attributes = {
+    subject: 'Code standards',
+    description: 'Bar'
+    }
+    
+    issue_attributes = {
+      subject: 'Code standards', description: 'Bar'
+    }
+    
+    issue_attributes = {
+                        subject: 'Code standards',
+                        description: 'Bar'
+    }
+
+Avoid trying to line up anything more than the start of the keys. They can look
+nice but cause the entire hash to be reformatted whenever a key grows. This
+makes tools like git blame more difficult to use and track what happened.
+
+    # Before
+    issue_attributes = {
+      subject:     'Code standards',
+      description: 'Bar'
+    }
+    
+    # After, notice how the change was to the first key but the second one also
+    # had to be changed to be reformatted.
+    issue_attributes = {
+      subject_was_extended: 'Code standards',
+      description:          'Bar'
+    }
+
+### Commenting
+
 You should document ANY method|property that might be reached from the outside.
 You may want to mark property as _protected_, but make sure to document it in
 order to avoid any collisions and misunderstandings. E.g.:
