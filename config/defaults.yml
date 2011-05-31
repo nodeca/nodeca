@@ -1,0 +1,8 @@
+---
+  debug: false
+  listen:
+    host: localhost
+    port: 8000
+  routes:
+    -
+      root: welcome#index
