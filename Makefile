@@ -1,6 +1,10 @@
 .PHONY: test docs
 .SILENT: test docs config/application.yml
 
+
+PATH := ./node_modules/.bin:${PATH}
+
+
 test:
 	if test ! `which vows` ; then \
 		echo "You need vows installed in order to run tests." >&2 ; \
