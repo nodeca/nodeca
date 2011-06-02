@@ -72,17 +72,35 @@ app.init(function (err, app, config) {
       }
     })(app.dispatcher));
 
-    // inject routes
-    app.router.inject(server);
+    // init sub-apps
+    var modules = config.modules || {},
+        mod_names = Object.getOwnPropertyNames(modules),
+        initApps = function initApps(i, l) {
+          if (i >= l) { // all modules were loaded
+            // inject routes
+            app.router.inject(server);
 
-    // register heplers
-    server.helpers({
-      config: function (section) { return config[section]; }
-    });
+            // register heplers
+            server.helpers({
+              config: function (section) { return config[section]; }
+            });
 
-    // start server
-    var listen = $$.deepMerge({port: 8000}, config.listen);
-    server.listen(listen.port, listen.host);
+            // start server
+            var listen = $$.deepMerge({port: 8000}, config.listen);
+            server.listen(listen.port, listen.host);
+            return;
+          }
+
+          app.mount(mod_names[i], modules[mod_names[i]], function (err) {
+            if (err) {
+              halt(err, ERR_INIT);
+            }
+
+            initApps(i + 1, l);
+          });
+        };
+
+    initApps(0, mod_names.length);
   } catch (err) {
     halt(err, ERR_START);
   }
