@@ -1,8 +1,6 @@
 var path = require('path'),
     fs = require('fs'),
-    yaml = require('yaml'),
     express = require('express'),
-    railer = require('express-railer'),
     nodeca = require('nodeca-lib'),
     Promise = nodeca.Promise,
     $$ = nodeca.Utilities,
@@ -55,7 +53,9 @@ app.init(function (err, app, config) {
       var action     = 'error';
 
       if (!dispatcher.isDispatchable({"controller": controller, "action": action})) {
-        throw new Error('errors#error controller or action not found');
+        return function (err, req, res, next) {
+          res.send(err);
+        }
       }
 
       return function(err, req, res, next) {
