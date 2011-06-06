@@ -38,6 +38,12 @@ app.init(function (err, app, config) {
     server.use(express.bodyParser());
     server.use(express.methodOverride());
     server.use(express.cookieParser());
+    // TODO: Replace with nodeca.I18n.middleware ?
+    server.use(function injectTranslator(req, res, next) {
+      res.local('__', function __(str) {
+        return str;
+      });
+    });
     server.use(server.router);
 
     // last handler starts new cycle with error
