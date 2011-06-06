@@ -53,7 +53,7 @@ module PDocHelper
       :src_code_href => proc { |obj|
         "https://github.com/#{GITHUB_NAME}/blob/#{current_head}/#{obj.file}#L#{obj.line_number}"
       },
-      :pretty_urls => true,
+      :pretty_urls => false,
       :bust_cache => true,
       :name => PROJECT_NAME,
       :version => version
