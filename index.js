@@ -14,6 +14,13 @@ var halt = function halt(err, code) {
 };
 
 
+// register unexpected exceptions handler
+process.on('uncaughtException', function(err) {
+  console.log('!!! UNCAUGHT EXCEPTION !!!');
+  halt(err);
+});
+
+
 // error codes
 var ERR_INIT    = 128;
 var ERR_START   = 129;
