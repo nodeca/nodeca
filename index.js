@@ -45,12 +45,12 @@ app.init(function (err, app, config) {
     server.use(express.bodyParser());
     server.use(express.methodOverride());
     server.use(express.cookieParser());
-    // TODO: Replace with nodeca.I18n.middleware ?
-    server.use(function injectTranslator(req, res, next) {
-      res.local('__', function __(str) {
-        return str;
-      });
+
+    server.helper('__', function __(str, params, context) {
+      // basically we can get req and res from `this` afaik
+      return str;
     });
+
     server.use(server.router);
 
     // last handler starts new cycle with error
@@ -84,35 +84,35 @@ app.init(function (err, app, config) {
         dispatcher.dispatch(req, res, next);
       }
     })(app.dispatcher));
-
-    // init sub-apps
-    $$.iterate(config.modules || {}, function next(mod_name, mod_config, next) {
-      app.mount(mod_name, mod_config, function (err) {
-        if (err) {
-          halt(err, ERR_INIT);
-        }
-        next();
-      });
-    }, function final(err) {
-      if (err) {
-        halt(err, ERR_INIT);
-      }
-
-      // inject routes
-      app.router.inject(server);
-
-      // register heplers
-      server.helpers({
-        config: function (section) { return config[section]; }
-      });
-
-      // start server
-      var listen = $$.deepMerge({port: 8000}, config.listen);
-      server.listen(listen.port, listen.host);
-    });
   } catch (err) {
     halt(err, ERR_START);
   }
+
+  // init sub-apps
+  $$.iterate(config.modules || {}, function next(mod_name, mod_config, next) {
+    app.mount(mod_name, mod_config, function (err) {
+      if (err) {
+        halt(err, ERR_INIT);
+      }
+      next();
+    });
+  }, function final(err) {
+    if (err) {
+      halt(err, ERR_INIT);
+    }
+
+    // inject routes
+    app.router.inject(server);
+
+    // register heplers
+    server.helpers({
+      config: function (section) { return config[section]; }
+    });
+  });
+
+  // start server
+  var listen = $$.deepMerge({port: 8000}, config.listen);
+  server.listen(listen.port, listen.host);
 });
 
 
