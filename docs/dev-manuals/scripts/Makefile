@@ -1,11 +1,21 @@
-.PHONY: test docs gh-pages
+.PHONY: test docs gh-pages todo
 .SILENT: test docs
 
+
+PATH := ./node_modules/.bin:${PATH}
+
+PROJECT =  $(notdir ${PWD})
+TMP_DIR = /tmp/${PROJECT}-$(shell date +%s)
+
+REMOTE_NAME ?= origin
+REMOTE_REPO ?= $(shell git config --get remote.${REMOTE_NAME}.url)
+
+
 test:
-	@if test ! `which vows` ; then \
-		echo "You need vows in order to run tests. To install it run:" >&2 ; \
+	if test ! `which vows` ; then \
+		echo "You need vows installed in order to run tests." >&2 ; \
 		echo "  $ npm install vows" >&2 ; \
-		exit 128 ;\
+		exit 128 ; \
 		fi
 	NODE_ENV=test vows --spec
 
@@ -13,20 +23,21 @@ docs:
 	./support/generate-docs.rb
 
 gh-pages:
-	@if test `git status -s | wc -l` -ne 0 ; then \
-		echo "Unclean working copy. Can't continue." >&2 ; \
-		echo "Please, commit changes:" ; \
-		git status -s ; \
+	@if test -z ${REMOTE_REPO} ; then \
+		echo 'Remote repo URL not found' >&2 ; \
 		exit 128 ; \
 		fi
-	$(MAKE) docs
-	rm -rf /tmp/doc \
-		&& mv doc /tmp/doc \
-		&& git reset --hard HEAD \
-		&& git checkout gh-pages \
-		&& rm -rf ./* \
-		&& git rm -rf ./* \
-		&& mv /tmp/doc/* . \
-		&& git add . \
-		&& git commit -m 'Update docs' \
-		&& git checkout master
+	mkdir ${TMP_DIR}
+	cp -r doc/* ${TMP_DIR}
+	touch ${TMP_DIR}/.nojekyll
+	cd ${TMP_DIR} && \
+		git init && \
+		git add . && \
+		git commit -q -m 'Recreated docs'
+	cd ${TMP_DIR} && \
+		git remote add remote ${REMOTE_REPO} && \
+		git push --force remote +master:gh-pages 
+	rm -rf ${TMP_DIR}
+
+todo:
+	@grep 'TODO' -n -r ./app ./lib 2>/dev/null
