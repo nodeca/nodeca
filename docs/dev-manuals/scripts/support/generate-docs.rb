@@ -55,7 +55,6 @@ module PDocHelper
       :src_code_href => proc { |obj|
         "https://github.com/#{GITHUB_NAME}/blob/#{current_head}/#{obj.file}#L#{obj.line_number}"
       },
-      :timestamp => false,
       :pretty_urls => false,
       :bust_cache => true,
       :name => PROJECT_NAME,
@@ -64,15 +63,8 @@ module PDocHelper
   end
 
 
-  def self.show_revision?
-    /^(1|y(es)?|true)$/i =~ ENV['SHOW_REVISION']
-  end
-
-
   def self.version
-    ver = JSON.parse(IO.read('./package.json'))['version']
-    ver << '-' << current_head if show_revision?
-    return ver
+    JSON.parse(IO.read('./package.json'))['version'] + '-' + current_head
   end
  
 

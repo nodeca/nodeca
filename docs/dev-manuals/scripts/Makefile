@@ -27,7 +27,7 @@ gh-pages:
 		echo 'Remote repo URL not found' >&2 ; \
 		exit 128 ; \
 		fi
-	$(MAKE) docs DOC_DIR=${TMP_DIR} SHOW_REVISION=YES
+	$(MAKE) docs DOC_DIR=${TMP_DIR}
 	touch ${TMP_DIR}/.nojekyll
 	cd ${TMP_DIR} && \
 		git init && \
