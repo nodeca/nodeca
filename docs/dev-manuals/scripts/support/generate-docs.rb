@@ -43,6 +43,8 @@ module PDocHelper
     rm_rf(DOC_DIR)
     mkdir_p(DOC_DIR)
 
+    current_head = self.current_head
+
     PDoc.run({
       :source_files => Dir[File.join('lib', '**', '*.js')],
       :destination => DOC_DIR,
@@ -62,8 +64,15 @@ module PDocHelper
   end
 
 
+  def self.show_revision?
+    /^(1|y(es)?|true)$/i =~ ENV['SHOW_REVISION']
+  end
+
+
   def self.version
-    JSON.parse(IO.read('./package.json'))['version'] + '-' + current_head
+    ver = JSON.parse(IO.read('./package.json'))['version']
+    ver << '-' << current_head if show_revision?
+    return ver
   end
  
 
