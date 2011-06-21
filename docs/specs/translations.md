@@ -17,6 +17,11 @@ It has lack of some features:
   - compile such phrases when added, to find ready result by phrase hash
 - instruments to make lang files (similar to wordpress makepot.php)
 
+See also:
+
+- https://github.com/naholyr/node-jus-i18n
+- https://github.com/ricardobeat/node-polyglot
+
 Proposed changes
 ================
 
@@ -129,6 +134,7 @@ alternative to https://webtranslateit.com/ .
 ### Later
 
 - babelfish-like auto translator https://github.com/jbasdf/babelphish/tree/master/lib
+  use http://mymemory.translated.net , since google API discontinued
 - replace loginza service with owns.
   - Facefook, Google, vKontakte, Yandex, Mailru
   - nodeca
