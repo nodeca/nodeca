@@ -44,7 +44,13 @@ try {
 
 
 // application is ready to start
-app.ready(function () {
+app.ready(function (err) {
+  if (err) {
+    // spmething went wrong during app initializtion
+    app.fail(halt);
+    return;
+  }
+
   // create server and run it
   var server = express.createServer();
 
@@ -90,10 +96,6 @@ app.ready(function () {
   var listen = $$.merge({port: 8000}, app.config.listen);
   server.listen(listen.port, listen.host);
 });
-
-
-// spmething went wrong during app initializtion
-app.fail(halt);
 
 
 ////////////////////////////////////////////////////////////////////////////////
