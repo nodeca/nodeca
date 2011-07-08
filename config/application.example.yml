@@ -1,15 +1,14 @@
----
-  general:
-    title: 'Nodeca'
-    home_url: '/'
+general:
+  title: 'Nodeca'
+  home_url: '/'
 
-  ## PER-ENVIRONMENT CONFIGS ###################################################
-  production:
-    listen:
-      host: nodeca.org
-      port: 80
+## PER-ENVIRONMENT CONFIGS ###################################################
+production:
+  listen:
+    host: nodeca.org
+    port: 80
 
-  development:
-    listen:
-      host: nodeca.org
-      port: 8000
+development:
+  listen:
+    host: nodeca.org
+    port: 8000
