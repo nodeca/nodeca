@@ -3,8 +3,7 @@ var path = require('path'),
     express = require('express'),
     nodeca = require('nodeca-lib'),
     Promise = nodeca.Promise,
-    $$ = nodeca.Utilities,
-    configFile = path.join(app.dirname, 'config', 'application.yml');
+    $$ = nodeca.Utilities;
 
 
 // Outputs error to stderr and terminates process with given code
@@ -35,7 +34,9 @@ try {
     this.addHook('schemas-loaded', function () {
       this.log("Schemas were loaded! Cool!");
     });
-  }).init($$.readYamlSync(configFile, true));
+  });
+  
+  app.init($$.readYamlSync(path.join(app.dirname, 'config', 'application.yml')));
 } catch (err) {
   // we need to have some logger available before init, to be able write errors
   // upon init stage (for example when application is managed by cluster).
