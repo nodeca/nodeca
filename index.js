@@ -33,7 +33,7 @@ var app, // Application instance
 try {
   app = new nodeca.Application(__dirname, function bootstrapper() {
     this.addHook('schemas-loaded', function () {
-      this.log("Schemas were loaded! Cool!");
+      this.log.debug("Schemas were loaded! Cool!");
     });
   });
 
@@ -51,7 +51,7 @@ try {
 app.ready(function (err) {
   if (err) {
     // spmething went wrong during app initializtion
-    app.fail(halt);
+    halt(err, ERR_START);
     return;
   }
 
@@ -68,9 +68,9 @@ app.ready(function (err) {
   server.use(express.methodOverride());
   server.use(express.cookieParser());
 
-  server.helper('__', function __(str, params, context) {
+  server.helpers({
     // basically we can get req and res from `this` afaik
-    return str;
+    __: function __(str, params, context) { return str; }
   });
 
   server.use(server.router);
