@@ -25,7 +25,8 @@ var ERR_INIT    = 128;
 var ERR_START   = 129;
 
 
-var app; // Application instance
+var app, // Application instance
+    cfg; // Application config
 
 
 // initialize application
@@ -35,8 +36,10 @@ try {
       this.log("Schemas were loaded! Cool!");
     });
   });
+
+  cfg = app.readConfig('application', app.env);
   
-  app.init($$.readYamlSync(path.join(app.dirname, 'config', 'application.yml')));
+  app.init(cfg);
 } catch (err) {
   // we need to have some logger available before init, to be able write errors
   // upon init stage (for example when application is managed by cluster).
