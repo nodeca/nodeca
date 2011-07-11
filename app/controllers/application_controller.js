@@ -1,0 +1,14 @@
+var Controller = require('nodeca-lib').ExpressRailer.Controller;
+
+
+var ApplicationController = function ApplicationController(app) {
+  Controller.apply(this);
+};
+
+
+Controller.adopts(ApplicationController).export(module);
+
+
+////////////////////////////////////////////////////////////////////////////////
+// vim:ts=2:sw=2
+////////////////////////////////////////////////////////////////////////////////

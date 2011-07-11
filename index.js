@@ -59,6 +59,7 @@ app.ready(function (err) {
   var server = express.createServer();
 
   // set view engine and some default options
+  server.set('views', __dirname + '/app/views');
   server.set('view engine', 'jade');
   server.set('view options', {layout: 'layouts/default'});
 
@@ -67,12 +68,6 @@ app.ready(function (err) {
   server.use(express.bodyParser());
   server.use(express.methodOverride());
   server.use(express.cookieParser());
-
-  server.helpers({
-    // basically we can get req and res from `this` afaik
-    __: function __(str, params, context) { return str; }
-  });
-
   server.use(server.router);
 
   // last handler starts new cycle with error
@@ -93,6 +88,14 @@ app.ready(function (err) {
     req.error               = err;
 
     app.dispatcher.dispatch(req, res, next);
+  });
+
+
+  app.router.inject(server);
+
+  server.helpers({
+    // basically we can get req and res from `this` afaik
+    __: function __(str, params, context) { return str; }
   });
 
 
