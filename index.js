@@ -64,7 +64,7 @@ app.ready(function (err) {
   server.set('view options', {layout: 'layouts/default'});
 
   // set request handlers chain
-  server.use(express.static(path.join(__dirname, 'public')));
+  server.use(app.staticManager.middleware);
   server.use(express.bodyParser());
   server.use(express.methodOverride());
   server.use(express.cookieParser());
