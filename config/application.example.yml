@@ -1,6 +1,8 @@
+---
 general:
   title: 'Nodeca'
-  home_url: '/'
+  modules:
+    nodeca-translate:
 ## PER-ENVIRONMENT CONFIGS ###################################################
 production:
   listen:
