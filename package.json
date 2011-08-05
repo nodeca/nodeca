@@ -8,10 +8,7 @@
   "dependencies":
   {
     "nodeca-lib": "https://github.com/nodeca/nodeca-lib/tarball/master",
+    "nodeca-core": "https://github.com/nodeca/nodeca-core/tarball/master",
     "nodeca-translate": "https://github.com/nodeca/nodeca-translate/tarball/master"
-  },
-  "dev-dependencies":
-  {
-    "vows": ">= 0.5.8"
   }
 }
