@@ -3,7 +3,6 @@ general:
   title: 'Nodeca'
   modules:
     nodeca-core:
-    nodeca-translate:
 ## PER-ENVIRONMENT CONFIGS ###################################################
 production:
   listen:
