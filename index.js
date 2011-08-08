@@ -16,7 +16,12 @@ app.readConfig('application', app.env, function (err, config) {
     process.exit(1);
   }
 
-  server.start(config);
+  server.start(config, function (err, server) {
+    if (err) {
+      console.error('Failed to start app: ' + err.stack);
+      process.exit(1);
+    }
+  });
 });
 
 
