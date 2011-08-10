@@ -23,8 +23,6 @@ process.on('uncaughtException', function(err) {
 
 // read application config and start app initialization
 starter.queue(function (next) {
-  var self = this;
-
   app.readConfig('application', app.env, function (err, config) {
     if (err) {
       next(err);
