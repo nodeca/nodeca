@@ -88,7 +88,7 @@ starter.queue(function (next) {
   });
 
   // expose lulz linkTo helper
-  server.helpers({lulz_link: app.staticLulz.helper});
+  server.helpers({assetsLink: app.staticLulz.helper});
   next();
 });
 
