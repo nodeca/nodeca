@@ -21,7 +21,7 @@ process.on('uncaughtException', function(err) {
 });
 
 
-// read application config
+// read application config and start app initialization
 starter.queue(function (next) {
   var self = this;
 
@@ -31,69 +31,14 @@ starter.queue(function (next) {
       return;
     }
 
-    self.config = config;
-    next();
-  });
-});
-
-
-// init applications
-starter.queue(function (next) {
-  app.init(this.config, next);
-});
-
-
-// get logger
-starter.queue(function (next) {
-  var self = this;
-
-  app.getLogger(function (err, logger) {
-    if (err) {
-      next(err);
-      return;
-    }
-
-    self.logger = logger;
-    next();
-  });
-});
-
-
-// get dispatcher
-starter.queue(function (next) {
-  var self = this;
-
-  app.getDispatcher(function (err, dispatcher) {
-    if (err) {
-      next(err);
-      return;
-    }
-
-    self.dispatcher = dispatcher;
-    next();
-  });
-});
-
-
-// get public/ static lulz
-starter.queue(function (next) {
-  var self = this;
-
-  app.getStatcLulz(function (err, lulz) {
-    if (err) {
-      next(err);
-      return;
-    }
-
-    self.lulz = lulz;
-    next();
+    app.init(config, next);
   });
 });
 
 
 // prepare server
 starter.queue(function (next) {
-  app.getAllViews(function (err, dir, files) {
+  app.viewsBuilder.compile(function (err, dir, files) {
     if (err) {
       next(err);
       return;
@@ -118,9 +63,7 @@ starter.queue(function (next) {
 
 // fill in middleware stack and helpers
 starter.queue(function (next) {
-  var self = this;
-
-  server.use(self.lulz.middleware);
+  server.use(app.staticLulz.middleware);
   server.use(Express.bodyParser());
   server.use(Express.methodOverride());
   server.use(Express.cookieParser());
@@ -143,33 +86,27 @@ starter.queue(function (next) {
     req.action              = 'error';
     req.error               = err;
 
-    self.dispatcher.dispatch(req, res, next);
+    app.dispatcher.dispatch(req, res, next);
   });
 
   // expose lulz linkTo helper
-  server.helpers({lulz_link: self.lulz.helper});
+  server.helpers({lulz_link: app.staticLulz.helper});
+  next();
 });
 
 
 // inject server with routers
 starter.queue(function (next) {
-  app.getAllRouters(function (err, routers) {
-    if (err) {
-      next(err);
-      return;
-    }
+  try {
+    $$.each(app.routers, function (name, router) {
+      router.inject((name == app.name) ? '' : name, server);
+    });
+  } catch (err) {
+    next(err);
+    return;
+  }
 
-    try {
-      $$.each(routers, function (name, router) {
-        router.inject((name == app.name) ? '' : name, server);
-      });
-    } catch (err) {
-      next(err);
-      return;
-    }
-
-    next();
-  });
+  next();
 });
 
 
