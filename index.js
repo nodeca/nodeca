@@ -36,32 +36,29 @@ starter.queue(function (next) {
 
 // prepare server
 starter.queue(function (next) {
-  app.viewsBuilder.compile(function (err, dir, files) {
-    if (err) {
-      next(err);
-      return;
+  var views = app.views;
+
+  server.set('views', '/');
+  server.set('view cache', true);
+  server.set('view engine', 'jade');
+  server.set('view options', {layout: 'layouts/default'});
+
+  delete Express.View.prototype.contents;
+  Express.View.prototype.__defineGetter__('contents', function () {
+    if (views[this.path]) {
+      return views[this.path];
     }
 
-    server.set('views', dir);
-    server.set('view cache', true);
-    server.set('view engine', 'jade');
-    server.set('view options', {layout: 'layouts/default'});
-
-    // 1. need to render all views
-    /* then uncomment following:
-    delete Express.View.prototype.contents;
-    Express.View.prototype.__defineGetter__('contents', function () {
-      throw Error("FS access to views is prohibited once app started.");
-    });
-    */
-    next();
+    throw Error("View not found.");
   });
+
+  next();
 });
 
 
 // fill in middleware stack and helpers
 starter.queue(function (next) {
-  server.use(app.staticLulz.middleware);
+  server.use(app.staticAssets.middleware);
   server.use(Express.bodyParser());
   server.use(Express.methodOverride());
   server.use(Express.cookieParser());
@@ -88,7 +85,7 @@ starter.queue(function (next) {
   });
 
   // expose lulz linkTo helper
-  server.helpers({assetsLink: app.staticLulz.helper});
+  server.helpers({assetsLink: app.staticAssets.helper});
   next();
 });
 
