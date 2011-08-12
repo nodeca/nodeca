@@ -74,7 +74,7 @@ starter.queue(function (next) {
 
   // register rerror handler should be configured
   server.error(function(err, req, res, next) {
-    logger.error(err, req).error(err.stack);
+    app.logger.error(err, req).error(err.stack);
 
     req.originalController  = req.controller;
     req.originalAction      = req.action;
@@ -113,7 +113,7 @@ starter.run(function (err) {
     process.exit(1);
   }
 
-  var listen = $$.merge({port: 8000}, config.listen);
+  var listen = $$.merge({port: 8000}, app.config.listen);
   server.listen(listen.port, listen.host);
 });
 
