@@ -18,6 +18,7 @@ var app = new nodeca.Application(__dirname),
 process.on('uncaughtException', function(err) {
   console.log('UNHANDLED EXCEPTION: ' + err.message);
   console.error(err.stack);
+  process.exit(1)
 });
 
 
