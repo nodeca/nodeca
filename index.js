@@ -36,20 +36,34 @@ starter.queue(function (next) {
 
 // prepare server
 starter.queue(function (next) {
-  var views = app.views;
+  var views = app.views,
+      normalize = require('path').normalize;
 
   server.set('views', '/');
   server.set('view cache', true);
   server.set('view engine', 'jade');
-  server.set('view options', {layout: 'layouts/default'});
+  server.set('view options', {layout: 'layouts/default.html.jade'});
+  server.locals({title: app.config.title});
 
+  $$.each(views, function (k, str) {
+    app.logger.debug('Got view files: ' + k);
+  });
+
+  delete Express.View.prototype.exists;
   delete Express.View.prototype.contents;
+
+  Express.View.prototype.__defineGetter__('exists', function () {
+    return views.hasOwnProperty(normalize(this.path));
+  });
+
   Express.View.prototype.__defineGetter__('contents', function () {
-    if (views[this.path]) {
-      return views[this.path];
+    var str = views[normalize(this.path)];
+
+    if (undefined === str) {
+      throw Error("View not found.");
     }
 
-    throw Error("View not found.");
+    return str;
   });
 
   next();
