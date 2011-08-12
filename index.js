@@ -18,7 +18,6 @@ var app = new nodeca.Application(__dirname),
 process.on('uncaughtException', function(err) {
   console.log('UNHANDLED EXCEPTION: ' + err.message);
   console.error(err.stack);
-  process.exit(1)
 });
 
 
@@ -74,7 +73,7 @@ starter.queue(function (next) {
 
   // register rerror handler should be configured
   server.error(function(err, req, res, next) {
-    app.logger.error(err, req).error(err.stack);
+    app.logger.error(err.message, req.params);
 
     req.originalController  = req.controller;
     req.originalAction      = req.action;
