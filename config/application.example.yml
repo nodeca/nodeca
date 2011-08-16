@@ -2,7 +2,9 @@ general:
   title: 'Nodeca'
   modules:
     nodeca-core:
+      mount: '/'
     nodeca-translate:
+      mount: '/translate'
 ## PER-ENVIRONMENT CONFIGS ###################################################
 production:
   listen:
