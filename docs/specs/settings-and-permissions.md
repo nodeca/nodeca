@@ -30,15 +30,15 @@ var PostsController = function PostsController() {
 };
 ```
 
-Each permission must be defined in the application:
+Each permission must be defined in the application as function that accespts two
+params: `req` and `next`:
 
 ``` javascript
 var app = new nodeca.Application(__dirname, function bootstrapper() {
   var config = this.config; // shortlink
 
-  this.define_permission('delete-post', function (next) {
-    var err, // error object if any
-        decision; // boolean true/false - represents allow/deny
-    next(err, decision);
+  this.define_permission('delete-post', function (req, next) {
+    var err; // error object should be defined if access is forbidden
+    next(err);
   });
 });
