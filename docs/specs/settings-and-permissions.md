@@ -1,8 +1,37 @@
 Settings and Permissions
 ========================
 
-Settings
---------
+Settings Storage
+----------------
+
+Each application keeps it's settigns as YAML file as `config/defaults.yml`. To
+keep files "clean" enough you can "extract" some parts as external files. For
+example let's say you have file `config/policies.yml` with following contents:
+
+``` yaml
+allow_delete_thread: false
+allow_change_topic:  true
+```
+
+Now you can add it into your `config/defaults.yml` as follows:
+
+``` yaml
+secret: d34dc0de
+policies: !include policies.yml
+```
+
+So the resulting config will become:
+
+``` yaml
+secret: d34dc0de
+policies:
+  allow_delete_thread: false
+  allow_change_topic:  true
+```
+
+
+Structure of Settings
+---------------------
 
 Each settings consist of:
 
@@ -41,8 +70,8 @@ allow_hang_the_dj: !delete false
 ```
 
 
-Permissions
------------
+Defining Permissions
+--------------------
 
 Permissions are precompiled functions that allows or denies specific actions,
 e.g.:
