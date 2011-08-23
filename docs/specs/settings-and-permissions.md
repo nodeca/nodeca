@@ -29,6 +29,19 @@ policies:
   allow_change_topic:  true
 ```
 
+After applcation being bootstrapped, all loaded configs are updated and extended
+with values from database.
+
+Administrator's interface is built from default settings. To make names of
+settigns more valuable, they are replaced with corresponding titles from
+`config/settigns.yml` file, which looks like:
+
+``` yaml
+secret: "Application secret"
+policies: ["Application permission policies", "Optional description of setting"]
+policies.allow_delete_thread: "Allow user delete threads"
+```
+
 
 Structure of Settings
 ---------------------
