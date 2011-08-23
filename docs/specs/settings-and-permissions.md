@@ -6,14 +6,39 @@ Settings
 
 Each settings consist of:
 
-- name, simple string, e.g. `max_open_posts`
-- definition, mixed type.
+* name, string, e.g. `max_open_posts`
+* value, mixed type
 
-Definitions of each settigns may be:
+Value of each settigns may be:
 
-- simple
--- boolean
--- array
+* boolean
+* string
+* integer
+* array
+
+Value may be complex object as well, e.g.:
+
+``` yaml
+allow_delete_post:
+  must_be_owner: true
+  during_period: 30 mins
+  must_be_last_post: true
+```
+
+By default latest definition overrides previous one. But sometimes you need
+completely remove value, for this purpose use delete tag:
+
+``` yaml
+allow_delete_post: !delete
+```
+
+_NOTICE_ Value of `!delete` tag is not used at all, so these two variants are
+absolutely equal:
+
+``` yaml
+allow_delete_post: !delete true
+allow_hang_the_dj: !delete false
+```
 
 
 Permissions
