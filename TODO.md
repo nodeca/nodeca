@@ -11,6 +11,10 @@ TODO
 * Fix store to return default value f not found in the database
   * fix app_users
   * fix usergroups
+* Update docs
+  * Move info from google docs to delelopment docs
+  * Update refactoring backlog
+  * Update Wiki & other texts
 
 ---
 
