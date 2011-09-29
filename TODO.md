@@ -3,10 +3,6 @@ TODO
 
 ### nodeca-lib
 
-* Import Underscore. Replace duplicate `Utilities` methods with mappings to
-  `underscore's` methods and DEPRECATION ERROR (for easy debugging upon start up)
-  * Clean-up Utilities (remove obsolete methods)
-  * Exports underscore as part of nodeca-lib
 * Fix store to return default value f not found in the database
   * fix app_users
   * fix usergroups
