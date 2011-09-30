@@ -8,15 +8,19 @@ Setting definition
 - **store_name** - Setting store name (e.g. `usergroups`)
     - **key** (unique) - Setting key name (e.g. `can_modify_topic`)
         - **type** (`boolean`|`number`|`string`|`array`|`object`, required) - Type of the setting.
+        - **default** (mixed, optional) - Default value
+        - **title** (string, required) - Title for ACP
+        - **description** (string, optional) - Markdown flavoured description for ACP
+        - **priority** (integer, optional, default = 10) - Ordering priority for ACP
+        - **before_show** (inline js, optional) - Executed before showing setting in ACP
+        - **before_save** (inline js, optional) - Executed before saving setting
+
 
 ---
 
     * group id (string) used to group permissions inside ACP
     * override (bool) (optional) marks permission as override of another one
-    * priority (integer)
-    * title (string)
-    * description, markdown flavoured text, (optional)
-    * default (mixed)
+    * list of values (for lists only) Hash
     * type
       * bool
       * string
@@ -28,7 +32,6 @@ Setting definition
       * user group list
       * user list
       * forums list
-    * list of values (for lists only) Hash
     * validator (hash)
       * name, String
         * custom
@@ -37,10 +40,7 @@ Setting definition
         * positive integer
         * regexp
       * options, String (regexp|eval)
-    * before show, String (eval)
-    * before save, String (eval)
     * subgroup title (string) (optional)
-    * used to simulate logical sub-groups in ACP settings groups
 
 ---
 
