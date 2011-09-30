@@ -5,8 +5,12 @@ Settings And Permissions
 Setting definition
 ------------------
 
-* setting store (string)
-  * setting key, (string)
+- **store_name** (string): Setting store name (e.g. `usergroups`)
+  - **key** (string, unique): Setting key name (e.g. `can_modify_topic`)
+    - **type** (string, required): Type of the setting, one of: `boolean`, `number`, `string`, `array`, `object`
+
+---
+
     * group id (string) used to group permissions inside ACP
     * override (bool) (optional) marks permission as override of another one
     * priority (integer)
@@ -38,6 +42,7 @@ Setting definition
     * subgroup title (string) (optional)
     * used to simulate logical sub-groups in ACP settings groups
 
+---
 
 Retreiving value for the key
 ----------------------------
