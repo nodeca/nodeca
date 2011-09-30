@@ -20,7 +20,7 @@ Definition
         - **before_show** - *TBD* JS code executed before showing setting in ACP
         - **before_save** - *TBD* JS code executed before saving setting
         - **validators**
-          (`not_empty`|`not_blank`|`numeric`|`integer`|`positive_integer`|`regexp`|`custom`,
+          (`required`|`numeric`|`integer`|`positive_integer`|`regexp`|`custom`,
           optional) - *TBD* reserved for future use
 
 
