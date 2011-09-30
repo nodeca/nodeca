@@ -5,10 +5,11 @@ Settings And Permissions
 Setting definition
 ------------------
 
-- **store_name** (string): Setting store name (e.g. `usergroups`)
-    - **key** (string, unique): Setting key name (e.g. `can_modify_topic`)
-        - **type** (string, required): Type of the setting, one of: `boolean`,
-          `number`, `string`, `array`, `object`
+~ **store_name** - Setting store name (e.g. `usergroups`)
+    ~ **key** (unique) - Setting key name (e.g. `can_modify_topic`)
+        ~ **type** (`boolean`|`number`|`string`|`array`|`object`, required)
+          - Type of the setting, one of: `boolean`,
+          
 
 ---
 
