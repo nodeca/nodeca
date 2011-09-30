@@ -9,11 +9,14 @@ TODO
 * +++ Migrate to Underscore
   * +++ Replace obsolete methods with Underscore analogues
   * +++ Exports underscore as part of nodeca-lib
-* Update docs
-  * Move info from google docs to delelopment docs
-    * Settings and Permissions (from ACL document)
-  * Update refactoring backlog
-  * Update Wiki & other texts
+
+
+### Update docs
+
+* Move info from google docs to delelopment docs
+  * Settings and Permissions (from ACL document)
+* Update refactoring backlog
+* Update Wiki & other texts
 
 ---
 
