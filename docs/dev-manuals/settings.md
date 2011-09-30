@@ -7,6 +7,8 @@ Definition
 
 - **store_name** - Setting store name (e.g. `usergroups`)
     - **key** (unique) - Setting key name (e.g. `can_modify_topic`)
+        - **extends** (default = false)- When `true`, means that setting combined
+          from several stores. Missed properties taken from base definition.
         - **type**
           (`boolean`|`string`|`text`|`wysiwyg`|`number`|`dropdown`|`combobox`|`usergroups`|`users`|`forums`,
           required) - Type of the setting.
