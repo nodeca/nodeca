@@ -9,6 +9,9 @@ TODO
 * +++ Migrate to Underscore
   * +++ Replace obsolete methods with Underscore analogues
   * +++ Exports underscore as part of nodeca-lib
+  * https://github.com/nodeca/nodeca-translate/commit/07002daef5107f92e92083d2d12716224c74e5af
+  * https://github.com/nodeca/nodeca-core/commit/ec8e4d773ecf05ef52e7efe674e9005c407d81d8
+  * https://github.com/nodeca/nodeca-lib/commit/9c10b2f59e6a9c0650b08f5c9e3f35d568faa5f5
 
 
 ### Update docs
