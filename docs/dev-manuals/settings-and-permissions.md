@@ -48,7 +48,7 @@ Retreiving value for the key
 Default values
 --------------
 
-Default value of setting may be omitted (see [[When no defaults specified]])
+Default value of setting may be omitted (see *When no defaults specified*)
 or given as mixed type value, e.g.:
 
     can_read_forum:
