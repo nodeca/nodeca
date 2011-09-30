@@ -18,11 +18,6 @@ Setting definition
         - **list_values** (optional) - key-value dictionary for `dropdown` and `combobox` types
         - **validators** (optional) - tdb. reserved for future use
 
-Retreiving value for the key
-----------------------------
-
-
-
 
 Default values
 --------------
