@@ -30,5 +30,8 @@ usergroups: # store_name
   can_moderate_translator: # key
     type: boolean
     default: false
-
+    
+  can_administrate_translator: # key
+    type: boolean
+    default: false
 ```      
