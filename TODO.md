@@ -1,14 +1,9 @@
 TODO
 ====
 
-### nodeca-lib
-
 * Fix store to return default value f not found in the database
   * fix app_users
   * fix usergroups
-* Migrate to Underscore
-  * Replace obsolete methods with Underscore analogues
-  * +++ Exports underscore as part of nodeca-lib
 * Update docs
   * Move info from google docs to delelopment docs
   * Update refactoring backlog
