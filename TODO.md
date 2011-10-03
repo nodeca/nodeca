@@ -20,7 +20,7 @@ TODO
   * L69: Describe preloader, setter and getter properties
   * + L227: Replace recursive calls with promises
 * https://github.com/nodeca/nodeca-lib/blob/master/lib/nodeca_lib/application.js
-  * L284: Add list of available hook names (reference to HOOKS array I guess)
+  * + L284: Add list of available hook names (reference to HOOKS array I guess)
 * https://github.com/nodeca/nodeca-lib/blob/master/lib/nodeca_lib/application/initializer.js
   * L1: Improve load_schemas|models to accept any models (not only Mongoose)
   * L2: Refactor initializer into pieces
