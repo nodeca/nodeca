@@ -9,7 +9,7 @@ var Promise = nodeca.SimplePromise,
 
 
 // main application context
-var app = new nodeca.Application(__dirname),
+var app = new nodeca.Application({name: 'nodeca', root: __dirname}),
     server = Express.createServer(),
     starter = $$.waterfall();
 
