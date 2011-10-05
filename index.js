@@ -5,7 +5,8 @@ var nodeca = require('nodeca-lib');
 // some base modules
 var Promise = nodeca.SimplePromise,
     Express = nodeca.Express,
-    $$ = nodeca.Utilities;
+    $$ = nodeca.Utilities
+    _ = nodeca.Underscore;
 
 
 // main application context
@@ -44,10 +45,6 @@ starter.queue(function (next) {
   server.set('view engine', 'jade');
   server.set('view options', {layout: 'layouts/default.html.jade'});
   server.locals({title: app.config.title});
-
-  $$.each(views, function (k, str) {
-    app.logger.debug('Got view files: ' + k);
-  });
 
   delete Express.View.prototype.exists;
   delete Express.View.prototype.contents;
@@ -107,7 +104,7 @@ starter.queue(function (next) {
 // inject server with routers
 starter.queue(function (next) {
   try {
-    $$.each(app.routers, function (name, router) {
+    _.each(app.routers, function (router, name) {
       router.inject((name == app.name) ? '' : name, server);
     });
   } catch (err) {
@@ -126,7 +123,7 @@ starter.run(function (err) {
     process.exit(1);
   }
 
-  var listen = $$.merge({port: 8000}, app.config.listen);
+  var listen = _.defaults(app.config.listen, {port: 8000});
   server.listen(listen.port, listen.host);
 });
 
