@@ -103,6 +103,8 @@ starter.queue(function (next) {
 
 // inject server with routers
 starter.queue(function (next) {
+  app.logger.debug("Injecting routes");
+
   try {
     _.each(app.routers, function (router, name) {
       router.inject((name == app.name) ? '' : name, server);
