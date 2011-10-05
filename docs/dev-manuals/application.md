@@ -1,17 +1,17 @@
 Application
 ===========
 
-* app/
-  * controller/
-    * `*_controller.js`
-  * models/
-    * `*.js`
-  * stores/
-    * `*.js`
-  * views/
-    * `<controller_name>/` (sub-dir per controller)
-      * `_*.js` (partials)
-      * `*.js`
+- app/
+    - controller/
+        - `*_controller.js`
+    - models/
+        - `*.js`
+    - stores/
+        - `*.js`
+    - views/
+        - `<controller_name>/` (sub-dir per controller)
+            - `_*.js` (partials)
+            - `*.js`
 
 Files and Directories Structure
 -------------------------------
