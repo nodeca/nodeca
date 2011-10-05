@@ -1,11 +1,10 @@
 Coding Style
 ============
 
-We use [Google's JavaScript coding style](http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml)
-as our coding standards.
+We use [Google's JavaScript coding style][1] as our coding standards.
 
-Code documentation should be written in format of [PDoc](http://pdoc.com). See
-[PDoc Syntax](http://pdoc.org/syntax.html) for details about it.
+Code documentation should be written in format of [PDoc][2]. See [PDoc Syntax][3]
+for details about it.
 
 You should document ANY method|property that might be reached from the outside.
 You may want to mark property as _protected_, but make sure to document it in
@@ -60,3 +59,7 @@ If your method use some formula, put it into the description:
      *  base^x = number
      **/
 
+
+[1]: http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml
+[2]: http://pdoc.org/
+[3]: http://pdoc.org/syntax.html
