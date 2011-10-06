@@ -127,6 +127,7 @@ starter.run(function (err) {
 
   var listen = _.defaults(app.config.listen, {port: 8000});
   server.listen(listen.port, listen.host);
+  app.logger.info("Start listening")
 });
 
 
