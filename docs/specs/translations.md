@@ -1,34 +1,24 @@
+i18n
+====
 
-General
-=======
+Design goals
+------------
 
-We plan to use Jade, so it will be most convenient to use this [jade-i18n progect](https://github.com/LearnBoost/jade-i18n).
-It has lack of some features:
+- easy translation for resourses
+- both for server + client
+- easy programming
+- plurals support
 
-- No embedded plurals support, with easy syntax
-  - https://github.com/LearnBoost/jade-i18n/issues/3
-  - https://github.com/masylum/dialect/blob/master/lib/helpers/plurals.js
-- ? No gender support, with easy syntax
-- No context-depended phrases support
-  - https://github.com/LearnBoost/jade-i18n/issues/4
-- No built-in i18n __() for translations without templates
-- the same phrases with variables can be different for templates & direct js calls
-  - try to avoid such situation. Check if we really need to avoid it.
-  - compile such phrases when added, to find ready result by phrase hash
-- instruments to make lang files (similar to wordpress makepot.php)
+Why? Because existing solutions could be better :)
 
-See also:
+**Concepts:**
 
-- https://github.com/naholyr/node-jus-i18n
-- https://github.com/ricardobeat/node-polyglot
-
-Proposed changes
-================
-
-All changes have 2 points:
-
-1. We need SIMPLE format for translators
-2. We need compatible phrases format both templates and code (for example, JSON/XML output don't need templates)
+1. Мost texts are in templates. We need instruments to generate localized templates automatically on application start.
+2. Plurals support in `gettext` is really sophisticated. It would be great to have simple syntax.
+3. Some useful `gettext` features (contexsts and so on)
+4. Tools to automate phrases extraction from templates and source code.
+5. (?) Gender support
+6. Transparent fallback to default language
 
 Plurals
 -------
@@ -58,26 +48,11 @@ Almost impossible case, but still needed. A bit dirty syntax, but probably never
 
 We use quantifier to directly assign variable for first plural.
 
-### How it works?
-
-If phrase contains macroses, it will be automatically kept in 2 forms: plain and compiled. Simple phrases
-will have single form - string. Complex phrases will also have secondary form - function.
-
-Result of compiled phrase will depend on context visible variables. That should work for both
-templates and direct __n(...) calls
-
-If phrase not exists, it will be added & compiled at first usage.
-
-Contexts
---------
-
-Some translations are context-dependent. jade-i18n already has 'description' ability. If exists, those should be used
-for crc calculations.
 
 Gender
 ------
 
-Use similar to plurals macros to define gender:
+Use similar to plurals macros for gender definition:
 
     g((male form|female form))
 
@@ -88,71 +63,51 @@ or
 Variable is used as array index. Default name is `gender`. It will be searched in visible vars.
 
 
-Unified phrases for templates & executable code
------------------------------------------------
+Speed optimizations, client/server difference
+---------------------------------------------
 
-Since we use compiler, when adding phrases, it's no longer problem to use the same phrases in direct JS calls:
+There are 2 cases:
 
-    __("Look, ((there is|there are)):apcount #{ap_count} ((apple|apples)) and #{p_count} ((pie|pies)) on the table",
-       {app_count: x, p_count: y} )
+1. Static translations (no parameters)
+2. Computed translations (with plurals/gender)
 
+Static translations should be embedded directly into templates on app start. That reduces computations on each data request.
+
+Computed phrases are functions.
+
+- Server side - no problems. `__(...)` is available there, phrases are loaded & cached on app start.
+- Client side. For single-page apps we should provide `__(...)' on client.
+  - don't pass all phrases, since most are built into template. care about traffic.
+  - care about partial load, if application is splitted by submodules
+
+(*) Provide helper to generate localized templates
 
 Helper functions
-================
+----------------
 
-### __(...)
+### __(lang, phrase[, context, options, namespace])
 
 Returns translated phrase
 
-### __n(singular, plural1 [, plural2...], count, lang)
+### __n(lang, singular, plural1 [, plural2...], count)
 
-Returns plural form, depending on count and language
+Returns plural form, depending on count and language. See example here https://github.com/masylum/dialect/blob/master/lib/helpers/plurals.js
 
+# TBD
 
-Instruments
-===========
-
-We need effective instrument to make translations. [dialect-http](https://github.com/masylum/dialect-http)
-looks promissing.
-
-Do we really need it? May be, use ubuntu launchpad or similar for the first time? Check for free & nice
-alternative to https://webtranslateit.com/ .
-
-
-### Missed features
-
+- errors display on the client (fallback to default language or plain phrase?)
+- (?) events on server
+- contexts
 - split phrases by projects (namespaces)
   - each subproject can have personal master-file
   - hide duplicated phrases in interface, but keep in exports
 - files format
-  - JSON | Yaml
+  - (?) JSON / Yaml
   - check how to import/export
   - make tool to autogenerate master files
-- authorization/registration via loginza
 
-
-### Later
+# Later
 
 - babelfish-like auto translator https://github.com/jbasdf/babelphish/tree/master/lib
   use http://mymemory.translated.net , since google API discontinued
-- replace loginza service with owns.
-  - Facefook, Google, vKontakte, Yandex, Mailru
-  - nodeca
-  - ? self (db)
-  - ? file
-- allows distributed collection of translations
-- edit history
 
-
-Overrides
-=========
-
-That depends on language storage type. We need to define load sequence in some way. For
-file storage, that can be a number in file name:
-
-   forms.5.ru
-
-For db storage - priority will be e separate field.
-? Override mechanism for specific phrases is very similar to skins. Create file with
-phrases definitions, and add extension `.override`. Phrases from such file will override
-basic one.
