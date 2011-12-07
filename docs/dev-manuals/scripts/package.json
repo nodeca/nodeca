@@ -1,0 +1,26 @@
+{
+  "name"            : "project-name",
+  "version"         : "0.1.0",
+  "description"     : "Some really descriptive description",
+  "keywords"        : ["fresh", "meat"],
+  "homepage"        : "http://homepage.example.com",
+
+  "author"          : "Firstname Lastname <author@example.com> (http://example.com/)",
+
+  "bugs"            : { "url": "http://issues.example.com" },
+  "license"         : { "type": "MIT", "url": "http://example.com/LICENSE" },
+  "repository"      : { "type": "git", "url": "git://example.com/project-name.git" },
+
+  "main"            : "./index.js",
+
+  "scripts"         : {
+                        "test" : "make test"
+                      },
+
+  "devDependencies" : {
+                        "ndoc"    : "~ 1.0.0",
+                        "vows"    : "~ 0.6.0",
+                        "jslint"  : "https://github.com/reid/node-jslint/tarball/6131ebf5713274871b89735105e3286131804771"
+                      },
+  "engines"         : { "node": "> 0.4.11" }
+}
