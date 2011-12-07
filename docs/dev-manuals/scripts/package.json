@@ -3,13 +3,13 @@
   "version"         : "0.1.0",
   "description"     : "Some really descriptive description",
   "keywords"        : ["fresh", "meat"],
-  "homepage"        : "http://homepage.example.com",
+  "homepage"        : "https://github.com/nodeca/project-name",
 
   "author"          : "Firstname Lastname <author@example.com> (http://example.com/)",
 
-  "bugs"            : { "url": "http://issues.example.com" },
-  "license"         : { "type": "MIT", "url": "http://example.com/LICENSE" },
-  "repository"      : { "type": "git", "url": "git://example.com/project-name.git" },
+  "bugs"            : { "url": "https://github.com/nodeca/project-name/issues" },
+  "license"         : { "type": "MIT", "url": "https://github.com/nodeca/project-name/blob/master/LICENSE" },
+  "repository"      : { "type": "git", "url": "git://github.com/nodeca/project-name.git" },
 
   "main"            : "./index.js",
 
