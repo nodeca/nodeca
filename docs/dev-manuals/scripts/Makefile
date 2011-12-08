@@ -11,14 +11,6 @@ GITHUB_NAME := nodeca/project-name
 SRC_URL_FMT := https://github.com/${GITHUB_NAME}/blob/${CURR_HEAD}/{file}\#L{line}
 
 
-test:
-	@if test ! `which vows` ; then \
-		echo "You need 'vows' installed in order to generate docs." >&2 ; \
-		echo "  $ make dev-deps" >&2 ; \
-		exit 128 ; \
-		fi
-	NODE_ENV=test vows --spec
-
 lint:
 	@if test ! `which jslint` ; then \
 		echo "You need 'jslint' installed in order to generate docs." >&2 ; \
@@ -29,6 +21,14 @@ lint:
 	# (indent)  -> indentation level (2 spaces)
 	# (nomen)   -> tolerate underscores in identifiers (e.g. `var _val = 1`)
 	jslint --node --nomen --indent=2 ./lib/*.js ./lib/**/*.js
+
+test: lint
+	@if test ! `which vows` ; then \
+		echo "You need 'vows' installed in order to generate docs." >&2 ; \
+		echo "  $ make dev-deps" >&2 ; \
+		exit 128 ; \
+		fi
+	NODE_ENV=test vows --spec
 
 doc:
 	@if test ! `which ndoc` ; then \
