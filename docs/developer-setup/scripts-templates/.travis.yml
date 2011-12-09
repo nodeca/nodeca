@@ -1,0 +1,9 @@
+language: node_js
+node_js:
+ - 0.6
+before_script: "npm install --dev"
+script: "make test"
+notifications:
+  email:
+    on_success: change
+    on_failure: change
