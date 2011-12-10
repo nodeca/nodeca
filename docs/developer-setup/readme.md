@@ -27,12 +27,18 @@ Install node (long), and set default version:
 
 ## Read docs
 
-- Conding Style - `./coding-style.md`
+- Coding Style - `./coding-style.md`
 - `make` tasks - `./script-templates/Makefile`
 
 ## Continuous integration
 
-We use [Travis](http://http://travis-ci.org) to automatically run tests on all commits
-If you received message, that your commit caused problems - fix that IMMEDIATELY.
+All code in main repos should be "working" - it MUST pass tests, it MUST pass lint. If you
+need experimeting - do it in your fork. Don't commit activated broken tests and not linted
+sources to master tree. Usually, most repos have pre-built scripts to make checks:
 
-Don't commit activated broken tests and not linted sources in master tree.
+- `make lint` - run lint on sources
+- `make test` - run lint and then run tests
+
+We use [Travis](http://http://travis-ci.org) to automatically run tests on all commits
+If you received message, that your commit caused problems - fix that IMMEDIATELY. Repo managers
+will be notified about all such fuckups and revert commit if not fixes soon.
