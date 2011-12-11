@@ -25,10 +25,12 @@ Install node (long), and set default version:
 
     # npm install -g ndoc
 
+
 ## Read docs
 
 - Coding Style - `./coding-style.md`
 - `make` tasks - `./script-templates/Makefile`
+
 
 ## Continuous integration
 
@@ -42,3 +44,9 @@ sources to master tree. Usually, most repos have pre-built scripts to make check
 We use [Travis](http://http://travis-ci.org) to automatically run tests on all commits
 If you received message, that your commit caused problems - fix that IMMEDIATELY. Repo managers
 will be notified about all such fuckups and revert commit if not fixes soon.
+
+
+## Github
+
+Read docs about [issues syntax](https://github.com/blog/831-issues-2-0-the-next-generation). Since we
+do code review, don't make commits, wich auto-close issues.
