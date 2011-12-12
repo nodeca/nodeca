@@ -1,6 +1,10 @@
 Coding Style
 ============
 
+**All commited code MUST pass Lint**. We supply makefile & package.json
+with proper lint defaults. Once again: any code, that you commit,
+MUST pass lint!
+
 You must include `use strict` requirement n all your code right after the
 copyright comments block, e.g.:
 
@@ -17,13 +21,12 @@ copyright comments block, e.g.:
 'use strict';
 ```
 
-You must make sure, that your code passes JSLint checks.
+We use [Google's JavaScript coding style][http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml]
+as our coding standards.
 
-
-We use [Google's JavaScript coding style][1] as our coding standards.
-
-Code documentation should be written in format of [PDoc][2].
-See [PDoc Syntax][3] for details about it.
+Code documentation should be written in format of [NDoc][https://github.com/nodeca/ndoc].
+See [NDoc Syntax][https://github.com/nodeca/ndoc/blob/master/syntax.md]
+for details about it. Use another projects as examples.
 
 **NOTICE**
 The rules stated in this document override rules stated in the above documents
@@ -152,10 +155,10 @@ Under [scripts](scripts/) directory you will find scripts and utilities for
 making your dev-days a little bit easier:
 
 - [Makefile](scripts/Makefile) contains often-used tasks:
+  - `make lint` runs lint on your code
   - `make test` runs all test suites
   - `make docs` updates API documentation in `./doc/`
   - `make gh-pages` updates gh-pages branch with latest API documentation
-- [support/generate-docs.rb](scripts/support/generate-docs.rb) PDoc runner
 
 Simply copy contents of [scripts](scripts/) directory into root of your new
 project to make your life shiner.
@@ -172,7 +175,3 @@ GitHub as `https://github.com/ixti/nodeca-blogs/` set variables as:
     PROJECT_NAME="nodeca-blogs"
     GITHUB_NAME="ixti/nodeca-blogs"
 
-
-[1]: http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml
-[2]: http://pdoc.org/
-[3]: http://pdoc.org/syntax.html
