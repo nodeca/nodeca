@@ -20,9 +20,13 @@
 │   └─ defaults.yml               # application config
 ├─ lib/
 │   ├─ client/                    # client-only parts of API tree
-│   │   └─ <a>/{...}/<z>.js       # (example) tree part: nodeca.a.{...}.z
+│   │   ├─ <namespace>/
+│   │   │   └─ *.js
+│   │   └─ *.js
 │   ├─ server/                    # server-only parts of API tree
+│   │   └─ ...
 │   └─ shared/                    # server and client parts of API tree
+│       └─ ...
 ├─ public/
 │   └─ *                          # static files + stylus templates
 └─ index.js
