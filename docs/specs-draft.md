@@ -55,3 +55,25 @@ Response codes are fixed and can be:
     400 CLIENT ERROR
     401 VERSION MISMATCH
     500 SERVER ERROR
+
+
+## Assets Config
+
+```
+{
+  "i18n": // i18n | tpl
+  {
+    "<namespace>":
+    {
+      "url": "/foobar/aha.cbmd5sum.js",
+      "md5": "cbmd5sum"
+    }
+  }
+}
+```
+
+## Server-side view helpers
+
+- `assetUrl(name)`
+- `javascripts([namespace = 'all'])`
+- `stylesheets([namespace = 'all'])`
