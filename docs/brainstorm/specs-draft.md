@@ -2,33 +2,25 @@
 
 ```
 .
-├─ app/
-│   ├─ controller/
-│   │   └─ *_controller.js
-│   ├─ models/
-│   │   └─ *.js
-│   ├─ stores/
-│   │   └─ *.js
-│   └─ views/<controller_name>/   # sub-dir per controller
-│       ├─ _*.jade                # partials.js
-│       └─ *.jade
+├─ models/
+│   └─ *.js
+├─ stores/
+│   └─ *.js
+├─ views/<controller_name>/           # sub-dir per controller
+│   ├─ _*.jade                        # partials.js
+│   └─ *.jade
 ├─ config/
 │   ├─ settings/
-│   │   └─ *.yml                  # settings definitions
+│   │   └─ *.yml                      # settings definitions
 │   ├─ locales/
-│   │   └─ <lang>.yml             # language translataions e.g. ru.yml
-│   └─ defaults.yml               # application config
-├─ lib/
-│   ├─ client/                    # client-only parts of API tree
-│   │   ├─ <namespace>/
-│   │   │   └─ *.js
-│   │   └─ *.js
-│   ├─ server/                    # server-only parts of API tree
-│   │   └─ ...
-│   └─ shared/                    # server and client parts of API tree
-│       └─ ...
+│   │   └─ <lang>.yml                 # language translataions e.g. ru.yml
+│   └─ defaults.yml                   # application config
+├─ client/<namespace>/.../*.js        # client-only parts of API tree
+├─ server/<namespace>/.../*.js        # server-only parts of API tree
+├─ shared/<namespace>/.../*.js        # server and client parts of API tree
+├─ validator/<namespace>/.../*.js     # server api tree validators
 ├─ public/
-│   └─ *                          # static files + stylus templates
+│   └─ *                              # static files + stylus templates
 └─ index.js
 ```
 
