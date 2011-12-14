@@ -26,23 +26,40 @@
 
 ## RPC
 
+Structure of RPC is presented in YAML for readability purposes only
+
 #### Request
 
-```
-{
-  "v": <str>,   // version of nodeca protocol
-  ...
-}
+``` yaml
+--- # structure
+version : <str>     # version nodeca protocol
+action  : <str>     # API tree action to call
+params  : <map>     # Parameters of request
+format  : <str>     # (optional) Desired format of response
+...
+--- # example
+version: "1.0"
+action: "forums.posts.save"
+params:
+  title: "C'mon let's release something"
+  body: >
+    Some really big body...
+format: "json"
+...
 ```
 
 #### Response
 
-```
-{
-  "v": <str>,   // version of nodeca protocol
-  "c": <int>,   // response code
-  ...
-}
+``` yaml
+--- # structure
+version : <str>     # version of nodeca protocol
+code    : <int>     # result code
+data    : <mixed>   # (optional) response data
+...
+--- # example
+version: "1.0"
+code: 0
+...
 ```
 
 Response codes are fixed and can be:
