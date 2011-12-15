@@ -47,6 +47,10 @@ translations has no macros, so we are building localized JADEs here...
 
 ##### 2.3. Compile JADE views
 
+Compiled views will become part of the api-tree. For example if we have
+`posts/create.jade` within `forums` namespace, then it will become accessible
+as `nodeca.views.forums.posts.create()`.
+
 ```
 .
 ├─ <namespace>/
