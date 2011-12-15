@@ -73,6 +73,7 @@ filters.create.after = [
 
 
 ``` yaml
+version: "1.0"                      # Nodeca version
 baseurl: "//nodeca.org/assets"      # Base URL for all assets (used by helpers)
 assets:                             # per-namespace assets manifest
   <namespace>:
