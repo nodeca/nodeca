@@ -20,22 +20,45 @@ original ones, but bodies ready to be used on the client and call corresponding
 server methods transparently.
 
 
-### Stage 2. Compiling static assets and merging it with dynamic data assets
+### Stage 2. Compile localized views
+
+##### 2.1. Merge and patch JADE views
 
 ```
 .
 ├─ <namespace>/
-│   ├─ api-tree.js
-│   ├─ i18n/
-│   │   └─ <lang>.js
-│   ├─ views/
-│   │   └─ *.jade       # Raw JADE files (we need them for the third stage)
-│   └─ *.*              # All other files from /static/ from applications
+│   └─ views/
+│       └─ *.jade
 └─ ...
 ```
 
+##### 2.2. Localize JADE views
 
-### Stage 3. Building compiled localized views
+We can replace `__('foo.bar')` calls with strings for each language if
+translations has no macros, so we are building localized JADEs here...
+
+```
+.
+├─ <namespace>/
+│   └─ views/
+│       └─ *.<lang>.jade
+└─ ...
+```
+
+##### 2.3. Compile JADE views
+
+```
+.
+├─ <namespace>/
+│   └─ views/
+│       └─ <lang>.js
+└─ ...
+```
+
+### Stage 3. Compiling static assets
+
+Patch and merge static files, compile stylus, combine alltogether with data of
+stages 1 and 2.
 
 ```
 .
@@ -44,7 +67,7 @@ server methods transparently.
 │   ├─ i18n/
 │   │   └─ <lang>.js
 │   ├─ views/
-│   │   └─ <lang>.js    # All *.jade files are compiled and merged together per-language
+│   │   └─ <lang>.js
 │   └─ *.*
 └─ ...
 ```
