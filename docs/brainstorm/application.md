@@ -1,3 +1,7 @@
+Application
+-----------
+
+
 Dir Structure
 =============
 
@@ -23,7 +27,7 @@ Directores below are processed automaticallty during init.
 │   └─ defaults.yml                   # application config
 │
 ├─ client/                            # client-side API tree functions, mapped to `nodeca.client.<...>`
-│   └ <namespace>/
+│   └─ <namespace>/
 │       └─ /.../*.js
 │
 ├─ server/                            # server-side API tree functions, mapped to `nodeca.server.<...>`
@@ -31,7 +35,7 @@ Directores below are processed automaticallty during init.
 │       └─ /.../*.js
 │
 ├─ shared/                            # shared API tree code for both server & client, mapped to `nodeca.shared.<...>`
-│   └ <namespace>/
+│   └─ <namespace>/
 │       └─ /.../*.js
 │
 ├─ static/                            # static files (images, stylus templates, jQuery & plugins)
@@ -61,6 +65,4 @@ TBD (how components can change default behaviour)
 
 ## Server-side view helpers
 
-- `assetUrl(name)`
-- `javascripts([namespace = 'all'])`
-- `stylesheets([namespace = 'all'])`
+TBD (helpers that used to produce asset URLs, bunches of script includes etc)
