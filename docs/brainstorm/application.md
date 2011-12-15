@@ -22,26 +22,35 @@ Directores below are processed automaticallty during init.
 │   │   └─ <lang>.yml                 # language translataions e.g. ru.yml
 │   └─ defaults.yml                   # application config
 │
-├─ client/
+├─ client/                            # client-side API tree functions, mapped to `nodeca.client.<...>`
 │   └ <namespace>/
-│       └─ /.../*.js                  # client-only parts of API tree
+│       └─ /.../*.js
 │
-├─ server/
+├─ server/                            # server-side API tree functions, mapped to `nodeca.server.<...>`
 │   └─ <namespace>/
-│       └─ /.../*.js                  # server-only parts of API tree (controllers)
+│       └─ /.../*.js
 │
-├─ shared/
+├─ shared/                            # shared API tree code for both server & client, mapped to `nodeca.shared.<...>`
 │   └ <namespace>/
-│       └─ /.../*.js                  # server and client parts of API tree
+│       └─ /.../*.js
 │
-├─ helpers/
-│   └─ <namespace>/.../*.js           # api tree helpers
-│
-├─ public/
-│   └─ <namespace>/*                  # static files + stylus templates
+├─ static/                            # static files (images, stylus templates, jQuery & plugins)
+│   └─ <namespace>/*
 │
 └─ index.js
 ```
+
+
+Namespaces
+==========
+
+Namespaces are used to minimize client-side code. For example, regular users don't need
+to load admin templates, functions and translations. We use component name as it's namespace.
+
+Physically, namespace is a directory.
+
+There are special `common` namespace for resources, that should be available everywhere.
+This namespace will be loaded to client for all pages.
 
 
 Hooks
