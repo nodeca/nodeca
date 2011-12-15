@@ -49,7 +49,22 @@ filters.create.after = [
 ];
 ```
 
-## Assets-Manager Post-Work Files structure
+## Assets-Manager Workflow
+
+- Each method under `./server/` will become a valid method wrapper under
+  `server` api tree on client, keeping almost identical signature but with
+  additional last arguement - callback.
+
+  ``` javscript
+  // will send a valid JSON request to the server (See Client-Server
+  // Communication) for details:
+  nodeca.server.forums.posts.create('Hello!', 'Some body', function (err, data) {
+    // do somthing once post is created
+  });
+  ```
+
+
+#### Files structure
 
 ```
 .
@@ -82,73 +97,19 @@ assets:                             # per-namespace assets manifest
     # ...
 ```
 
---------------------------------------------------------------------------------
-
-
-## Client to Server communication protocol
-
-Structure of RPC is presented in YAML for readability purposes only
+## Client-Server communication protocol
 
 #### Request
 
 - **version**   _(String)_ Mandatory. version nodeca protocol, Example: "1.0"
-- **action**    _(String)_ Mandatory. API tree action to call
-- **args**      _(Array)_ Optional. Method 
-``` yaml
---- # structure
-version : <str>     # 
-action  : <str>     # 
-params  : <map>     # Parameters of request
-format  : <str>     # (optional) Desired format of response
-...
---- # example
-version: "1.0"
-action: "forums.posts.save"
-params:
-  title: "C'mon let's release something"
-  body: >
-    Some really big body...
-format: "json"
-...
-```
+- **action**    _(String)_ Mandatory. API tree action to call, Example: "forums.posts.create"
+- **args**      _(Array)_  Optional. Method 
 
 #### Response
 
-``` yaml
---- # structure
-version : <str>     # version of nodeca protocol
-code    : <int>     # result code
-data    : <mixed>   # (optional) response data
-...
---- # example
-version: "1.0"
-code: 0
-...
-```
-
-Response codes are fixed and can be:
-
-    0   OK
-    400 CLIENT ERROR
-    401 VERSION MISMATCH
-    500 SERVER ERROR
-
-
-## Client Config
-
-This
-```
-{
-  "i18n": // i18n | tpl
-  {
-    "<namespace>":
-    {
-      "url": "/foobar/aha.cbmd5sum.js",
-      "md5": "cbmd5sum"
-    }
-  }
-}
-```
+- **version**   _(String)_ Mandatory. version nodeca protocol, Example: "1.0"
+- **error**     _(Object)_ Optional. If set contains `code` and `message`
+- **data**      _(Mixed)_  Optional.
 
 ## Server-side view helpers
 
