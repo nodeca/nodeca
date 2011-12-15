@@ -1,54 +1,50 @@
 Client Bundler
 --------------
 
-### Stage 1. Application initialization
+### Stage 1. Prepare dynamic data for assets
 
-On this stage we initialize all sub-applications, run hooks, load i18n and
-prepare full API tree.
-
-### Stage 2. Prepare server wrappers
-
-On this stage we prepare wrapper function for each `nodeca.server` method to be
-exported as part of client API tree.
-
-### Stage 3. Flush API tree for the client
-
-Flushing API tree to the filesystem:
+Once API tree of the application was fully populated, and i18n being loaded,
+we generate API tree (with stubbed server methods) and i18n bundles:
 
 ```
 .
 ├─ <namespace>/
-│   ├─ client.js        # development: nodeca.<namespace>.client
-│   ├─ server.js        # development: nodeca.<namespace>.server
-│   ├─ shared.js        # development: nodeca.<namespace>.shared
-│   ├─ bundle.js        # production: nodeca.<namespace>.*
-│   ├─ i18n/
-│   │   └─ <lang>.js    # nodeca.<namespace>.i18n.<lang>
-│   └─ views/
-│       └─ <lang>.js    # nodeca.<namespace>.views.<lang>
-│
+│   ├─ api-tree.js      # nodeca.<namespace>.* (server, shared, client)
+│   └─ i18n/
+│       └─ <lang>.js    # nodeca.<namespace>.i18n.<lang>
 └─ ...
 ```
 
-### Stage 4. Compiling static and API tree into merged assets
+`nodeca.<namespace>.server.*` contains methods with signatures similar to
+original ones, but bodies ready to be used on the client and call corresponding
+server methods transparently.
+
+
+### Stage 2. Compiling static assets and merging it with dynamic data assets
 
 ```
 .
-└─ assets/
-    ├─ <namespace>/
-    │   ├─ client.js
-    │   ├─ server.js
-    │   ├─ shared.js
-    │   ├─ bundle.js
-    │   ├─ i18n/
-    │   │   └─ <lang>.js
-    │   ├─ views/
-    │   │   └─ <lang>.js
-    │   └─ static/
-    │       ├─ *.*
-    │       ├─ bundle.js
-    │       └─ bundle.css
-    │
-    └─ app_manifest/
-        └─ config.<env>.<lang>.<md5sum>.json # App config + assets manifest (See Client Confi)
+├─ <namespace>/
+│   ├─ api-tree.js
+│   ├─ i18n/
+│   │   └─ <lang>.js
+│   ├─ views/
+│   │   └─ *.jade       # Raw JADE files (we need them for the third stage)
+│   └─ *.*              # All other files from /static/ from applications
+└─ ...
+```
+
+
+### Stage 3. Building compiled localized views
+
+```
+.
+├─ <namespace>/
+│   ├─ api-tree.js
+│   ├─ i18n/
+│   │   └─ <lang>.js
+│   ├─ views/
+│   │   └─ <lang>.js    # All *.jade files are compiled and merged together per-language
+│   └─ *.*
+└─ ...
 ```
