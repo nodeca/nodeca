@@ -55,18 +55,33 @@ filters.create.after = [
 .
 └─ assets/
     ├─ <namespace>/
-    │   ├─ client.js        # development: nodeca.client.<namespace>
-    │   ├─ server.js        # development: nodeca.server.<namespace>
-    │   ├─ shared.js        # development: nodeca.shared.<namespace>
-    │   ├─ i18n.js          # development: nodeca.i18n.<namespace>
-    │   ├─ templates.js     # development: nodeca.templates.<namespace>
-    │   ├─ bundle.js        # production: contains all above
+    │   ├─ client.js        # development: nodeca.<namespace>.client
+    │   ├─ server.js        # development: nodeca.<namespace>.server
+    │   ├─ shared.js        # development: nodeca.<namespace>.shared
+    │   ├─ i18n.js          # development: nodeca.<namespace>.i18n
+    │   ├─ views.js         # development: nodeca.<namespace>.views.<lang>
+    │   ├─ bundle.js        # production: nodeca.<namespace>.*
     │   └─ public/          # assets from public/ static files copied as is
-    │       ├─ *.*          # development: CSS, JS, images, any files
+    │       ├─ *.*          # development: CSS, JS; dev + prod: any other files
     │       ├─ bundle.js    # production: compiled/concatenated js files
     │       └─ bundle.css   # production: compiled/concatenated css files
-    └─ manifest.json
+    ├─ config.production.json   # App config + assets manifest (See Client Config)
+    └─ config.development.json  # per-environment. need to mix in md5 ?
 ```
+
+## Client-side config
+
+
+``` yaml
+baseurl: "//nodeca.org/assets"      # Base URL for all assets (used by helpers)
+assets:                             # per-namespace assets manifest
+  <namespace>:
+    client.js: <md5sum>
+    server.js: <md5sum>
+    # ...
+```
+
+--------------------------------------------------------------------------------
 
 
 ## Client to Server communication protocol
