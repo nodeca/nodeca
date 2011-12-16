@@ -1,4 +1,4 @@
-Client Bundler
+Static Bundler
 --------------
 
 ### Stage 1. Prepare dynamic data for assets
@@ -20,9 +20,9 @@ original ones, but bodies ready to be used on the client and call corresponding
 server methods transparently.
 
 
-### Stage 2. Compile localized views
+### Stage 2. Prepare views
 
-##### 2.1. Merge and patch JADE views
+##### 2.1. Combine "generic" views
 
 ```
 .
@@ -32,7 +32,21 @@ server methods transparently.
 └─ ...
 ```
 
-##### 2.2. Localize JADE views
+
+##### 2.2. Prepare skins
+
+```
+.
+├─ <namespace>/
+│   └─ skinz/
+│       └─ <skin_name>/
+│           └─ views/
+│               └─ *.jade
+└─ ...
+```
+
+
+##### 2.3. Localize JADE views
 
 We can replace `__('foo.bar')` calls with strings for each language if
 translations has no macros, so we are building localized JADEs here...
@@ -40,12 +54,15 @@ translations has no macros, so we are building localized JADEs here...
 ```
 .
 ├─ <namespace>/
-│   └─ views/
-│       └─ *.<lang>.jade
+│   └─ skinz/
+│       └─ <skin_name>/
+│           └─ views/
+│               └─ *.<lang>.jade
 └─ ...
 ```
 
-##### 2.3. Compile JADE views
+
+##### 2.4. Compile JADE views
 
 Compiled views will become part of the api-tree. For example if we have
 `posts/create.jade` within `forums` namespace, then it will become accessible
@@ -54,15 +71,32 @@ as `nodeca.views.forums.posts.create()`.
 ```
 .
 ├─ <namespace>/
-│   └─ views/
-│       └─ <lang>.js
+│   └─ skinz/
+│       └─ <skin_name>/
+│           └─ views/
+│               └─ *.<lang>.js
 └─ ...
 ```
 
-### Stage 3. Compiling static assets
 
-Patch and merge static files, compile stylus, combine alltogether with data of
-stages 1 and 2.
+### Stage 3. Compile static assets
+
+Patch and merge static files, compile stylus for each skin using generic static
+files as base structure.
+
+```
+.
+├─ <namespace>/
+│   └─ skinz/
+│       └─ <skin_name>/
+│           └─ *.*
+└─ ...
+```
+
+
+### Stage 4. Put alltogether
+
+Combine API tree, trnslations, skinz with views and static data in one place.
 
 ```
 .
@@ -70,8 +104,10 @@ stages 1 and 2.
 │   ├─ api-tree.js
 │   ├─ i18n/
 │   │   └─ <lang>.js
-│   ├─ views/
-│   │   └─ <lang>.js
-│   └─ *.*
+│   └─ skinz/
+│       └─ <skin_name>/
+│           ├─ views/
+│           │   └─ *.<lang>.js
+│           └─ *.*
 └─ ...
 ```
