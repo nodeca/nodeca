@@ -39,7 +39,7 @@
 
 
 ``` yaml
-version: "1.0"                      # Nodeca version
+version: "1.0.0"                    # Nodeca version
 baseurl: "//nodeca.org/assets"      # Base URL for all assets (used by helpers)
 assets:                             # per-namespace assets manifest
   <namespace>:
