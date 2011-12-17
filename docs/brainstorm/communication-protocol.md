@@ -1,13 +1,27 @@
-## Client-Server communication protocol
+## Client-Server RPC
 
-#### Request
+High Level (userland) looks like calling local function with callback.
 
-- **version**   _(String)_ Mandatory. version nodeca protocol, Example: "1.0.0"
-- **action**    _(String)_ Mandatory. API tree action to call, Example: "forums.posts.create"
-- **args**      _(Array)_  Optional. Method 
+    nodeca.server.<method>.<name> (param1[, param2,...], callback)
 
-#### Response
+RAW level adds version number, to check if server was upgraded.
 
-- **version**   _(String)_ Mandatory. version nodeca protocol, Example: "1.0.0"
-- **error**     _(Object)_ Optional. If set contains `code` and `message`
-- **data**      _(Mixed)_  Optional.
+Request msg:
+
+    version (String)       # Mandatory. Protocol version. Example: "1.0.0"
+    method  (String)       # Mandatory. API tree method to call, Example: "forums.posts.create"
+    params  (Array)        # Optional. Method args 
+
+Response msg:
+
+    version (String)       # Mandatory. Protocol version. Example: "1.0.0"
+    error   (Object)       # Optional. If exists, `error.code` and `error.message` have details
+    result  (Mixed)        # Optional. Returned data, if any
+
+For RAW level it's proposed to use socket.io (or socks.js):
+
+    socket.emit('server', msg, callback)
+
+## Server-Server RPC (internal)
+
+We don't need this part right now. It can be defined later.
