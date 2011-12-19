@@ -63,6 +63,7 @@ Hooks
 TBD (how components can change default behaviour)
 
 
-## Server-side view helpers
+Server-side view helpers
+========================
 
 TBD (helpers that used to produce asset URLs, bunches of script includes etc)
