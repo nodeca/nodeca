@@ -135,4 +135,37 @@ f2
 Permissions
 ===========
 
-TBD (how we assign permissions via filter)
+Permissions are special case filters which are defined in a DSL way and then
+proposed to the filters:
+
+``` javascript
+// file i18n/translation.js
+nodeca.permissions.define('i18n.translation.translate')
+  .test('is_translator_moderator OR is_translator_admin')
+  .or('can_create_translation');
+
+nodeca.permissions.define('i18n.translation.modify')
+  .test('is_translator_moderator OR is_translator_admin')
+  .or('can_update_translation AND is_translation_owner');
+
+nodeca.permissions.define('i18n.translation.moderate')
+  .test('is_translator_moderator OR is_translator_admin');
+
+
+// we can attah filter function directly
+nodeca.filters.add('i18n.translation.create',
+  nodeca.permission.get('i18n.translation.translate').filter);
+
+// or use syntax sugar instead
+nodeca.permissions.filters.add('i18n.translation.save',
+  'i18n.translation.modify');
+
+nodeca.permissions.filters.add(
+  [
+    'i18n.translation.destroy',
+    'i18n.translation.approve',
+    'i18n.translation.activate'
+  ],
+  'i18n.translation.moderate');
+```
+
