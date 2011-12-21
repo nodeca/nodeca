@@ -43,22 +43,16 @@ get exposed to the client, you need to set `_public` property of method to
 `_internal` property of method to `true`, e.g.:
 
 ``` javascript
-// file: admin/users.js
-module.exports.list = function () { /* ... */ };
+// file: admin/dashboard.js
+module.exports = function (params, cb) { /* ... */ };
 
-// expose nodeca.server.users.list to the clients and allow to call from
-// external (word-wide) resources (wesockets)
-module.exports.list._public = true;
-
-// expose nodeca.server.users.list for internal usage (server-server IPC)
-module.exports.list._internal = true;
-
-// ...
+// expose nodeca.server.dashboard to the clients and allow to call from
+// external (word-wide) resources (websockets)
+module.exports._public = true;
 ```
 
-As specifying public and internal properties of methods within module that
-exports multiple methods is a boring task, you can specify a list of public and
-internal methods as arrays:
+For modules which provides multiple methods we can spicify internal and public
+methods in a bunch:
 
 ``` javascript
 // file: admin/users.js
