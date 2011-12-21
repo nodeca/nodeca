@@ -1,12 +1,76 @@
 Server Modules
 --------------
 
-TBD (how methods are got published)
+We create API tree on FS structure basis mostly. So, `nodeca.server` tree is
+filled y methods from modules under `./server/` directory of applications.
+Each file or directory lead into new node of API tree. Let's take simple
+example:
+
+-   ./server/
+    -   ./admin/
+        -   ./dashboard.js
+        -   ./users.js
+
+According to the files above we can say that our API tree consist of at least:
+`nodeca.server.admin.dashboard` and `nodeca.server.admin.users`.
+
+Each server module can be a set of methods, e.g.:
+
+``` javascript
+// file: admin/users.js
+module.exports.list = function (params, cb) {
+  // ...
+};
+
+module.exports.show = function (params, cb) {
+  // ...
+};
+```
+
+or provide exactly one method:
+
+``` javascript
+// file: admin/dashboard.js
+module.exports = function (params, cb) {
+  // ...
+};
+```
+
+Methods of server API tree are accessible only within server by default, they
+are not exposed to client or available for server-server IPC. To make method
+get exposed to the client, you need to set `_public` property of method to
+`true`. To make method available for server-server IPC, you need to set
+`_internal` property of method to `true`, e.g.:
+
+``` javascript
+// file: admin/users.js
+module.exports.list = function () { /* ... */ };
+
+// expose nodeca.server.users.list to the clients and allow to call from
+// external (word-wide) resources (wesockets)
+module.exports.list._public = true;
+
+// expose nodeca.server.users.list for internal usage (server-server IPC)
+module.exports.list._internal = true;
+
+// ...
+```
+
+As specifying public and internal properties of methods within module that
+exports multiple methods is a boring task, you can specify a list of public and
+internal methods as arrays:
+
+``` javascript
+// file: admin/users.js
+// ...
+
+module.exports._public = [ 'list', 'show', 'edit', /* ... */ ];
+module.exports._internal = [ 'list', 'edit', /* ... */ ];
+```
+
 
 Filters
 =======
-
-*WIP*
 
 Filters are attached via global nodeca filter object:
 
