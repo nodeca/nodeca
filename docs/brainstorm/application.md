@@ -79,5 +79,5 @@ languages: []                       # List of available languages
 <lang>:
   assets:                             # per-namespace assets manifest
     <namespace>:
-       ...
+    ...
 ```
