@@ -17,15 +17,6 @@ Example:
   rules:
     forum_id: !!js/regexp /\d+/
     page: !!js/regexp /\d+/
-"/f{forum_id}/announcement{announcement_id}.html":
-  to: nodeca.server.forums.announcements.show
-  rules:
-    forum_id: !!js/regexp /\d+/
-    announcement_id: !!js/regexp /\d+/
-"/f{forum_id}/announcements.html":
-  to: nodeca.server.forums.announcements.list
-  rules:
-    forum_id: !!js/regexp /\d+/
 "/f{forum_id}/thread{thread_id}.html":
   to: nodeca.server.forums.threads.show
   rules:
