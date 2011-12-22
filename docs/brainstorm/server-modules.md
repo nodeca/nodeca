@@ -6,10 +6,12 @@ filled y methods from modules under `./server/` directory of applications.
 Each file or directory lead into new node of API tree. Let's take simple
 example:
 
--   ./server/
-    -   ./admin/
-        -   ./dashboard.js
-        -   ./users.js
+```
+└─ server/
+    └─ admin/
+        ├─ dashboard.js
+        └─ users.js
+```
 
 According to the files above we can say that our API tree consist of at least:
 `nodeca.server.admin.dashboard` and `nodeca.server.admin.users`.
