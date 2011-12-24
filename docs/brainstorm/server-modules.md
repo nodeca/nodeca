@@ -67,6 +67,7 @@ shorthand references to:
 
 - `after`: See Filters#after
 - `before`: See Filters#before
+- `permissions`: See Permissions
 - `nodeca`: Root node of the API tree
 
 Request Environment
