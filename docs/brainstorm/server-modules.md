@@ -46,6 +46,29 @@ Methods are executed in context of request enviroment. So, you can access sessio
 info and other request data. There are also special filters to attach validators
 and tata midifiers prior and after method call.
 
+For modules initialization `__init__` method is used:
+
+``` javascript
+module.exports.list = function list(forum_id, sort_by, cb) { /* ... */ };
+
+// ...
+
+module.exports.__init__ = function () {
+  // `this` consist of (nodeca, before, after):
+
+  this.after('list', function (next) {
+    // See filters for details...
+  });
+};
+```
+
+Module initialization is executed in a special context that provides some
+shorthand references to:
+
+- `after`: See Filters#after
+- `before`: See Filters#before
+- `nodeca`: Root node of the API tree
+
 Filters
 =======
 
@@ -132,32 +155,21 @@ proposed to the filters:
 
 ``` javascript
 // file i18n/translation.js
-nodeca.permissions.define('i18n.translation.translate')
+nodeca.permissions.define('allow_translate')
   .test('is_translator_moderator OR is_translator_admin')
   .or('can_create_translation');
 
-nodeca.permissions.define('i18n.translation.modify')
+nodeca.permissions.define('allow_modify')
   .test('is_translator_moderator OR is_translator_admin')
   .or('can_update_translation AND is_translation_owner');
 
-nodeca.permissions.define('i18n.translation.moderate')
+nodeca.permissions.define('allow_moderate')
   .test('is_translator_moderator OR is_translator_admin');
 
 
-// we can attah filter function directly
-nodeca.filters.add('i18n.translation.create',
-  nodeca.permission.get('i18n.translation.translate').filter);
-
-// or use syntax sugar instead
-nodeca.permissions.filters.add('i18n.translation.save',
-  'i18n.translation.modify');
-
-nodeca.permissions.filters.add(
-  [
-    'i18n.translation.destroy',
-    'i18n.translation.approve',
-    'i18n.translation.activate'
-  ],
-  'i18n.translation.moderate');
+// attach permission to the filters
+nodeca.permissions.before('create', 'allow_translate');
+nodeca.permissions.before('save', 'allow_modify');
+nodeca.permissions.before([ 'destroy', 'approve', 'activate' ], 'allow_moderate');
 ```
 
