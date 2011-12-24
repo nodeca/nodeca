@@ -11,38 +11,75 @@ Example:
 "/f{forum_id}":
   to: nodeca.server.forums.list
   rules:
-    forum_id: !!js/regexp /\d+/
+    forum_id: /\d+/
 "/f{forum_id}/index{page}.html":
   to: nodeca.server.forums.list
   rules:
-    forum_id: !!js/regexp /\d+/
-    page: !!js/regexp /\d+/
+    forum_id: /\d+/
+    page: /\d+/
 "/f{forum_id}/thread{thread_id}.html":
   to: nodeca.server.forums.threads.show
   rules:
-    forum_id: !!js/regexp /\d+/
-    thread_id: !!js/regexp /\d+/
+    forum_id: /\d+/
+    thread_id: /\d+/
 "/f{forum_id}/thread{thread_id}-{page}.html":
   to: nodeca.server.forums.threads.show
   rules:
-    forum_id: !!js/regexp /\d+/
-    thread_id: !!js/regexp /\d+/
-    page: !!js/regexp /\d+/
-"/f{forum_id}/thread{thread_id}-last-post.html":
+    forum_id: /\d+/
+    thread_id: /\d+/
+    page: /\d+/
+"/f{forum_id}/thread{thread_id}-{goto}.html":
   to: nodeca.server.forums.threads.redirect
-  params: { goto: last-post }
   rules:
-    forum_id: !!js/regexp /\d+/
-    thread_id: !!js/regexp /\d+/
-"/f{forum_id}/thread{thread_id}-new-post.html":
-  to: nodeca.server.forums.threads.redirect
-  name: threads/new-post
-  params: { goto: new-post }
-  rules:
-    forum_id: !!js/regexp /\d+/
-    thread_id: !!js/regexp /\d+/
+    forum_id: /\d+/
+    thread_id: /\d+/
+    goto: [ 'new-post', 'last-post' ]
 # ...
+
+# search example:
+# - /search/blogs/place+like+home
+# - /#/search/blogs/place+like+home
+"/search/{group}/{query}":
+  to: nodeca.server.search
+  rules:
+    group: [ 'forums', 'blogs', 'groups' ]
+    query: /.+/
+
+# profile example:
+# - /#/user/profile/84/general
+"/user/profile/{user_id}/{tab}":
+  to: nodeca.server.users.profile
+  rules:
+    user_id: /\d+/
+    tab: [ 'general', 'last-msgs' ]
+  hashOnly: true
 ```
+
+#### Options
+
+-   **to**: Mandatory. Server method to be called.
+-   **rules**: Optional. Rules of substitutions. It must be a hash of key =>
+    value pairs (see example above), where value is either a RegExp or array of
+    possible values. Matched values will be passed as params (with corresponding
+    names) for server method.
+-   **params**: Optional. Static values for params. This params will be passed
+    along with mathced values from *rules*. Think of them as of default values.
+-   **hashOnly**: Optional. Boolean true if you want this URL to be available as
+    "hash" based only (to avoid search spiders reach it). By default: `false`.
+
+#### Default Route
+
+We have one default route which is used when router can't find appropriate
+record. This route used mainly to build URLs on the client and when we receive
+HTTP request. It looks like:
+
+`/{methodname}?param1=val1&...&paramN=valN`
+
+For example:
+
+`/forums.threads.redirect?forum_id=91&thread_id=1051&goto=last-post`
+
+#### Helpers
 
 Upon application start we read YAML description of routes and configure server
 router with given definition. Parsed router configuration is sent to client as

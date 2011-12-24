@@ -7,24 +7,27 @@ Each file or directory lead into new node of API tree. Let's take simple
 example:
 
 ```
-└─ server/
-    └─ admin/
-        ├─ dashboard.js
-        └─ users.js
+├─ server/
+│   └─ admin/
+│       ├─ dashboard.js
+│       └─ users.js
+└─ internal/
+    └─ ...
 ```
 
-According to the files above we can say that our API tree consist of at least:
-`nodeca.server.admin.dashboard` and `nodeca.server.admin.users`.
+All modules/methods from `server` will ecom public available (WebSockets, HTTP)
+while `internal` will become available for server-server IPC.
 
-Each server module can be a set of methods, e.g.:
+Example module:
 
 ``` javascript
 // file: admin/users.js
-module.exports.list = function (params, cb) {
+
+module.exports.list = function list(env, cb) {
   // ...
 };
 
-module.exports.show = function (params, cb) {
+module.exports.show = function show(env, cb) {
   // ...
 };
 ```
@@ -33,36 +36,15 @@ or provide exactly one method:
 
 ``` javascript
 // file: admin/dashboard.js
-module.exports = function (params, cb) {
+module.exports = function (env, cb) {
   // ...
 };
 ```
 
-Methods of server API tree are accessible only within server by default, they
-are not exposed to client or available for server-server IPC. To make method
-get exposed to the client, you need to set `_public` property of method to
-`true`. To make method available for server-server IPC, you need to set
-`_internal` property of method to `true`, e.g.:
-
-``` javascript
-// file: admin/dashboard.js
-module.exports = function (params, cb) { /* ... */ };
-
-// expose nodeca.server.dashboard to the clients and allow to call from
-// external (word-wide) resources (websockets)
-module.exports._public = true;
-```
-
-For modules which provides multiple methods we can spicify internal and public
-methods in a bunch:
-
-``` javascript
-// file: admin/users.js
-// ...
-
-module.exports._public = [ 'list', 'show', 'edit', /* ... */ ];
-module.exports._internal = [ 'list', 'edit', /* ... */ ];
-```
+Methods under `server` branch of API tree, must accept exactly two arguments:
+`env` (contains full request environment, e.g. session, params, transport, etc.)
+and `callback` (function that should be called after we've done with controller
+to pass execution to *after* filters and then renderer.
 
 
 Filters
@@ -71,7 +53,7 @@ Filters
 Filters are attached via global nodeca filter object:
 
 ``` javascript
-nodeca.filters.add('forums.threads.show', function (next) {
+nodeca.filters.before('forums.threads.show', function (next) {
   var env = this;
   // once filter done, we can continue to next method in the stack:
   // next filter OR real method itself
@@ -82,6 +64,15 @@ nodeca.filters.add('forums.threads.show', function (next) {
 First argument is node in the server API tree we want to attach filter to,
 second is filter function. Method name can be either string or array of strings
 if we need to attach to multiple nodes.
+
+We can attach filters either *before* or *after* controller/action:
+
+- `nodeca.filters.before()`
+- `nodeca.filters.after()`
+
+Filters attached as `before` will be called before passing execution to the
+action. Filters attached as `after` will be callbed after action will finish
+it's work BUT before rendering response.
 
 Assume we have following server API tree:
 
@@ -104,7 +95,7 @@ Assume we have following server API tree:
 In order to attach filter to all methods of admin module, we can call:
 
 ``` javascript
-nodeca.filters.add('admin', function (next) {
+nodeca.filters.before('admin', function (next) {
   // this will apply filter to admin and deeper (users, users.show, etc)
   console.log('f1');
   next();
@@ -114,7 +105,7 @@ nodeca.filters.add('admin', function (next) {
 We can apply filter to specific method as well:
 
 ``` javascript
-nodeca.filters.add('admin.users.edit', function (next) {
+nodeca.filters.before('admin.users.edit', function (next) {
   console.log('f2');
   next();
 });
