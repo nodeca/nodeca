@@ -42,9 +42,9 @@ module.exports = function (param1 [, param2...], cb) {
 
 Every method should have callback as last argument. Other args can be of any type.
 
-Methods are executed in context of request enviroment. So, you can access session
-info and other request data. There are also special filters to attach validators
-and tata midifiers prior and after method call.
+Methods are executed in context of request enviroment (See Request Environment).
+So, you can access session info and other request data. There are also special
+filters to attach validators and tata midifiers prior and after method call.
 
 For modules initialization `__init__` method is used:
 
@@ -68,6 +68,23 @@ shorthand references to:
 - `after`: See Filters#after
 - `before`: See Filters#before
 - `nodeca`: Root node of the API tree
+
+Request Environment
+===================
+
+All requests are executed within separate context, with following structure:
+
+-   *origin*: Mandatory. Specifies origination of request.
+    Possible values: `HTTP`, `WebSocket`
+-   *session*: Mandatory. Contains all information realted to the session.
+    -   *user*: Optional. Represents current user (if authenticated)
+-   *request*: Mandatory. Original request
+    -   *uri*: Mandatory. Requested URI.
+    -   *query*: Mandatory. Strign with query (after question mark).
+    -   *params*: Optional. Merge of hashes:
+        -   GET query
+        -   POST data
+        -   Router params
 
 Filters
 =======
