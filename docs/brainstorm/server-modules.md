@@ -134,7 +134,7 @@ Assume we have following server API tree:
 In order to attach filter to all methods of admin module, we can call:
 
 ``` javascript
-nodeca.filters.before('admin', function (next) {
+nodeca.filters.before('::admin', function (next) {
   // this will apply filter to admin and deeper (users, users.show, etc)
   console.log('f1');
   next();
@@ -144,7 +144,7 @@ nodeca.filters.before('admin', function (next) {
 We can apply filter to specific method as well:
 
 ``` javascript
-nodeca.filters.before('admin.users.edit', function (next) {
+nodeca.filters.before('::admin.users.edit', function (next) {
   console.log('f2');
   next();
 });
@@ -161,6 +161,24 @@ console before executing action:
 ```
 f1
 f2
+```
+
+Prefix `::` in the method name means start looking from the root of the server
+subtree, but when you describe module `admin.users` and want to attach a filter
+on `admin.users.list` you may obey '::admin.users.` prefix:
+
+``` javascript
+// file: ./server/admin/users.js
+
+module.exports.list = function list() { /* ... */ };
+
+// ...
+
+module.exports.__init__ = function () {
+  this.before('list', function () { /* ... */ });
+  // equals to:
+  this.before('::admin.users.list', function () { /* ... */ });
+};
 ```
 
 
