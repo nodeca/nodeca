@@ -1,9 +1,8 @@
 Server Modules
 --------------
 
-We create API tree on FS structure basis mostly. So, `nodeca.server` tree is
-filled y methods from modules under `./server/` directory of applications.
-Each file or directory lead into new node of API tree. Let's take simple
+All modules/methods from `server` folder will be mapped to API Tree under `nodeca.server` scope.
+Those items will be also publically to clients (via streams). Example:
 example:
 
 ```
@@ -15,19 +14,19 @@ example:
     └─ ...
 ```
 
-All modules/methods from `server` will ecom public available (WebSockets, HTTP)
-while `internal` will become available for server-server IPC.
+Note, we reserve `internal` folder for server-server IPC. For example, when you like to run
+isolated process to log money transaction and so on.
 
-Example module:
+Every module can have 1 or multiple methods. All `exports` are mapped to API Tree. See examples below.
 
 ``` javascript
 // file: admin/users.js
 
-module.exports.list = function list(env, cb) {
+module.exports.list = function list(param1 [, param2...], cb) {
   // ...
 };
 
-module.exports.show = function show(env, cb) {
+module.exports.show = function show(param1 [, param2...], cb) {
   // ...
 };
 ```
@@ -36,16 +35,16 @@ or provide exactly one method:
 
 ``` javascript
 // file: admin/dashboard.js
-module.exports = function (env, cb) {
+module.exports = function (param1 [, param2...], cb) {
   // ...
 };
 ```
 
-Methods under `server` branch of API tree, must accept exactly two arguments:
-`env` (contains full request environment, e.g. session, params, transport, etc.)
-and `callback` (function that should be called after we've done with controller
-to pass execution to *after* filters and then renderer.
+Every method should have callback as last argument. Other args can be of any type.
 
+Methods are executed in context of request enviroment. So, you can access session
+info and other request data. There are also special filters to attach validators
+and tata midifiers prior and after method call.
 
 Filters
 =======
