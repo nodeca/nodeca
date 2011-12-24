@@ -61,8 +61,8 @@ nodeca.filters.before('forums.threads.show', function (next) {
 ```
 
 First argument is node in the server API tree we want to attach filter to,
-second is filter function. Method name can be either string or array of strings
-if we need to attach to multiple nodes.
+second is filter function. Method name can be either `String` or `Array` of
+strings (when we want to attach to multiple nodes).
 
 We can attach filters either *before* or *after* controller/action:
 
