@@ -42,19 +42,17 @@ module.exports = function (param1 [, param2...], cb) {
 ## Module Initialization
 
 For modules initialization we use `__init__` method which is called (if exists)
-after module was required. This method is called with three arguments:
+after module was required. This method is called with the only argument:
 
 - `nodeca`: Reference to root node of the API tree
-- `filters`: Reference to nodeca.filters
-- `permissions`: Reference to nodeca.permissions
 
 ``` javascript
 module.exports.list = function list(forum_id, sort_by, cb) { /* ... */ };
 
 // ...
 
-module.exports.__init__ = function (nodeca, filters, permissions) {
-  filters.after('list', function (next) {
+module.exports.__init__ = function (nodeca) {
+  nodeca.filters.after('list', function (next) {
     // See filters for details...
   });
 };
@@ -73,7 +71,7 @@ So, you can access session info and other request data. You can attach `before`
 and `after` filters for your methods, which are called prior and after method:
 
 *NOTICE* that filters in comparison to methods have only one argument regardles
-to the arguemtns of method itself.
+to the argumetns of method itself.
 
 ``` javascript
 module.exports.list = function list(params, next) {
@@ -82,20 +80,20 @@ module.exports.list = function list(params, next) {
 };
 
 
-module.exports.__init__ = function (nodeca, filters) {
-  filters.before('list', function (next) {
+module.exports.__init__ = function (nodeca) {
+  nodeca.filters.before('list', function (next) {
     this.test = 1;
     console.log('filter 1: ' + this.test);
     next();
   });
 
-  filters.before('list', function (next) {
+  nodeca.filters.before('list', function (next) {
     this.test += 2;
     console.log('filter 2: ' + this.test);
     next();
   });
 
-  filters.after('list', function (next) {
+  nodeca.filters.after('list', function (next) {
     this.test += 3;
     console.log('filter 3: ' + this.test);
     next();
@@ -118,7 +116,7 @@ filter 3: 6
 All requests are executed within separate context, with following structure:
 
 -   *origin*: Mandatory. Specifies origination of request.
-    Possible values: `RT` (Realtime: WebSocket, LongPoll, etc.), `HTTP`
+    Possible values: `RT` (realtime: websocket, longpoll, etc.), `HTTP`
 -   *session*: Mandatory. Contains all information realted to the session.
     -   *user_id*: Optional. Current user's id
     -   *language*: Mandatory. Current language
