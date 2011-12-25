@@ -1,5 +1,4 @@
-Server Modules
---------------
+# Server Modules
 
 All modules/methods from `server` folder will be mapped to API Tree under `nodeca.server` scope.
 Those items will be also publically to clients (via streams). Example:
@@ -40,61 +39,98 @@ module.exports = function (param1 [, param2...], cb) {
 };
 ```
 
-Every method should have callback as last argument. Other args can be of any type.
+## Module Initialization
 
-Methods are executed in context of request enviroment (See Request Environment).
-So, you can access session info and other request data. There are also special
-filters to attach validators and tata midifiers prior and after method call.
+For modules initialization we use `__init__` method which is called (if exists)
+after module was required. This method is called with three arguments:
 
-For modules initialization `__init__` method is used:
+- `nodeca`: Reference to root node of the API tree
+- `filters`: Reference to nodeca.filters
+- `permissions`: Reference to nodeca.permissions
 
 ``` javascript
 module.exports.list = function list(forum_id, sort_by, cb) { /* ... */ };
 
 // ...
 
-module.exports.__init__ = function () {
-  // `this` consist of (nodeca, before, after):
-
-  this.after('list', function (next) {
+module.exports.__init__ = function (nodeca, filters, permissions) {
+  filters.after('list', function (next) {
     // See filters for details...
   });
 };
 ```
 
-Module initialization is executed in a special context that provides some
-shorthand references to:
+Module initialization is needed to guarntee that your filters and permissions
+will be attached after nodes were attached to the server tree.
 
-- `after`: See Filters#after
-- `before`: See Filters#before
-- `permissions`: See Permissions
-- `nodeca`: Root node of the API tree
 
-Request Environment
-===================
+## Method Invocation
+
+Every method should have callback as last argument. Other args can be of any type.
+
+Methods are executed in context of request enviroment (See Request Environment).
+So, you can access session info and other request data. You can attach `before`
+and `after` filters for your methods, which are called prior and after method:
+
+*NOTICE* that filters in comparison to methods have only one argument regardles
+to the arguemtns of method itself.
+
+``` javascript
+module.exports.list = function list(params, next) {
+  console.log('method: ' + this.test);
+  next();
+};
+
+
+module.exports.__init__ = function (nodeca, filters) {
+  filters.before('list', function (next) {
+    this.test = 1;
+    console.log('filter 1: ' + this.test);
+    next();
+  });
+
+  filters.before('list', function (next) {
+    this.test += 2;
+    console.log('filter 2: ' + this.test);
+    next();
+  });
+
+  filters.after('list', function (next) {
+    this.test += 3;
+    console.log('filter 3: ' + this.test);
+    next();
+  });
+};
+```
+
+Calling `list` method of above will produce following in the console:
+
+```
+filter 1: 1
+filter 2: 3
+method: 3
+filter 3: 6
+```
+
+
+## Request Environment
 
 All requests are executed within separate context, with following structure:
 
 -   *origin*: Mandatory. Specifies origination of request.
-    Possible values: `HTTP`, `WebSocket`
+    Possible values: `RT` (Realtime: WebSocket, LongPoll, etc.), `HTTP`
 -   *session*: Mandatory. Contains all information realted to the session.
-    -   *user*: Optional. Represents current user (if authenticated)
--   *request*: Mandatory. Original request
-    -   *uri*: Mandatory. Requested URI.
-    -   *query*: Mandatory. Strign with query (after question mark).
-    -   *params*: Optional. Merge of hashes:
-        -   GET query
-        -   POST data
-        -   Router params
+    -   *user_id*: Optional. Current user's id
+    -   *language*: Mandatory. Current language
+-   ??? *request*: Mandatory. Original request
 
-Filters
-=======
+
+## Filters
 
 Filters are attached via global nodeca filter object:
 
 ``` javascript
 nodeca.filters.before('forums.threads.show', function (next) {
-  var env = this;
   // once filter done, we can continue to next method in the stack:
   // next filter OR real method itself
   next();
@@ -137,7 +173,7 @@ In order to attach filter to all methods of admin module, we can call:
 ``` javascript
 nodeca.filters.before('::admin', function (next) {
   // this will apply filter to admin and deeper (users, users.show, etc)
-  console.log('f1');
+  console.log('first');
   next();
 });
 ```
@@ -146,7 +182,7 @@ We can apply filter to specific method as well:
 
 ``` javascript
 nodeca.filters.before('::admin.users.edit', function (next) {
-  console.log('f2');
+  console.log('second');
   next();
 });
 ```
@@ -160,8 +196,8 @@ According to the API tree above and filters, this will lead in echoing to the
 console before executing action:
 
 ```
-f1
-f2
+first
+second
 ```
 
 Prefix `::` in the method name means start looking from the root of the server
@@ -175,16 +211,37 @@ module.exports.list = function list() { /* ... */ };
 
 // ...
 
-module.exports.__init__ = function () {
-  this.before('list', function () { /* ... */ });
+module.exports.__init__ = function (nodeca, filters, permissions) {
+  filters.before('list', function () { /* ... */ });
   // equals to:
-  this.before('::admin.users.list', function () { /* ... */ });
+  filters.before('::admin.users.list', function () { /* ... */ });
+};
+```
+
+You can use `@` as reference to current API tree node:
+
+``` javascript
+// file: ./server/admin/users.js
+
+// ...
+
+module.exports.__init__ = function (nodeca, filters, permissions) {
+  filters.before('@', function () { /* ... */ });
+  // equals to:
+  filters.before('::admin.users', function () { /* ... */ });
+
+  // you can use @ as prefix
+
+  filters.before('list', function () { /* ... */ });
+  // equals to:
+  filters.before('@.list', function () { /* ... */ });
+  // equals to:
+  filters.before('::admin.users.list', function () { /* ... */ });
 };
 ```
 
 
-Permissions
-===========
+## Permissions
 
 Permissions are special case filters which are defined in a DSL way and then
 proposed to the filters:
@@ -204,8 +261,12 @@ nodeca.permissions.define('allow_moderate')
 
 
 // attach permission to the filters
-nodeca.permissions.before('create', 'allow_translate');
-nodeca.permissions.before('save', 'allow_modify');
-nodeca.permissions.before([ 'destroy', 'approve', 'activate' ], 'allow_moderate');
+nodeca.permissions.before('create').require('allow_translate');
+nodeca.permissions.before('save').require('allow_modify');
+nodeca.permissions.before([
+  'destroy', 'approve', 'activate'
+]).require('allow_moderate');
 ```
 
+Notice that permissions must be checked before action, so in comprison to
+filters they provide only `before` chain.
