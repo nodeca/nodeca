@@ -2,17 +2,18 @@
 
 For server and client purposes we use [CrossRoads][router] router.
 Routes are described in YAML and then later on bounded to `nodeca.router`.
+Map of routes should be placed unders `./config/routes.yml`
 
 Example:
 
 ``` yaml
 ---
 "/f{forum_id}/":
-  to: nodeca.server.forums.list
+  to: forums.list
   params:
     forum_id: /\d+/
 "/f{forum_id}/index{page}.html":
-  to: nodeca.server.forums.list
+  to: forums.list
   params:
     page:
       default: 0
@@ -20,24 +21,24 @@ Example:
     forum_id: /\d+/
     page: /[1-9]\d+|[2-9]/
 "/f{forum_id}/thread{thread_id}.html":
-  to: nodeca.server.forums.threads.show
+  to: forums.threads.show
   params:
     forum_id: /\d+/
     thread_id: /\d+/
 "/f{forum_id}/thread{thread_id}-{page}.html":
-  to: nodeca.server.forums.threads.show
+  to: forums.threads.show
   params:
     forum_id: /\d+/
     thread_id: /\d+/
     page: /\d+/
 "/f{forum_id}/thread{thread_id}-{goto}.html":
-  to: nodeca.server.forums.threads.redirect
+  to: forums.threads.redirect
   params:
     forum_id: /\d+/
     thread_id: /\d+/
     goto: [ 'new-post', 'last-post' ]
 "/search/":
-  to: nodeca.server.search
+  to: search
   dangerous: true # allow params not listed here
   params:
     group:
@@ -47,7 +48,7 @@ Example:
       required: false
       match: /.+/
 "/users/profile/{user_id}/{tab}":
-  to: nodeca.server.users.profile
+  to: users.profile
   params:
     user_id: /\d+/
     tab: [ 'general', 'last-msgs' ]
@@ -66,7 +67,43 @@ Example:
     `{ match: <rule>, required: true }`
 -   **dangerous**: Optional. Default: false. Allows accepting params not listed
     in the params rules.
+-   **name**: Optional. Used to give route unique name to simplify usage within
+    view helpers.
 
+
+#### Direct Invocators (ex Defuault Rule)
+
+Sometimes we want API methods to be mapped strightly to HTTP request. For this
+purpose we use *default route* rule which looks like:
+
+`/#/{methodname}?param1=val1&...&paramN=valN`
+
+For security purposes ALL methods are not allowed to be called with default rule
+uness theya re listed in the list of invocators (file `./config/invocators.yml`)
+which is similar to routes definition file with some diference.
+
+Each key is a API method, e.g. `forums.posts.list`. Options are same as routes
+but only `params` and `dangerous` are allowed.
+
+Example:
+
+``` yaml
+---
+forums.threads.show:
+  params:
+    forum_id: /\d+/
+    thread_id: /\d+/
+
+search:
+  dangerous: true
+  params:
+    group:
+      default: 'forums'
+      match: [ 'forums', 'blogs', 'groups' ]
+    query:
+      required: false
+      match: /.+/
+```
 
 #### Helpers
 
