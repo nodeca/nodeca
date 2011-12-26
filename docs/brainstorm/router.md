@@ -1,5 +1,4 @@
-Router
-------
+# Router
 
 For server and client purposes we use [CrossRoads][router] router.
 Routes are described in YAML and then later on bounded to `nodeca.router`.
@@ -8,78 +7,70 @@ Example:
 
 ``` yaml
 ---
-"/f{forum_id}":
+"/f{forum_id}/":
   to: nodeca.server.forums.list
-  rules:
+  params:
     forum_id: /\d+/
 "/f{forum_id}/index{page}.html":
   to: nodeca.server.forums.list
-  rules:
+  params:
+    page:
+      default: 0
+      required: false
     forum_id: /\d+/
-    page: /\d+/
+    page: /[1-9]\d+|[2-9]/
 "/f{forum_id}/thread{thread_id}.html":
   to: nodeca.server.forums.threads.show
-  rules:
+  params:
     forum_id: /\d+/
     thread_id: /\d+/
 "/f{forum_id}/thread{thread_id}-{page}.html":
   to: nodeca.server.forums.threads.show
-  rules:
+  params:
     forum_id: /\d+/
     thread_id: /\d+/
     page: /\d+/
 "/f{forum_id}/thread{thread_id}-{goto}.html":
   to: nodeca.server.forums.threads.redirect
-  rules:
+  params:
     forum_id: /\d+/
     thread_id: /\d+/
     goto: [ 'new-post', 'last-post' ]
-# ...
-
-# search example:
-# - /search/blogs/place+like+home
-# - /#/search/blogs/place+like+home
-"/search/{group}/{query}":
+"/search/":
   to: nodeca.server.search
-  rules:
-    group: [ 'forums', 'blogs', 'groups' ]
-    query: /.+/
-
-# profile example:
-# - /#/user/profile/84/general
-"/user/profile/{user_id}/{tab}":
+  dangerous: true # allow params not listed here
+  params:
+    group:
+      default: 'forums'
+      match: [ 'forums', 'blogs', 'groups' ]
+    query:
+      required: false
+      match: /.+/
+"/users/profile/{user_id}/{tab}":
   to: nodeca.server.users.profile
-  rules:
+  params:
     user_id: /\d+/
     tab: [ 'general', 'last-msgs' ]
-  hashOnly: true
 ```
+
 
 #### Options
 
 -   **to**: Mandatory. Server method to be called.
--   **rules**: Optional. Rules of substitutions. It must be a hash of key =>
-    value pairs (see example above), where value is either a RegExp or array of
-    possible values. Matched values will be passed as params (with corresponding
-    names) for server method.
--   **params**: Optional. Static values for params. This params will be passed
-    along with mathced values from *rules*. Think of them as of default values.
--   **hashOnly**: Optional. Boolean true if you want this URL to be available as
-    "hash" based only (to avoid search spiders reach it). By default: `false`.
+-   **params**: Optional. Parameters rules hash of key => rules.
+    Each rule might be either `String` or `Object` that consist of fields:
+    -   *match* Mandatory. Rule to match value of param, `Array` or `RegExp`
+    -   *required* Optional. Default: false
+    -   *default* Optional. Default value of param.
+    Specifing rule as string is a shorthand syntax for
+    `{ match: <rule>, required: true }`
+-   **dangerous**: Optional. Default: false. Allows accepting params not listed
+    in the params rules.
 
-#### Default Route
-
-We have one default route which is used when router can't find appropriate
-record. This route used mainly to build URLs on the client and when we receive
-HTTP request. It looks like:
-
-`/{methodname}?param1=val1&...&paramN=valN`
-
-For example:
-
-`/forums.threads.redirect?forum_id=91&thread_id=1051&goto=last-post`
 
 #### Helpers
+
+TBD
 
 Upon application start we read YAML description of routes and configure server
 router with given definition. Parsed router configuration is sent to client as
