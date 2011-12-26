@@ -16,7 +16,7 @@ routes:
     to: forums.list
     params:
       forum_id: /\d+/
-      page: /[1-9]\d+|[2-9]/
+      page: /[2-9]|[1-9]\d+/
   "/f{forum_id}/thread{thread_id}.html":
     to: forums.threads.show
     params:
@@ -27,7 +27,7 @@ routes:
     params:
       forum_id: /\d+/
       thread_id: /\d+/
-      page: /\d+/
+      page: /[2-9]|[1-9]\d+/
   "/f{forum_id}/thread{thread_id}-{goto}.html":
     to: forums.threads.redirect
     params:
@@ -40,9 +40,6 @@ routes:
       group:
         default: 'forums'
         match: /\w+/
-      query:
-        required: true
-        match: /.+/
   "#/users/profile/{user_id}/{tab}":
     to: users.profile
     params:
@@ -57,10 +54,9 @@ routes:
 -   **params**: Optional. Parameters rules hash of key => rules.
     Each rule might be either `String` or `Object` that consist of fields:
     -   *match* Mandatory. Rule to match value of param, `Array` or `RegExp`
-    -   *required* Optional. Default: false
+    -   *required* Optional. Default: false.
     -   *default* Optional. Default value of param.
-    Specifing rule as string is a shorthand syntax for
-    `{ match: <rule>, required: true }`
+    Specifing rule as string is a shorthand syntax for `{ match: <rule> }`
 -   **name**: Optional. Used to give route unique name to simplify usage within
     view helpers.
 
@@ -72,31 +68,15 @@ purpose we use *default route* rule which looks like:
 
 `/!{methodname}?param1=val1&...&paramN=valN`
 
-For security purposes ALL methods are not allowed to be called with default rule
-uness they are listed in the list of direct invocators which is similar to
-routes definitions.
-
-Each key is a API method, e.g. `forums.posts.list` values are `params` options
-as in routes:
+For security purposes methods are invoced by "default route" only if they are
+listed in the `direct` whitelist.
 
 ``` yaml
 --- # file: ./config/routes.yml
 direct:
-  forums.threads.show:
-    forum_id: /\d+/
-    thread_id: /\d+/
-  
-  search:
-    group:
-      default: 'forums'
-      match: /\w+/
-    query:
-      required: false
-      match: /.+/
+  forums.threads.show: on
+  search: on
 ```
-
-**NOTICE** Direct invocators are very sensitive to given arguments and will fail
-if wrong amount of params is given.
 
 
 #### Helpers
