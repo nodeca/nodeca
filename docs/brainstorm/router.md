@@ -70,9 +70,44 @@ listed in the `direct` whitelist.
 ``` yaml
 --- # file: ./config/routes.yml
 direct:
-  forums.threads.show: on
-  search: on
+  - forums.threads.show
+  - search
 ```
+
+**NOTICE** Before dispatching "direct" invocator, we try to find appropriate
+route for it, and if found - redirect there with 301 code. Algorithm of
+searching "appropriate" URL is as follows:
+
+-   find all possible routes for given method
+-   filter out routes with same amount (and names) of params
+-   use first route which param rules given values
+
+For example, using routes map from above:
+
+-   */!forums.list?forum_id=123*
+    `-> /f{forum_id}`: no page_id requried for "paged" verion
+-   */!forums.list?forum_id=123&page_id=3*
+    `-> /f{forum_id}/index{page}.html`: page_id matches `/[2-9]|[1-9]\d+/`
+-   */!forums.list?forum_id=123&page_id=1*
+    (!) no redirect, as no page_id does not match RegExp of second route and
+    first route has no such param at all
+
+Notice third decision. Unfortunately we are not able to guess automatically this
+situation, so instead we can become more verbose, and rewrite our first route
+rule as:
+
+``` yaml
+routes:
+  "/f{forum_id}/":
+    to: forums.list
+    params:
+      page: /[01]/
+      forum_id: /\d+/
+  #...
+```
+
+In this case, request to */!forums.list?forum_id=123&page_id=1* will be
+redirected to "/f{forum_id}/".
 
 
 #### Redirects
