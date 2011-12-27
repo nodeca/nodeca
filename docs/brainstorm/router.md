@@ -48,6 +48,23 @@ routes:
 ```
 
 
+Note that we match from left side of the URL till the question mark (start of
+query) or hash sign (anchor). Query params wille mixed into params hash. Anchor
+will be mixed passed as `anchor` param. For example, accroding to the route map
+above, URL `/f91/thread246721.html#post2794384` will cause transformation into
+API tree call as:
+
+``` javascript
+nodeca.server.forums.threads.show({
+  params: {
+    forum_id: 91
+    thread_id: 246721
+  },
+  anchor: 'post2794384'
+}, callback);
+```
+
+
 #### Options
 
 -   **to**: Mandatory. Server method to be called.
