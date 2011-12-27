@@ -34,34 +34,13 @@ routes:
       forum_id: /\d+/
       thread_id: /\d+/
       goto: [ 'new-post', 'last-post' ]
-  "/search/{group}/":
+  "/search/":
     to: search
-    params:
-      group:
-        default: 'forums'
-        match: /\w+/
   "#/users/profile/{user_id}/{tab}":
     to: users.profile
     params:
       user_id: /\d+/
       tab: [ 'general', 'last-msgs' ]
-```
-
-
-Note that we match from left side of the URL till the question mark (start of
-query) or hash sign (anchor). Query params wille mixed into params hash. Anchor
-will be mixed passed as `anchor` param. For example, accroding to the route map
-above, URL `/f91/thread246721.html#post2794384` will cause transformation into
-API tree call as:
-
-``` javascript
-nodeca.server.forums.threads.show({
-  params: {
-    forum_id: 91
-    thread_id: 246721
-  },
-  anchor: 'post2794384'
-}, callback);
 ```
 
 
@@ -93,6 +72,56 @@ listed in the `direct` whitelist.
 direct:
   forums.threads.show: on
   search: on
+```
+
+
+#### Redirects
+
+For simple redirects, which do not involve any calcualtions we use `redirect`
+map in the `routes` file. The syntax is dead-simple:
+
+``` yaml
+---
+redirect:
+  "/f{forum_id}/thread{thread_id}.html":
+    to: [ 301, "/t-{forum_id}-{thread_id}.aspx" ]
+    params:
+      forum_id: /\d+/
+      thread_id: /\d+/
+```
+
+For complex situations we recommend to use server API tree and normal routes
+instead, e.g.:
+
+``` yaml
+---
+routes:
+  "/f{forum_id}/thread{thread_id}.html":
+    to: server.forums.redirect
+```
+
+However, you are free to specify your function right in YAML file:
+
+``` yaml
+---
+redirect:
+  "/f{forum_id}/thread{thread_id}.html":
+    to: !!js/function >
+      function redirect(forum_id, thread_id, cb) {
+        // this is nodeca
+        var slugize = this.helpers.slugize;
+        this.models.forum.find(forum_id, function (err, forum) {
+          if (err) {
+            next(err);
+            return;
+          }
+
+          cb(null, 301, '/forums/' + forum_id + '-' + sluggize(forum.title));
+        });
+      }
+    params:
+      forum_id: /\d+/
+      thread_id: /\d+/
 ```
 
 
