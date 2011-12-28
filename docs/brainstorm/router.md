@@ -43,6 +43,8 @@ routes:
       tab: [ 'general', 'last-msgs' ]
 ```
 
+**NOTICE** Routes with leading `#` are used by clients ONLY.
+
 
 #### Options
 
@@ -53,8 +55,6 @@ routes:
     -   *required* Optional. Default: false.
     -   *default* Optional. Default value of param.
     Specifing rule as string is a shorthand syntax for `{ match: <rule> }`
--   **name**: Optional. Used to give route unique name to simplify usage within
-    view helpers.
 
 
 #### Direct Invocators with Default Route
@@ -103,7 +103,7 @@ routes:
     params:
       page: /[01]/
       forum_id: /\d+/
-  #...
+  # ...
 ```
 
 In this case, request to */!forums.list?forum_id=123&page_id=1* will be
@@ -162,26 +162,12 @@ redirect:
 
 #### Helpers
 
-TBD
-
-Upon application start we read YAML description of routes and configure server
-router with given definition. Parsed router configuration is sent to client as
-part of the client config under `router` section.
-
-Router config is used for:
-
-- find apropriate server method when parsing URL on client
-- make SEO link for server method.
-
-Helper that builds SEO links have signature of:
+These helpers are available on both client and server.
 
 ``` javascript
 // tries to find apropriate URL y server method and arguments
-link_to(nodeca.server.forums.threads.redirect,
-        {forum_id: 123, thread_id: 123, goto: "new-post"});
-
-// or use "named" route
-link_to("forums.threads/new-post", {forum_id: 123, thread_id: 123});
+link_to(forums.list, {forum_id: 123, page: 3});
 ```
+
 
 [router]: https://github.com/millermedeiros/crossroads.js
