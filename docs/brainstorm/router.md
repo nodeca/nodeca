@@ -46,7 +46,7 @@ routes:
 **NOTICE** Routes with leading `#` are used by clients ONLY.
 
 
-#### Options
+### Options
 
 -   **to**: Mandatory. Server method to be called.
 -   **params**: Optional. Parameters rules hash of key => rules.
@@ -57,7 +57,7 @@ routes:
     Specifing rule as string is a shorthand syntax for `{ match: <rule> }`
 
 
-#### Direct Invocators with Default Route
+## Direct Invocators with Default Route
 
 Sometimes we want API methods to be mapped strightly to HTTP request. For this
 purpose we use *default route* rule which looks like:
@@ -110,7 +110,7 @@ In this case, request to */!forums.list?forum_id=123&page_id=1* will be
 redirected to "/f{forum_id}/".
 
 
-#### Redirects
+## Redirects
 
 For simple redirects, which do not involve any calcualtions we use `redirect`
 map in the `routes` file. The syntax is dead-simple:
@@ -160,7 +160,7 @@ redirect:
 ```
 
 
-#### Helpers
+## Helpers
 
 These helpers are available on both client and server.
 
