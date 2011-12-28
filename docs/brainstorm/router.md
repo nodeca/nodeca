@@ -44,7 +44,7 @@ routes:
 ```
 
 
-## Options
+### Options
 
 -   **to**: Mandatory. Server method to be called.
 -   **params**: Optional. Parameters rules hash of key => rules.
