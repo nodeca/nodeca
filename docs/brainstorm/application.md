@@ -67,3 +67,15 @@ Server-side view helpers
 ========================
 
 TBD (helpers that used to produce asset URLs, bunches of script includes etc)
+
+Client Config
+=============
+
+Client config is generated dynamically.
+
+``` javascript
+{
+  "version":      "1.0.0",                # Nodeca version
+  "assets_root":  "//nodeca.org/assets",  # Root URL for assets
+}
+```
