@@ -67,17 +67,3 @@ Server-side view helpers
 ========================
 
 TBD (helpers that used to produce asset URLs, bunches of script includes etc)
-
-
-Client Config and Assets map
-============================
-
-``` yaml
-version: "1.0.0"                    # Nodeca version
-baseurl: "//nodeca.org/assets"      # Base URL for assets
-languages: []                       # List of available languages
-<lang>:
-  assets:                             # per-namespace assets manifest
-    <namespace>:
-    ...
-```

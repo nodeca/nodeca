@@ -66,7 +66,8 @@ translations has no macros, so we are building localized JADEs here...
 
 Compiled views will become part of the api-tree. For example if we have
 `posts/create.jade` within `forums` namespace, then it will become accessible
-as `nodeca.views.forums.posts.create()`.
+as `nodeca.views.forums.posts.create()`. Views are compiled into one file (per
+language) that contains full views subtree.
 
 ```
 .
@@ -74,7 +75,7 @@ as `nodeca.views.forums.posts.create()`.
 │   └─ skinz/
 │       └─ <skin_name>/
 │           └─ views/
-│               └─ *.<lang>.js
+│               └─ <lang>.js
 └─ ...
 ```
 
@@ -107,7 +108,7 @@ Combine API tree, trnslations, skinz with views and static data in one place.
 │   └─ skinz/
 │       └─ <skin_name>/
 │           ├─ views/
-│           │   └─ *.<lang>.js
+│           │   └─ <lang>.js
 │           └─ *.*
 └─ ...
 ```
