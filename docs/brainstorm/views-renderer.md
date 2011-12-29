@@ -46,3 +46,7 @@ default = case req.origin
 
 format  = env.format OR req.params.format OR default
 ```
+
+**NOTICE** `html` renderer expect preence of `env.language` in order to choose
+correct i18n view. If it wasn't presented, it will use default language (en)
+instead.
