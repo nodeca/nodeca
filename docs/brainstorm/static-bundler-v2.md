@@ -23,22 +23,11 @@ server methods transparently.
 
 ### Stage 2. Prepare views
 
-##### 2.1. Combine "generic" views
+##### 2.1. Combine theme views
 
 ```
 .
-├─ <namespace>/
-│   └─ views/
-│       └─ *.jade
-└─ ...
-```
-
-
-##### 2.2. Prepare skins
-
-```
-.
-├─ theme-<name>/
+├─ theme-<id>/
 │   ├─ <namespace>
 │   │   └─ views/
 │   │       └─ *.jade
@@ -47,14 +36,14 @@ server methods transparently.
 ```
 
 
-##### 2.3. Localize JADE views
+##### 2.2. Localize JADE views
 
 We can replace `__('foo.bar')` calls with strings for each language if
 translations has no macros, so we are building localized JADEs here...
 
 ```
 .
-├─ theme-<name>/
+├─ theme-<id>/
 │   ├─ <namespace>
 │   │   └─ views/
 │   │       └─ *.<lang>.jade
@@ -63,13 +52,13 @@ translations has no macros, so we are building localized JADEs here...
 ```
 
 
-##### 2.4. Compile JADE views
+##### 2.3. Compile JADE views
 
 Views are compiled into one file (per language).
 
 ```
 .
-├─ theme-<name>/
+├─ theme-<id>/
 │   ├─ <namespace>
 │   │   └─ views/
 │   │       └─ <lang>.js
@@ -78,14 +67,15 @@ Views are compiled into one file (per language).
 ```
 
 
-### Stage 3. Compile static assets
+### Stage 3. Prepare static assets
+
 
 Patch and merge static files, compile stylus for each skin using generic static
 files as base structure.
 
 ```
 .
-├─ theme-<name>/
+├─ theme-<id>/
 │   ├─ <namespace>
 │   │   └─ *.*
 │   └─ ...
@@ -106,7 +96,7 @@ Combine API tree, translations, skinz with views and static data in one place.
 │   │       └─ <lang>.js
 │   └─ ...
 │
-├─ theme-<name>/
+├─ theme-<id>/
 │   ├─ <namespace>
 │   │   ├─ views/
 │   │   │   └─ <lang>.js
