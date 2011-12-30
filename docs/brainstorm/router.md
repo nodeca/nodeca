@@ -1,12 +1,20 @@
 # Router
 
 For server and client purposes we use [CrossRoads][router] router.
-Routes are described in YAML and then later on bounded to `nodeca.router`.
+Routes are described in YAML. Router initiated with these routes bounded
+to `nodeca.router`.
 
-Example:
+We use two types of files: `default_routes.yml` for application default routes
+and `routes.yml` in main application that mounts routes and API tree nodes to
+domains and/or paths.
+
+## Application Default Routes
+
+Application default routes file defines routes and list of direct invocators
+only.
 
 ``` yaml
---- # file: ./config/routes.yml
+--- # file: ./config/default_routes.yml
 routes:
   "/f{forum_id}/":
     to: forums.list
@@ -57,10 +65,10 @@ routes:
     Specifing rule as string is a shorthand syntax for `{ match: <rule> }`
 
 
-## Direct Invocators with Default Route
+## Direct Invocators
 
 Sometimes we want API methods to be mapped strightly to HTTP request. For this
-purpose we use *default route* rule which looks like:
+purpose we use *direct invocator* rule which looks like:
 
 `/!{methodname}?param1=val1&...&paramN=valN`
 
@@ -68,7 +76,7 @@ For security purposes methods are invoced by "default route" only if they are
 listed in the `direct` whitelist.
 
 ``` yaml
---- # file: ./config/routes.yml
+--- # file: ./config/default_routes.yml
 direct:
   - forums.threads.show
   - search
@@ -109,6 +117,16 @@ routes:
 In this case, request to */!forums.list?forum_id=123&page_id=1* will be
 redirected to "/f{forum_id}/".
 
+
+## Main Application Routes
+
+In the main application's routes files we can specify (alnog with direct
+invocators and routes) redirect rules and mounting rules.
+
+When we add route pointing the API tree method that already have route within
+application default routes, all default routes for that method will be removed.
+In case if the method had more than one route, you might need to specify all
+other routes as well.
 
 ## Redirects
 
@@ -162,42 +180,37 @@ redirect:
 
 ## Mounting Applications
 
-You can "mount" API tree nodes under different domains or paths:
+You can "mount" API tree nodes (or some of your routes) under different
+domain name and/or paths.
 
 ``` yaml
 ---
 mount:
-  forums: forums.nodeca.org # nodeca.server.forums.* -> //forums.nodeca.org/
-  blogs: /blogs             # nodeca.server.blogs.* -> */blogs
+  # SYNOPSIS:
+  #
+  # <mount point>:
+  #   api: <server api tree node>
+  #   routes: <same as default routes>
+  #
+  # mount point: //<domain> || /<path> || //<domain>/<path>
+
+ 
+  # Mount all nodeca.server.forum.* methods under domain `forums.nodeca.org`
+  //forums.nodeca.org:
+    api: forum
+
+  # Mount all ndoeca.server.blog.* methods under path `/blogs`
+  # and provide some additional routes
+  /blogs:
+    api: blog
+    routes:
+      /latest:
+        to: blog.posts.list
+        params:
+          limit: {default: 5}
+          sort_by: {default: date}
+          order: {default: desc}
 ```
-
-Mounting means that helpers used to generate links to some of the API tree nodes
-will use mount point as base part. In other words, mounted part will be
-prepended on rendering the link and will be removed during routing the request.
-
-For example:
-
-``` yaml
----
-routes:
-  "/f{forum_id}/":
-    to: forums.list
-    params:
-      forum_id: /\d+/
-  "/f{forum_id}/thread{thread_id}.html":
-    to: forums.threads.list
-    params:
-      forum_id: /\d+/
-      thread_id: /\d+/
-  # ...
-mount:
-  forums: beta.nodeca.org/forums
-```
-
-Now we can call helper method `link_to('forums.list', {forum_id: 5})`, that will
-result into `//beta.nodeca.org/forums/f5`. And in the opposite, when we will
-receive HTTP request to `//beta.nodeca.org/forums/f5` we will pass `/f5` to the
-router only.
 
 
 ## Helpers
