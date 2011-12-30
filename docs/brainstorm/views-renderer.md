@@ -11,15 +11,21 @@ with properties:
 - **layout** name to use (when rendering HTML)
 - **view** name to use (when rendering HTML or sending data to the client)
 
-When request comes from RT origin, we simply pass `env.request` object to the
+If error occurs, `env.response` will have these fields as well:
+
+- **err.code** (Integer)
+- **err.message** (String)
+
+When request comes from RT origin, we simply pass `env.response` object to the
 callback, while upon HTTP request we can return it as JSON or as rendered HTML
 depending on requested `format`. By default upon HTTP request we render HTML and
-return it. When `format` is *JSON* we return serialized `response.data`.
+return it. When `format` is *JSON* we return whole `env.response` serialized.
 
 We look for the requested format in following places (first one found is used):
 
 - `env.format`
 - `env.params.format`
 
-**NOTICE** `html` renderer expect presence of `env.language` in order to choose
-correct i18n view. If it wasn't, we use default language (en) instead.
+**NOTICE** `html` renderer expect presence of `env.language` and `env.skin` in
+order to choose correct view. If it wasn't, we use default language (en) and
+skin (default) instead.
