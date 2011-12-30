@@ -1,15 +1,15 @@
 Views Renderer
 --------------
 
-Views renderer called once ation and it's filters were run (see Request
-Lifecycle) on _render response_ stage.
+Views renderer called once ation and it's filters were run on _render response_
+stage.
 
 Render expect environment to contain `response` object (see Request Environment)
 with properties:
 
 - **data** raw output data (used as JSON output or as sandbox for views)
-- **layout** layout file to use (when rendering HTML)
-- **view** view file to use (when rendering HTML or sending data to the client)
+- **layout** name to use (when rendering HTML)
+- **view** name to use (when rendering HTML or sending data to the client)
 
 When request comes from RT origin, we simply pass `env.request` object to the
 callback, while upon HTTP request we can return it as JSON or as rendered HTML
