@@ -162,30 +162,42 @@ redirect:
 
 ## Mounting Applications
 
-You can set different domain and/or path as base root for your routes, by
-grouping them under `!!mount` key:
+You can "mount" API tree nodes under different domains or paths:
+
+``` yaml
+---
+mount:
+  forums: forums.nodeca.org # nodeca.server.forums.* -> //forums.nodeca.org/
+  blogs: /blogs             # nodeca.server.blogs.* -> */blogs
+```
+
+Mounting means that helpers used to generate links to some of the API tree nodes
+will use mount point as base part. In other words, mounted part will be
+prepended on rendering the link and will be removed during routing the request.
+
+For example:
 
 ``` yaml
 ---
 routes:
-  !!mount forums.nodeca.org:
-    "/f{forum_id}/":
-      to: forums.list
-      params:
-        forum_id: /\d+/
-    "/f{forum_id}/index{page}.html":
-      to: forums.list
-      params:
-        forum_id: /\d+/
-        page: /[2-9]|[1-9]\d+/
-    # ...
-  !!mount /blogs:
-    "/{blog_id}/":
-      to: blogs.posts.list
-      params:
-        blog_id: /\d+/
-    # ...
+  "/f{forum_id}/":
+    to: forums.list
+    params:
+      forum_id: /\d+/
+  "/f{forum_id}/thread{thread_id}.html":
+    to: forums.threads.list
+    params:
+      forum_id: /\d+/
+      thread_id: /\d+/
+  # ...
+mount:
+  forums: beta.nodeca.org/forums
 ```
+
+Now we can call helper method `link_to('forums.list', {forum_id: 5})`, that will
+result into `//beta.nodeca.org/forums/f5`. And in the opposite, when we will
+receive HTTP request to `//beta.nodeca.org/forums/f5` we will pass `/f5` to the
+router only.
 
 
 ## Helpers
