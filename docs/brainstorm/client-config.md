@@ -1,21 +1,13 @@
-Client Config and Assets map
-----------------------------
+Bundled Assets And Routes
+-------------------------
 
-Config file can be partially "filled". When we load app first time in the
-browser, we read full config, later while switching between applications or
-languages we load "partial" configs in case we need them only.
+TBD
 
 ``` yaml
-## GENERAL SECTION. (full+partial) #############################################
-
-version: "1.0.0"                    # Nodeca version
-baseurl: "//nodeca.org/assets"      # Base URL for assets
-languages: []                       # List of available languages
-
 ## I18N SECTION. (full+partial) ################################################
 
-<lang>
-  assets:                           # per-namespace assets manifest
+<lang>:
+  assets:                           # per-namespace assets with checksums
     <namespace>:
     # ...
 
