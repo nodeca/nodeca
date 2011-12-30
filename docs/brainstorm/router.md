@@ -160,6 +160,34 @@ redirect:
 ```
 
 
+## Mounting Applications
+
+You can set different domain and/or path as base root for your routes, by
+grouping them under `!!mount` key:
+
+``` yaml
+---
+routes:
+  !!mount forums.nodeca.org:
+    "/f{forum_id}/":
+      to: forums.list
+      params:
+        forum_id: /\d+/
+    "/f{forum_id}/index{page}.html":
+      to: forums.list
+      params:
+        forum_id: /\d+/
+        page: /[2-9]|[1-9]\d+/
+    # ...
+  !!mount /blogs:
+    "/{blog_id}/":
+      to: blogs.posts.list
+      params:
+        blog_id: /\d+/
+    # ...
+```
+
+
 ## Helpers
 
 These helpers are available on both client and server.
