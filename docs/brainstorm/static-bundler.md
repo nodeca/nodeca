@@ -64,10 +64,7 @@ translations has no macros, so we are building localized JADEs here...
 
 ##### 2.4. Compile JADE views
 
-Compiled views will become part of the api-tree. For example if we have
-`posts/create.jade` within `forums` namespace, then it will become accessible
-as `nodeca.views.forums.posts.create()`. Views are compiled into one file (per
-language) that contains full views subtree.
+Views are compiled into one file (per language).
 
 ```
 .
@@ -97,7 +94,7 @@ files as base structure.
 
 ### Stage 4. Put alltogether
 
-Combine API tree, trnslations, skinz with views and static data in one place.
+Combine API tree, translations, skinz with views and static data in one place.
 
 ```
 .
