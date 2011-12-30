@@ -8,11 +8,12 @@ we generate API tree (with stubbed server methods) and i18n bundles:
 
 ```
 .
-├─ <namespace>/
-│   ├─ api-tree.js      # nodeca.<namespace>.* (server, shared, client)
-│   └─ i18n/
-│       └─ <lang>.js    # nodeca.<namespace>.i18n.<lang>
-└─ ...
+└─ system/
+    ├─ <namespace>/
+    │   ├─ api-tree.js    # nodeca.<namespace>.* (server, shared, client)
+    │   └─ i18n/                                                           
+    │       └─ <lang>.js  # nodeca.<namespace>.i18n.<lang>
+    └─ ...
 ```
 
 `nodeca.<namespace>.server.*` contains methods with signatures similar to
@@ -22,72 +23,63 @@ server methods transparently.
 
 ### Stage 2. Prepare views
 
-##### 2.1. Combine "generic" views
+##### 2.1. Combine theme views
 
 ```
 .
-├─ <namespace>/
-│   └─ views/
-│       └─ *.jade
+├─ theme-<id>/
+│   ├─ <namespace>
+│   │   └─ views/
+│   │       └─ *.jade
+│   └─ ...
 └─ ...
 ```
 
 
-##### 2.2. Prepare skins
-
-```
-.
-├─ <namespace>/
-│   └─ skinz/
-│       └─ <skin_name>/
-│           └─ views/
-│               └─ *.jade
-└─ ...
-```
-
-
-##### 2.3. Localize JADE views
+##### 2.2. Localize JADE views
 
 We can replace `__('foo.bar')` calls with strings for each language if
 translations has no macros, so we are building localized JADEs here...
 
 ```
 .
-├─ <namespace>/
-│   └─ skinz/
-│       └─ <skin_name>/
-│           └─ views/
-│               └─ *.<lang>.jade
+├─ theme-<id>/
+│   ├─ <namespace>
+│   │   └─ views/
+│   │       └─ *.<lang>.jade
+│   └─ ...
 └─ ...
 ```
 
 
-##### 2.4. Compile JADE views
+##### 2.3. Compile JADE views
 
 Views are compiled into one file (per language).
 
 ```
 .
-├─ <namespace>/
-│   └─ skinz/
-│       └─ <skin_name>/
-│           └─ views/
-│               └─ <lang>.js
+├─ theme-<id>/
+│   ├─ <namespace>
+│   │   └─ views/
+│   │       └─ <lang>.js
+│   └─ ...
 └─ ...
 ```
 
 
-### Stage 3. Compile static assets
+### Stage 3. Prepare static assets
 
-Patch and merge static files, compile stylus for each skin using generic static
-files as base structure.
+TBD (define hwo we separate application assets from theme assets)
+
+Combine, patch, merge and compile static assets (stylus, css, js, etc) of
+application and theme for each theme separately.
 
 ```
 .
-├─ <namespace>/
-│   └─ skinz/
-│       └─ <skin_name>/
-│           └─ *.*
+├─ theme-<id>/
+│   ├─ <namespace>
+│   │   └─ *.*
+│   └─ ...
 └─ ...
 ```
 
@@ -98,14 +90,19 @@ Combine API tree, translations, skinz with views and static data in one place.
 
 ```
 .
-├─ <namespace>/
-│   ├─ api-tree.js
-│   ├─ i18n/
-│   │   └─ <lang>.js
-│   └─ skinz/
-│       └─ <skin_name>/
-│           ├─ views/
-│           │   └─ <lang>.js
-│           └─ *.*
+├─ system/
+│   ├─ <namespace>/
+│   │   ├─ api-tree.js
+│   │   └─ i18n/
+│   │       └─ <lang>.js
+│   └─ ...
+│
+├─ theme-<id>/
+│   ├─ <namespace>
+│   │   ├─ views/
+│   │   │   └─ <lang>.js
+│   │   └─ *.*
+│   └─ ...
+│
 └─ ...
 ```
