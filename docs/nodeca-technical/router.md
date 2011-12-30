@@ -189,7 +189,7 @@ mount:
   # SYNOPSIS:
   #
   # <mount point>:
-  #   api: <server api tree node>
+  #   from: <server api tree node>
   #   routes: <same as default routes>
   #
   # mount point: //<domain> || /<path> || //<domain>/<path>
@@ -197,12 +197,12 @@ mount:
  
   # Mount all nodeca.server.forum.* methods under domain `forums.nodeca.org`
   //forums.nodeca.org:
-    api: forum
+    from: forum
 
   # Mount all ndoeca.server.blog.* methods under path `/blogs`
   # and provide some additional routes
   /blogs:
-    api: blog
+    from: blog
     routes:
       /latest:
         to: blog.posts.list
