@@ -75,11 +75,28 @@ TBD (helpers that used to produce asset URLs, bunches of script includes etc)
 Client Config
 =============
 
-Client config is generated dynamically.
+Client config is generated dynamically. It helps to properly cache static data in local store,
+and refresh app on server upgrade.
 
 ``` javascript
 {
-  "version":      "1.0.0",                # Nodeca version
-  "assets_root":  "//nodeca.org/assets",  # Root URL for assets
+  version:      "1.0.0"                     // Nodeca version
+  assets_root:  "//nodeca.com/assets/"      // Root URL for assets
+  debug:        true,                       // (optional) Disable caches & enable console.logs
+  language:     "ru_RU"
+  crc: {                                    // Resources CRCs. If differ from local cache - need reload
+    phrases: {
+      forum:    "crc1"
+      blogs:    "crc2"
+      groups:   "crc3"
+      admin:    "crc4"
+    }
+    templates: {
+      forum:    "crc5"
+      blogs:    "crc6"
+      groups:   "crc7"
+      admin:    "crc8"
+    }
+  }
 }
 ```
