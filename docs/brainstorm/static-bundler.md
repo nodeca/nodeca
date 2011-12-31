@@ -69,18 +69,16 @@ Views are compiled into one file (per language).
 
 ### Stage 3. Prepare static assets
 
-TBD (define hwo we separate application assets from theme assets)
-
 Combine, patch, merge and compile static assets (stylus, css, js, etc) of
 application and theme for each theme separately.
 
 ```
 .
-├─ theme-<id>/
-│   ├─ <namespace>
-│   │   └─ *.*
-│   └─ ...
-└─ ...
+└─ static/
+    ├─ *                  # Any structure, except <theme-*>
+    ├─ theme-<id1>/*.*    # Theme files
+    ├─ theme-<id2>/*.*
+    └─ ...
 ```
 
 

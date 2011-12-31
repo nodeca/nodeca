@@ -24,6 +24,8 @@ Directores below are processed automaticallty during init.
 │   │   └─ *.yml                      # settings definitions
 │   ├─ locales/
 │   │   └─ <lang>.yml                 # language translataions e.g. ru.yml
+│   ├─ themes/
+│   │   └─ <id>.yml                   # theme configs, e.g. theame-mobile.yml
 │   └─ defaults.yml                   # application config
 │
 ├─ client/                            # client-side API tree functions, mapped to `nodeca.client.<...>`
@@ -39,7 +41,9 @@ Directores below are processed automaticallty during init.
 │       └─ /.../*.js
 │
 ├─ static/                            # static files (images, stylus templates, jQuery & plugins)
-│   └─ <namespace>/*
+│   ├─ /.../*.*                       # Any structure, except <theme-*>
+│   ├─ theme-<id1>/*.*                # Theme files
+│   └─ ...
 │
 └─ index.js
 ```
