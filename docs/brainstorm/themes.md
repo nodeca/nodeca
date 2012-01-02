@@ -23,15 +23,17 @@ In nodeca, we use the following structure:
 
 ```
 .
-├─ static/
+├─ assets/
 │   └─ theme-<id>/*.* 
 ├─ views/
 │   └─ theme-<id>/*.* 
 └─ config/themes/<id>.yml
 ```
 
-1. Some directories cam be missed. For example, in inherited themes.
-2. Skins can also add other files, but those will not be used in inheritance rules.
+1. Some directories can be missed. For example, in inherited themes.
+2. Theme can also add other files, but those will not be used in inheritance rules.
+3. Files structure are nodeca-specific. Themer module is more generic: it just
+   care about inheritance & patching of directory trees.
 
 
 Theme config
@@ -39,27 +41,20 @@ Theme config
 
 ``` yaml
 ---
-  id:     mobile                        # theme id, (really needed only for `extend` themes)
-                                        # use config file name by default
+  # Use `inherit` or `extend` if theme is based on another one.
+  # `inrerit` creates a new theme, `extend` modifies existing.
+  # When both absent, than means that it's a root theme with complete file set.
+  
+  # inherit: parent_id
+  # extend: parent_id
 
-  type:   new|inherit|extend            # extend - adds templates/files to existing skin, morph existing
-                                        # new, inherit - obvious
+  name:  Mobile Theme                   # Full name of theme. Don't mix up with theme id.
 
-  parent: desktop                       # only for inherited themes
-
-  ignore: /.*(txt|md)$/i                # exclude those files (regex), prior to build theme
-
-  folders:                              # where to search theme-<id> subfolders
-    static:     /static                 # `/static` if missed
-    templates:  /views                  # `/views` if missed
-
-  enable: true                          # Optional. Set `false` (via extend) for parent themes, that
-                                        # should not generate public files
-
-  options:                              # Freestyle structure, for metadata
-    name: 'Mobile Skin'
-    order: 10
+  ignore: /.*(txt|md)$/i                # Exclude those files (regex), prior to build theme.
+                                        # Can be useful, to skip readme and other description files.
 ```
+
+Theme id is taken from config file name (without extension).
 
 
 Patches & overrides
@@ -85,8 +80,7 @@ Use this info to create better logs or debug tools.
 
 ### Detected errors
 
-- no enabled skins
-- duplicated template filesnames (from different folders)
+- duplicated template filenames (from different folders)
 - can't add new template in inherited skin
 - try to modify not existing file
 - failed to apply patch

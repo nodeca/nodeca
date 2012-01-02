@@ -15,8 +15,8 @@ Directores below are processed automaticallty during init.
 ├─ stores/
 │   └─ *.js
 │
-├─ views/<controller_name>/           # sub-dir per controller
-│   ├─ _*.jade                        # partials.js
+├─ views/theme-<id1>/.../             # similar to server method path
+│   ├─ _*.jade                        # underscore means `partials`, not included in bundle
 │   └─ *.jade
 │
 ├─ config/
@@ -40,7 +40,7 @@ Directores below are processed automaticallty during init.
 │   └─ <namespace>/
 │       └─ /.../*.js
 │
-├─ static/                            # static files (images, stylus templates, jQuery & plugins)
+├─ assets/                            # static files (images, stylus templates, jQuery & plugins)
 │   ├─ /.../*.*                       # Any structure, except <theme-*>
 │   ├─ theme-<id1>/*.*                # Theme files
 │   └─ ...

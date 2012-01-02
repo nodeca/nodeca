@@ -7,13 +7,13 @@ Once API tree of the application was fully populated, and i18n being loaded,
 we generate API tree (with stubbed server methods) and i18n bundles:
 
 ```
-.
-└─ system/
-    ├─ <namespace>/
-    │   ├─ api-tree.js    # nodeca.<namespace>.* (server, shared, client)
-    │   └─ i18n/                                                           
-    │       └─ <lang>.js  # nodeca.<namespace>.i18n.<lang>
-    └─ ...
+assets
+ └─ system/
+     ├─ <namespace>/
+     │   ├─ api-tree.js    # nodeca.<namespace>.* (server, shared, client)
+     │   └─ i18n/
+     │       └─ <lang>.js  # nodeca.<namespace>.i18n.<lang>
+     └─ ...
 ```
 
 `nodeca.<namespace>.server.*` contains methods with signatures similar to
@@ -27,10 +27,11 @@ server methods transparently.
 
 ```
 .
-├─ theme-<id>/
-│   ├─ <namespace>
-│   │   └─ views/
-│   │       └─ *.jade
+├─ views/
+│   ├─ theme-<id>/
+│   │   ├─ <namespace>
+│   │   │   └─ *.jade
+│   │   └─ ...
 │   └─ ...
 └─ ...
 ```
@@ -43,10 +44,11 @@ translations has no macros, so we are building localized JADEs here...
 
 ```
 .
-├─ theme-<id>/
-│   ├─ <namespace>
-│   │   └─ views/
-│   │       └─ *.<lang>.jade
+├─ views/
+│   ├─ theme-<id>/
+│   │   ├─ <namespace>
+│   │   │   └─ *.<lang>.jade
+│   │   └─ ...
 │   └─ ...
 └─ ...
 ```
@@ -58,10 +60,13 @@ Views are compiled into one file (per language).
 
 ```
 .
-├─ theme-<id>/
-│   ├─ <namespace>
-│   │   └─ views/
-│   │       └─ <lang>.js
+├─ views/
+│   ├─ theme-<id>/
+│   │   ├─ <namespace>
+│   │   │   ├─ <lang1>.js
+│   │   │   ├─ <lang2>.js
+│   │   │   └─ ...
+│   │   └─ ...
 │   └─ ...
 └─ ...
 ```
@@ -73,12 +78,12 @@ Combine, patch, merge and compile static assets (stylus, css, js, etc) of
 application and theme for each theme separately.
 
 ```
-.
-└─ static/
-    ├─ *                  # Any structure, except <theme-*>
-    ├─ theme-<id1>/*.*    # Theme files
-    ├─ theme-<id2>/*.*
-    └─ ...
+assets/
+ └─ static/
+     ├─ *                  # Any structure, except <theme-*>
+     ├─ theme-<id1>/*.*    # Theme files
+     ├─ theme-<id2>/*.*
+     └─ ...
 ```
 
 
@@ -87,20 +92,31 @@ application and theme for each theme separately.
 Combine API tree, translations, skinz with views and static data in one place.
 
 ```
-.
-├─ system/
-│   ├─ <namespace>/
-│   │   ├─ api-tree.js
-│   │   └─ i18n/
-│   │       └─ <lang>.js
-│   └─ ...
-│
-├─ theme-<id>/
-│   ├─ <namespace>
-│   │   ├─ views/
-│   │   │   └─ <lang>.js
-│   │   └─ *.*
-│   └─ ...
-│
-└─ ...
+assets/
+ │
+ ├─ system/
+ │   ├─ <namespace>/
+ │   │   ├─ api-tree.js
+ │   │   └─ i18n/
+ │   │       ├─ <lang1>.js
+ │   │       ├─ <lang2>.js
+ │   │       └─ ...
+ │   └─ ...
+ │
+ ├─ static/
+ │   ├─ *
+ │   ├─ theme-<id1>/*.*
+ │   ├─ theme-<id2>/*.*
+ │   └─ ...
+ │
+ ├─ views/
+ │   ├─theme-<id>/
+ │   │   ├─ <namespace>
+ │   │   │   ├─ <lang1>.js
+ │   │   │   ├─ <lang2>.js
+ │   │   │   └─ ...
+ │   │   └─ ...
+ │   └─ ...
+ │
+ └─ *.*
 ```
