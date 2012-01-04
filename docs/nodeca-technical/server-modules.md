@@ -113,14 +113,38 @@ filter 3: 6
 
 ## Request Environment
 
-All requests are executed within separate context, with following structure:
+All requests are executed within separate context, with `env` structure available:
 
--   *origin*: Mandatory. Specifies origination of request.
-    Possible values: `RT` (realtime: websocket, longpoll, etc.), `HTTP`
--   *session*: Mandatory. Contains all information realted to the session.
-    -   *user_id*: Optional. Current user's id
-    -   *language*: Mandatory. Current language
--   ??? *request*: Mandatory. Original request
+```
+env:                            # this.env, in context
+
+  _t                            # babelfish.t proxy, without `language` param
+  permissions                   # sandbox for calculated permissions cache
+  format                        # (Optional) Used to force response format,
+                                #  when existing view is now enougth (big XML, RSS...)
+
+  session                       # session data
+    session_id
+    user_id
+    language
+    theme
+
+  request                       # request details
+    origin (RT|HTTP)            # invocation method (readltime [websocket] / legacy [http])
+    method                      # called method name (e.g.: ‘forum.posts.show’)
+
+  response                      # Response sandbox
+    err.code                    # (Optional)
+    err.message                 # (Optional)
+    data                        # raw output (for json or renderer) (Default: null)
+    layout                      # (Optional) ‘default’ if not set
+    view                        # (Optional) request.method if not set
+```
+
+**NOTE**. `env` should not contain function, to be transparent for server-server communications.
+But sometime it's convinient to have some local helpers. So, we agree, that functions should start
+with `_`, ant they will be missed in server-server communications. Each process should care itself
+about initialization of local helpers.
 
 
 ## Filters
