@@ -72,6 +72,7 @@ Server-side view helpers
 
 TBD (helpers that used to produce asset URLs, bunches of script includes etc)
 
+
 Client Config
 =============
 
@@ -99,4 +100,19 @@ and refresh app on server upgrade.
     }
   }
 }
+```
+
+
+API Tree
+========
+
+Most components are available via `nodeca` object as nested parts. Details available in other files.
+Here is short memo to see all sections at once:
+
+```
+nodeca:
+  client                  # client methods
+  server                  # server method
+  permissions             # access rules
+  filters                 # hooks for server methods (mostly to attach access rules)
 ```
