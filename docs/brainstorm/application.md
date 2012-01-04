@@ -110,9 +110,16 @@ Most components are available via `nodeca` object as nested parts. Details avail
 Here is short memo to see all sections at once:
 
 ```
-nodeca:
+nodeca
   client                  # client methods
   server                  # server method
   permissions             # access rules
   filters                 # hooks for server methods (mostly to attach access rules)
+  router                  # router
+  settings                # settings accessor
+    get
+    set
+  config
+    server                # server config tree
+    client                # client config tree
 ```
