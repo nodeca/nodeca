@@ -118,7 +118,7 @@ All requests are executed within separate context, with `env` structure availabl
 ```
 env:                            # this.env, in context
 
-  t                             # i18n.t proxy, without `language` param
+  _t                            # babelfish.t proxy, without `language` param
   permissions                   # sandbox for calculated permissions cache
   format                        # (Optional) Used to force response format,
                                 #  when existing view is now enougth (big XML, RSS...)
@@ -140,6 +140,11 @@ env:                            # this.env, in context
     layout                      # (Optional) ‘default’ if not set
     view                        # (Optional) request.method if not set
 ```
+
+**NOTE**. `env` should not contain function, to be transparent for server-server communications.
+But sometime it's convinient to have some local helpers. So, we agree, that functions should start
+with `_`, ant they will be missed in server-server communications. Each process should care itself
+about initialization of local helpers.
 
 
 ## Filters
