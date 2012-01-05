@@ -1,22 +1,7 @@
 general:
 
   #
-  # List of enabled modles (and, optionally, their configuration)
-  #
-
-  modules:
-    nodeca-core: on             # just enable and use default config options
-    nodeca-translate:           #
-      locales:                  # or provide overrides for config options
-        available:
-          - en-US
-          - ru-RU
-        master:
-          - en-US
-      _disabled_: yes           # disable given module
-
-  #
-  # Language configuration
+  # (Optional) Languages configuration
   #
 
   languages:
@@ -29,24 +14,25 @@ general:
     # Default: [en-US]
     enabled:
       - en-US
+      - en-GB
       - ru-RU
 
     # *** Optional. Map of language -> default culture
+    # There's no point for aliases for languages with only one culture (e.g.
+    # ru-RU) we auto-guess such aliases automagically
     # Default: no default value
     aliases:
       en: en-US
-      # There's no point for aliases for languages with only one culture (e.g.
-      # ru-RU) we auto-guess such aliases automagically
-      ru: ru-RU
 
   #
-  # Themes configuration
+  # (Optional) Themes configuration
   #
 
   themes:
 
     # Themes whitelist/blacklist
     #
+    # Use this options if you don't want to use/show ALL installed themes.
     # If both `enabled` and `disabled` specified, `disabled` has ho effect.
 
     # *** Optional. Themes whitelist.
@@ -62,18 +48,28 @@ general:
     disabled:                   
       - yellow-submarine
 
+  #
+  # List of enabled modles (and, optionally, their configuration)
+  #
+
+  modules:
+    nodeca-core: on             # just enable and use default config options
+    nodeca-translate:           # or provide overrides for config options
+      #disabled: yes            # uncomment to disable module
+      locales:                  
+        available:
+          - en-US
+          - ru-RU
+        master:
+          - en-US
 
   #
   # Settings (defaults overrides)
   #
 
   settings:
-    usergroup:
-      translator:
-        can_translate: false
-    app_user:
-      translator:
-        can_moderate: true
+    config:
+      results_pre_page: 25
 
 
 ## PER-ENVIRONMENT CONFIGS ###################################################
@@ -82,6 +78,7 @@ production:
   listen:
     host: nodeca.org
     port: 80
+    path: /nodeca           # (optional) default mount point path. default: /
 
 development:
   listen:

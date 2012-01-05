@@ -8,7 +8,7 @@ production:
   redis:
     host: localhost
     port: 6379
-    database: nodeca
+    index: 0
 
   mongo:
     host: localhost

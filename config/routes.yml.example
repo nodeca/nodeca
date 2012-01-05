@@ -1,3 +1,12 @@
+# Routes are defined per-application. In the main application we can override
+# or add own routes.
+#
+# When we add route pointing the API tree method that already have route within
+# application default routes, all default routes for that method will be removed.
+#
+# When routes are not mounted. Default (application listen option) mount point
+# is used instead.
+
 routes:
   "/f{forum_id}/":
     to: forums.list

@@ -1,4 +1,8 @@
-# array of availble locales including original (master)
+---
+# defaults are per-base default options, which can be overriden in
+# application.yml. Here's example of nodeca-translator defaults.
+
+
 locales:
   # array of availble locales including original (master)
   available: [en, ru]
