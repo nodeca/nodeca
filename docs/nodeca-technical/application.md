@@ -37,8 +37,7 @@ Directores below are processed automaticallty during init.
 │       └─ /.../*.js
 │
 ├─ shared/                            # shared API tree code for both server & client, mapped to `nodeca.shared.<...>`
-│   └─ <namespace>/
-│       └─ /.../*.js
+│   └─ /.../*.js
 │
 ├─ assets/                            # static files (images, stylus templates, jQuery & plugins)
 │   ├─ /.../*.*                       # Any structure, except <theme-*>
@@ -76,15 +75,13 @@ TBD (helpers that used to produce asset URLs, bunches of script includes etc)
 Client Config
 =============
 
-Client config is generated dynamically. It helps to properly cache static data in local store,
-and refresh app on server upgrade.
+Client config is generated in bundle + dynamically. It helps to properly cache
+static data in local store, and refresh app on server upgrade.
 
 ``` javascript
 {
   version:      "1.0.0"                     // Nodeca version
   assets_root:  "//nodeca.com/assets/"      // Root URL for assets
-  debug:        true,                       // (optional) Disable caches & enable console.logs
-  language:     "ru_RU"
   crc: {                                    // Resources CRCs. If differ from local cache - need reload
     phrases: {
       forum:    "crc1"
@@ -99,6 +96,12 @@ and refresh app on server upgrade.
       admin:    "crc8"
     }
   }
+  routes: {                                 // router configucation (from .yml files)
+  }
+
+  // Dynamically added for each client, via inline JS
+  debug:        true,                       // (optional) Disable caches & enable console.logs
+  language:     "ru_RU"
 }
 ```
 
@@ -113,13 +116,10 @@ Here is short memo to see all sections at once:
 nodeca
   client                  # client methods
   server                  # server method
+  shared                  # available on both client & server, mostly for helpers
   permissions             # access rules
   filters                 # hooks for server methods (mostly to attach access rules)
   router                  # router
-  settings                # settings accessor
-    get
-    set
-  config
-    server                # server config tree
-    client                # client config tree
+  settings                # settings accessor (get/set, not tree)
+  config                  # see config description above.
 ```

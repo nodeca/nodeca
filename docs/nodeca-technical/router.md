@@ -1,8 +1,8 @@
 # Router
 
 For server and client purposes we use [CrossRoads][router] router.
-Routes are described in YAML. Router initiated with these routes bounded
-to API tree as `nodeca.router`.
+Routes are described in YAML. Router instanse is placed at `nodeca.router`.
+Routes are bundled into main api tree file, as `nodeca.config.routes`.
 
 We use two types of files: `default_routes.yml` for application default routes
 and `routes.yml` in main application that mounts routes and API tree nodes to
