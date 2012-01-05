@@ -1,0 +1,12 @@
+# array of availble locales including original (master)
+locales:
+  # array of availble locales including original (master)
+  available: [en, ru]
+
+  # originl locale
+  master: en
+
+
+################################################################################
+# vim:ft=yaml:ts=2:sw=2
+################################################################################

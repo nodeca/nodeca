@@ -1,0 +1,79 @@
+routes:
+  "/f{forum_id}/":
+    to: forums.list
+    params:
+      forum_id: /\d+/
+  "/f{forum_id}/index{page}.html":
+    to: forums.list
+    params:
+      forum_id: /\d+/
+      page: /[2-9]|[1-9]\d+/
+  "/f{forum_id}/thread{thread_id}.html":
+    to: forums.threads.show
+    params:
+      forum_id: /\d+/
+      thread_id: /\d+/
+  "/f{forum_id}/thread{thread_id}-{page}.html":
+    to: forums.threads.show
+    params:
+      forum_id: /\d+/
+      thread_id: /\d+/
+      page: /[2-9]|[1-9]\d+/
+  "/f{forum_id}/thread{thread_id}-{goto}.html":
+    to: forums.threads.redirect
+    params:
+      forum_id: /\d+/
+      thread_id: /\d+/
+      goto: [ 'new-post', 'last-post' ]
+  "/search/":
+    to: search
+  "#/users/profile/{user_id}/{tab}":
+    to: users.profile
+    params:
+      user_id: /\d+/
+      tab: [ 'general', 'last-msgs' ]
+
+
+## DIRECT INVOCATORS ###########################################################
+
+
+direct:
+  - forums.threads.show
+  - search
+
+
+## REDIRECTS ###################################################################
+
+
+redirect:
+  "/f{forum_id}/thread{thread_id}.html":
+    to: [ 301, "/t-{forum_id}-{thread_id}.aspx" ]
+    params:
+      forum_id: /\d+/
+      thread_id: /\d+/
+
+
+## MOUNTING ####################################################################
+
+
+mount:
+  # Mount all nodeca.server.forum.* methods under domain `forums.nodeca.org`
+  //forums.nodeca.org:
+    from: forum
+
+  # Mount all ndoeca.server.blog.* methods under path `/blogs`
+  # and provide some additional routes
+  /blogs:
+    from: blog
+    routes:
+      /latest:
+        to: blog.posts.list
+        params:
+          limit: {default: 5}
+          sort_by: {default: date}
+          order: {default: desc}
+
+
+################################################################################
+# vim:ft=yaml:ts=2:sw=2
+################################################################################

@@ -1,0 +1,21 @@
+# this is a datbase stub
+production:
+
+  # we wil have redis and mongo connections, but the keys will be different.
+  # right now it's just a stub, key names would be someting like
+  # "documents_backend" (by the nature of DB usage)
+
+  redis:
+    host: localhost
+    port: 6379
+    database: nodeca
+
+  mongo:
+    host: localhost
+    port: 27017
+    database: nodeca
+
+
+################################################################################
+# vim:ft=yaml:ts=2:sw=2
+################################################################################

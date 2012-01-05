@@ -1,0 +1,11 @@
+usergroup:
+  translator:
+    can_translate:
+      title: Allow to propose translations
+      default: true
+      type: boolean
+
+
+################################################################################
+# vim:ft=yaml:ts=2:sw=2
+################################################################################

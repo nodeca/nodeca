@@ -1,9 +1,0 @@
-en:
-
-  admin:
-
-    dashboard:
-
-      registration_stats: >
-        Since your last visit on #{last_visit} there were #{noobs_count}
-        new %{user|users}:noobs_count.

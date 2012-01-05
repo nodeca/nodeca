@@ -7,10 +7,13 @@ general:
   modules:
     nodeca-core: on             # just enable and use default config options
     nodeca-translate:           #
-      master-language: ru       # or provide overrides for config options
-      enabled-languages:
-        - en
-        - ru
+      locales:                  # or provide overrides for config options
+        available:
+          - en-US
+          - ru-RU
+        master:
+          - en-US
+      _disabled_: yes           # disable given module
 
   #
   # Language configuration
@@ -18,15 +21,23 @@ general:
 
   languages:
 
-    # *** Optional. Default application language
-    # Default: en
-    default: ru
+    # *** Optional. Default application locale
+    # Default: en-US
+    default: ru-RU
 
-    # *** Optional. List of enabled languages
-    # Default: [en]
+    # *** Optional. List of enabled locales
+    # Default: [en-US]
     enabled:
-      - en
-      - ru
+      - en-US
+      - ru-RU
+
+    # *** Optional. Map of language -> default culture
+    # Default: no default value
+    aliases:
+      en: en-US
+      # There's no point for aliases for languages with only one culture (e.g.
+      # ru-RU) we auto-guess such aliases automagically
+      ru: ru-RU
 
   #
   # Themes configuration
@@ -63,4 +74,7 @@ development:
     host: 127.0.0.1
     port: 8000
 
+
+################################################################################
 # vim:ft=yaml:ts=2:sw=2
+################################################################################

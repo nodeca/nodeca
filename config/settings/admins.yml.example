@@ -1,0 +1,11 @@
+app_users:
+  translator:
+    can_admin:
+      title: Allow administrate translator
+      default: false
+      type: boolean
+
+
+################################################################################
+# vim:ft=yaml:ts=2:sw=2
+################################################################################
