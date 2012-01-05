@@ -8,12 +8,14 @@ production:
   redis:
     host: localhost
     port: 6379
-    index: 0
+    index: 0          # db id, not working for clusters
 
   mongo:
     host: localhost
     port: 27017
     database: nodeca
+    user: ***
+    password: ***
 
 
 ################################################################################

@@ -1,6 +1,6 @@
 ---
-# defaults are per-base default options, which can be overriden in
-# application.yml. Here's example of nodeca-translator defaults.
+# defaults are per-app default options, which can be overriden in root
+# application.yml. Here is example of `nodeca-translator` defaults.
 
 
 locales:

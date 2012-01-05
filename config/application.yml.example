@@ -25,7 +25,7 @@ general:
       en: en-US
 
   #
-  # (Optional) Themes configuration
+  # (Optional) Themes configuration. Use, if you don't wish to show all themes.
   #
 
   themes:
@@ -64,12 +64,12 @@ general:
           - en-US
 
   #
-  # Settings (defaults overrides)
+  # Settings values (only for `config` stores). Idea is to manage permissions
+  # via control panel, and other settings via config files.
   #
 
   settings:
-    config:
-      results_pre_page: 25
+    results_pre_page: 25
 
 
 ## PER-ENVIRONMENT CONFIGS ###################################################
@@ -78,12 +78,13 @@ production:
   listen:
     host: nodeca.org
     port: 80
-    path: /nodeca           # (optional) default mount point path. default: /
+    path: /               # (optional) mount point path. default: /
 
 development:
   listen:
     host: 127.0.0.1
     port: 8000
+    path: /
 
 
 ################################################################################
