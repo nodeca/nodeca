@@ -1,8 +1,8 @@
 # Server Modules
 
-All modules/methods from `server` folder will be mapped to API Tree under `nodeca.server` scope.
-Those items will be also publically to clients (via streams). Example:
-example:
+All modules/methods from `server` folder will be mapped to API Tree under
+`nodeca.server` scope. Those items will be also publically to clients
+(via streams). Example:
 
 ```
 ├─ server/
@@ -13,10 +13,11 @@ example:
     └─ ...
 ```
 
-Note, we reserve `internal` folder for server-server IPC. For example, when you like to run
-isolated process to log money transaction and so on.
+Note, we reserve `internal` folder for server-server IPC. For example, when you
+like to run isolated process to log money transaction and so on.
 
-Every module can have 1 or multiple methods. All `exports` are mapped to API Tree. See examples below.
+Every module can have 1 or multiple methods. All `exports` are mapped to
+API Tree. See examples below.
 
 ``` javascript
 // file: admin/users.js
@@ -41,7 +42,7 @@ module.exports = function (param1 [, param2...], cb) {
 
 ## Module Initialization
 
-For modules initialization we use `__init__` method which is called (if exists)
+For modules initialization we use `__init__` method, which is called (if exists)
 after module was required. This method is called with the only argument:
 
 - `nodeca`: Reference to root node of the API tree
@@ -64,7 +65,8 @@ will be attached after nodes were attached to the server tree.
 
 ## Method Invocation
 
-Every method should have callback as last argument. Other args can be of any type.
+Every method should have callback as last argument. Other args can be of any
+type.
 
 Methods are executed in context of request enviroment (See Request Environment).
 So, you can access session info and other request data. You can attach `before`
@@ -113,38 +115,40 @@ filter 3: 6
 
 ## Request Environment
 
-All requests are executed within separate context, with `env` structure available:
+All requests are executed within separate context, with `env` structure
+available:
 
 ```
-env:                            # this.env, in context
+env:                    # this.env, in context
 
-  _t                            # babelfish.t proxy, without `language` param
-  permissions                   # sandbox for calculated permissions cache
-  format                        # (Optional) Used to force response format,
-                                #  when existing view is now enougth (big XML, RSS...)
+  _t                    # babelfish.t proxy, without `language` param
+  permissions           # sandbox for calculated permissions cache
+  format                # (Optional) Used to force response format,
+                        #  when existing view is now enougth (big XML, RSS...)
 
-  session                       # session data
+  session               # session data
     session_id
     user_id
     language
     theme
 
-  request                       # request details
-    origin (RT|HTTP)            # invocation method (readltime [websocket] / legacy [http])
-    method                      # called method name (e.g.: ‘forum.posts.show’)
+  request               # request details
+    origin (RT|HTTP)    # invocation method (readltime [websocket] / http)
+    method              # called method name (e.g.: ‘forum.posts.show’)
 
-  response                      # Response sandbox
-    err.code                    # (Optional)
-    err.message                 # (Optional)
-    data                        # raw output (for json or renderer) (Default: null)
-    layout                      # (Optional) ‘default’ if not set
-    view                        # (Optional) request.method if not set
+  response              # Response sandbox
+    err.code            # (Optional)
+    err.message         # (Optional)
+    data                # raw output (for json or renderer) (Default: null)
+    layout              # (Optional) ‘default’ if not set
+    view                # (Optional) request.method if not set
 ```
 
-**NOTE**. `env` should not contain function, to be transparent for server-server communications.
-But sometime it's convinient to have some local helpers. So, we agree, that functions should start
-with `_`, ant they will be missed in server-server communications. Each process should care itself
-about initialization of local helpers.
+**NOTE**. `env` should not contain functions, to be transparent for
+server-server communications. But sometime it's convinient to have some 
+session-specific helpers. So, we agree, that such functions should start with
+`_`, and they will be missed in server-server communications. Each process
+should care itself about initialization of session helpers.
 
 
 ## Filters
@@ -159,9 +163,9 @@ nodeca.filters.before('forums.threads.show', function (next) {
 });
 ```
 
-First argument is node in the server API tree we want to attach filter to,
-second is filter function. Method name can be either `String` or `Array` of
-strings (when we want to attach to multiple nodes).
+First argument is node in the server API tree, where we want to assign filter
+to. Second is filter function. Method name can be either `String` or `Array` of
+strings (when we want attach filter to multiple nodes).
 
 We can attach filters either *before* or *after* controller/action:
 
@@ -209,7 +213,7 @@ nodeca.filters.before('::admin.users.edit', function (next) {
 });
 ```
 
-Filters are called from top to the bottom fo the tree. For example, upon
+Filters are called from top to the bottom of the tree. For example, upon
 `admin.users.edit` call, we will fire filters attached to `admin`, then filters
 attached to `admin.users`, then filters attached to `admin.users.edit` and then
 action itself.

@@ -1,11 +1,11 @@
 # Router
 
 For server and client purposes we use [CrossRoads][router] router.
-Routes are described in YAML. Router instanse is placed at `nodeca.router`.
-Routes are bundled into main api tree file, as `nodeca.config.routes`.
+Routes are described in YAML and bundled into main api tree file as
+`nodeca.config.routes` after init. Router instanse is placed at `nodeca.router`.
 
 We use two types of files: `default_routes.yml` for application default routes
-and `routes.yml` in main application that mounts routes and API tree nodes to
+and `routes.yml` in main application, that mounts routes and API tree nodes to
 domains and/or paths.
 
 ## Application Default Routes
@@ -67,13 +67,12 @@ routes:
 
 ## Direct Invocators
 
-Sometimes we want API methods to be mapped strightly to HTTP request. For this
-purpose we use *direct invocator* rule which looks like:
+Sometimes we want API methods to be accessible via direct HTTP links and browser
+history. For this purpose we use *direct invocator* rule which looks like:
 
 `/!{methodname}?param1=val1&...&paramN=valN`
 
-For security purposes methods are invoced by "default route" only if they are
-listed in the `direct` whitelist.
+Technically, such link will run page loader first, then update page inline. 
 
 ``` yaml
 --- # file: ./config/default_routes.yml
@@ -82,13 +81,18 @@ direct:
   - search
 ```
 
+**CAUTION**. NEVER give direct access to methods, that posts data. That will
+cause CSRF vulnerability. **ONCE AGAIN**. Only give direct access to "read"
+methods, with will not modify data. Posting should be done ONLY via realtime
+call, when user click on links, buttons, and so on. 
+
 **NOTICE** Before dispatching "direct" invocator, we try to find appropriate
-route for it, and if found - redirect there with 301 code. Algorithm of
-searching "appropriate" URL is as follows:
+"SEO" route for it, and if exists - redirect there with 301 code.
+Here is algorithm, how to find "appropriate" URL:
 
 -   find all possible routes for given method
 -   filter out routes with same amount (and names) of params
--   use first route which param rules given values
+-   use first route which param rules fit given values
 
 For example, using routes map from above:
 

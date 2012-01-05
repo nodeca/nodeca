@@ -23,7 +23,7 @@ Directores below are processed automaticallty during init.
 │   ├─ settings/
 │   │   └─ *.yml                      # settings definitions
 │   ├─ locales/
-│   │   └─ <lang>.yml                 # language translataions e.g. ru.yml
+│   │   └─ <lang>.yml                 # language translataions e.g. ru-RU.yml
 │   ├─ themes/
 │   │   └─ <id>.yml                   # theme configs, e.g. theame-mobile.yml
 │   └─ defaults.yml                   # application config
@@ -66,10 +66,23 @@ Hooks
 TBD (how components can change default behaviour)
 
 
-Server-side view helpers
-========================
+API Tree
+========
 
-TBD (helpers that used to produce asset URLs, bunches of script includes etc)
+Most components are available via `nodeca` object as nested parts. Details available in other files.
+Here is short memo to see all sections at once:
+
+```
+nodeca
+  client                  # client methods
+  server                  # server method
+  shared                  # available on both client & server, mostly for helpers
+  permissions             # access rules
+  filters                 # hooks for server methods (mostly to attach access rules)
+  router                  # router
+  settings                # settings accessor (get/set, not tree)
+  config                  # see config description above.
+```
 
 
 Client Config
@@ -105,21 +118,3 @@ static data in local store, and refresh app on server upgrade.
 }
 ```
 
-
-API Tree
-========
-
-Most components are available via `nodeca` object as nested parts. Details available in other files.
-Here is short memo to see all sections at once:
-
-```
-nodeca
-  client                  # client methods
-  server                  # server method
-  shared                  # available on both client & server, mostly for helpers
-  permissions             # access rules
-  filters                 # hooks for server methods (mostly to attach access rules)
-  router                  # router
-  settings                # settings accessor (get/set, not tree)
-  config                  # see config description above.
-```
