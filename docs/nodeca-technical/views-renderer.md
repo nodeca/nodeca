@@ -29,3 +29,11 @@ We look for the requested format in following places (first one found is used):
 **NOTICE** `html` renderer expect presence of `env.language` and `env.skin` in
 order to choose correct view. If it wasn't, we use default language (en) and
 skin (default) instead.
+
+
+## Helpers and Variables
+
+We provide constants available in templates on both server and client:
+
+- **ASSETS**: Base URL of assets, e.g. `/assets/`
+- **THEME**: Base URL of current theme assets, e.g. `/assets/theme-desktop-red/`
