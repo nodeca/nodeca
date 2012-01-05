@@ -1,0 +1,12 @@
+# this is a datbase stub
+production:
+
+  # we wil have redis and mongo connections, but the keys will be different.
+  # right now it's just a stub, key names would be someting like
+  # "documents_backend" (by the nature of DB usage)
+
+  redis:
+    # redis connection options, 
+
+  mongo:
+    # mongo connection options.
