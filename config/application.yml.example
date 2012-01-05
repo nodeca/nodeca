@@ -60,7 +60,21 @@ general:
     # These themes will be disabled (if specified)
     # Default: none
     disabled:                   
-      - yellow-submarine        
+      - yellow-submarine
+
+
+  #
+  # Settings (defaults overrides)
+  #
+
+  settings:
+    usergroup:
+      translator:
+        can_translate: false
+    app_user:
+      translator:
+        can_moderate: true
+
 
 ## PER-ENVIRONMENT CONFIGS ###################################################
 
