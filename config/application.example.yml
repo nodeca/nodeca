@@ -1,15 +1,28 @@
 general:
   title: 'Nodeca'
+
   modules:
-    nodeca-core:
-      mount: '/'
-    nodeca-translate:
-      mount: '/translate'
+    nodeca-core: on             # just enable and use default config options
+    nodeca-translate:           #
+      master-language: ru       # or provide overrides for config options
+      enabled-languages:
+        - en
+        - ru
+
+  themes:
+    enabled:                    # we can use wildcard `*`, e.g. `mobile-*`
+      - red-hot-moon            # all themes by default enabled and none
+      - deep-purple             # are disabled. disabling has higher priority,
+    disabled:                   # so if one theme presented in both lists, it
+      - yellow-submarine        # will be disabled.
+
 ## PER-ENVIRONMENT CONFIGS ###################################################
+
 production:
   listen:
     host: nodeca.org
     port: 80
+
 development:
   listen:
     host: nodeca.org
