@@ -1,6 +1,13 @@
 Static Bundler
 --------------
 
+- prepare dynamic generated files (api-tree, languages)
+- grab all views and assets from all enabled applications
+- execute skinner to build themes
+- localize and compile views (for each theme)
+- run assets builder (patch/merge/minify)
+
+
 ### Stage 1. Prepare dynamic data for assets
 
 Once API tree of the application was fully populated, and i18n being loaded,
