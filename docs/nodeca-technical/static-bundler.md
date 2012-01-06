@@ -27,9 +27,9 @@ tmp/
   ├─ output/
   │   └─ system/
   │       ├─ <namespace>/
-  │       │   ├─ api-tree.js    # nodeca.<namespace>.* (server, shared, client)
+  │       │   ├─ api-tree.js      # nodeca.<namespace>.* (server, shared, client)
   │       │   └─ i18n/
-  │       │       └─ <lang>.js  # nodeca.<namespace>.i18n.<lang>
+  │       │       └─ <lang>.json  # nodeca.<namespace>.i18n.<lang>
   │       └─ ...
   └─ sources/
       ├─ <app>/
@@ -51,9 +51,9 @@ tmp/
   ├─ output/
   │   ├─ system/
   │   │   ├─ <namespace>/
-  │   │   │   ├─ api-tree.js    # nodeca.<namespace>.* (server, shared, client)
+  │   │   │   ├─ api-tree.js      # nodeca.<namespace>.* (server, shared, client)
   │   │   │   └─ i18n/
-  │   │   │       └─ <lang>.js  # nodeca.<namespace>.i18n.<lang>
+  │   │   │       └─ <lang>.json  # nodeca.<namespace>.i18n.<lang>
   │   │   └─ ...
   │   ├─ assets/
   │   │   ├─ theme-<id>/*.*
@@ -80,9 +80,9 @@ tmp/
   ├─ output/
   │   ├─ system/
   │   │   ├─ <namespace>/
-  │   │   │   ├─ api-tree.js    # nodeca.<namespace>.* (server, shared, client)
+  │   │   │   ├─ api-tree.js      # nodeca.<namespace>.* (server, shared, client)
   │   │   │   └─ i18n/
-  │   │   │       └─ <lang>.js  # nodeca.<namespace>.i18n.<lang>
+  │   │   │       └─ <lang>.json  # nodeca.<namespace>.i18n.<lang>
   │   │   └─ ...
   │   ├─ assets/
   │   │   ├─ *.*
@@ -114,9 +114,9 @@ tmp/
   └─ output/
       ├─ system/
       │   ├─ <namespace>/
-      │   │   ├─ api-tree.js    # nodeca.<namespace>.* (server, shared, client)
+      │   │   ├─ api-tree.js      # nodeca.<namespace>.* (server, shared, client)
       │   │   └─ i18n/
-      │   │       └─ <lang>.js  # nodeca.<namespace>.i18n.<lang>
+      │   │       └─ <lang>.json  # nodeca.<namespace>.i18n.<lang>
       │   └─ ...
       ├─ assets/
       │   ├─ *.*
@@ -138,9 +138,9 @@ tmp/
   └─ output/
       ├─ system/
       │   ├─ <namespace>/
-      │   │   ├─ api-tree.js    # nodeca.<namespace>.* (server, shared, client)
+      │   │   ├─ api-tree.js      # nodeca.<namespace>.* (server, shared, client)
       │   │   └─ i18n/
-      │   │       └─ <lang>.js  # nodeca.<namespace>.i18n.<lang>
+      │   │       └─ <lang>.json  # nodeca.<namespace>.i18n.<lang>
       │   └─ ...
       ├─ assets/
       │   ├─ *.*
@@ -162,9 +162,9 @@ tmp/
   └─ output/
       ├─ system/
       │   ├─ <namespace>/
-      │   │   ├─ api-tree.js    # nodeca.<namespace>.* (server, shared, client)
+      │   │   ├─ api-tree.js      # nodeca.<namespace>.* (server, shared, client)
       │   │   └─ i18n/
-      │   │       └─ <lang>.js  # nodeca.<namespace>.i18n.<lang>
+      │   │       └─ <lang>.json  # nodeca.<namespace>.i18n.<lang>
       │   └─ ...
       ├─ assets/
       │   ├─ *.*
@@ -188,9 +188,9 @@ tmp/
   └─ output/
       ├─ system/
       │   ├─ <namespace>/
-      │   │   ├─ api-tree.js    # nodeca.<namespace>.* (server, shared, client)
+      │   │   ├─ api-tree.js      # nodeca.<namespace>.* (server, shared, client)
       │   │   └─ i18n/
-      │   │       └─ <lang>.js  # nodeca.<namespace>.i18n.<lang>
+      │   │       └─ <lang>.json  # nodeca.<namespace>.i18n.<lang>
       │   └─ ...
       ├─ assets/
       │   ├─ *.*
@@ -212,9 +212,9 @@ tmp/
   └─ output/
       ├─ system/
       │   ├─ <namespace>/
-      │   │   ├─ api-tree.js    # nodeca.<namespace>.* (server, shared, client)
+      │   │   ├─ api-tree.js      # nodeca.<namespace>.* (server, shared, client)
       │   │   └─ i18n/
-      │   │       └─ <lang>.js  # nodeca.<namespace>.i18n.<lang>
+      │   │       └─ <lang>.json  # nodeca.<namespace>.i18n.<lang>
       │   └─ ...
       ├─ assets/
       │   ├─ *.*
