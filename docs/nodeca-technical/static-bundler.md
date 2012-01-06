@@ -29,9 +29,9 @@ we generate API tree (with stubbed server methods) and i18n bundles:
 assets
  └─ system/
      ├─ <namespace>/
-     │   ├─ api-tree.js    # nodeca.<namespace>.* (server, shared, client)
+     │   ├─ api-tree.js      # nodeca.<namespace>.* (server, shared, client)
      │   └─ i18n/
-     │       └─ <lang>.js  # nodeca.<namespace>.i18n.<lang>
+     │       └─ <lang>.json  # nodeca.<namespace>.i18n.<lang>
      └─ ...
 ```
 
@@ -82,8 +82,8 @@ Views are compiled into one file (per language).
 ├─ views/
 │   ├─ theme-<id>/
 │   │   ├─ <namespace>
-│   │   │   ├─ <lang1>.js
-│   │   │   ├─ <lang2>.js
+│   │   │   ├─ <lang1>.json
+│   │   │   ├─ <lang2>.json
 │   │   │   └─ ...
 │   │   └─ ...
 │   └─ ...
@@ -117,8 +117,8 @@ assets/
  │   ├─ <namespace>/
  │   │   ├─ api-tree.js
  │   │   └─ i18n/
- │   │       ├─ <lang1>.js
- │   │       ├─ <lang2>.js
+ │   │       ├─ <lang1>.json
+ │   │       ├─ <lang2>.json
  │   │       └─ ...
  │   └─ ...
  │
@@ -131,8 +131,8 @@ assets/
  ├─ views/
  │   ├─theme-<id>/
  │   │   ├─ <namespace>
- │   │   │   ├─ <lang1>.js
- │   │   │   ├─ <lang2>.js
+ │   │   │   ├─ <lang1>.json
+ │   │   │   ├─ <lang2>.json
  │   │   │   └─ ...
  │   │   └─ ...
  │   └─ ...
