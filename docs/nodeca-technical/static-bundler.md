@@ -1,11 +1,23 @@
 Static Bundler
 --------------
 
-- prepare dynamic generated files (api-tree, languages)
-- grab all views and assets from all enabled applications
-- execute skinner to build themes
-- localize and compile views (for each theme)
-- run assets builder (patch/merge/minify)
+- prepare dynamic generated files (api-tree, languages).
+- make copy of all views and assets from all enabled applications
+  into tmp directories by app. make unque filenames for patch files.
+- move base themes (not inherited or extended) into one place.
+
+- merge extended themes into base themes.
+- prepare directories of inherited themes.
+  watch for inheritance tree.
+- merge non-theme assets.
+
+- apply patches for assets and views.
+- merge subdirs into files (`./assets/_foobar.js/*` -> `./assets/foobar.js`)
+
+- localize views (for each theme).
+
+- compile (jade -> json, stylus -> css).
+- uglify assets.
 
 
 ### Stage 1. Prepare dynamic data for assets
