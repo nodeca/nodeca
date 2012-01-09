@@ -1,6 +1,14 @@
 Images/Binaries & avatars
 =========================
 
+Design goals:
+
+* Low server resources usage
+* Extendable (possible to shard in future)
+* Permissions check (if needed, TBD)
+
+General comments:
+
 1. It's possible to store files in MongoDB GreedFS, but it's unclear how it
    affects other collections. So, we store data in file system at first release
    (and use database for meta info).
@@ -101,3 +109,15 @@ Web (default):
 ```
 /avatars
 ```
+
+Permissions
+===========
+
+Not shure, we ever need it. Take care of this cases:
+
+1. "Not for guests"
+2. Only for users, how can read this forum/group
+3. Private albums (do we really need those?)
+4. What to do, if item has several restrictions?
+5. How to keep interface simple?
+
