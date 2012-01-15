@@ -44,7 +44,16 @@ tmp/
 ```
 
 
-##### 1.3. move base themes (not inherited or extended) into one place.
+##### 1.3. make unique filenames for patches
+
+This is required to avoid name collisions on following step(s).
+Snapshot same as above.
+
+    *.(patch|before|after)          -> *.10.{md5}.(patch|before|after)
+    *.{prio}.(patch|before|after)   -> *.{prio}.{md5}.(patch|before|after)
+
+
+##### 1.4. move base themes (not inherited or extended) into one place.
 
 ```
 tmp/
@@ -73,7 +82,7 @@ tmp/
       └─ ...
 ```
 
-##### 1.4. merge non-theme assets.
+##### 1.5. merge non-theme assets.
 
 ```
 tmp/
