@@ -3,30 +3,30 @@ Images/Binaries & avatars
 
 Design goals:
 
-* Low server resources usage
-* Extendable (possible to shard in future)
+* Simple (for small sites/volumes)
+* Extendable (? switch backend)
+* Keep public URLs after extention
 * Permissions check (if needed, TBD)
 
 General comments:
 
-1. It's possible to store files in MongoDB GreedFS, but it's unclear how it
-   affects other collections. So, we store data in file system at first release
-   (and use database for meta info).
-2. We use nginx to resize AND cache previews:
+1. We use nginx to resize AND cache previews:
   [ngx_http_image_filter_module](http://nginx.org/en/docs/http/ngx_http_image_filter_module.html) and
   [ngx_http_proxy_module](http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_store).
-3. Make all pics public, where possible, to avoid permissions check.
+2. Make all pics public, where possible, to avoid permissions check.
 
 
-Buckets & files location
-========================
+Buckets & files location (simple/small)
+=======================================
 
-(?) Each image (or file) has 12-bytes id (bucket). (packed to 16-symbols name).
+(?) Each image (or file) has 12-bytes id (bucket).
 
-We have one path for public images, and second one for private. When file not
-available on public location, we try private with permissions check. 
+In simple/small config we use plain file system to store images, and db for
+meta info. 2 locations are possible: public and secure. If file is available
+on public location, permissions check is skipped. 
 
 Images have auto-generated previews.
+
 
 ## Size names
 
@@ -46,17 +46,21 @@ FS:
 
 ```
 /<storage>/
-  ├─ /public/<b1b2>/<b3b4>/<bucket>.(jpg|jpeg|tiff|png|gif|zip)
-  ├─ /pthumb/<b1b2>/<b3b4>/<bucket>(_<size>).jpg
   ├─ /secure/<b1b2>/<b3b4>/<bucket>.(jpg|jpeg|tiff|png|gif|zip)
-  └─ /sthumb/<b1b2>/<b3b4>/<bucket>(_<size>).jpg
+  ├─ /sthumb/<b1b2>/<b3b4>/<bucket>(_<size>).jpg
+  ├─ /public/<b1b2>/<b3b4>/@<bucket>.(jpg|jpeg|tiff|png|gif|zip) <- symlink
+  └─ /pthumb/<b1b2>/<b3b4>/@<bucket>(_<size>).jpg                <- symlink
 ```
+
+Public locations are symlinks. That allows easy permissions switch, without
+touching master file.
 
 Web (default):
 
 ```
 /files
 ```
+
 
 ## Access algorythm
 
