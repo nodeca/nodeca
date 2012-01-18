@@ -83,9 +83,9 @@ tmp/
 ```
 
 
-### Stage 2. Process theme assets/views
+### Stage 2. Merge modules assets & apply skin rules (inheritance/extentions)
 
-- *2.1.* merge extended themes into base themes.
+- *2.1.* merge extended themes files into base themes.
 - *2.2.* prepare directories of inherited themes. watch for inheritance tree.
 - *2.3.* merge non-theme assets. 
 
@@ -108,12 +108,12 @@ tmp/
 ```
 
 
-### Stage 3. Merge and patch assets
+### Stage 3. Apply patches & bundle `_*` dirs
 
 - *3.1.* apply patches for assets and views.
-- *3.2.* merge (bundle) subdirs into files
-  (`./assets/_foobar.js/*` -> `./assets/foobar.js`)
-- *3.3.* merge before/after mixins
+- *3.2.* merge (bundle) subdirs into files (`./assets/_foobar.js/*` -> `./assets/foobar.js`)
+  - *3.2.1* rename `./assets/_foobar.js/*` to `after` patch: `./assets/foobar.js.XXX.10.after` 
+  - *3.2.2* merge `after` mixins
 
 ```
 tmp/
