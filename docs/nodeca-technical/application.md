@@ -74,6 +74,7 @@ Here is short memo to see all sections at once:
 
 ```
 nodeca
+  logger                  # logger instance (winston)
   client                  # client methods
   server                  # server method
   shared                  # available on both client & server, mostly for helpers
