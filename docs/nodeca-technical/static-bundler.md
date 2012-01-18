@@ -82,41 +82,12 @@ tmp/
       └─ ...
 ```
 
-##### 1.5. merge non-theme assets.
-
-```
-tmp/
-  ├─ output/
-  │   ├─ system/
-  │   │   ├─ <namespace>/
-  │   │   │   ├─ api-tree.js      # nodeca.<namespace>.* (server, shared, client)
-  │   │   │   └─ i18n/
-  │   │   │       └─ <lang>.json  # nodeca.<namespace>.i18n.<lang>
-  │   │   └─ ...
-  │   ├─ assets/
-  │   │   ├─ *.*
-  │   │   ├─ theme-<id>/*.*
-  │   │   └─ ...
-  │   └─ views/
-  │       ├─ theme-<id>/*.*
-  │       └─ ...
-  └─ sources/
-      ├─ <app>/
-      │   ├─ assets/
-      │   │   ├─ theme-<id>/*.*
-      │   │   └─ ...
-      │   └─ views/
-      │       ├─ theme-<id>/*.*
-      │       └─ ...
-      └─ ...
-```
-
 
 ### Stage 2. Process theme assets/views
 
-- merge extended themes into base themes.
-- prepare directories of inherited themes.
-  watch for inheritance tree.
+- *2.1.* merge extended themes into base themes.
+- *2.2.* prepare directories of inherited themes. watch for inheritance tree.
+- *2.3.* merge non-theme assets. 
 
 ```
 tmp/
@@ -139,8 +110,10 @@ tmp/
 
 ### Stage 3. Merge and patch assets
 
-- apply patches for assets and views.
-- merge subdirs into files (`./assets/_foobar.js/*` -> `./assets/foobar.js`)
+- *3.1.* apply patches for assets and views.
+- *3.2.* merge (bundle) subdirs into files
+  (`./assets/_foobar.js/*` -> `./assets/foobar.js`)
+- *3.3.* merge before/after mixins
 
 ```
 tmp/

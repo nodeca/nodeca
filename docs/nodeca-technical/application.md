@@ -117,4 +117,3 @@ static data in local store, and refresh app on server upgrade.
   language:     "ru_RU"
 }
 ```
-
