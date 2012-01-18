@@ -111,9 +111,8 @@ tmp/
 ### Stage 3. Apply patches & bundle `_*` dirs
 
 - *3.1.* apply patches for assets and views.
-- *3.2.* merge (bundle) subdirs into files (`./assets/_foobar.js/*` -> `./assets/foobar.js`)
-  - *3.2.1* rename `./assets/_foobar.js/*` to `after` patch: `./assets/foobar.js.XXX.10.after` 
-  - *3.2.2* merge `after` mixins
+- *3.2.* merge (bundle) subdirs into files (`./assets/_foobar.js/*` -> `./assets/foobar.js`). If destination file exists,
+  bundle will be added BEFORE it. If destination file absents, it will be created.
 
 ```
 tmp/
