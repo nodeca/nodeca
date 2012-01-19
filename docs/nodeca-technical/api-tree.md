@@ -2,8 +2,8 @@ API Tree
 ========
 
 Most resources are mapped to API Tree structure `nodeca`. It can be different
-on server and slient, but some methods are specially converted for translared
-calls.
+on server and client. Also, some methods are specially converted to transparent
+remote calls.
 
 Full structure:
 

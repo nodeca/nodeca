@@ -48,6 +48,13 @@ Directores below are processed automaticallty during init.
 ```
 
 
+API Tree
+========
+
+Most components are available via `nodeca` object as nested parts.
+Details available in other files.
+
+
 Namespaces
 ==========
 
@@ -58,13 +65,6 @@ Physically, namespace is a directory.
 
 There are special `common` namespace for resources, that should be available everywhere.
 This namespace will be loaded to client for all pages.
-
-
-API Tree
-========
-
-Most components are available via `nodeca` object as nested parts.
-Details available in other files.
 
 
 Hooks
