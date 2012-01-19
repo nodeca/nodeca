@@ -60,61 +60,15 @@ There are special `common` namespace for resources, that should be available eve
 This namespace will be loaded to client for all pages.
 
 
+API Tree
+========
+
+Most components are available via `nodeca` object as nested parts.
+Details available in other files.
+
+
 Hooks
 =====
 
 TBD (how components can change default behaviour)
 
-
-API Tree
-========
-
-Most components are available via `nodeca` object as nested parts. Details available in other files.
-Here is short memo to see all sections at once:
-
-```
-nodeca
-  logger                  # logger instance (winston)
-  client                  # client methods
-  server                  # server method
-  shared                  # available on both client & server, mostly for helpers
-  permissions             # access rules
-  filters                 # hooks for server methods (mostly to attach access rules)
-  router                  # router
-  settings                # settings accessor (get/set, not tree)
-  config                  # see config description above.
-```
-
-
-Client Config
-=============
-
-Client config is generated in bundle + dynamically. It helps to properly cache
-static data in local store, and refresh app on server upgrade.
-
-``` javascript
-{
-  version:      "1.0.0"                     // Nodeca version
-  assets_root:  "//nodeca.com/assets/"      // Root URL for assets
-  crc: {                                    // Resources CRCs. If differ from local cache - need reload
-    phrases: {
-      forum:    "crc1"
-      blogs:    "crc2"
-      groups:   "crc3"
-      admin:    "crc4"
-    }
-    templates: {
-      forum:    "crc5"
-      blogs:    "crc6"
-      groups:   "crc7"
-      admin:    "crc8"
-    }
-  }
-  routes: {                                 // router configucation (from .yml files)
-  }
-
-  // Dynamically added for each client, via inline JS
-  debug:        true,                       // (optional) Disable caches & enable console.logs
-  language:     "ru_RU"
-}
-```
