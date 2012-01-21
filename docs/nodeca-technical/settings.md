@@ -23,9 +23,6 @@ YAML file structure
         - **values** - key-value dictionary for `dropdown` and `combobox` types
         - **default** - Default value. If not set, "empty" value used (false, 0, "", [], and so on)
         - **group** - Label used for grouping inside ACP
-        - **title** - Title for ACP. If not set, "humanized" *key* used (e.g.
-          `can_do_something` => `Can do something`)
-        - **description** - Markdown flavoured description for ACP
         - **priority** (default = 10) - Ordering priority for ACP
         - **before_show** - *TBD* JS code executed before showing setting in ACP
         - **before_save** - *TBD* JS code executed before saving setting
@@ -34,6 +31,8 @@ YAML file structure
           optional) - *TBD* reserved for future use
         - **subgroup** - used to simulate logical sub-groups in ACP settings groups
 
+`<key>_title` & `<key>_description` are defined in lang files. Description can
+use markdown.
 
 Example
 -------
