@@ -82,4 +82,4 @@ Existing stores
 - **app_users** (key, application, user_id) - stores user lists for applications
     (for example, lists of local administrators/moderators). Has boolean interface (check specific user in list,
     or add/remove user)
-- **global** (key)
+- **global** (key) - maps settings from config file, to use in filters
