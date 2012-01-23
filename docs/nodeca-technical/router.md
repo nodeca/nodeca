@@ -59,10 +59,18 @@ routes:
 -   **to**: Mandatory. Server method to be called.
 -   **params**: Optional. Parameters rules hash of key => rules.
     Each rule might be either `String` or `Object` that consist of fields:
-    -   *match* Mandatory. Rule to match value of param, `Array` or `RegExp`
-    -   *required* Optional. Default: false.
+    -   *match* Optional. Rule to match value of param, `Array` or `RegExp`.
+    -   *required* Optional. Default: true.
     -   *default* Optional. Default value of param.
-    Specifing rule as string is a shorthand syntax for `{ match: <rule> }`
+    Specifing rule as string (or regexp string) is a shorthand syntax for
+    -   `{ match: <rule> }` if regexp ro array:
+        -   `foo: /bar/` -> `foo: { match: /bar/, required: true }`
+        -   `foo: [1,2]` -> `foo: { match: [1,2], required: true }`
+    -   `{ value: <rule> }` otherwise
+        -   `foo: bar` -> `foo: { default: bar, required: false }`
+        -   `foo: 123` -> `foo: { default: 123, required: false }`
+
+**NOTICE** that *required* flag is ignored, if param have *default* value.
 
 
 ## Direct Invocators
@@ -169,7 +177,7 @@ redirect:
         var slugize = this.helpers.slugize;
         this.models.forum.find(forum_id, function (err, forum) {
           if (err) {
-            next(err);
+            cb(err);
             return;
           }
 
