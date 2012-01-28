@@ -19,6 +19,7 @@ under `nodeca.model`:
 └─ ...
 ```
 
+
 Simple case
 -----------
 
@@ -49,6 +50,7 @@ module.exports.remove = function remove(..., cb) {
   // ...
 };
 ```
+
 
 Complex cases
 -------------
@@ -90,3 +92,41 @@ module.exports.__init__ = function() {
 };
 ```
 
+
+### Hooks
+
+When we like to modify model, it can be done via hooks. Simple models can be
+changed via init phase hooks. Complex models (mongoose) require intrussion after
+schema load. That can be done with model hooks.
+
+``` javascript
+nodeca.hooks.models.on('forum.posts', [priority=10, ]function (model) {
+  /* ... */
+});
+```
+
+We define model path to track, priority (optional, when multiple hooks), and 
+monkeypatching function. Function takes exported model data and to anything it
+wish. Call is synchroneous.
+
+Example:
+
+``` javascript
+function lastModPlugin(schema, options) {
+  schema.add({ lastMod: Date });
+
+  schema.pre('save', function (next) {
+    this.lastMod = new Date;
+    next();
+  })
+
+  if (options && options.index) {
+    schema.path('lastMod').index(options.index);
+  }
+}
+
+nodeca.hooks.models.on('blog.entry', 5, function (model) {
+  model.Comments.plugin(lastModPlugin);
+  model.Entry.plugin(lastModPlugin, {index: true});
+}
+```

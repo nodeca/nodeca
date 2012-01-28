@@ -70,5 +70,13 @@ This namespace will be loaded to client for all pages.
 Hooks
 =====
 
-TBD (how components can change default behaviour)
+Hooks are used to attach external handlers on different modules. Most used cases
+are initialisation stages, models load and server methods invocation. Some hook
+types are async, others are not.
 
+_Examples for models and init_
+
+    nodeca.hooks.models.on('forum.posts', function (model) { /* ... */ });
+    nodeca.hooks.init.on('controllers-loaded', function (callback) { /* ... */ });
+
+Server modules hooks are called `filters` and described in server modules spec.
