@@ -12,7 +12,7 @@ Directores below are processed automaticallty during init.
 ├─ models/
 │   └─ *.js
 │
-├─ stores/
+├─ stores/                  # setting stores
 │   └─ *.js
 │
 ├─ views/theme-<id1>/.../   # similar to server method path
