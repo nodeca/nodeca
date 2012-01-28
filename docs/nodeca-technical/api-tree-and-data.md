@@ -19,8 +19,11 @@ nodeca
 
   # server only
 
+  model                   # server models (universal, implementation independent
+
+  hooks                   # hooks for app init phases & models init
   permissions             # access rules
-  filters                 # hooks for server methods (mostly to attach access rules)
+  filters                 # hooks for server modules (mostly to attach access rules)
   settings                # settings accessor (get/set, not tree)
   config                  # parsed config file.
   logger                  # logger instance (winston on server)
@@ -32,6 +35,11 @@ nodeca
     assets_root           # Root URL for assets `//nodeca.com/assets/`
     bundle                # info about namespaces from static builder
     router                # router instance, filled with routes from config
+
+    # server-specific
+    
+    mongoose              # mongoose instanse (it's not part of nlib, depends on application)
+    redis                 # redis instanse (also depends on application)
 
     # client-specific
 
