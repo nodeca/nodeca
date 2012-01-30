@@ -7,9 +7,8 @@
   "main": "index.js",
   "dependencies":
   {
-    "nodeca-lib": "https://github.com/nodeca/nodeca-lib/tarball/master",
-    "nodeca-core": "https://github.com/nodeca/nodeca-core/tarball/master",
-    "nodeca-users": "https://github.com/nodeca/nodeca-users/tarball/master",
-    "nodeca-translate": "https://github.com/nodeca/nodeca-translate/tarball/master"
+    "nlib"          : "git://github.com/nodeca/nlib.git",
+    "nodeca.core"   : "git://github.com/nodeca/nodeca.core.git",
+    "nodeca.forum"  : "git://github.com/nodeca/nodeca.forum.git"
   }
 }
