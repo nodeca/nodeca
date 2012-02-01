@@ -40,6 +40,10 @@ nodeca
     
     mongoose              # mongoose instanse (it's not part of nlib, depends on application)
     redis                 # redis instanse (also depends on application)
+    apps                  # Array of loaded applications
+    themes                # Configuration of loaded themes
+    bundled_assets        # Path to temp dir with bundled assets
+    assets_server         # StaticLulz filled with assets
 
     # client-specific
 
