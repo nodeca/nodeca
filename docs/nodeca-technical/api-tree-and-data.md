@@ -44,6 +44,8 @@ nodeca
     themes                # Configuration of loaded themes
     bundled_assets        # Path to temp dir with bundled assets
     assets_server         # StaticLulz filled with assets
+    locales               # loaded translations
+    translator            # BabelFish instance
 
     # client-specific
 
