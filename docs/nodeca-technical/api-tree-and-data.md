@@ -40,12 +40,9 @@ nodeca
     
     mongoose              # mongoose instanse (it's not part of nlib, depends on application)
     redis                 # redis instanse (also depends on application)
-    apps                  # Array of loaded applications
-    themes                # Configuration of loaded themes
-    bundled_assets        # Path to temp dir with bundled assets
-    assets_server         # StaticLulz filled with assets
-    locales               # loaded translations
-    translator            # BabelFish instance
+    bundled_assets        # path to temp dir with bundled assets
+    assets_server         # assets Server filled with assets
+    i18n                  # translator (BabelFish) instance
 
     # client-specific
 
