@@ -32,7 +32,7 @@ nodeca
 
   runtime                 # `dynamic` structures
     version               # "1.0.0"
-    assets_root           # Root URL for assets `//nodeca.com/assets/`
+    assets_baseurl        # Root URL for assets `//nodeca.com/assets/`
     bundle                # info about namespaces from static builder
     router                # router instance, filled with routes from config
 
@@ -40,7 +40,7 @@ nodeca
     
     mongoose              # mongoose instanse (it's not part of nlib, depends on application)
     redis                 # redis instanse (also depends on application)
-    bundled_assets        # path to temp dir with bundled assets
+    assets_path           # path to temp dir with bundled assets
     assets_server         # assets Server filled with assets
     i18n                  # translator (BabelFish) instance
 
