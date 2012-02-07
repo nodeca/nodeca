@@ -71,12 +71,13 @@ Hooks
 =====
 
 Hooks are used to attach external handlers on different modules. Most used cases
-are initialisation stages, models load and server methods invocation. Some hook
-types are async, others are not.
+are initialisation stages, models load and server methods invocation.
 
 _Examples for models and init_
 
-    nodeca.hooks.models.on('forum.posts', function (model) { /* ... */ });
-    nodeca.hooks.init.on('controllers-loaded', function (callback) { /* ... */ });
+    nodeca.hooks.models.before('forum.posts', function (model, callback) { /* ... */ });
+    nodeca.hooks.models.after('forum.posts', function (model, callback) { /* ... */ });
+    nodeca.hooks.init.before('forum.posts', function (callback) { /* ... */ });
+    nodeca.hooks.init.after('forum.posts', function (callback) { /* ... */ });
 
 Server modules hooks are called `filters` and described in server modules spec.
