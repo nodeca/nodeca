@@ -52,7 +52,7 @@ module.exports.list = function list(forum_id, sort_by, cb) { /* ... */ };
 
 // ...
 
-module.exports.__init__ = function (nodeca) {
+module.exports.__init__ = function () {
   nodeca.filters.after('list', function (next) {
     // See filters for details...
   });
@@ -82,7 +82,7 @@ module.exports.list = function list(params, next) {
 };
 
 
-module.exports.__init__ = function (nodeca) {
+module.exports.__init__ = function () {
   nodeca.filters.before('list', function (next) {
     this.test = 1;
     console.log('filter 1: ' + this.test);
@@ -237,10 +237,10 @@ module.exports.list = function list() { /* ... */ };
 
 // ...
 
-module.exports.__init__ = function (nodeca, filters, permissions) {
-  filters.before('list', function () { /* ... */ });
+module.exports.__init__ = function () {
+  nodeca.filters.before('list', function () { /* ... */ });
   // equals to:
-  filters.before('::admin.users.list', function () { /* ... */ });
+  nodeca.filters.before('::admin.users.list', function () { /* ... */ });
 };
 ```
 
@@ -251,18 +251,18 @@ You can use `@` as reference to current API tree node:
 
 // ...
 
-module.exports.__init__ = function (nodeca, filters, permissions) {
-  filters.before('@', function () { /* ... */ });
+module.exports.__init__ = function () {
+  nodeca.filters.before('@', function () { /* ... */ });
   // equals to:
-  filters.before('::admin.users', function () { /* ... */ });
+  nodeca.filters.before('::admin.users', function () { /* ... */ });
 
   // you can use @ as prefix
 
-  filters.before('list', function () { /* ... */ });
+  nodeca.filters.before('list', function () { /* ... */ });
   // equals to:
-  filters.before('@.list', function () { /* ... */ });
+  nodeca.filters.before('@.list', function () { /* ... */ });
   // equals to:
-  filters.before('::admin.users.list', function () { /* ... */ });
+  nodeca.filters.before('::admin.users.list', function () { /* ... */ });
 };
 ```
 
