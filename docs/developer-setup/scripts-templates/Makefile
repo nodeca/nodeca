@@ -13,7 +13,16 @@ GITHUB_PROJ := nodeca/${NPM_PACKAGE}
 SRC_URL_FMT := https://github.com/${GITHUB_PROJ}/blob/${CURR_HEAD}/{file}\#L{line}
 
 
-test-all: lint test
+help:
+	echo "make help       - Print this help"
+	echo "make lint       - Lint sources with JSHint"
+	echo "make test       - Lint sources and run all tests"
+	echo "make doc        - Build API docs"
+	echo "make dev-deps   - Install developer dependencies"
+	echo "make gh-pages   - Build and push API docs into gh-pages branch"
+	echo "make publish    - Set new version tag and publish npm package"
+	echo "make todo       - Find and list all TODOs"
+
 
 lint:
 	if test ! `which jshint` ; then \
@@ -23,13 +32,15 @@ lint:
 		fi
 	jshint . --show-non-errors
 
-test:
+
+test: lint
 	@if test ! `which vows` ; then \
 		echo "You need 'vows' installed in order to run tests." >&2 ; \
 		echo "  $ make dev-deps" >&2 ; \
 		exit 128 ; \
 		fi
 	NODE_ENV=test vows --spec
+
 
 doc:
 	@if test ! `which ndoc` ; then \
@@ -40,6 +51,7 @@ doc:
 	rm -rf ./doc
 	ndoc --output ./doc --linkFormat "${SRC_URL_FMT}" ./lib
 
+
 dev-deps:
 	@if test ! `which npm` ; then \
 		echo "You need 'npm' installed." >&2 ; \
@@ -48,6 +60,7 @@ dev-deps:
 		fi
 	npm install jshint -g
 	npm install --dev
+
 
 gh-pages:
 	@if test -z ${REMOTE_REPO} ; then \
@@ -66,6 +79,7 @@ gh-pages:
 		git push --force remote +master:gh-pages 
 	rm -rf ${TMP_PATH}
 
+
 publish:
 	@if test 0 -ne `git status --porcelain | wc -l` ; then \
 		echo "Unclean working tree. Commit or stash changes first." >&2 ; \
@@ -78,9 +92,10 @@ publish:
 	git tag ${NPM_VERSION} && git push origin ${NPM_VERSION}
 	npm publish https://github.com/${GITHUB_PROJ}/tarball/${NPM_VERSION}
 
+
 todo:
 	grep 'TODO' -n -r ./lib 2>/dev/null || test true
 
 
 .PHONY: publish lint test doc dev-deps gh-pages todo
-.SILENT: lint test doc todo
+.SILENT: help lint test doc todo
