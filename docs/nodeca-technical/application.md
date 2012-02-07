@@ -75,8 +75,7 @@ are initialisation stages, models load and server methods invocation.
 
 _Examples for models and init_
 
-    nodeca.hooks.models.before('forum.posts', function (model, callback) { /* ... */ });
-    nodeca.hooks.models.after('forum.posts', function (model, callback) { /* ... */ });
+    nodeca.hooks.models.on('forum.posts', function (model, callback) { /* ... */ });
     nodeca.hooks.init.before('forum.posts', function (callback) { /* ... */ });
     nodeca.hooks.init.after('forum.posts', function (callback) { /* ... */ });
 
