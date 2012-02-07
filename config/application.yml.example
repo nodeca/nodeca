@@ -6,23 +6,16 @@ general:
 
   languages:
 
-    # *** Optional. Default application locale
-    # Default: en-US
-    default: ru-RU
-
     # *** Optional. List of enabled locales
-    # Default: [en-US]
+    # Default: all locales that were found.
     enabled:
       - en-US
       - en-GB
       - ru-RU
 
-    # *** Optional. Map of language -> default culture
-    # There's no point for aliases for languages with only one culture (e.g.
-    # ru-RU) we auto-guess such aliases automagically
-    # Default: no default value
-    aliases:
-      en: en-US
+    # *** Optional. Default application locale
+    # Default: first enabled locale.
+    default: ru-RU
 
   #
   # (Optional) Themes configuration. Use, if you don't wish to show all themes.
@@ -77,8 +70,3 @@ development:
     host: 127.0.0.1
     port: 8000
     path: /
-
-
-################################################################################
-# vim:ft=yaml:ts=2:sw=2
-################################################################################
