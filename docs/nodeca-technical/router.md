@@ -1,8 +1,12 @@
 # Router
 
-For server and client purposes we use [CrossRoads][router] router.
+For server and client purposes we use [NRouter][router] router.
 Routes are described in YAML and bundled into main api tree file as
 `nodeca.config.routes` after init. Router instanse is placed at `nodeca.router`.
+
+TBD:  Right now we load ONY `routes.yml`. Needs clarification what we really
+      need to load and how, especially if we are going to merge all config files
+      into config subtree (regrdless to the filenames).
 
 We use two types of files: `default_routes.yml` for application default routes
 and `routes.yml` in main application, that mounts routes and API tree nodes to
@@ -20,35 +24,34 @@ routes:
     to: forums.list
     params:
       forum_id: /\d+/
-  "/f{forum_id}/index{page}.html":
+  "/f{forum_id}/index({page}).html":
     to: forums.list
     params:
       forum_id: /\d+/
-      page: /[2-9]|[1-9]\d+/
-  "/f{forum_id}/thread{thread_id}.html":
+      page:
+        match: /[2-9]|[1-9]\d+/
+        default: 1
+  "/f{forum_id}/thread{thread_id}(-{page}).html":
     to: forums.threads.show
     params:
       forum_id: /\d+/
       thread_id: /\d+/
-  "/f{forum_id}/thread{thread_id}-{page}.html":
-    to: forums.threads.show
-    params:
-      forum_id: /\d+/
-      thread_id: /\d+/
-      page: /[2-9]|[1-9]\d+/
+      page:
+        match: /[2-9]|[1-9]\d+/
+        default: 1
   "/f{forum_id}/thread{thread_id}-{goto}.html":
     to: forums.threads.redirect
     params:
       forum_id: /\d+/
       thread_id: /\d+/
-      goto: [ 'new-post', 'last-post' ]
+      goto: /new-post|last-post/
   "/search/":
     to: search
   "#/users/profile/{user_id}/{tab}":
     to: users.profile
     params:
       user_id: /\d+/
-      tab: [ 'general', 'last-msgs' ]
+      tab: /general|last-msgs/
 ```
 
 **NOTICE** Routes with leading `#` are used by clients ONLY.
@@ -60,18 +63,9 @@ routes:
 -   **params**: Optional. Parameters rules hash of key => rules.
     Each rule might be either `String` or `Object` that consist of fields:
     -   *match* Optional. Rule to match value of param, `Array` or `RegExp`.
-    -   *required* Optional. Default: true.
     -   *default* Optional. Default value of param.
-    Specifing rule as string (or regexp string) is a shorthand syntax for
-    -   `{ match: <rule> }` if regexp ro array:
-        -   `foo: /bar/` -> `foo: { match: /bar/, required: true }`
-        -   `foo: [1,2]` -> `foo: { match: [1,2], required: true }`
-    -   `{ value: <rule> }` otherwise
-        -   `foo: bar` -> `foo: { default: bar, required: false }`
-        -   `foo: 123` -> `foo: { default: 123, required: false }`
 
-**NOTICE** that *required* flag is ignored, if param have *default* value.
-
+See NRouter Route Options documentation for details of `params` options.
 
 ## Direct Invocators
 
@@ -235,4 +229,4 @@ link_to(forums.list, {forum_id: 123, page: 3});
 ```
 
 
-[router]: https://github.com/millermedeiros/crossroads.js
+[router]: https://github.com/ixti/nrouter
