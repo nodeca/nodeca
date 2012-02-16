@@ -267,6 +267,27 @@ module.exports.__init__ = function () {
 ```
 
 
+## Redirect
+
+
+Sometimes you need to redirect request with 301 or 302 HTTP code. For this
+purpose you can pass `Object` with `redirect` property defined as `[code, url]`
+to the callback of your _filter_ or _server method_.
+
+``` javascript
+// file:./server/forum/random_page.js
+
+module.exports = function (params, next) {
+  var post, url;
+
+  // get random post here
+
+  url = nodeca.runtime.router.linkTo('forum.posts.show', post);
+  next({redirect: [302, url]});
+};
+```
+
+
 ## Permissions
 
 Permissions are special case filters which are defined in a DSL way and then
