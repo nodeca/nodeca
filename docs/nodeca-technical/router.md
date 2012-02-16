@@ -67,6 +67,66 @@ routes:
 
 See NRouter Route Options documentation for details of `params` options.
 
+
+### Optional parts of patterns for slugs
+
+Some apps may provide `slugs` for some of their routes. One may use them as
+optional part of the route pattern:
+
+``` yaml
+routes:
+  "/qa/({category.slug}/){post_id}(-{slug}).html":
+    to: faq.post.show
+```
+
+The route above will match any of the following URLs:
+
+- `/qa/123.html`
+- `/qa/123-pochemu-krokodil-zelyoni.html`
+- `/qa/animals/123-pochemu-krokodil-zelyoni.html`
+
+App developers, who provide such option, should care about correct behavior on
+requesting such URLs. Recommended behavior is to redirect all non-full URLs
+with 302 code by attaching before filter on the server method, e.g.:
+
+``` javscript
+nodeca.filters.before('::faq.post.show', function (params, next) {
+  var env = this;
+
+  NLib.Vendor.Async.waterfall([
+    NLib.Vendor.Async.apply(nodeca.models.faq.post.find, params.post_id),
+    function (post, next) {
+      var url = nodeca.runtime.router.linkTo('faq.post.show', post);
+
+      if (url && url !== env.request.url) {
+        next({redirect: [302, url]});
+        return;
+      }
+
+      next();
+    }
+  ], next);
+});
+```
+
+By default we are doing something similar to above, right each server method,
+trying to get "full" url for a route named same as server method and passing
+`env.data` as params object, so it looks really close to this:
+
+``` javscript
+nodeca.filters.before('::faq.post.show', function (params, next) {
+  var url = nodeca.runtime.router.linkTo('faq.post.show', this.env.data);
+
+  if (url && url !== this.env.request.url) {
+    next({redirect: [302, url]});
+    return;
+  }
+
+  next();
+});
+```
+
+
 ## Direct Invocators
 
 Sometimes we want API methods to be accessible via direct HTTP links and browser
