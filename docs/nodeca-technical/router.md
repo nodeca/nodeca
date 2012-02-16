@@ -89,7 +89,7 @@ App developers, who provide such option, should care about correct behavior on
 requesting such URLs. Recommended behavior is to redirect all non-full URLs
 with 302 code by attaching before filter on the server method, e.g.:
 
-``` javscript
+``` javascript
 nodeca.filters.before('::faq.post.show', function (params, next) {
   var env = this;
 
@@ -113,7 +113,7 @@ By default we are doing something similar to above, right each server method,
 trying to get "full" url for a route named same as server method and passing
 `env.data` as params object, so it looks really close to this:
 
-``` javscript
+``` javascript
 nodeca.filters.before('::faq.post.show', function (params, next) {
   var url = nodeca.runtime.router.linkTo('faq.post.show', this.env.data);
 
