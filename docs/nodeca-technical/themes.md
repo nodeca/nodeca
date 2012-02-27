@@ -42,12 +42,12 @@ Theme config
 
 ``` yaml
 ---
-  # Use `inherit` or `extend` if theme is based on another one.
-  # `inrerit` creates a new theme, `extend` modifies existing.
+  # Use `inherits` or `extends` if theme is based on another one.
+  # `inrerits` creates a new theme, `extends` modifies existing.
   # When both absent, than means that it's a root theme with complete file set.
   
-  # inherit: parent_id
-  # extend: parent_id
+  # inherits: parent_id
+  # extends: parent_id
 
   name:  Mobile Theme       # Full name of theme. Don't mix up with theme id.
 

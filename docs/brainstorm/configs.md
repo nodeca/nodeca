@@ -2,78 +2,247 @@ Configuration Files
 ===================
 
 All configuration files are kept under `./config` directory. There are no any
-restrictions on naming these files. Each file should contain a configuration
-tree starting from the root node, in other words their paths are not respected:
+restrictions on naming of these files. Each file should contain a configuration
+tree starting from the root node, in other words their paths are not respected.
+
+All trees are merged together. Values from main application config are taking
+precedence. There's an exact list of first-level keys available in config files
+other than those keys will be ignored.
+
+
+applications
+------------
+
+Holds config specific for separate applications.
+Second level of the section should be application name.
+
+TBD: Info about !disabled tag
+TBD: Info about default options with on/off
+
+*Example:*
 
 ``` yaml
---- # file: ./config/routes/foobar.yml
-settings:
-  usergroups:
-    # ...
+applications:
+  nodeca.core:
+    listen:
+      host: nodeca.org
+      port: 80
+
+  nodeca.forum: on
 ```
 
-Trees of all config files are merged in one. Each file provides configuration
-that starts from the root node of config object, e.g.:
 
-``` yamls
----
-router:
-  mount:
-    # ...
+database (main app only)
+------------------------
+
+Holds configuration of connection to redis and mongo databases.
+
+*Example:*
+
+``` yaml
+database:
+  redis:
+    host: localhost
+    port: 6379
+    index: 0
+
+  mongo:
+    host: localhost
+    port: 27017
+    database: nodeca
+    user: mongol
+    password: shuudan
 ```
 
-will become available as `nodeca.config.routes.mount` object.
 
-
-Per-environment configs
+locales (main app only)
 -----------------------
 
-If file contains `general` section as one of first-level keys, then file will be
-treaten as environment dependent and it will result in merging `general` section
-with section named the same as current environment (`nodeca.env`):
+Holds configuration of enabled and default locale.
+TBD: Describe defaults etc (see comments in example).
 
-```
----
-general:
-  modules:
-    nodeca.core: on
+*Example:*
 
-development:
-  modules:
-    nodeca.debug: on
-```
+``` yaml
+locales:
 
-Configuration above will become
+  # *** Optional. List of enabled locales
+  # Default: all locales that were found.
+  enabled:
+    - en-US
+    - en-GB
+    - ru-RU
 
-```
-modules:
-  nodeca.core: on
-  nodeca.debig: on
+  # *** Optional. Default application locale
+  # Default: first enabled locale.
+  default: ru-RU
 ```
 
-on `development` and:
 
+i18n
+----
+
+Holds translation phrases.
+Second level of the section should be locale.
+
+*Example:*
+
+``` yaml
+i18n:
+  en-US:
+    admin:
+      dashboard:
+        registration_stats: >
+          Since your last visit on #{last_visit} there were #{noobs_count}
+          new %{user|users}:noobs_count. Please, review #{noobs_review_link}.
+        pending_registrations: pending registrations
 ```
-modules:
-  nodeca.core: on
+
+
+theme\_schemas
+--------------
+
+Holds theme configuration.
+Second level of the section if theme id.
+See [themes config specification][theme.specs] for details.
+
+*Example:*
+
+```yaml
+theme_schemas:
+  desktop-default:
+    name: Default Default Theme
+
+  deep-purple:
+    name: Deep Purple Desktop Theme
+    inherits: desktop-default
 ```
 
-on any other.
+
+themes (main app only)
+----------------------
+
+*OPTIONAL*
+*DEFAULT: all installed themes*
+
+Holds white/black list of themes.
+You can specify whenether you want whitelist of blaklist by using special
+tag `!whitelist` or `!blacklist`. By default (if no tag provided) we treat
+the value as whitelist.
+
+*Example:*
+
+``` yaml
+themes: !blacklist
+  - red-hot-moon
+  - deep-purple
+```
 
 
-First-level sections
---------------------
+setting\_schemas
+----------------
 
-Although we do not apply any restrictions on filenames, we restrict list of
-first-level sections of config tree. That means that any keys not listed in the
-list below and presented in your config file as first-level sections will cause
-application error.
+Holds configuration of settings definitions for building admin interface.
+TBD: Describe info about stores etc.
+
+*Example:*
+
+``` yaml
+setting_schemas:
+  app_users:
+    nodeca.forum:
+      can_admin:
+        title: Allow administrate forum application
+        default: false
+        type: boolean
+```
+
+settings (main app only)
+------------------------
+
+Holds values of `config` settings store.
+TBD: Explain what this store is.
+
+*Example:*
+
+``` yaml
+settings:
+  results_pre_page: 25
+```
 
 
--   *i18n*: Translated phrases
--   *router*: Routes configuration (see Router spec)
--   *themes*: Themes configuration (see Themes spec)
--   *settings*: Settings configuration (see Settings spec)
--   *application*: Application specific configuration. This will not become
-    part of `nodeca.config`, but will be available as configuration of each
-    application it belongs to.
+routes
+------
+
+Holds routes for server methods.
+TBD: Info about !clean tag
+
+*Example:*
+
+``` yaml
+routes:
+  forum.list:
+    "/f{forum_id}/":
+      params:
+        forum_id: /\d+/
+
+    "/f{forum_id}/index{page}.html":
+      params:
+        forum_id: /\d+/
+        page: /[2-9]|[1-9]\d+/
+```
+
+
+redirects (main app only)
+-------------------------
+
+Holds redirections map.
+TBD: Detailed info.
+
+*Example:*
+
+``` yaml
+redirects:
+  "/f{forum_id}/thread{thread_id}.aspx":
+    to: [ 301, "/t-{forum_id}-{thread_id}.html" ]
+    params:
+      forum_id: /\d+/
+      thread_id: /\d+/
+```
+
+direct\_invocators
+------------------
+
+Holds list of server methods that may be used directly via HTTP.
+TBD: Describe how we can bulk-disable methods on path basis using wilcards.
+TBD: Info about !clean tag
+
+*Example:*
+
+``` yaml
+direct_invocators:
+  forums.threads.show: on
+  forums.threads.update: off
+```
+
+
+mount (main app only)
+---------------------
+
+Holds configuration of mount points.
+TBD.
+
+``` yaml
+mount:
+  # Default mount point
+  default: //nodeca.org
+
+  # Mount all nodeca.server.forum.* methods under domain `forums.nodeca.org`
+  forum:  //forums.nodeca.org
+
+  # Mount all ndoeca.server.blog.* methods under path `/blogs`
+  blog:   /blogs
+```
+
+
+[theme.specs]: #
