@@ -16,10 +16,7 @@ Available sections
 ### applications
 
 Holds config specific for separate applications.
-Second level of the section should be application name.
-
-TBD: Info about !disabled tag
-TBD: Info about default options with on/off
+Second level of the section should be application name and it's state on/off.
 
 *Example:*
 
@@ -33,12 +30,31 @@ applications:
 
 ### listen (main app only)
 
-TBD
+Holds configuration of where HTTP server should be bounded. This will become
+"default mount point" as well.
+
+Listen can hold two inner options:
+
+- **host** (Default: `localhost`)
+- **port** (Default: `3000`)
+
+*Example:*
+
+``` yaml
+listen:
+  host: localhost
+  port: 3000
+```
 
 
 ### database (main app only)
 
-Holds configuration of connection to redis and mongo databases.
+Holds configuration of connection databases.
+
+Possible inner keys (with options):
+
+- **redis**: Connection options of Redis.
+- **mongo**: Connection options of MongoDB.
 
 *Example:*
 
@@ -60,23 +76,22 @@ database:
 
 ### locales (main app only)
 
-Holds configuration of enabled and default locale.
-TBD: Describe defaults etc (see comments in example).
+Holds configuration of enabled and default locale(s).
+
+Possible inner keys:
+
+- **enabled**: Array of enabled locales. Default: all found locales.
+- **default**: Default locale. Default: first enabled locale.
 
 *Example:*
 
 ``` yaml
 locales:
-
-  # *** Optional. List of enabled locales
-  # Default: all locales that were found.
   enabled:
     - en-US
     - en-GB
     - ru-RU
 
-  # *** Optional. Default application locale
-  # Default: first enabled locale.
   default: ru-RU
 ```
 
@@ -103,8 +118,9 @@ i18n:
 ### theme\_schemas
 
 Holds theme configuration.
-Second level of the section if theme id.
-See [themes config specification][theme.specs] for details.
+Second level of the section is theme id.
+
+See [themes config specification][themes] for details.
 
 *Example:*
 
@@ -121,10 +137,10 @@ theme_schemas:
 
 ### themes (main app only)
 
-*OPTIONAL*
-*DEFAULT: all installed themes*
-
 Holds white/black list of themes.
+
+*DEFAULT: whitelist all installed themes*
+
 You can specify whenether you want whitelist of blaklist by using special
 tag `!whitelist` or `!blacklist`. By default (if no tag provided) we treat
 the value as whitelist.
@@ -155,10 +171,11 @@ setting_schemas:
         type: boolean
 ```
 
+
 ### settings (main app only)
 
-Holds values of `config` settings store.
-TBD: Explain what this store is.
+Holds values of `global` settings store.
+See [settings][settings] specifications for details.
 
 *Example:*
 
@@ -171,35 +188,47 @@ settings:
 ### routes
 
 Holds routes for server methods.
-TBD: Info about !clean tag
+
+Routes are defined for server methods and merged by default.
+You may provide routes with `!clean` tag in main application config to override
+all routes of given server method.
+
+See [router specification][router] for details.
 
 *Example:*
 
 ``` yaml
 routes:
+  admin.dashboard:
+    "/admin": ~
+
   forum.list:
     "/f{forum_id}/":
-      params:
-        forum_id: /\d+/
+      forum_id: /\d+/
 
     "/f{forum_id}/index{page}.html":
-      params:
-        forum_id: /\d+/
-        page: /[2-9]|[1-9]\d+/
+      forum_id: /\d+/
+      page: /[2-9]|[1-9]\d+/
+
+  blog.posts.show: !clean
+    "/{id}-{slug}.html":
+      id: /\d+/
 ```
 
 
 ### redirects (main app only)
 
 Holds redirections map.
-TBD: Detailed info.
+
+See [router specification][router] for details.
 
 *Example:*
 
 ``` yaml
 redirects:
   "/f{forum_id}/thread{thread_id}.aspx":
-    to: [ 301, "/t-{forum_id}-{thread_id}.html" ]
+    to: "/t-{forum_id}-{thread_id}.html"
+    code: 301
     params:
       forum_id: /\d+/
       thread_id: /\d+/
@@ -208,8 +237,11 @@ redirects:
 ### direct\_invocators
 
 Holds list of server methods that may be used directly via HTTP.
-TBD: Describe how we can bulk-disable methods on path basis using wilcards.
-TBD: Info about !clean tag
+
+See [router specification][router] for details.
+
+Just like routes, directo invocators are merged by default, but you can describe
+them with `!clean` tag in orver to override all invocators in main app.
 
 *Example:*
 
@@ -223,7 +255,8 @@ direct_invocators:
 ### mount (main app only)
 
 Holds configuration of mount points.
-TBD.
+
+See [router specification][router] for details.
 
 ``` yaml
 mount:
@@ -270,4 +303,6 @@ listen:                   # applied to any environment
 ```
 
 
-[theme.specs]: #
+[themes]: https://github.com/nodeca/nodeca/blob/master/docs/nodeca-technical/themes.md
+[settings]: https://github.com/nodeca/nodeca/blob/master/docs/nodeca-technical/settings.md
+[router]: https://github.com/nodeca/nodeca/blob/master/docs/nodeca-technical/router.md
