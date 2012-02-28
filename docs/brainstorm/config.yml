@@ -164,7 +164,8 @@ routes:
 
 redirects:
   "/f{forum_id}/thread{thread_id}.aspx":
-    to: [ 301, "/t-{forum_id}-{thread_id}.html" ]
+    to: "/t-{forum_id}-{thread_id}.html"
+    code: 301
     params:
       forum_id: /\d+/
       thread_id: /\d+/

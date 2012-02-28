@@ -258,6 +258,8 @@ Holds configuration of mount points.
 
 See [router specification][router] for details.
 
+*Example:*
+
 ``` yaml
 mount:
   # Mount all nodeca.server.forum.* methods under domain `forums.nodeca.org`
@@ -281,9 +283,9 @@ environment-specified options tak precedence over general.
 
 In the example below, `listen` will become:
 
-  - when `NODECA_ENV=production`: `{host: nodeca.org, port: 80}`
-  - when `NODECA_ENV=development`: `{host: localhost, port: 8080}`
-  - else: `{host: localhost, port: 80}`
+- when `NODECA_ENV=production`: `{host: nodeca.org, port: 80}`
+- when `NODECA_ENV=development`: `{host: localhost, port: 8080}`
+- else: `{host: localhost, port: 80}`
 
 *Example:*
 
@@ -303,6 +305,6 @@ listen:                   # applied to any environment
 ```
 
 
-[themes]: https://github.com/nodeca/nodeca/blob/master/docs/nodeca-technical/themes.md
+[themes]:   https://github.com/nodeca/nodeca/blob/master/docs/nodeca-technical/themes.md
 [settings]: https://github.com/nodeca/nodeca/blob/master/docs/nodeca-technical/settings.md
-[router]: https://github.com/nodeca/nodeca/blob/master/docs/nodeca-technical/router.md
+[router]:   https://github.com/nodeca/nodeca/blob/master/docs/nodeca-technical/router.md
