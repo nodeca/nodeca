@@ -1,0 +1,55 @@
+#
+# Routes
+#
+
+routes:
+  forum.list:
+    "/f{forum_id}/":
+      params:
+        forum_id: /\d+/
+
+    "/f{forum_id}/index{page}.html":
+      params:
+        forum_id: /\d+/
+        page: /[2-9]|[1-9]\d+/
+
+  # all configs are merged
+  # in order to "override", use `!clean` tag
+
+  forum.threads.show: !clean
+    "/f{forum_id}/thread{thread_id}.html":
+      params:
+        forum_id: /\d+/
+        thread_id: /\d+/
+
+
+#
+# Redirects
+#
+
+redirects:
+  "/f{forum_id}/thread{thread_id}.php":
+    to: [301, "/t-{forum_id}-{thread_id}.html"]
+    params:
+      forum_id: /\d+/
+      thread_id: /\d+/
+
+
+#
+# List of enabled/disabled direct invocators
+#
+
+direct_invocators:
+  forums.threads.show: on
+  forums.threads.update: off
+
+#
+# Mount points
+#
+
+mount:
+  # Mount all nodeca.server.forum.* methods under domain `forums.nodeca.org`
+  forum:  //forums.nodeca.org
+
+  # Mount all ndoeca.server.blog.* methods under path `/blogs`
+  blog:   /blogs

@@ -1,0 +1,66 @@
+#
+# Applications
+#
+
+applications:
+  nodeca.core: on
+  nodeca.forum: on
+  nodeca.debug: off
+
+
+#
+# Locales
+#
+
+# locales:
+#
+#   # List of enabled locales
+#   #
+#   # DEFAULT: all locales that were found.
+#   enabled:
+#     - en-US
+#     - en-GB
+#     - ru-RU
+#
+#   # Default application locale
+#   #
+#   # DEFAULT: first enabled locale.
+#   default: ru-RU
+
+
+#
+# Themes whitelist/blacklist
+#
+
+# You can specify either whitelist:
+#
+#   themes: !whitelist
+#     - deep-purple
+#     - pink-floyd
+#
+# or blacklist of enabled themes:
+#
+#   themes: !blacklist
+#     - yellow-submarine
+#
+# DEFAULT: All available themes.
+
+
+#
+# Listen
+#
+
+listen:
+  host: localhost
+  port: 3000
+
+
+#
+# Environment-dependent configs
+#
+
+
+^production:
+  listen:
+    host: localhost
+    port: 80

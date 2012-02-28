@@ -1,0 +1,6 @@
+#
+# Settings (values of `config` store)
+#
+
+settings:
+  results_pre_page: 25
