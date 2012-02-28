@@ -1,6 +1,6 @@
 # Router
 
-For server and client purposes we use [NRouter][router] router.
+For server and client purposes we use [Pointer][router] router.
 Routes are described in YAML and bundled into main api tree file as
 `nodeca.config.routes` after init. Router instanse is placed at `nodeca.router`.
 
@@ -20,36 +20,34 @@ only.
 ``` yaml
 --- # file: ./config/default_routes.yml
 routes:
-  "/f{forum_id}/":
-    to: forums.list
-    params:
+  forums.list:
+    "/f{forum_id}/":
       forum_id: /\d+/
-  "/f{forum_id}/index({page}).html":
-    to: forums.list
-    params:
+    "/f{forum_id}/index({page}).html":
       forum_id: /\d+/
       page:
         match: /[2-9]|[1-9]\d+/
         default: 1
-  "/f{forum_id}/thread{thread_id}(-{page}).html":
-    to: forums.threads.show
-    params:
+
+  forums.threads.show:
+    "/f{forum_id}/thread{thread_id}(-{page}).html":
       forum_id: /\d+/
       thread_id: /\d+/
       page:
         match: /[2-9]|[1-9]\d+/
         default: 1
-  "/f{forum_id}/thread{thread_id}-{goto}.html":
-    to: forums.threads.redirect
-    params:
+
+  forums.threads.redirect:
+    "/f{forum_id}/thread{thread_id}-{goto}.html":
       forum_id: /\d+/
       thread_id: /\d+/
       goto: /new-post|last-post/
-  "/search/":
-    to: search
-  "#/users/profile/{user_id}/{tab}":
-    to: users.profile
-    params:
+
+  search:
+    "/search/": ~
+
+  users.profile:
+    "#/users/profile/{user_id}/{tab}":
       user_id: /\d+/
       tab: /general|last-msgs/
 ```
@@ -57,15 +55,17 @@ routes:
 **NOTICE** Routes with leading `#` are used by clients ONLY.
 
 
-### Options
+### Route Params Options
 
--   **to**: Mandatory. Server method to be called.
--   **params**: Optional. Parameters rules hash of key => rules.
-    Each rule might be either `String` or `Object` that consist of fields:
+OPTIONAL.
+
+Parameters rules hash of key => rules.
+Each rule might be either `String` or `Object` that consist of fields:
+
     -   *match* Optional. Rule to match value of param, `Array` or `RegExp`.
     -   *default* Optional. Default value of param.
 
-See NRouter Route Options documentation for details of `params` options.
+See [Pointer][router] Route Options documentation for details of `params` options.
 
 
 ### Slugs (optional)
@@ -74,8 +74,8 @@ Routes can contain slugs.Thegnically, that's usual non obligatory params.
 
 ``` yaml
 routes:
-  "/qa/({categoryslug}/){post_id}(-{postslug}).html":
-    to: faq.post.show
+  faq.post.show:
+    "/qa/({categoryslug}/){post_id}(-{postslug}).html": ~
 ```
 
 The route above will match any of the following URLs:
@@ -98,13 +98,13 @@ history. For this purpose we use *direct invocator* rule which looks like:
 
 `/!{methodname}?param1=val1&...&paramN=valN`
 
-Technically, such link will run page loader first, then update page inline. 
+Technically, such link will run page loader first, then update page inline.
 
 ``` yaml
 --- # file: ./config/default_routes.yml
-direct:
-  - forums.threads.show
-  - search
+direct_invocators:
+  forums.threads.show: on
+  search: on
 ```
 
 **CAUTION**. NEVER give direct access to methods, that posts data. That will
@@ -136,9 +136,8 @@ rule as:
 
 ``` yaml
 routes:
-  "/f{forum_id}/":
-    to: forums.list
-    params:
+  forums.list:
+    "/f{forum_id}/":
       page: /[01]/
       forum_id: /\d+/
   # ...
@@ -148,16 +147,6 @@ In this case, request to */!forums.list?forum_id=123&page_id=1* will be
 redirected to "/f{forum_id}/".
 
 
-## Main Application Routes
-
-In the main application's routes files we can specify (alnog with direct
-invocators and routes) redirect rules and mounting rules.
-
-When we add route pointing the API tree method that already have route within
-application default routes, all default routes for that method will be removed.
-In case if the method had more than one route, you might need to specify all
-other routes as well.
-
 ## Redirects
 
 For simple redirects, which do not involve any calcualtions we use `redirect`
@@ -165,7 +154,7 @@ map in the `routes` file. The syntax is dead-simple:
 
 ``` yaml
 ---
-redirect:
+redirects:
   "/f{forum_id}/thread{thread_id}.html":
     to: [ 301, "/t-{forum_id}-{thread_id}.aspx" ]
     params:
@@ -179,32 +168,8 @@ instead, e.g.:
 ``` yaml
 ---
 routes:
-  "/f{forum_id}/thread{thread_id}.html":
-    to: server.forums.redirect
-```
-
-However, you are free to specify your function right in YAML file:
-
-``` yaml
----
-redirect:
-  "/f{forum_id}/thread{thread_id}.html":
-    to: !!js/function >
-      function redirect(forum_id, thread_id, cb) {
-        // this is nodeca
-        var slugize = this.helpers.slugize;
-        this.models.forum.find(forum_id, function (err, forum) {
-          if (err) {
-            cb(err);
-            return;
-          }
-
-          cb(null, 301, '/forums/' + forum_id + '-' + sluggize(forum.title));
-        });
-      }
-    params:
-      forum_id: /\d+/
-      thread_id: /\d+/
+  server.forums.redirect:
+    "/f{forum_id}/thread{thread_id}.html": ~
 ```
 
 
@@ -218,28 +183,16 @@ domain name and/or paths.
 mount:
   # SYNOPSIS:
   #
-  # <mount point>:
-  #   from: <server api tree node>
-  #   routes: <same as default routes>
+  # <server api tree node>: <mount point>
   #
   # mount point: //<domain> || /<path> || //<domain>/<path>
 
- 
+
   # Mount all nodeca.server.forum.* methods under domain `forums.nodeca.org`
-  //forums.nodeca.org:
-    from: forum
+  forum: //forums.nodeca.org
 
   # Mount all ndoeca.server.blog.* methods under path `/blogs`
-  # and provide some additional routes
-  /blogs:
-    from: blog
-    routes:
-      /latest:
-        to: blog.posts.list
-        params:
-          limit: {default: 5}
-          sort_by: {default: date}
-          order: {default: desc}
+  blog: /blogs
 ```
 
 
@@ -253,4 +206,4 @@ link_to(forums.list, {forum_id: 123, page: 3});
 ```
 
 
-[router]: https://github.com/ixti/nrouter
+[router]: https://github.com/nodeca/pointer
