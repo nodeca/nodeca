@@ -10,8 +10,10 @@ precedence. There's an exact list of first-level keys available in config files
 other than those keys will be ignored.
 
 
-applications
-------------
+Available sections
+------------------
+
+### applications
 
 Holds config specific for separate applications.
 Second level of the section should be application name.
@@ -23,17 +25,18 @@ TBD: Info about default options with on/off
 
 ``` yaml
 applications:
-  nodeca.core:
-    listen:
-      host: nodeca.org
-      port: 80
-
+  nodeca.core: on
   nodeca.forum: on
+  nodeca.debug: off
 ```
 
 
-database (main app only)
-------------------------
+### listen (main app only)
+
+TBD
+
+
+### database (main app only)
 
 Holds configuration of connection to redis and mongo databases.
 
@@ -55,8 +58,7 @@ database:
 ```
 
 
-locales (main app only)
------------------------
+### locales (main app only)
 
 Holds configuration of enabled and default locale.
 TBD: Describe defaults etc (see comments in example).
@@ -79,8 +81,7 @@ locales:
 ```
 
 
-i18n
-----
+### i18n
 
 Holds translation phrases.
 Second level of the section should be locale.
@@ -99,8 +100,7 @@ i18n:
 ```
 
 
-theme\_schemas
---------------
+### theme\_schemas
 
 Holds theme configuration.
 Second level of the section if theme id.
@@ -119,8 +119,7 @@ theme_schemas:
 ```
 
 
-themes (main app only)
-----------------------
+### themes (main app only)
 
 *OPTIONAL*
 *DEFAULT: all installed themes*
@@ -139,8 +138,7 @@ themes: !blacklist
 ```
 
 
-setting\_schemas
-----------------
+### setting\_schemas
 
 Holds configuration of settings definitions for building admin interface.
 TBD: Describe info about stores etc.
@@ -157,8 +155,7 @@ setting_schemas:
         type: boolean
 ```
 
-settings (main app only)
-------------------------
+### settings (main app only)
 
 Holds values of `config` settings store.
 TBD: Explain what this store is.
@@ -171,8 +168,7 @@ settings:
 ```
 
 
-routes
-------
+### routes
 
 Holds routes for server methods.
 TBD: Info about !clean tag
@@ -193,8 +189,7 @@ routes:
 ```
 
 
-redirects (main app only)
--------------------------
+### redirects (main app only)
 
 Holds redirections map.
 TBD: Detailed info.
@@ -210,8 +205,7 @@ redirects:
       thread_id: /\d+/
 ```
 
-direct\_invocators
-------------------
+### direct\_invocators
 
 Holds list of server methods that may be used directly via HTTP.
 TBD: Describe how we can bulk-disable methods on path basis using wilcards.
@@ -226,22 +220,53 @@ direct_invocators:
 ```
 
 
-mount (main app only)
----------------------
+### mount (main app only)
 
 Holds configuration of mount points.
 TBD.
 
 ``` yaml
 mount:
-  # Default mount point
-  default: //nodeca.org
-
   # Mount all nodeca.server.forum.* methods under domain `forums.nodeca.org`
   forum:  //forums.nodeca.org
 
   # Mount all ndoeca.server.blog.* methods under path `/blogs`
   blog:   /blogs
+```
+
+
+Per-environment configurations
+------------------------------
+
+You may also specify a per-environment configuration. For this purposes we allow
+to specify environment names as first-level sections (real config becomes
+nested) with caret (`^`) prefix.
+
+NOTICE that sections described on firs-level (without environment) arec
+onsidered as `general`, so they are pplied for any environment. Also,
+environment-specified options tak precedence over general.
+
+In the example below, `listen` will become:
+
+  - when `NODECA_ENV=production`: `{host: nodeca.org, port: 80}`
+  - when `NODECA_ENV=development`: `{host: localhost, port: 8080}`
+  - else: `{host: localhost, port: 80}`
+
+*Example:*
+
+``` yaml
+listen:                   # applied to any environment
+  host: localhost
+  port: 80
+
+^production:              # applied to `production` environment
+  listen:
+    host: nodeca.org
+    port: 80
+
+^development:             # applied to `development` environment
+  listen:
+    port: 8080
 ```
 
 

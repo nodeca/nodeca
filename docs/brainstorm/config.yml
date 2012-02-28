@@ -5,23 +5,20 @@
 #
 
 applications:
-  #
-  # List of enabled/disabled applications.
-  #
+  nodeca.core: on
+  nodeca.forum: on
+  nodeca.debug: off
 
-  nodeca.core:          # providing some overriden options
-    listen:
-      host: nodeca.org
-      port: 80
 
-  nodeca.forum: on      # enable module with default options
-  nodeca.debug: off     # disable module
+#
+# Listen
+#
 
-  # You may want to disable module without wiping it's options,
-  # use `!disabled` tag for this purpose:
+listen:
+  host: nodeca.org
+  port: 80
+  path: /
 
-  nodeca.blog: !disabled
-    gravatar: retro
 
 #
 # Database
@@ -186,9 +183,6 @@ direct_invocators:
 #
 
 mount:
-  # Default mount point
-  default: //nodeca.org
-
   # Mount all nodeca.server.forum.* methods under domain `forums.nodeca.org`
   forum:  //forums.nodeca.org
 
