@@ -1,0 +1,14 @@
+#theme_schemas:
+#  # Base theme
+#  core-desktop:
+#    name: Default Theme
+#
+#  # Base theme extension
+#  core-desktop-mod:
+#    name: Extended Default Theme
+#    extends: core-desktop
+#
+#  # Inherited theme
+#  mobility:
+#    name: My First Mbile Theme
+#    inherits: core-desktop

@@ -14,17 +14,13 @@ applications:
 
 # locales:
 #
-#   # List of enabled locales
-#   #
-#   # DEFAULT: all locales that were found.
+#   # List of enabled locales (all found locales by default).
 #   enabled:
 #     - en-US
 #     - en-GB
 #     - ru-RU
 #
-#   # Default application locale
-#   #
-#   # DEFAULT: first enabled locale.
+#   # Application locale used by default (first enabled one if not set).
 #   default: ru-RU
 
 
@@ -34,16 +30,17 @@ applications:
 
 # You can specify either whitelist:
 #
-#   themes: !whitelist
+#   themes_whitelist:
 #     - deep-purple
 #     - pink-floyd
 #
 # or blacklist of enabled themes:
 #
-#   themes: !blacklist
+#   themes_blacklist:
 #     - yellow-submarine
 #
-# DEFAULT: All available themes.
+# All available themes re enabled by default, when no whitelist or blacklist
+# specified. When bothe white- and black- lists are provided, whitelist is used.
 
 
 #
@@ -53,14 +50,4 @@ applications:
 listen:
   host: localhost
   port: 3000
-
-
-#
-# Environment-dependent configs
-#
-
-
-^production:
-  listen:
-    host: localhost
-    port: 80
+  path: /

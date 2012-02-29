@@ -1,55 +1,66 @@
-#
-# Routes
-#
+router:
 
-routes:
-  forum.list:
-    "/f{forum_id}/":
-      params:
-        forum_id: /\d+/
+  #
+  # Routes
+  #
 
-    "/f{forum_id}/index{page}.html":
-      params:
-        forum_id: /\d+/
-        page: /[2-9]|[1-9]\d+/
+#  map:
+    forum.list: !clean
+      "/f{forum_id}/":
+        params:
+          forum_id: /\d+/
 
-  # all configs are merged
-  # in order to "override", use `!clean` tag
+      "/f{forum_id}/index{page}.html":
+        params:
+          forum_id: /\d+/
+          page: /[2-9]|[1-9]\d+/
 
-  forum.threads.show: !clean
-    "/f{forum_id}/thread{thread_id}.html":
+
+  #
+  # Redirects
+  #
+
+  redirects:
+    "/f{forum_id}/thread{thread_id}.php":
+      to: [301, "/t-{forum_id}-{thread_id}.html"]
       params:
         forum_id: /\d+/
         thread_id: /\d+/
 
+    "/f{forum_id}.html":
+      to: !!js/function >
+        function redirect(forum_id, cb) {
+          // this is nodeca
+          var slugize = this.helpers.slugize;
 
-#
-# Redirects
-#
+          this.models.forum.find(forum_id, function (err, forum) {
+            if (err) {
+              cb(err);
+              return;
+            }
 
-redirects:
-  "/f{forum_id}/thread{thread_id}.php":
-    to: [301, "/t-{forum_id}-{thread_id}.html"]
-    params:
-      forum_id: /\d+/
-      thread_id: /\d+/
+            cb(null, 301, '/forums/' + forum_id + '-' + sluggize(forum.title));
+          });
+        }
+      params:
+        forum_id: /\d+/
 
 
-#
-# List of enabled/disabled direct invocators
-#
+  #
+  # List of enabled/disabled direct invocators
+  #
 
-direct_invocators:
-  forums.threads.show: on
-  forums.threads.update: off
+  direct_invocators:
+    forums.threads.show: on
+    forums.threads.update: off
 
-#
-# Mount points
-#
+  #
+  # Mount points
+  #
 
-mount:
-  # Mount all nodeca.server.forum.* methods under domain `forums.nodeca.org`
-  forum:  //forums.nodeca.org
+  mount:
+    # Mount all nodeca.server.forum.* methods under domain `forums.nodeca.org`
+    forum:  //forums.nodeca.org
 
-  # Mount all ndoeca.server.blog.* methods under path `/blogs`
-  blog:   /blogs
+    # Mount all ndoeca.server.blog.* methods under path `/blogs`
+    blog:   /blogs

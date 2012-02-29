@@ -76,6 +76,28 @@ static data in local store, and refresh those on server upgrade.
 }
 ```
 
+
+config
+------
+
+```
+    applications
+    i18n
+    theme_schemas
+    setting_schemas
+    router
+        map
+        direct_invocators
+        redirects
+        mount
+    settings
+    locales
+    themes
+    database
+    listen
+```
+
+
 Cookies
 =======
 
@@ -108,4 +130,3 @@ time. Key name format:
 
 (?) preferables storage type is LocalStorage. But you ca use other one. See
 details here http://stackoverflow.com/questions/1194784/which-browsers-support-html5-offline-storage .
-
