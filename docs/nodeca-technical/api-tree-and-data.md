@@ -81,20 +81,21 @@ config
 ------
 
 ```
-    applications
-    i18n
-    theme_schemas
-    setting_schemas
-    router
-        map
-        direct_invocators
-        redirects
-        mount
-    settings
-    locales
-    themes
-    database
-    listen
+  applications
+  i18n
+  theme_schemas
+  setting_schemas
+  router
+    map
+    direct_invocators
+    redirects
+    mount
+  settings
+  locales
+  themes_whitelist
+  themes_blacklist
+  database
+  listen
 ```
 
 
