@@ -4,8 +4,7 @@
 
 applications:
   nodeca.core: on
-  nodeca.forum: on
-  nodeca.debug: off
+  nodeca.forum: off
 
 
 #
