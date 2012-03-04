@@ -3,8 +3,8 @@
 #
 
 applications:
-  nodeca.core: on
-  nodeca.forum: off
+  - nodeca.core
+  #- nodeca.forum
 
 
 #
