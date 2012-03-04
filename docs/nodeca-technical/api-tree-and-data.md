@@ -37,7 +37,8 @@ nodeca
     router                # router instance, filled with routes from config
 
     # server-specific
-    
+
+    main_app              # Main application (the one that started the process)
     mongoose              # mongoose instanse (it's not part of nlib, depends on application)
     redis                 # redis instanse (also depends on application)
     assets_path           # path to temp dir with bundled assets
@@ -47,7 +48,7 @@ nodeca
     # client-specific
 
     debug                 #
-    user_id               # 
+    user_id               #
     theme_id              #
     language              #
 ```
