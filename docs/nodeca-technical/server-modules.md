@@ -72,8 +72,7 @@ Methods are executed in context of request enviroment (See Request Environment).
 So, you can access session info and other request data. You can attach `before`
 and `after` filters for your methods, which are called prior and after method:
 
-*NOTICE* that filters in comparison to methods have only one argument regardles
-to the argumetns of method itself.
+*NOTICE* that filters will receive the same arguments as server method.
 
 ``` javascript
 module.exports.list = function list(params, next) {
@@ -83,19 +82,19 @@ module.exports.list = function list(params, next) {
 
 
 module.exports.__init__ = function () {
-  nodeca.filters.before('list', function (next) {
+  nodeca.filters.before('list', function (params, next) {
     this.test = 1;
     console.log('filter 1: ' + this.test);
     next();
   });
 
-  nodeca.filters.before('list', function (next) {
+  nodeca.filters.before('list', function (params, next) {
     this.test += 2;
     console.log('filter 2: ' + this.test);
     next();
   });
 
-  nodeca.filters.after('list', function (next) {
+  nodeca.filters.after('list', function (params, next) {
     this.test += 3;
     console.log('filter 3: ' + this.test);
     next();
