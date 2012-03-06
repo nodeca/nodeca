@@ -32,6 +32,26 @@ for details about it. Use another projects as examples.
 The rules stated in this document override rules stated in the above documents
 if there is a conflict.
 
+
+### Variable declarations
+
+We have no restrictions on amount of `var` statements, although we recommend to
+keep one per function if it's possible. The only restriction here is readabilty.
+
+**WARNING** Despite we have no limits on `var` usage, we forbid usage of `var`s
+in `for` statments:
+
+    // Good
+    var i;
+    for (i = 0; i < 10; i++) {
+      // ...
+    }
+
+    // Bad
+    for (var i = 0; i < 10; i++) {
+      // ...
+    }
+
 ### Hashes
 
 Keep the hash keys tight with no whitespace before or after them. Use one space
@@ -162,16 +182,3 @@ making your dev-days a little bit easier:
 
 Simply copy contents of [scripts](scripts/) directory into root of your new
 project to make your life shiner.
-
-Once you put scripts into your project's root, open `support/generate-docs.rb`
-and edit some variables to fit your project:
-
-    PROJECT_NAME="nodeca"
-    GITHUB_NAME="nodeca/nodeca"
-
-For example if you are developing `nodeca-blogs` and your repo is available on
-GitHub as `https://github.com/ixti/nodeca-blogs/` set variables as:
-
-    PROJECT_NAME="nodeca-blogs"
-    GITHUB_NAME="ixti/nodeca-blogs"
-
