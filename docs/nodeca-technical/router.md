@@ -197,8 +197,9 @@ redirects:
 
 ## Mounting Applications
 
-You can "mount" API tree nodes (or some of your routes) under different
-domain name and/or paths.
+You can "mount" API tree nodes under different domain name and/or paths.
+
+**NOTICE** You can mount only "first-level" nodes, e.g. `forum`, `blog`, etc.
 
 ``` yaml
 ---
