@@ -1,0 +1,40 @@
+#!/usr/bin/env node
+
+'use strict';
+var Async = require('async');
+
+require('nlib').Application.create({
+  name: 'nodeca',
+  root: process.cwd()
+}).run(['init-start', 'models-tree', 'shared-tree'], function(err){
+    if (err){
+      console.log(err);
+      process.exit(1);
+    }
+    var nodeca = global.nodeca;
+
+    current = nodeca.models.migrations.getCurrentMigrations(function(err, current){
+      nodeca.runtime.migrator.getMigrationsStatus(current, function(err, migrations){
+        Async.forEachSeries(migrations, function(migration, next_migration){
+          nodeca.runtime.migrator.runMigration(migration, function(err){
+            if (err){
+              next_migration(err);
+              return;
+            }
+            nodeca.models.migrations.mark_passed(migration,function(err){
+              if (err){
+                next_migration(err);
+                return;
+              }
+            });
+            next_migration();
+          });
+        }, function(err) {
+          console.log(err);
+          process.exit(1);
+        });
+      });
+    });
+    process.exit(0);
+});
+
