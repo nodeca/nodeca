@@ -38,6 +38,11 @@ Directores below are processed automaticallty during init.
 │   ├─ /.../*.*              # Any structure, except <theme-*>
 │   ├─ theme-<id1>/*.*       # Theme files
 │   └─ ...
+│   
+├─ migrations/
+│   ├─ <app_version>/        # app version
+│   │   └─ *[.<priority>].js # migration step
+│   └─ ...                    
 │
 └─ index.js
 ```
@@ -75,3 +80,31 @@ _Examples for models and init_
     nodeca.hooks.init.after('forum.posts', function (callback) { /* ... */ });
 
 Server modules hooks are called `filters` and described in server modules spec.
+
+Migration scripts
+=================
+
+Migrations for each version located in separate folders. Optionally script name 
+can contain run priority. 
+
+Also in migration available all existing models.
+
+File tree example.
+
+```
+.
+├─ migrations/
+│   ├─ 0.0.1/           # app version
+│   │   ├─ foo.js       # scripts without priority, default value 10
+│   │   └─ bar.js       #
+│   │ 
+│   ├─ 0.1.2/           # 
+│   │   ├─ foo.10.js    # use prioryty in migration script name
+│   │   └─ bar.20.js    # priorities are sorted by ascending order
+│   │ 
+```
+
+Cli scripts
+===========
+
+1. Migrate script `bin/migrate`. Script run all migrations for each versions of used packages.
