@@ -39,7 +39,7 @@ Directores below are processed automaticallty during init.
 │   ├─ theme-<id1>/*.*       # Theme files
 │   └─ ...
 │   
-├─ migrations/
+├─ migrate/
 │   ├─  *.js                 # migration step
 │   └─ ...                    
 │
@@ -96,7 +96,7 @@ File tree example.
 
 ```
 .
-├─ migrations/
+├─ migrate/
 │   ├─ 20110919181104_create_sections.js
 │   └─ 20120103183744_create_threads.js
 │
