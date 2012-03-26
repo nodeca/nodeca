@@ -44,6 +44,7 @@ nodeca
     assets_path           # path to temp dir with bundled assets
     assets_server         # assets Server filled with assets
     i18n                  # translator (BabelFish) instance
+    apps                  # info about loaded apps
 
     # client-specific
 
@@ -75,6 +76,24 @@ static data in local store, and refresh those on server upgrade.
     admin:    "crc8"
   }
 }
+```
+
+runtime.apps
+------------
+
+Info about loaded apps. Used in migrator.
+
+``` javascript
+[
+  {
+    name:    "nodeca.core"
+    root:    "<absolute path to nodeca.core app>"
+  },
+  {
+    name:    "nodeca.forum"
+    root:    "<absolute path to nodeca.forum app>"
+  }
+]
 ```
 
 
