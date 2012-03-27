@@ -53,10 +53,25 @@ menus:
       events:   user.events
 ```
 
+
 Permission Tests
 ----------------
 
 NLib provides method that allows to retreive map of permission test results for
-specific menu or all menus from namespaces.
+specific menu or all menus from namespaces:
 
-TBD
+``` javascript
+// nodeca.runtime.menu_permissions(namespace[, menu_ids][, env], callback)
+// - namespace (String):
+// - menu_ids (Array):
+// - env (Object):
+// - callback (Function):
+nodeca.runtime.menu_permissions('user', function (err, permissions) {
+  if (err) {
+    // shit happens
+    return;
+  }
+
+  // permissions['profile-sections']['blog'] -> Boolean
+  // ...
+});
