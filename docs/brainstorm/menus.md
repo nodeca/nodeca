@@ -1,20 +1,12 @@
 Menus
 =====
 
-TBD
-
-Upon namespace change (or on application load) once menus config was received as
-part of the bundle we request permission test for each menu-item within current
-namespace: `core.permissions-test({actions: ['a1', 'a2', ...]})`. Result is an
-object: `{a1: true, a2: false, ...}` returned as JSON.
-
-
-Configuration
--------------
-
 For client-side menu configuration is bundled on namespace basis (just like
 translations) and available as static JSON file. On server-side it's avilable
 as `nodeca.config.menus` subtree.
+
+`nodeca.router` is used to build links for menu items.
+
 
 ``` yaml
 --- # Item titles: ./config/locales/en-us.yml
@@ -32,7 +24,7 @@ menus:
       admin:                      # menu item
         to: admin.dashboard       # server method
         priority: 10              # item priority (optional. default: 10)
-        check_permissions: false  # check action permissions to show/hide item (optional. default: false)
+        check_permissions: false  # check action permissions to show/hide item (optional. default: false. used with `to` only)
 
   user:
     profile-sections:
@@ -54,14 +46,17 @@ menus:
 ```
 
 
-Permission Tests
-----------------
+Hiding Menu Items
+-----------------
 
-NLib provides method that allows to retreive map of permission test results for
-specific menu or all menus from namespaces:
+If `check_permissions` is set to `true`, then such menu item will be visible
+only if action's _before_ filters are passing without _access denied_ error.
+
+For convenience NLib provides a special helper that returns map of enabled or
+disabled menu items:
 
 ``` javascript
-// nodeca.runtime.menu_permissions(namespace[, menu_ids][, env], callback)
+// nodeca.runtime.get_enabled_menu_items(namespace[, menu_ids][, env], callback)
 // - namespace (String):
 // - menu_ids (Array):
 // - env (Object):
@@ -73,5 +68,20 @@ nodeca.runtime.menu_permissions('user', function (err, permissions) {
   }
 
   // permissions['profile-sections']['blog'] -> Boolean
+  // permissions['profile-sections']['friends'] -> Boolean
   // ...
 });
+
+
+
+Rendering Menus (Server-side)
+-----------------------------
+
+TBD
+
+
+
+Rendering Menus (Client-side)
+-----------------------------
+
+TBD
