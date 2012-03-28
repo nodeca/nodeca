@@ -38,12 +38,13 @@ nodeca
 
     # server-specific
 
-    main_app              # Main application (the one that started the process)
+    main_app              # main application (the one that started the process)
     mongoose              # mongoose instanse (it's not part of nlib, depends on application)
     redis                 # redis instanse (also depends on application)
     assets_path           # path to temp dir with bundled assets
     assets_server         # assets Server filled with assets
     i18n                  # translator (BabelFish) instance
+    apps                  # array of { name, absolute_path } for each loaded app 
 
     # client-specific
 

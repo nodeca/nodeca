@@ -1,0 +1,53 @@
+#!/usr/bin/env node
+
+'use strict';
+
+// nodeca
+var NLib = require('nlib');
+
+var Async = NLib.Vendor.Async;
+
+var nodeca = global.nodeca;
+
+NLib.Application.create({
+  name: 'nodeca',
+  root: process.cwd()
+}).run(['init-start', 'models-tree', 'shared-tree'], function(err){
+    if (err){
+      console.log(err);
+      process.exit(1);
+    }
+   
+    var migration_model = nodeca.models.migration;
+    var migrator = nodeca.runtime.migrator;
+
+    // fetch used migrations from db
+    migration_model.get_last_state(function(err, last_state){
+      // find new migrations
+      migrator.checkMigrations(last_state, function(err, new_migrations){
+        Async.forEachSeries(new_migrations, function(migration, next_migration){
+          migrator.runMigration(migration, function(err){
+            if (err){
+              next_migration(err);
+              return;
+            }
+
+            // All ok. Write step to db
+            migration_model.mark_passed( migration.app_name, migration.step, function(err){
+              if (!err){
+                nodeca.logger.log(migration.app_name + ': ' + migration.step +'successfully migrated');
+              }
+              next_migration(err);
+            });
+          });
+        }, function(err) {
+          if (err) {
+            nodeca.logger.log(err);
+            process.exit(1);
+          }
+          process.exit(0);
+        });
+      });
+    });
+});
+
