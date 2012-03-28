@@ -19,18 +19,46 @@ Configuration
 en-us:
   menus:
     common:
-      main-menu:
-        admin: Admin Panel
+      topnav:
+        profile:      Profile
+        forum:        Forum
+        blogs:        Blogs
+        faq:          Questions
+        sales:        Sales
+        groups:       Groups
+        maps:         Maps
+        translations: Translations
   # ...
 ...
 --- # Definitions: ./config/menus.yml
 menus:
   common:                         # app namespace (see docs/application.md for details on namespaces)
-    main-menu:                    # menu id
-      admin:                      # menu item
-        to: admin.dashboard       # server method
-        priority: 10              # item priority (optional. default: 10)
+    topnav:                       # menu id
+      profile:                    # menu item
+        to: user.profile          # server method
+        priority: 100             # item priority (optional. default: 100)
         check_permissions: false  # check action permissions to show/hide item (optional. default: false. used with `to` only)
+
+      forum:
+        to: forum.topics.list
+
+      blogs:
+        to: blog.posts.latest_list
+
+      faq:
+        to: faq.latest
+
+      sales:
+        to: sales.dashboard
+
+      groups:
+        to: groups.dashboard
+
+      maps:
+        to: maps.dashboard
+
+      translations:
+        to: maps.dshboard
 
   user:
     profile-sections:
@@ -38,17 +66,17 @@ menus:
         priority: 5
         to: blog.posts
 
-      friends: user.friends
+      friends:
+        to: user.friends
 
-      # passing options as a string equals to passing mapping
-      # with `to` key only. above is a shorthand syntax to:
-      #
-      #   friends:
-      #     to: user.friends
+      photos:
+        to: gallery.albums
 
-      photos:   gallery.albums
-      messages: user.messages
-      events:   user.events
+      messages:
+        to: user.messages
+
+      events:
+        to: user.events
 ```
 
 
