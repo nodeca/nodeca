@@ -40,7 +40,7 @@ Directores below are processed automaticallty during init.
 │   └─ ...
 │   
 ├─ migrations/
-│   ├─  *.js                 # migration step
+│   ├─ <timestamp>_*.js                 # migration step
 │   └─ ...                    
 │
 └─ index.js
@@ -84,7 +84,7 @@ Migration scripts
 =================
 
 Migrations are stored as files in the `migrations` directory, one per file.
-The name of the file is of the form YYYYMMDDHHMMSS\_migration\_name.rb, that is 
+The name of the file is of the form YYYYMMDDHHMMSS\_migration\_name.js, that is 
 to say a UTC timestamp identifying the migration followed by an underscore followed 
 by the name of the migration.
 
@@ -118,7 +118,7 @@ File tree example.
 │
 ```
 
-Cli scripts
+Cli script
 ===========
 
-1. Migrator script `bin/migrate`. Scripts runs migrations in series for each application, one at time, respecting the order of applications given in config.
+Migrator script `bin/migrate` runs in series for each application, one at time, respecting the order of applications given in config.
