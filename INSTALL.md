@@ -52,6 +52,10 @@ Now it's time to define configs
 Edit `application.yml` and `database.yml` to fit your environment.
 For development, no changes usually needed.
 
+Init Dstabase:
+
+    ./bin/migrate
+
 Now you can run nodeca:
 
     make app-start
