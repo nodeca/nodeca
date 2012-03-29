@@ -4,6 +4,7 @@ installation instruction
 
 ### For Ubuntu
 
+
 #### MongoDB
 
 http://www.mongodb.org/display/DOCS/Ubuntu+and+Debian+packages
@@ -12,6 +13,7 @@ Follow instructions on link above. Then edit `/etc/mongodb.conf`,
 add `bind_ip = 127.0.0.1` to the start.
 
     restart mongodb
+
 
 #### Redis
 
@@ -25,7 +27,11 @@ Edit `/etc/redis/redis/conf`, restrict listening to `127.0.0.1` only.
 
     restart redis-server
 
+
 ## Install node.js
+
+See [developper's manual](docs/developer-setup/README.md)
+
 
 ## Install nodeca
 
@@ -45,6 +51,10 @@ Now it's time to define configs
 
 Edit `application.yml` and `database.yml` to fit your environment.
 For development, no changes usually needed.
+
+Init Dstabase:
+
+    ./bin/migrate
 
 Now you can run nodeca:
 
