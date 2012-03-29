@@ -4,7 +4,7 @@ router:
   # Routes
   #
 
-#  map:
+  map:
     forum.list: !clean
       "/f{forum_id}/":
         params:
