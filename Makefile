@@ -1,16 +1,10 @@
-.SILENT: config/database.yml config/application.yml
-
-app-start: config/database.yml config/application.yml
+app-start:
 	node ./index.js
 
-config/database.yml:
-	echo 'CLI for config creation is not implemented yet.' >&2
-	echo 'Please copy config/datbase.example.yml to config/database.yml' \
-		 'and edit your settings to match your needs.' >&2
-	exit 128
 
-config/application.yml:
-	echo 'CLI for config creation is not implemented yet.' >&2
-	echo 'Please copy config/application.example.yml to config/application.yml' \
-		 'and edit your settings to match your needs.' >&2
-	exit 128
+dev-setup:
+	mkdir -p node_modules
+	cd node_modules && rm -rf nlib nodeca.core nodeca.forum
+	git clone git@github.com:nodeca/nlib.git node_modules/nlib
+	git clone git@github.com:nodeca/nodeca.core.git node_modules/nodeca.core
+	git clone git@github.com:nodeca/nodeca.forum.git node_modules/nodeca.forum
