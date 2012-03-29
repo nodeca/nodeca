@@ -138,7 +138,7 @@ env:                    # this.env, in context
   response              # Response sandbox
     err.code            # (Optional)
     err.message         # (Optional)
-    data                # raw output (for json or renderer) (Default: null)
+    data                # raw output (for json or renderer) (Default: {})
     layout              # (Optional) ‘default’ if not set
     view                # (Optional) request.method if not set
 ```
