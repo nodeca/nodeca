@@ -7,13 +7,11 @@ router:
   map:
     forum.list: !clean
       "/f{forum_id}/":
-        params:
-          forum_id: /\d+/
+        forum_id: /\d+/
 
       "/f{forum_id}/index{page}.html":
-        params:
-          forum_id: /\d+/
-          page: /[2-9]|[1-9]\d+/
+        forum_id: /\d+/
+        page: /[2-9]|[1-9]\d+/
 
 
   #
