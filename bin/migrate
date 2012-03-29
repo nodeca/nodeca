@@ -18,11 +18,11 @@ NLib.Application.create({
       process.exit(1);
     }
    
-    var migration_model = nodeca.models.migration;
+    var migration_model = nodeca.models.core.migration;
     var migrator = nodeca.runtime.migrator;
 
     // fetch used migrations from db
-    migration_model.get_last_state(function(err, last_state){
+    migration_model.getLastState(function(err, last_state){
       // find new migrations
       migrator.checkMigrations(last_state, function(err, new_migrations){
         Async.forEachSeries(new_migrations, function(migration, next_migration){
@@ -33,9 +33,9 @@ NLib.Application.create({
             }
 
             // All ok. Write step to db
-            migration_model.mark_passed( migration.app_name, migration.step, function(err){
+            migration_model.markPassed( migration.app_name, migration.step, function(err){
               if (!err){
-                nodeca.logger.log(migration.app_name + ': ' + migration.step +'successfully migrated');
+                nodeca.logger.log(migration.app_name + ': ' + migration.step +' successfully migrated');
               }
               next_migration(err);
             });
