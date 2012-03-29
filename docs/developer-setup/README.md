@@ -7,8 +7,8 @@ Developers' Manuals
 
 Install build dependencies of node:
 
-    # apg-get build-dep nodejs
-    # git clone git://github.com/creationix/nvm.git ~/.nvm
+    apt-get build-dep libssl-dev curl
+    git clone git://github.com/creationix/nvm.git ~/.nvm
 
 Add following code into the end of your shell startup script (`.bashrc` for BASH):
 
@@ -16,14 +16,14 @@ Add following code into the end of your shell startup script (`.bashrc` for BASH
         . ~/.nvm/nvm.sh # Loads NVM into a shell session.
     fi
 
-Install node (long), and set default version:
+Reopen terminal. Install node (long), and set default version:
 
-    # nvm install v0.6.5
-    # nvm alias default v0.6.5
+    nvm install v0.6.14
+    nvm alias default v0.6
 
 ### Install NDoc (documentation generator)
 
-    # npm install -g ndoc
+    npm install -g ndoc
 
 
 ## Read docs
