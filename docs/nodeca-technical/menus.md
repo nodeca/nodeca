@@ -7,9 +7,6 @@ as `nodeca.config.menus` subtree.
 
 `nodeca.router` is used to build links for menu items.
 
-Menus are rendered (on both server and client side) with special view helper:
-`render_menu(namespace, menu_id) -> String`, see details below.
-
 
 Configuration
 -------------
@@ -28,14 +25,22 @@ en-us:
         groups:       Groups
         maps:         Maps
         translations: Translations
-  # ...
+
+    admin:
+      system-sidebar:
+        settings:                     Tools & Settings
+        settings.system:              System Settings
+        settings.system.performance:  Performance Mode
+        settings.system.license:      License Key
+
+    # ...
 ...
 --- # Definitions: ./config/menus.yml
 menus:
   common:                         # app namespace (see docs/application.md for details on namespaces)
     topnav:                       # menu id
       profile:                    # menu item
-        to: user.profile          # server method
+        to: user.profile          # server method (optional)
         priority: 100             # item priority (optional. default: 100)
         check_permissions: false  # check action permissions to show/hide item (optional. default: false. used with `to` only)
 
@@ -59,6 +64,18 @@ menus:
 
       translations:
         to: maps.dshboard
+
+  admin:
+    system-sidebar:
+      settings:
+        submenu:
+          system:
+            to: admin.system.dashboard
+            submenu:
+              performance:
+                to admin.system.performance
+              license:
+                to: admin.system.license
 
   user:
     profile-sections:
@@ -108,18 +125,57 @@ nodeca.runtime.get_enabled_menu_items('user', function (err, permissions) {
 ```
 
 
-Rendering Menus (Server-side)
------------------------------
+Rendering Menus
+---------------
 
-`nodeca.core` requests for enabled/disabled menu items map (for current
-and _common_ namespaces) right before rendering views and saves it as
-`enabled_menu_items` local variable for renderer, which is used by
-`render_menu` upon rendering.
+Rendering menu on both server or client side envolves initiating of menu
+configuration object (don't mess it with menu configuration described above).
+This object is produced by getting permissions (for items that require
+permission test), leaving only those items who have _allowed_ permissions and
+resolving `to` links:
+
+``` javasript
+{
+  common: {
+    topnav: [
+      {
+        title: "Profile",
+        link: "http://nodeca.org/user/profile"
+      },
+      // ...
+    ]
+  },
+
+  admin: {
+    "system-sidebar": [
+      {
+        title: "Tools & Settings",
+        childs: [
+          {
+            title: "System Settings",
+            link: "http://nodeca.org/admin/settings",
+            childs: [
+              {
+                title: "Performance Mode",
+                link: "http://nodeca.org/admin/performance"
+              },
+              // ...
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+```
 
 
+#### Server-side
 
-Rendering Menus (Client-side)
------------------------------
+`nodeca.core` prepares `menus` object right before rendering.
+
+
+#### Client-side
 
 Client-side renderer calls `core.get_enabled_menu_items` (proxy to
-`nodeca.runtime` method) and receives map of enabled/disabled items as JSON.
+`nodeca.runtime` method), and prepares `menus` object before view rendering.
