@@ -12,12 +12,6 @@ Discussions
 Installation
 ------------
 
-    git clone git://github.com/nodeca/nodeca.git nodeca
-    cd nodeca
-    npm install
-    cp config/application.example.yml config/application.yml
-    cp config/database.example.yml config/databse.yml
+See [instruction](INSLTALL.md)
 
-Edit `application.yml` and `database.yml` to fit your environment
 
-    make app-start
