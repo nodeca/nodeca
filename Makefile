@@ -1,3 +1,6 @@
+NODE_MODULES = $(wildcard node_modules/*)
+
+
 app-start:
 	node ./index.js
 
@@ -17,3 +20,29 @@ dev-setup:
 	cd node_modules/nodeca.forum && npm install
 	cd node_modules/nodeca.blogs && npm install
 	npm install -g jshint ndoc
+
+
+node_modules/nlib:
+	cd $@ && git pull
+
+
+node_modules/nodeca.core:
+	cd $@ && git pull
+
+
+node_modules/nodeca.users:
+	cd $@ && git pull
+
+
+node_modules/nodeca.forum:
+	cd $@ && git pull
+
+
+node_modules/nodeca.blogs:
+	cd $@ && git pull
+
+
+pull: $(NODE_MODULES)
+
+
+.PHONY: $(NODE_MODULES)
