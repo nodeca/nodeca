@@ -2,6 +2,7 @@ Planing started. See [wiki](https://github.com/nodeca/nodeca/wiki) for details
 
 [Screenshots](https://github.com/nodeca/nodeca-design)
 
+
 Discussions
 -----------
 
@@ -9,9 +10,15 @@ Discussions
 - [nodeca-ru](https://groups.google.com/group/nodeca-ru/) - russian
 
 
+Requirements
+------------
+
+Node.js, MongoDB, Redis.
+
+
 Installation
 ------------
 
-See [instruction](INSLTALL.md)
+See [instructions](https://github.com/nodeca/nodeca/blob/master/INSTALL.md).
 
 
