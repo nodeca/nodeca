@@ -12,36 +12,43 @@ Directores below are processed automaticallty during init.
 ├─ models/
 │   └─ *.js
 │
-├─ stores/                  # setting stores
+├─ stores/                    # setting stores
 │   └─ *.js
 │
-├─ views/theme-<id1>/.../   # similar to server method path
-│   ├─ _*.jade              # underscore means `partials`, not included in bundle
+├─ views/theme-<id1>/.../     # similar to server method path
+│   ├─ _*.jade                # underscore means `partials`, not included in bundle
 │   └─ *.jade
 │
 ├─ config/
 │   ├─ /.../*.yml
 │   └─ *.yml
 │
-├─ client/                   # client-side API tree functions, mapped to `nodeca.client.<...>`
+├─ client/                    # client-side API tree functions, mapped to `nodeca.client.<...>`
 │   └─ <namespace>/
 │       └─ /.../*.js
 │
-├─ server/                   # server-side API tree functions, mapped to `nodeca.server.<...>`
+├─ server/                    # server-side API tree functions, mapped to `nodeca.server.<...>`
 │   └─ <namespace>/
 │       └─ /.../*.js
 │
-├─ shared/                   # shared API tree code for both server & client, mapped to `nodeca.shared.<...>`
+├─ shared/                    # shared API tree code for both server & client, mapped to `nodeca.shared.<...>`
 │   └─ /.../*.js
 │
-├─ assets/                   # static files (images, stylus templates, jQuery & plugins)
-│   ├─ /.../*.*              # Any structure, except <theme-*>
-│   ├─ theme-<id1>/*.*       # Theme files
+├─ assets/                    # static files (images, stylus templates, jQuery & plugins)
+│   ├─ /.../*.*               # Any structure, except <theme-*>
+│   ├─ theme-<id1>/*.*        # Theme files
 │   └─ ...
-│   
-├─ migrations/
-│   ├─ <timestamp>_*.js                 # migration step
-│   └─ ...                    
+│
+├─ db                         # migrations & demo data
+│   │
+│   ├─ migrate/
+│   │   ├─ <timestamp>_*.js   # migration step
+│   │   └─ ...                # timestamp = YYYYMMDDhhmmss
+│   │
+│   └─ seeds/                 # demo data loaders
+│       ├─ /.../*.js
+│       └─ *.js
+│
 │
 └─ index.js
 ```
@@ -80,45 +87,3 @@ _Examples for models and init_
 
 Server modules hooks are called `filters` and described in server modules spec.
 
-Migration scripts
-=================
-
-Migrations are stored as files in the `migrations` directory, one per file.
-The name of the file is of the form YYYYMMDDHHMMSS\_migration\_name.js, that is 
-to say a UTC timestamp identifying the migration followed by an underscore followed 
-by the name of the migration.
-
-Each migration script must have exported method `up` with single callback argument.
-
-Example:
-
-``` javascript
-
-module.exports.up = function(cb) {
-  my_model = new global.nodeca.models.my_model(/* some data */);
-
-  my_model.save(function (err) {
-    cb(err);
-  });
-}
-
-```
-
-Migrations run from old to new.
-
-In migration available all existing models.
-
-File tree example.
-
-```
-.
-├─ migrate/
-│   ├─ 20110919181104_create_sections.js
-│   └─ 20120103183744_create_threads.js
-│
-```
-
-Cli script
-===========
-
-Migrator script `bin/migrate` runs in series for each application, one at time, respecting the order of applications given in config.
