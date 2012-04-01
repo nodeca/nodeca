@@ -1,6 +1,6 @@
 #!/bin/sh
 
-TMPDIR=$PWD/tmp
+TMPDIR=$(readlink -m $0/../../tmp/)
 DATA_DIR=$(mkdir -p $TMPDIR && mktemp --directory --tmpdir=$TMPDIR ${1:-XXXXX})
 
 mkdir -p $DATA_DIR
