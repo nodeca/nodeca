@@ -1,11 +1,8 @@
 installation instruction
 
-## Install MongoDB/Redis
+## Install MongoDB/Redis (ubuntu/debian)
 
-### For Ubuntu
-
-
-#### MongoDB
+### MongoDB
 
 http://www.mongodb.org/display/DOCS/Ubuntu+and+Debian+packages
 
@@ -14,8 +11,11 @@ add `bind_ip = 127.0.0.1` to the start.
 
     restart mongodb
 
+If you don't use db auth - no mode actions needed. If you plan to use
+it - create database and set login/password.
 
-#### Redis
+
+### Redis
 
 https://launchpad.net/~rwky/+archive/redis
 
@@ -30,7 +30,7 @@ Edit `/etc/redis/redis/conf`, restrict listening to `127.0.0.1` only.
 
 ## Install node.js
 
-See [developper's manual](docs/developer-setup/README.md)
+See [developper's manual](https://github.com/nodeca/nodeca/tree/master/docs/developer-setup)
 
 
 ## Install nodeca
