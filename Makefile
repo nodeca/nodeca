@@ -26,9 +26,10 @@ $(NODE_MODULES):
 
 
 pull: $(NODE_MODULES)
+	git pull
 
 
-dev-setup: pull
+dev-setup: $(NODE_MODULES)
 	npm install -g jshint ndoc
 
 
