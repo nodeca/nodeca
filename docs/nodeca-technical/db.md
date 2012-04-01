@@ -47,7 +47,7 @@ File tree example.
 
 ### Migration Cli
 
-`./bin/migrate` runs migrations from all components, ordered by timestamp.
+`./bin/db-migrate` runs migrations from all components, ordered by timestamp.
 
 
 Seeds

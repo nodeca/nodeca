@@ -32,9 +32,5 @@ dev-setup: pull
 	npm install -g jshint ndoc
 
 
-app-start:
-	node ./index.js
-
-
 .PHONY: $(NODE_MODULES)
 .SILENT: $(NODE_MODULES)
