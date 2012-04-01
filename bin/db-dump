@@ -1,0 +1,9 @@
+#!/bin/sh
+
+TMPDIR=$PWD/tmp
+DATA_DIR=$(mkdir -p $TMPDIR && mktemp --directory --tmpdir=$TMPDIR ${1:-XXXXX})
+
+mkdir -p $DATA_DIR
+mongodump --db ${MONGO_DB:-nodeca-dev} --out $DATA_DIR
+
+echo "*** DUMP ID: $(basename $DATA_DIR)"

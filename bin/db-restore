@@ -1,0 +1,10 @@
+#!/bin/sh
+
+DATA_DIR=$PWD/tmp/$1
+
+if [ ! -d $DATA_DIR ] ; then
+  echo "Please specify valid dump id" >&2
+  exit 1
+fi
+
+mongorestore --db ${MONGO_DB:-nodeca-dev} $DATA_DIR
