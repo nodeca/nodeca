@@ -11,11 +11,17 @@ node_modules/nodeca.blogs:    REPO=git@github.com:nodeca/nodeca.blogs.git
 
 $(NODE_MODULES):
 	mkdir -p node_modules
-	@if test -d $@ && test ! -d $@/.git ; then \
-		echo "Module $@ already exists. Remove it first." >&2 ; \
+	echo "*** $@"
+	if test ! -d $@/.git && test -d $@ ; then \
+		echo "Module already exists. Remove it first." >&2 ; \
 		exit 128 ; \
 		fi
-	test -d $@/.git || (rm -rf $@ && git clone $(REPO) $@ && cd $@ && npm install)
+	if test ! -d $@/.git ; then \
+		rm -rf $@ && \
+		git clone $(REPO) $@ && \
+		cd $@ && \
+		npm install ; \
+		fi
 	cd $@ && git pull
 
 
@@ -37,3 +43,4 @@ app-start:
 
 
 .PHONY: $(NODE_MODULES)
+.SILENT: $(NODE_MODULES)
