@@ -1,4 +1,0 @@
-#!/bin/sh
-
-mkdir -p $1/mongodb $1/redisdb
-mongodump --db nodeca --out $1/mongodb

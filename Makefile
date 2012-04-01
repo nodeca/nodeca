@@ -25,16 +25,10 @@ $(NODE_MODULES):
 	cd $@ && git pull
 
 
-bin/%:
-	test -f $@.example && cp $@.example $@ && chmod +x $@
-
-
 pull: $(NODE_MODULES)
 
 
 dev-setup: pull
-	$(MAKE) bin/db-dump
-	$(MAKE) bin/db-restore
 	npm install -g jshint ndoc
 
 

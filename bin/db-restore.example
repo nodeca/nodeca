@@ -1,3 +1,0 @@
-#!/bin/sh
-
-mongorestore --db nodeca $1/mongodb
