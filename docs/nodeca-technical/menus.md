@@ -23,7 +23,7 @@ menus:
       profile:                    # menu item
         to: user.profile          # server method (optional)
         priority: 100             # item priority (optional. default: 100)
-        check_permissions: false  # check action permissions to show/hide item (optional. default: false. used with `to` only)
+        check_permissions: true   # check action permissions to show/hide item (optional. default: false.)
 
       forum:
         to: forum.topics.list
@@ -105,42 +105,45 @@ en-us:
 ```
 
 
-Hiding Menu Items
------------------
-
-If `check_permissions` is set to `true`, then such menu item will be visible
-only if action's _before_ filters are passing without _access denied_ error.
-
-For convenience NLib provides a special helper that returns map of enabled or
-disabled menu items:
-
-``` javascript
-// nodeca.runtime.get_enabled_menu_items(namespace[, menu_ids][, env], callback)
-// - namespace (String):
-// - menu_ids (Array):
-// - env (Object):
-// - callback (Function):
-nodeca.runtime.get_enabled_menu_items('user', function (err, permissions) {
-  if (err) {
-    // shit happens
-    return;
-  }
-
-  // permissions['profile-sections']['blog'] -> Boolean
-  // permissions['profile-sections']['friends'] -> Boolean
-  // ...
-});
-```
-
-
 Rendering Menus
 ---------------
 
-Rendering menu on both server or client side envolves initiating of menu
-configuration object (don't mess it with menu configuration described above).
-This object is produced by getting permissions (for items that require
-permission test), leaving only those items who have _allowed_ permissions and
-resolving `to` links:
+_nodeca.core_ registers two special _after_ action filter that exposes a
+permission map into `env.response.menu_permissions` for _common_ and current
+namespaces (first-level menu ids). Example:
+
+``` javascript
+{
+  "forum.post.create": false,
+  "forum.post.view": true
+}
+```
+
+Also it provides `common.get_permissions_map` server method which can be used
+to get the same object:
+
+```
+nodeca.server.common.get_permissions_map(params, callback) -> Void
+- params (Object):
+- callback (Function):
+
+### params
+
+- **menu_ids** (Array)
+```
+
+After all for convenience, we provide a shared method that generates a menu map
+by menu id and permission map given to it:
+
+```
+nodeca.shared.get_menus(menu_id, permissions_map) -> Object
+- menu_ids (Array):
+- permissions_map (Object):
+```
+
+Right before rendring views (on server/client), we are using this shared method
+to build all menu maps as `env.response.data.menus` on server or `locals.menus`
+on client. Example of menus map:
 
 ``` javasript
 {
@@ -176,14 +179,3 @@ resolving `to` links:
   }
 }
 ```
-
-
-#### Server-side
-
-`nodeca.core` prepares `menus` object right before rendering.
-
-
-#### Client-side
-
-Client-side renderer calls `core.get_enabled_menu_items` (proxy to
-`nodeca.runtime` method), and prepares `menus` object before view rendering.
