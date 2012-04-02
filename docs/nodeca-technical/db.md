@@ -11,7 +11,7 @@ scripts in initialised enviroment.
 Migrations
 ----------
 
-Migrations are stored as files in the `./db/migrations` directory, one per file.
+Migrations are stored as files in the `./db/migrate` directory, one per file.
 The name of the file is of the form YYYYMMDDhhmmss\_<migration\_name>.js.
 
 Each migration script must have exported method `up` with single callback
@@ -20,9 +20,10 @@ argument.
 Example:
 
 ``` javascript
+var models = global.nodeca.models;
 
 module.exports.up = function(cb) {
-  my_model = new global.nodeca.models.my_model(/* some data */);
+  my_model = new models.my_model(/* some data */);
 
   my_model.save(function (err) {
     cb(err);
