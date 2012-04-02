@@ -34,7 +34,9 @@ en-us:
         settings.system.license:      License Key
 
     # ...
-...
+```
+
+``` yaml
 --- # Definitions: ./config/menus.yml
 menus:
   common:                         # app namespace (see docs/application.md for details on namespaces)
