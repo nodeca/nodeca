@@ -123,7 +123,7 @@ Also it provides `common.get_permissions_map` server method which can be used
 to get the same object:
 
 ```
-nodeca.server.common.get_permissions_map(params, callback) -> Void
+nodeca.server.common.menu_permissions(params, callback) -> Void
 - params (Object):
 - callback (Function):
 
@@ -132,8 +132,7 @@ nodeca.server.common.get_permissions_map(params, callback) -> Void
 - **menu_ids** (Array)
 ```
 
-After all for convenience, we provide a shared method that generates a menu map
-by menu id and permission map given to it:
+Shared method that generates a menu map by menu id and permission map:
 
 ```
 nodeca.shared.get_menus(menu_id, permissions_map) -> Object
@@ -141,11 +140,9 @@ nodeca.shared.get_menus(menu_id, permissions_map) -> Object
 - permissions_map (Object):
 ```
 
-Right before rendring views (on server/client), we are using this shared method
-to build all menu maps as `env.response.data.menus` on server or `locals.menus`
-on client. Example of menus map:
+which returns structure like the on below:
 
-``` javasript
+``` javascript
 {
   common: {
     topnav: [
@@ -179,3 +176,9 @@ on client. Example of menus map:
   }
 }
 ```
+
+Before rendring views (on server/client), we are using this shared method
+to build all menu maps and expose it:
+
+- as `env.response.data.menus` on server
+- as `locals.menus` on client
