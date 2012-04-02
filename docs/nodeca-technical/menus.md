@@ -1,7 +1,11 @@
 Menus
 =====
 
-For client-side menu configuration is bundled on namespace basis (just like
+Menus are special feature, to define static navigation lists, and easily check
+access permissions. You can make as many menus as you wish. Menus can be merged
+from different applications.
+
+For client-side, menu configuration is bundled on namespace basis (just like
 translations) and available as static JSON file. On server-side it's avilable
 as `nodeca.config.menus` subtree.
 
@@ -10,31 +14,6 @@ as `nodeca.config.menus` subtree.
 
 Configuration
 -------------
-
-``` yaml
---- # Item titles: ./config/locales/en-us.yml
-en-us:
-  menus:
-    common:
-      topnav:
-        profile:      Profile
-        forum:        Forum
-        blogs:        Blogs
-        faq:          Questions
-        sales:        Sales
-        groups:       Groups
-        maps:         Maps
-        translations: Translations
-
-    admin:
-      system-sidebar:
-        settings:                     Tools & Settings
-        settings.system:              System Settings
-        settings.system.performance:  Performance Mode
-        settings.system.license:      License Key
-
-    # ...
-```
 
 ``` yaml
 --- # Definitions: ./config/menus.yml
@@ -96,6 +75,33 @@ menus:
 
       events:
         to: user.events
+```
+
+Menu texts (translations):
+
+``` yaml
+--- # Item titles: ./config/locales/en-us.yml
+en-us:
+  menus:
+    common:
+      topnav:
+        profile:      Profile
+        forum:        Forum
+        blogs:        Blogs
+        faq:          Questions
+        sales:        Sales
+        groups:       Groups
+        maps:         Maps
+        translations: Translations
+
+    admin:
+      system-sidebar:
+        settings:                     Tools & Settings
+        settings.system:              System Settings
+        settings.system.performance:  Performance Mode
+        settings.system.license:      License Key
+
+    # ...
 ```
 
 
