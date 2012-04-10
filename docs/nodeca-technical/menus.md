@@ -114,16 +114,8 @@ namespaces (first-level menu ids). Example:
 
 ``` javascript
 {
-  "forum": {
-    "topic-actions": {
-      "view": {
-        "allowed": true,
-      },
-      "edit": {
-        "allowed": false
-      }
-    }
-  }
+  "forum.post.create": false,
+  "forum.post.view": true
 }
 ```
 
