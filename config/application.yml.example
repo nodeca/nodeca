@@ -5,6 +5,7 @@
 applications:
   - nodeca.core
   - nodeca.forum
+  - nodeca.blogs
 
 
 #
