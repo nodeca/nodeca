@@ -196,7 +196,7 @@ Assume we have following server API tree:
 In order to attach filter to all methods of admin module, we can call:
 
 ``` javascript
-nodeca.filters.before('::admin', function (next) {
+nodeca.filters.before('admin', function (next) {
   // this will apply filter to admin and deeper (users, users.show, etc)
   console.log('first');
   next();
@@ -206,7 +206,7 @@ nodeca.filters.before('::admin', function (next) {
 We can apply filter to specific method as well:
 
 ``` javascript
-nodeca.filters.before('::admin.users.edit', function (next) {
+nodeca.filters.before('admin.users.edit', function (next) {
   console.log('second');
   next();
 });
@@ -225,24 +225,6 @@ first
 second
 ```
 
-Prefix `::` in the method name means start looking from the root of the server
-subtree, but when you describe module `admin.users` and want to attach a filter
-on `admin.users.list` you may obey '::admin.users.` prefix:
-
-``` javascript
-// file: ./server/admin/users.js
-
-module.exports.list = function list() { /* ... */ };
-
-// ...
-
-module.exports.__init__ = function () {
-  nodeca.filters.before('list', function () { /* ... */ });
-  // equals to:
-  nodeca.filters.before('::admin.users.list', function () { /* ... */ });
-};
-```
-
 You can use `@` as reference to current API tree node:
 
 ``` javascript
@@ -253,15 +235,11 @@ You can use `@` as reference to current API tree node:
 module.exports.__init__ = function () {
   nodeca.filters.before('@', function () { /* ... */ });
   // equals to:
-  nodeca.filters.before('::admin.users', function () { /* ... */ });
+  nodeca.filters.before('admin.users', function () { /* ... */ });
 
-  // you can use @ as prefix
-
-  nodeca.filters.before('list', function () { /* ... */ });
-  // equals to:
   nodeca.filters.before('@.list', function () { /* ... */ });
   // equals to:
-  nodeca.filters.before('::admin.users.list', function () { /* ... */ });
+  nodeca.filters.before('admin.users.list', function () { /* ... */ });
 };
 ```
 
