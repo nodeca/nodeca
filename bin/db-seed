@@ -70,7 +70,7 @@ NLib.Application.create({
       process.exit(1);
     }
 
-    require(seed_path).up(function(err){
+    require(seed_path)(function(err){
       if (err) {
         nodeca.logger.log(err);
         process.exit(1);
