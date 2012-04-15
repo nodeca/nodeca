@@ -1,14 +1,30 @@
 {
-  "name": "nodeca",
-  "description": "Base nodeca application and kickstarter.",
-  "version": "0.0.1",
-  "author": "Aleksey V Zapparov <ixti@member.fsf.org> (http://ixti.ru)",
-  "repository": "git://github.com/nodeca/nodeca",
-  "main": "index.js",
-  "dependencies":
-  {
-    "nlib"          : "git://github.com/nodeca/nlib.git",
-    "nodeca.core"   : "git://github.com/nodeca/nodeca.core.git",
-    "nodeca.forum"  : "git://github.com/nodeca/nodeca.forum.git"
-  }
+  "name"            : "nodeca",
+  "version"         : "0.0.0-dev",
+  "description"     : "Base nodeca application and kickstarter.",
+  "homepage"        : "https://github.com/nodeca/nodeca",
+
+  "author"          : "Aleksey V Zapparov <ixti@member.fsf.org> (http://ixti.net)",
+
+  "bugs"            : { "url": "https://github.com/nodeca/nodeca/issues" },
+  "license"         : { "type": "MIT", "url": "https://github.com/nodeca/nodeca/blob/master/LICENSE" },
+  "repository"      : { "type": "git", "url": "git://github.com/nodeca/nodeca.git" },
+
+  "main"            : "./index.js",
+
+  "scripts"         : {
+                        "test": "make test-all"
+                      },
+
+  "dependencies"    : {
+                        "nlib"          : "git://github.com/nodeca/nlib.git",
+                        "nodeca.core"   : "git://github.com/nodeca/nodeca.core.git",
+                        "nodeca.users"  : "git://github.com/nodeca/nodeca.users.git",
+                        "nodeca.forum"  : "git://github.com/nodeca/nodeca.forum.git",
+                        "nodeca.blogs"  : "git://github.com/nodeca/nodeca.blogs.git"
+                      },
+  "devDependencies" : {
+                        "vows": "~ 0.6.0"
+                      },
+  "engines"         : { "node": ">= 0.6.0" }
 }
