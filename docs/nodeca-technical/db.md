@@ -57,12 +57,15 @@ Seeds
 All demo data should be placed in seeds files under `./db/seeds` folder. To run
 seed, type something like this:
 
-    ./bin/db-seed --app=<app-name> [<seed-name>]
+    ./bin/db-seed -a <app_name> [<seed_name>]
 
-That will run `./db/seeds/<seed-name>.js` if exists. Or, all seeds from
+That will run `.<app_name>/db/seeds/<seed_name>.js` if exists. Or, all seeds from
 `./db/seeds/seed-name/` folder. If <seed-name> missed, then script will show all
-available seeds for given app. If `--app` missed, then all seed for all apps
+available seeds for given app. If `-a` missed, then all seed for all apps
 will be shown.
+
+Note: Loading seeds is limited to development/test enviroment. If you really need
+      to run seed  on production/stageing, use option -f (--force)
 
 
 Data snapshots
