@@ -62,7 +62,7 @@ dev-deps:
 		echo "  See: http://npmjs.org/" >&2 ; \
 		exit 128 ; \
 		fi
-	npm install jshint ndoc -g
+	npm install jshint -g
 	npm install --dev
 
 
