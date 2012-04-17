@@ -22,11 +22,11 @@ API Tree. See examples below.
 ``` javascript
 // file: admin/users.js
 
-module.exports.list = function list(param1 [, param2...], cb) {
+module.exports.list = function list(params, cb) {
   // ...
 };
 
-module.exports.show = function show(param1 [, param2...], cb) {
+module.exports.show = function show(params, cb) {
   // ...
 };
 ```
@@ -35,7 +35,7 @@ or provide exactly one method:
 
 ``` javascript
 // file: admin/dashboard.js
-module.exports = function (param1 [, param2...], cb) {
+module.exports = function (params, cb) {
   // ...
 };
 ```
@@ -48,12 +48,12 @@ after module was required. This method is called with the only argument:
 - `nodeca`: Reference to root node of the API tree
 
 ``` javascript
-module.exports.list = function list(forum_id, sort_by, cb) { /* ... */ };
+module.exports.list = function list(params, cb) { /* ... */ };
 
 // ...
 
 module.exports.__init__ = function () {
-  nodeca.filters.after('list', function (next) {
+  nodeca.filters.after('list', function (params, next) {
     // See filters for details...
   });
 };
@@ -155,7 +155,7 @@ should care itself about initialization of session helpers.
 Filters are attached via global nodeca filter object:
 
 ``` javascript
-nodeca.filters.before('forums.threads.show', function (next) {
+nodeca.filters.before('forums.threads.show', function (params, next) {
   // once filter done, we can continue to next method in the stack:
   // next filter OR real method itself
   next();
@@ -181,13 +181,13 @@ Assume we have following server API tree:
 {
   admin: {
     users: {
-      show: function () {},
-      list: function () {},
-      edit: function () {}
+      show: function (params, next) {},
+      list: function (params, next) {},
+      edit: function (params, next) {}
     },
     modules: {
-      enable: function () {},
-      disable: function () {}
+      enable: function (params, next) {},
+      disable: function (params, next) {}
     }
   }
 }
@@ -196,7 +196,7 @@ Assume we have following server API tree:
 In order to attach filter to all methods of admin module, we can call:
 
 ``` javascript
-nodeca.filters.before('admin', function (next) {
+nodeca.filters.before('admin', function (params, next) {
   // this will apply filter to admin and deeper (users, users.show, etc)
   console.log('first');
   next();
@@ -206,7 +206,7 @@ nodeca.filters.before('admin', function (next) {
 We can apply filter to specific method as well:
 
 ``` javascript
-nodeca.filters.before('admin.users.edit', function (next) {
+nodeca.filters.before('admin.users.edit', function (params, next) {
   console.log('second');
   next();
 });
@@ -233,13 +233,13 @@ You can use `@` as reference to current API tree node:
 // ...
 
 module.exports.__init__ = function () {
-  nodeca.filters.before('@', function () { /* ... */ });
+  nodeca.filters.before('@', function (params, next) { /* ... */ });
   // equals to:
-  nodeca.filters.before('admin.users', function () { /* ... */ });
+  nodeca.filters.before('admin.users', function (params, next) { /* ... */ });
 
-  nodeca.filters.before('@.list', function () { /* ... */ });
+  nodeca.filters.before('@.list', function (params, next) { /* ... */ });
   // equals to:
-  nodeca.filters.before('admin.users.list', function () { /* ... */ });
+  nodeca.filters.before('admin.users.list', function (params, next) { /* ... */ });
 };
 ```
 
