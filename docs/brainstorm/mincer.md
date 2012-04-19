@@ -30,21 +30,25 @@ env.appendPath('app/assets/stylesheets');
 
 
 // get asset by logical path
-var asset = env.findAsset('application.js'); // -> Mincer.BundledAsset
+env.findAsset('application.js', function (err, asset) {
+  asset;              // -> Mincer.BundledAsset
 
-asset.toString();   // Returns asset string contents
-asset.length;       // Length in bytes
-asset.mtime;        // Last moodified time
-asset.pathname;     // Path on filesystem
-asset.digest;       // SHA1 sum of asset content
-                    //    -> "791abb4f42f12839402966d8d50434f6"
-asset.digest_path;  // URL path of the bundled assets:
-                    //    -> "application-791abb4f42f12839402966d8d50434f6.js"
+  asset.toString();   // Returns asset string contents
+  asset.length;       // Length in bytes
+  asset.mtime;        // Last moodified time
+  asset.pathname;     // Path on filesystem
+  asset.digest;       // SHA1 sum of asset content
+                      //    -> "791abb4f42f12839402966d8d50434f6"
+  asset.digest_path;  // URL path of the bundled assets:
+                      //    -> "application-791abb4f42f12839402966d8d50434f6.js"
+});
 
 
 // writing file bundles
 var manifest = new mincer.Manifest(env, __dirname + '/manifest.json');
-manifest.compile('application.js', 'application.css');
+manifest.compile('application.js', 'application.css', function (err) {
+  // ...
+});
 ```
 
 
