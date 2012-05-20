@@ -37,3 +37,7 @@ We provide constants available in templates on both server and client:
 
 - **ASSETS**: Base URL of assets, e.g. `/assets/`
 - **THEME**: Base URL of current theme assets, e.g. `/assets/theme-desktop-red/`
+
+### Helpers
+
+- `asset_path(logicalPath)`: Retuns full URL to asset (with digest)
