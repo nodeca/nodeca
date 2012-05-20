@@ -1,14 +1,22 @@
 Cli
 ===
 
-`$ ./nodeca.js <command> [arg1[arg2[...[argN]]]`
+`$ ./nodeca.js <commandName> [arg1[arg2[...[argN]]]`
 
 All commands are stored as files in the `.cli` directory, one per file.
-The name of the file is of the form `<command_name>.js`.
+The name of the file, do not use underscore as first character
+see "Cli extending" section
 
 
 Command module format
 =====================
+
+Property `commandName` is optional. If empty or not exist, then take file name.
+
+`$ ./nodeca.js <commandName> [arg1[arg2[...[argN]]]`
+
+
+***
 
 Method `run` method has two argument callback and hash with input parameters
 
@@ -61,6 +69,50 @@ parser.commandLineArguments.forEach(function(item) {
 });
 var args = parser.parseAgrgs();
 // some code
+```
+
+Extentending existing scripts
+========================
+
+File names must start from underscore and placed in cli folder
+
+```
+└─ cli/
+   ├─ /.../_*.js
+   └─ _*.js
+
+```
+
+
+
+`parserParameters` and `commandLineArguments` can be extended with 
+`cli_prepare` hook.
+Extension function should have three arguments `parserParameters`,
+`commandLineArguments` and callback function
+
+
+```javascript
+var func = function(parserParameters, commandLineArguments, next)
+  // some code
+  next();
+;
+
+nodeca.hooks.cli.before('cli_prepare', func); 
+
+```
+
+***
+
+`run` can be extended with `cli_run.<command_name>` hook
+Extension function argument same as `run`
+
+```javascript
+var func = function(args, next) {
+  // some code
+  next();
+}
+
+nodeca.hooks.cli.before('cli_run.server', func); 
 ```
 
 [parser]:http://docs.python.org/dev/library/argparse.html#argumentparser-objects
