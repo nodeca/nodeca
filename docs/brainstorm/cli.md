@@ -1,12 +1,13 @@
-Cli
-===
+Cli commands
+============
+
+Sub applications in nodeca such as server, seed and migration. 
+Only one command can be run per session.
 
 `$ ./nodeca.js <commandName> [arg1[arg2[...[argN]]]`
 
-All commands are stored as files in the `.cli` directory, one per file.
-The name of the file, do not use underscore as first character
-see "Cli extending" section
-
+All commands are stored as files in the `/cli` directory, one per file.
+Underscore can't be used as a first character of command name.
 
 Command module format
 =====================
@@ -18,22 +19,24 @@ Property `commandName` is optional. If empty or not exist, then take file name.
 
 ***
 
-Method `run` method has two argument callback and hash with input parameters
+Property `initStages` is optional. Array of nodeca init stages. 
+Such element is array of stage name and base function.
 
-In this method vailable all models and other nodeca resources
 
 ```javascript
-module.exports.run = function (callback, args) {
-  //some code
-}
+module.exports.initStages= [
+  ['models-tree', Nlib.load_models],
+  ['shared-tree', Nlib.load_server_api_subtree],
+]
 ```
 
-***
+*Note:* Base variants of most used function see in Nlib api
 
+***
 Property `parserParameters` is hash with parser parameters
 
 ```javascript
-module.exports.parserParameters= {
+module.exports.parserParameters = {
   version: nodeca.runtime.version,
   addHelp:true,
   help: 'controls nodeca server',
@@ -57,64 +60,33 @@ module.exports.commandLineArguments = [
 
 *Note:* information about argument options see in [guide][argument]
 
-Run cli command with out nodeca.core handler
-============================================
+Usage
+=====
 
+Commands handlers add to hooks. Hook name equel stage name.
+All parsed arguments stored in `nodeca.runtime.cli_args`.
+
+
+Code example
 
 ```javascript
-var cli = require('./cli/command_name.js');
-var parser = new argparse.ArgumentParser(cli.parserParameters);
-parser.commandLineArguments.forEach(function(item) {
-  parser.addArgument(item.args, item.options);
+// migrate command
+nodeca.hooks.init.after('init-complete.seed',  function(next){
+  var seed_name = nodeca.runtime.cli_args.seed;
 });
-var args = parser.parseAgrgs();
-// some code
+
+// server command
+nodeca.hooks.init.after('bundles', require('./lib/init/http_assets'));
 ```
 
-Extentending existing scripts
-========================
+Default commands
+================
 
-File names must start from underscore and placed in cli folder
+Default commands enabled/desabled from config `Nlib.enabled_defaul_commands.`,
+default value `true`.
 
-```
-└─ cli/
-   ├─ /.../_*.js
-   └─ _*.js
+List of default commands:
 
-```
+`generate` (ToDo)
 
-
-
-`parserParameters` and `commandLineArguments` can be extended with 
-`cli_prepare` hook.
-Extension function should have three arguments `parserParameters`,
-`commandLineArguments` and callback function
-
-
-```javascript
-var func = function(parserParameters, commandLineArguments, next)
-  // some code
-  next();
-;
-
-nodeca.hooks.cli.before('cli_prepare', func); 
-
-```
-
-***
-
-`run` can be extended with `cli_run.<command_name>` hook
-Extension function argument same as `run`
-
-```javascript
-var func = function(args, next) {
-  // some code
-  next();
-}
-
-nodeca.hooks.cli.before('cli_run.server', func); 
-```
-
-[parser]:http://docs.python.org/dev/library/argparse.html#argumentparser-objects
-[subcommands]:http://docs.python.org/dev/library/argparse.html#sub-commands
-[argument]:http://docs.python.org/dev/library/argparse.html#the-add-argument-method
+`destroy` (ToDo)
