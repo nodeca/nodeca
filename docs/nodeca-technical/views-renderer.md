@@ -41,3 +41,5 @@ We provide constants available in templates on both server and client:
 ### Helpers
 
 - `asset_path(logicalPath)`: Retuns full URL to asset (with digest)
+- `asset_include(logicalPath)`: Returns bundled source of asset (asset should be
+  precompiled)
