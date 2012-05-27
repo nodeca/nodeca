@@ -57,7 +57,6 @@ doc:
 
 
 dev-setup:
-	rm -rf node_modules
 	npm install
 	npm install -g jshint
 
