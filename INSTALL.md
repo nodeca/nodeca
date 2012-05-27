@@ -20,6 +20,7 @@ it - create database and set login/password.
 https://launchpad.net/~rwky/+archive/redis
 
     sudo add-apt-repository ppa:rwky/redis
+    # sudo add-apt-repository ppa:chris-lea/redis-server
     sudo apt-get update
     sudo apt-get install redis-server
 
