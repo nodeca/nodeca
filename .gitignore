@@ -2,3 +2,8 @@
 /doc/
 /tmp/
 *.log
+*.swp
+*.sublime-project
+*.sublime-workspace
+
+/public/assets/
