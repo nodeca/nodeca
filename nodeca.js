@@ -1,11 +1,15 @@
 #!/usr/bin/env node
 
+/*global nodeca*/
 
 'use strict';
 
-
 // Create and run app
-require('nlib').Application.create({
+var app = require('nlib').Application.create({
   name: 'nodeca',
   root: __dirname
-}).run();
+});
+
+nodeca.runtime.version = require('./package.json').version;
+
+app.run();
