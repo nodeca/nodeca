@@ -21,7 +21,7 @@ help:
 	echo "make lint       - Lint sources with JSHint"
 	echo "make test       - Lint sources and run all tests"
 	echo "make doc        - Build API docs"
-	echo "make dev-deps   - Install developer dependencies"
+	echo "make dev-setup  - Install developer dependencies"
 	echo "make gh-pages   - Build and push API docs into gh-pages branch"
 	echo "make publish    - Set new version tag and publish npm package"
 	echo "make todo       - Find and list all TODOs"
@@ -31,7 +31,7 @@ help:
 lint:
 	if test ! `which jshint` ; then \
 		echo "You need 'jshint' installed in order to run lint." >&2 ; \
-		echo "  $ make dev-deps" >&2 ; \
+		echo "  $ make dev-setup" >&2 ; \
 		exit 128 ; \
 		fi
 	jshint . --show-non-errors
@@ -40,7 +40,7 @@ lint:
 test: lint
 	@if test ! `which vows` ; then \
 		echo "You need 'vows' installed in order to run tests." >&2 ; \
-		echo "  $ make dev-deps" >&2 ; \
+		echo "  $ make dev-setup" >&2 ; \
 		exit 128 ; \
 		fi
 	NODE_ENV=test vows --spec
@@ -56,14 +56,23 @@ doc:
 	ndoc --output ./doc --linkFormat "${SRC_URL_FMT}" ./lib
 
 
-dev-deps:
-	@if test ! `which npm` ; then \
-		echo "You need 'npm' installed." >&2 ; \
-		echo "  See: http://npmjs.org/" >&2 ; \
+dev-setup:
+	rm -rf node_modules
+	npm install
+	npm install -g jshint
+
+
+dev-server:
+	if test ! `which supervisor` ; then \
+		echo "You need 'supervisor' installed in order to run lint." >&2 ; \
+		echo "   npm install supervisor" >&2 ; \
 		exit 128 ; \
 		fi
-	npm install jshint -g
-	npm install --dev
+	supervisor \
+		--watch "assets,config,node_modules" \
+		--extensions "js|css|styl|less|ejs|jade" \
+		--no-restart-on error -- \
+		./nodeca.js server
 
 
 gh-pages:
@@ -128,5 +137,5 @@ pull: $(NODE_MODULES)
 	git pull
 
 
-.PHONY: $(NODE_MODULES) publish lint test doc dev-deps gh-pages todo
+.PHONY: $(NODE_MODULES) publish lint test doc dev-setup gh-pages todo
 .SILENT: $(NODE_MODULES) help lint test doc todo
