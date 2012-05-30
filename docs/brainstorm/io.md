@@ -4,21 +4,11 @@ IO
 All realtime communication needs are providen by `nodeca.io` module, which
 provides following methods:
 
-- **nodeca.io.subscribe(channel, handler) -> Object**
-- **nodeca.io.unsubscribe(channel[, handler]) -> Object**
-- **nodeca.io.publish(channel, message) -> Object**
-- **nodeca.io.rpc(data, options, callback) -> Void**
+- **nodeca.io.subscribe**(channel, handler)
+- **nodeca.io.unsubscribe**(channel[, handler])
+- **nodeca.io.publish**(channel, message)
+- **nodeca.io.api3**(data, options, callback)
 
-
-Notice, that `nodeca.io.rpc` is a low-level method, that is used by
-`nodeca.server.*` methods, e.g.:
-
-``` javascript
-var params = {fontname: 'foobar', glyphs: ['a', 'c', 'e']};
-nodeca.server.fonts.generate(params, {timeout: 30}, function (err, msg) {
-  // ...
-});
-```
 
 
 Usage examples
@@ -50,13 +40,13 @@ nodeca.io.publish('/foo/bar', message)
 ```
 
 
-RPC in details
---------------
+API tree calls in details
+-------------------------
 
 We provide two secret channels for request/response in format:
 
-- `/x/<secret>/rpc-req` - channel for requests
-- `/x/<secret>/rpc-res` - channel for responses
+- `/x/<secret>/api3-req` - channel for requests
+- `/x/<secret>/api3-res` - channel for responses
 
 Secret is a random 128 bit crypto-strong string. Clients are allowed to
 supscribe to _response_ and publish to _request_ channels only.
