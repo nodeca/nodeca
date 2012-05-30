@@ -5,10 +5,10 @@ IO
 All realtime communication needs are providen by `nodeca.io` module, which
 provides following methods:
 
-- `nodeca.io.subscribe(channel, handler) -> jQuery.Deffered`
-- `nodeca.io.unsubscribe(channel[, handler]) -> jQuery.Deffered`
-- `nodeca.io.publish(channel, message) -> jQuery.Deffered`
-- `nodeca.io.rpc(data, options, callback) -> jQuery.Deffered`
+- `nodeca.io.subscribe(channel, handler) -> Object`
+- `nodeca.io.unsubscribe(channel[, handler]) -> Object`
+- `nodeca.io.publish(channel, message) -> Object`
+- `nodeca.io.rpc(data, options, callback) -> Void`
 
 
 Notice, that `nodeca.io.rpc` is a low-level method, that is used by
