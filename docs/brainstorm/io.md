@@ -7,7 +7,7 @@ provides following methods:
 - **nodeca.io.subscribe**(channel, handler)
 - **nodeca.io.unsubscribe**(channel[, handler])
 - **nodeca.io.publish**(channel, message)
-- **nodeca.io.api3**(data, options, callback)
+- **nodeca.io.apiTree**(data, options, callback)
 
 
 
@@ -17,7 +17,7 @@ Usage examples
 ``` javascript
 //
 // subscibing to messages from the channel
-nodeca.io.subscribe('/foo/bar', function handler(message) { /* ... */  })
+nodeca.io.subscribe('/stats/users_online', function handler(message) { /* ... */  })
   .done(function () { /* ... subscribed ... */ })
   .fail(function () { /* ... subscription failed ... */ });
 });
@@ -25,7 +25,7 @@ nodeca.io.subscribe('/foo/bar', function handler(message) { /* ... */  })
 
 //
 // unsubscibing to messages from the channel
-nodeca.io.unsubscribe('/foo/bar', handler)
+nodeca.io.unsubscribe('/stats/users_online', handler)
   .done(function () { /* ... unsubscribed ... */ })
   .fail(function () { /* ... unsubscription failed ... */ });
 });
@@ -33,7 +33,7 @@ nodeca.io.unsubscribe('/foo/bar', handler)
 
 //
 // publishing to messages from the channel
-nodeca.io.publish('/foo/bar', message)
+nodeca.io.publish('/chat/rooms/debian', message)
   .done(function () { /* ... published ... */ })
   .fail(function () { /* ... publishing failed ... */ });
 });
