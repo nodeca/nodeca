@@ -32,7 +32,7 @@ nodeca.io.unsubscribe('/stats/users_online', handler)
 
 
 //
-// publishing to messages from the channel
+// publishing messages to the channel
 nodeca.io.publish('/chat/rooms/debian', message)
   .done(function () { /* ... published ... */ })
   .fail(function () { /* ... publishing failed ... */ });
