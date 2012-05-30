@@ -1,6 +1,33 @@
 IO
 ==
 
+## nodeca.io.on(event, handler)
+
+Regster `handler` for given io `event`.
+
+``` javascript
+nodeca.io.on('api3:version-mismatch', function (versions) {
+  alert('Versions mismatch. Server is' + versions.server +
+        ' and client is ' + versions.client);
+});
+```
+
+
+## nodeca.io.off(event[, handler])
+
+Unregister `handler` (or all handlers if it wasn't given) for an `event`.
+
+
+## nodeca.io.init()
+
+Initiates underlying connections and all necessary authentications.
+
+
+## nodeca.io.auth()
+
+Authenticates reatime client on server and sets received session id.
+
+
 ## nodeca.io.subscribe(channel, handler)
 
 Register `handler` for messages on given `channel`.
