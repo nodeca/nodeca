@@ -73,13 +73,14 @@ nodeca.io.apiTree(params, {timeout: 15}, function (err, res) {
 
 ### API tree underlying channels
 
-We provide two secret channels for request/response in format:
+We provide two private channels for request/response in format:
 
 - `/x/<secret>/api3-req` - channel for requests
 - `/x/<secret>/api3-res` - channel for responses
 
-Secret is a random 128 bit crypto-strong string. Clients are allowed to
-supscribe to _response_ and publish to _request_ channels only.
+Privacy is guaranteed by using a random 128 bit crypto-strong string.
+Clients are allowed to supscribe to _response_ and publish to _request_
+channels only.
 
 
 #### Communication protocol
