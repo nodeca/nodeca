@@ -4,10 +4,10 @@ IO
 All realtime communication needs are providen by `nodeca.io` module, which
 provides following methods:
 
-- `nodeca.io.subscribe(channel, handler) -> Object`
-- `nodeca.io.unsubscribe(channel[, handler]) -> Object`
-- `nodeca.io.publish(channel, message) -> Object`
-- `nodeca.io.rpc(data, options, callback) -> Void`
+- **nodeca.io.subscribe(channel, handler) -> Object**
+- **nodeca.io.unsubscribe(channel[, handler]) -> Object**
+- **nodeca.io.publish(channel, message) -> Object**
+- **nodeca.io.rpc(data, options, callback) -> Void**
 
 
 Notice, that `nodeca.io.rpc` is a low-level method, that is used by
@@ -53,7 +53,7 @@ nodeca.io.publish('/foo/bar', message)
 RPC in details
 --------------
 
-We provide two secret channels for responses in format:
+We provide two secret channels for request/response in format:
 
 - `/x/<secret>/rpc-req` - channel for requests
 - `/x/<secret>/rpc-res` - channel for responses
