@@ -1,47 +1,50 @@
 IO
 ==
 
-All realtime communication needs are providen by `nodeca.io` module, which
-provides following methods:
+## nodeca.io.subscribe(channel, handler)
 
-- **nodeca.io.subscribe**(channel, handler)
-- **nodeca.io.unsubscribe**(channel[, handler])
-- **nodeca.io.publish**(channel, message)
-- **nodeca.io.apiTree**(data, options, callback)
-
-
-
-Usage examples
---------------
+Register `handler` for messages on given `channel`.
 
 ``` javascript
-//
-// subscibing to messages from the channel
 nodeca.io.subscribe('/stats/users_online', function handler(message) { /* ... */  })
   .done(function () { /* ... subscribed ... */ })
   .fail(function () { /* ... subscription failed ... */ });
 });
+```
 
 
-//
-// unsubscibing to messages from the channel
+## nodeca.io.unsubscribe(channel[, handler])
+
+Removes `handler` (or all handlers) from given `channel`.
+
+``` javascript
 nodeca.io.unsubscribe('/stats/users_online', handler)
   .done(function () { /* ... unsubscribed ... */ })
   .fail(function () { /* ... unsubscription failed ... */ });
 });
+```
 
 
-//
-// publishing messages to the channel
+## nodeca.io.publish(channel, message)
+
+Sends `message` to the `channel`.
+
+``` javascript
 nodeca.io.publish('/chat/rooms/debian', message)
   .done(function () { /* ... published ... */ })
   .fail(function () { /* ... publishing failed ... */ });
 });
 ```
 
+## nodeca.io.apiTree(data[, options][, callback])
 
-API tree calls in details
--------------------------
+``` javascript
+nodeca.io.apiTree(params, {timeout: 15}, function (err, res) {
+  // handle err/response
+});
+```
+
+### API tree underlying channels
 
 We provide two secret channels for request/response in format:
 
