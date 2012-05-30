@@ -1,7 +1,6 @@
 IO
 ==
 
-
 All realtime communication needs are providen by `nodeca.io` module, which
 provides following methods:
 
@@ -45,8 +44,8 @@ nodeca.io.unsubscribe('/foo/bar', handler)
 //
 // publishing to messages from the channel
 nodeca.io.publish('/foo/bar', message)
-  .done(function () { /* ... on success ... */ })
-  .fail(function () { /* ... on success ... */ });
+  .done(function () { /* ... published ... */ })
+  .fail(function () { /* ... publishing failed ... */ });
 });
 ```
 
