@@ -61,3 +61,23 @@ in parsed docs.
 ### run(args, callback)
 
 Executes command.
+
+```javascript
+module.exports.run = function (args, callback) {
+  Async.series([
+    // init stages
+    require('../lib/init/mongoose'),
+    NLib.init.loadModels,
+    // ...
+  ], function(err) {
+    // some code
+    callback(err)
+  });
+};
+```
+
+First argument contain simple hash({key:vakue}) with parsed arguments
+
+```javascript
+{ port: 3000, host: 'localhost' }
+```
