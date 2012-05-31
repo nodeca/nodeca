@@ -13,6 +13,12 @@ nodeca.io.on('api3:version-mismatch', function (versions) {
 ```
 
 
+#### Known events
+
+- `api3:version-mismatch`
+- `init:auth-error`
+
+
 ## nodeca.io.off(event[, handler])
 
 Unregister `handler` (or all handlers if it wasn't given) for an `event`.
@@ -23,7 +29,7 @@ Unregister `handler` (or all handlers if it wasn't given) for an `event`.
 Initiates underlying connections and all necessary authentications.
 
 
-## nodeca.io.auth()
+## nodeca.io.auth(callback)
 
 Authenticates reatime client on server and sets received session id.
 
