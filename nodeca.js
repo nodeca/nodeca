@@ -25,7 +25,7 @@ nodeca.runtime.version = require('./package.json').version;
 
 process.on('uncaughtException', function (err) {
   nodeca.logger.warn('Uncaught exception');
-  nodeca.logger.error(err);
+  nodeca.logger.error(err.stack || err.message || err.toString());
 });
 
 
