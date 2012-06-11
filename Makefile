@@ -74,6 +74,20 @@ dev-server:
 		./nodeca.js server
 
 
+repl:
+	if test ! `which socat` ; then \
+		echo "You need `socat` installed in order to run repl." >&2 ; \
+		echo "   sudo apt-get install socat" >&2 ; \
+		exit 128 ; \
+		fi
+	if test ! -e ./tmp/repl.sock ; then \
+		echo "You need to start nodeca server with --repl." >&2 ; \
+		echo "   ./nodeca.js server --repl" >&2 ; \
+		exit 128 ; \
+		fi
+	socat - UNIX:./tmp/repl.sock
+
+
 gh-pages:
 	@if test -z ${REMOTE_REPO} ; then \
 		echo 'Remote repo URL not found' >&2 ; \
