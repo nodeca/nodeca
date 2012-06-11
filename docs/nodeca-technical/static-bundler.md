@@ -152,10 +152,11 @@ tmp/
       │   ├─ theme-<id>/*.*
       │   └─ ...
       └─ views/
-          ├─ theme-<id>/*.*
-          │   ├─ <namespace>
-          │   │   └─ *.<lang>.jade
-          │   └─ ...
+          ├─ <lang>/
+          │   └─ theme-<id>/*.*
+          │       ├─ <namespace>
+          │       │   └─ *.jade
+          │       └─ ...
           └─ ...
 ```
 
@@ -178,11 +179,11 @@ tmp/
       │   ├─ theme-<id>/*.*
       │   └─ ...
       └─ views/
-          ├─ theme-<id>/*.*
-          │   ├─ <namespace>
-          │   │   ├─ <lang>.json
-          │   │   └─ ...
-          │   └─ ...
+          ├─ <lang>/
+          │   └─ theme-<id>/*.*
+          │       ├─ <namespace>
+          │       │   └─ *.json
+          │       └─ ...
           └─ ...
 ```
 
@@ -204,11 +205,11 @@ tmp/
       │   │   └─ *.*
       │   └─ ...
       └─ views/
-          ├─ theme-<id>/*.*
-          │   ├─ <namespace>
-          │   │   ├─ <lang>.json
-          │   │   └─ ...
-          │   └─ ...
+          ├─ <lang>/
+          │   └─ theme-<id>/*.*
+          │       ├─ <namespace>
+          │       │   └─ *.json
+          │       └─ ...
           └─ ...
 ```
 
