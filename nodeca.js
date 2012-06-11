@@ -30,6 +30,22 @@ process.on('uncaughtException', function (err) {
 
 
 //
+// Handle SIGnals
+//
+
+
+function shutdown_gracefully() {
+  nodeca.logger.info('Shutting down...');
+  process.exit(0);
+}
+
+
+// shutdown gracefully on SIGTERM :
+process.on('SIGTERM', shutdown_gracefully);
+process.on('SIGINT',  shutdown_gracefully);
+
+
+//
 // Run application
 //
 
