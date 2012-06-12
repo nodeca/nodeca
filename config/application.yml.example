@@ -6,6 +6,7 @@ applications:
   - nodeca.core
   - nodeca.forum
   - nodeca.blogs
+  - nodeca.users
 
 
 #
