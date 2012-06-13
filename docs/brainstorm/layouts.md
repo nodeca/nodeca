@@ -79,3 +79,17 @@ Default layout
 
 By default, layout is set to `default.~<namespace>`. So when `blogs.posts.show`
 is called, it will be `default.~blogs`.
+
+
+Disabing layout rendering
+-------------------------
+
+When you don't want layout to be rendered, you might simply set it to `null`:
+
+``` javascript
+module.exports = function faq(params, next) {
+  // FAQ is a standalone page, so we don't need layouting
+  this.response.layout  = null;
+  this.response.view    = 'pages.faq'
+};
+```
