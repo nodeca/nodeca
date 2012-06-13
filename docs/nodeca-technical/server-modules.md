@@ -120,25 +120,42 @@ available:
 ```
 env:                    # this.env, in context
 
-  _t                    # babelfish.t proxy, without `language` param
+  t                     # babelfish.t proxy, without `language` param
   permissions           # sandbox for calculated permissions cache
   format                # (Optional) Used to force response format,
                         #  when existing view is now enougth (big XML, RSS...)
 
+  origin
+    http                # When request comes from HTTP, this will contain real
+      req               # server request and server response objects.
+      res               #
+    realtime            # Right now it's a simple Boolean `true` flag when
+                        # request comes from realtime. Ideally it should be
+                        # underlying socket.
+
+  skip                  # Array of filters to be skipped. Filters must made
+                        # decision on their own, e.g.:
+                        #     if (0 < this.skip.indexOf('my-filter')) {
+                        #       callback();
+                        #       return;
+                        #     }
+
   session               # session data
     session_id
     user_id
-    language
+    locale
     theme
 
   request               # request details
     origin (RT|HTTP)    # invocation method (readltime [websocket] / http)
     method              # called method name (e.g.: ‘forum.posts.show’)
+    namespace           # called method namespace (e.g.: `forum`)
 
   response              # Response sandbox
     err.code            # (Optional)
     err.message         # (Optional)
-    data                # raw output (for json or renderer) (Default: {})
+    data                # raw output (for json or renderer)
+                        #     Default: `{widgets: {}}`
     layout              # (Optional) ‘default’ if not set
     view                # (Optional) request.method if not set
 ```
