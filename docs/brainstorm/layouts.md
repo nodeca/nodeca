@@ -31,7 +31,7 @@ html
   head
     title Foo bar
   body
-    != contents
+    != content
 ```
 
 
@@ -39,12 +39,12 @@ html
 // file: layouts/default/blog.jade
 #blog
   h1 Hello from blogs
-  .posts != contents
+  .posts != content
 ```
 
 Upon rendering _layout_ is set to `default.blog`, then first
-`layouts/default/blog.jade` will be rendered with view's rendered `contents`.
-Then the result will be passed as `contents` to `layouts/default.jade`.
+`layouts/default/blog.jade` will be rendered with view's rendered `content`.
+Then the result will be passed as `content` to `layouts/default.jade`.
 
 
 Setting layout
