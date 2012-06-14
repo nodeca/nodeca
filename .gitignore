@@ -7,3 +7,4 @@
 *.sublime-workspace
 
 /public/assets/
+.compression-cache
