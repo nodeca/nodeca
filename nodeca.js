@@ -24,8 +24,14 @@ nodeca.runtime.version = require('./package.json').version;
 
 
 process.on('uncaughtException', function (err) {
-  nodeca.logger.warn('Uncaught exception');
-  nodeca.logger.error(err.stack || err.message || err.toString());
+  try {
+    nodeca.logger.warn('Uncaught exception');
+    nodeca.logger.error(err.stack || err.message || err.toString());
+  } catch (err) {
+    // THIS SHOULD NEVER-EVER-EVER HAPPEN -- THIS IS A WORST CASE SCENARIO
+    // USAGE: ./nodeca.js 2>/var/log/nodeca-cf.log
+    console.error(err.stack || err.toString());
+  }
 });
 
 
