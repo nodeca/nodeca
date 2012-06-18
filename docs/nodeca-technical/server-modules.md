@@ -129,9 +129,7 @@ env:                    # this.env, in context
     http                # When request comes from HTTP, this will contain real
       req               # server request and server response objects.
       res               #
-    realtime            # Right now it's a simple Boolean `true` flag when
-                        # request comes from realtime. Ideally it should be
-                        # underlying socket.
+    realtime            # Boolean `true` flag when request comes from realtime.
 
   skip                  # Array of strings used by "skippable" filters to decide
                         # whenever they need to be skipped or not.
