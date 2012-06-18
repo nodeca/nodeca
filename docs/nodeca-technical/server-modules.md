@@ -133,12 +133,8 @@ env:                    # this.env, in context
                         # request comes from realtime. Ideally it should be
                         # underlying socket.
 
-  skip                  # Array of filters to be skipped. Filters must made
-                        # decision on their own, e.g.:
-                        #     if (0 < this.skip.indexOf('my-filter')) {
-                        #       callback();
-                        #       return;
-                        #     }
+  skip                  # Array of strings used by "skippable" filters to decide
+                        # whenever they need to be skipped or not.
 
   session               # session data
     session_id
