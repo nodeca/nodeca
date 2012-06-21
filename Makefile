@@ -123,11 +123,18 @@ todo:
 	grep 'TODO' -n -r ./lib 2>/dev/null || test true
 
 
-node_modules/nlib:            REPO=git@github.com:nodeca/nlib.git
-node_modules/nodeca.core:     REPO=git@github.com:nodeca/nodeca.core.git
-node_modules/nodeca.users:    REPO=git@github.com:nodeca/nodeca.users.git
-node_modules/nodeca.forum:    REPO=git@github.com:nodeca/nodeca.forum.git
-node_modules/nodeca.blogs:    REPO=git@github.com:nodeca/nodeca.blogs.git
+node_modules/nlib:            REPO_RW=git@github.com:nodeca/nlib.git
+node_modules/nodeca.core:     REPO_RW=git@github.com:nodeca/nodeca.core.git
+node_modules/nodeca.users:    REPO_RW=git@github.com:nodeca/nodeca.users.git
+node_modules/nodeca.forum:    REPO_RW=git@github.com:nodeca/nodeca.forum.git
+node_modules/nodeca.blogs:    REPO_RW=git@github.com:nodeca/nodeca.blogs.git
+
+
+node_modules/nlib:            REPO_RO=git://github.com/nodeca/nlib.git
+node_modules/nodeca.core:     REPO_RO=git@github.com:nodeca/nodeca.core.git
+node_modules/nodeca.users:    REPO_RO=git@github.com:nodeca/nodeca.users.git
+node_modules/nodeca.forum:    REPO_RO=git@github.com:nodeca/nodeca.forum.git
+node_modules/nodeca.blogs:    REPO_RO=git@github.com:nodeca/nodeca.blogs.git
 
 
 $(NODE_MODULES):
@@ -139,13 +146,19 @@ $(NODE_MODULES):
 		fi
 	if test ! -d $@/.git ; then \
 		rm -rf $@ && \
-		git clone $(REPO) $@ && \
+		git clone $($(shell echo ${REPO})) $@ && \
 		cd $@ && \
 		npm install ; \
 		fi
 	cd $@ && git pull
 
 
+pull-ro: REPO="REPO_RO"
+pull-ro: $(NODE_MODULES)
+	git pull
+
+
+pull: REPO="REPO_RW"
 pull: $(NODE_MODULES)
 	git pull
 
