@@ -36,28 +36,63 @@ See [developper's manual](https://github.com/nodeca/nodeca/tree/master/docs/deve
 
 ## Install nodeca
 
+
+### Bleeding age, server (read only)
+
+Select this, if you like to see demo
+
     git clone git://github.com/nodeca/nodeca.git nodeca
     cd nodeca
+    make pull-ro
 
+`./etc` folder contains simple upstart config for fast deployment. It's not
+secure, but allows easily install and switch node versions. That's convenient
+for demo/development.
+
+
+### Developpment (read/write, core team)
+
+Select this, if you are in core development team, and has read/write access
+to nodeca repos
+
+    git clone git@github.com:nodeca/nodeca.git nodeca
+    cd nodeca
+    make pull
+
+
+### Regular install (production deployment)
+
+    npm install nodeca
+
+(*) That will not work right now, since we did not released anything
 Then, depending on your installation type, run:
 
-- `npm install` for production
-- `make dev-setup` for development
 
-For development, git repos vill be used instead of npm modules.
-Now it's time to define configs
+## Configure
+
+Rename files in root config folder:
 
     cp config/application.example.yml config/application.yml
     cp config/database.example.yml config/databse.yml
 
+**Don't** touch files in `./config/examples` subfolders. Those are for education
+purposes only.
+
 Edit `application.yml` and `database.yml` to fit your environment.
-For development, no changes usually needed.
+For development - no changes usually needed.
 
-Init Dstabase:
+Init database:
 
-    ./bin/migrate
+    ./nodeca.js migrate --all
 
-Now you can run nodeca:
 
-    make app-start
+## Run
+
+    ./nodeca.js server
+
+Run with motitor (autorestart when you make changes):
+
+     make dev-server
+
+Install supervisor globally, prior to do so: `npm install -g supervisor`
 
