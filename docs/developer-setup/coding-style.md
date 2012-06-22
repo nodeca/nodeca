@@ -196,8 +196,9 @@ If your method use some formula, put it into the description:
 ## Nodeca-specific
 
 1. File with models, loaded into API Tree, must have capitalized first letter.
-   Because models are classes. Using capital letters can be disputed in general,
-   but it's acceptable trade-off for our case, to keep code simple.
+   Because models are classes. Using capital letters in file names
+   can be disputed in general, but it's acceptable trade-off in our case,
+   to keep code simple.
 
 
 ## Scripts and functions
