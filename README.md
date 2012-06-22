@@ -1,6 +1,9 @@
-Planing started. See [wiki](https://github.com/nodeca/nodeca/wiki) for details
+Forums / Blogs / Groups / Classfields / ... platform.
+Fork this to make your own config.
 
-[Screenshots](https://github.com/nodeca/nodeca-design)
+* Bleeding edge demo: http://dev.nodeca.com
+* Design process: https://github.com/nodeca/nodeca-design
+  (materials can be outdated)
 
 
 Discussions
