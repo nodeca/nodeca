@@ -18,12 +18,12 @@ Add following code into the end of your shell startup script (`.bashrc` for BASH
 
 Reopen terminal. Install node (long), and set default version:
 
-    nvm install v0.8.1
+    nvm install v0.8.xxx
     nvm alias default 0.8
 
-### Install NDoc (documentation generator)
+### Install global modules, used for development
 
-    npm install -g ndoc
+    npm install -g ndoc police jshint supervisor
 
 
 ## Read docs
