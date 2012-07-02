@@ -17,8 +17,6 @@
                         "test": "make test"
                       },
 
-  "devDependencies" : {
-                        "vows": "~ 0.6.0"
-                      },
-  "engines"         : { "node": ">= 0.6.0" }
+  "devDependencies" : { "mocha" : "~ 1.2.0" },
+  "engines"         : { "node"  : ">= 0.6.0" }
 }
