@@ -3,6 +3,19 @@ Hooks
 
 General synopsis of hooks attachment is as follows: `(name[, options], func)`.
 
+``` javascript
+var options = {
+  weight:  150,
+  exclude: ['foo.bar', 'foo.*.moo']
+};
+
+nodeca.filters.before('foo', options, function (params, next) {
+  // will be fired on:     `foo`, `foo.bar.baz`, `foo.baz`, `foo.baz.baz`, etc.
+  // will NOT be fired on: `foo.bar`, `foo.baz.moo`, etc.
+  next();
+});
+```
+
 Names are respecting namespaces, so if you will assign a hook with `foo` name it
 will be executed for `foo`, `foo.bar`, `foo.bar.baz` and so on. You can also
 assign a *global* hook with `""` (empty string) that will be executed for any

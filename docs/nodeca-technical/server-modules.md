@@ -207,8 +207,11 @@ Assume we have following server API tree:
 In order to attach filter to all methods of admin module, we can call:
 
 ``` javascript
-nodeca.filters.before('admin', function (params, next) {
-  // this will apply filter to admin and deeper (users, users.show, etc)
+var options = {weight: 200, exclude: ['admin.users', 'admin.users.**']};
+
+nodeca.filters.before('admin', options, function (params, next) {
+  // this will apply filter to admin and deeper (forums, forum.operators, etc.),
+  // except `admin.users` or any of it's nested childs
   console.log('first');
   next();
 });
@@ -217,7 +220,9 @@ nodeca.filters.before('admin', function (params, next) {
 We can apply filter to specific method as well:
 
 ``` javascript
-nodeca.filters.before('admin.users.edit', function (params, next) {
+var options = {weight: 150};
+
+nodeca.filters.before('admin.users.edit', options, function (params, next) {
   console.log('second');
   next();
 });
@@ -229,11 +234,11 @@ attached to `admin.users`, then filters attached to `admin.users.edit` and then
 action itself.
 
 According to the API tree above and filters, this will lead in echoing to the
-console before executing action:
+console before executing action (mention `weight` option of filters above):
 
 ```
-first
 second
+first
 ```
 
 You can use `@` as reference to current API tree node:
@@ -255,7 +260,8 @@ module.exports.__init__ = function () {
 ```
 
 
-See `Hooks` description for details
+See `Hooks` documentation for detailed information about hooks and possible
+options (`weight`, `exclude`, etc.).
 
 
 ## Redirect
