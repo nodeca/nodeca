@@ -20,8 +20,9 @@ nodeca
   # server only
 
   model                   # server models (universal, implementation independent
-
   hooks                   # hooks for app init phases & models init
+    init                  # init hooks
+    models                # models hooks
   permissions             # access rules
   filters                 # hooks for server modules (mostly to attach access rules)
   settings                # settings accessor (get/set, not tree)
