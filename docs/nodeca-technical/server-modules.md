@@ -118,12 +118,11 @@ All requests are executed within separate context, with `env` structure
 available:
 
 ```
-env:                    # this.env, in context
+env                     # `this` context of actions/filters
+  extras                # shared storage for data (used for helpers)
 
-  t                     # babelfish.t proxy, without `language` param
-  permissions           # sandbox for calculated permissions cache
-  format                # (Optional) Used to force response format,
-                        #  when existing view is now enougth (big XML, RSS...)
+  helpers               # helpers added by filters and available in views
+    t                   # babelfish.t proxy, without `language` param
 
   origin
     http                # When request comes from HTTP, this will contain real
@@ -145,13 +144,25 @@ env:                    # this.env, in context
     method              # called method name (e.g.: ‘forum.posts.show’)
     namespace           # called method namespace (e.g.: `forum`)
 
+  data                  # raw data from models
+
   response              # Response sandbox
     err.code            # (Optional)
     err.message         # (Optional)
-    data                # raw output (for json or renderer)
+    data                # output data (for json or renderer)
                         #     Default: `{widgets: {}}`
     layout              # (Optional) ‘default’ if not set
     view                # (Optional) request.method if not set
+
+
+  #
+  # NOT YET IMPLEMENTED / OBSOLETED
+  #
+
+
+  permissions           # sandbox for calculated permissions cache
+  format                # (Optional) Used to force response format,
+                        #  when existing view is now enougth (big XML, RSS...)
 ```
 
 **NOTE**. `env` should not contain functions, to be transparent for
@@ -268,8 +279,7 @@ options (`weight`, `exclude`, etc.).
 
 
 Sometimes you need to redirect request with 301 or 302 HTTP code. For this
-purpose you can pass `Object` with `redirect` property defined as `[code, url]`
-to the callback of your _filter_ or _server method_.
+purpose you can pass `Object` with  proper headers and status code:
 
 ``` javascript
 // file:./server/forum/random_page.js
@@ -280,12 +290,14 @@ module.exports = function (params, next) {
   // get random post here
 
   url = nodeca.runtime.router.linkTo('forum.posts.show', post);
-  next({redirect: [302, url]});
+  next({statusCode: 302, headers: {'Location': url}});
 };
 ```
 
 
 ## Permissions
+
+**NOT YET IMPLEMENTED**
 
 Permissions are special case filters which are defined in a DSL way and then
 proposed to the filters:

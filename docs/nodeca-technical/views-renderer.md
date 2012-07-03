@@ -1,8 +1,7 @@
 Views Renderer
 --------------
 
-Views renderer called once ation and it's filters were run on _render response_
-stage.
+Views renderer is an after-filter middleware.
 
 Render expect environment to contain `response` object (see Request Environment)
 with properties:
@@ -32,6 +31,8 @@ skin (default) instead.
 
 
 ## Helpers and Variables
+
+**NOT YET IMPLEMENTED**
 
 We provide constants available in templates on both server and client:
 

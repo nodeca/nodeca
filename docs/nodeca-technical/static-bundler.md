@@ -1,6 +1,8 @@
 Static Bundler
 --------------
 
+**OUTDATED**
+
 ### Stage 1. Preapare temporary files
 
 ##### 1.1. prepare dynamic generated files (api-tree, languages).

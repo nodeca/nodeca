@@ -12,9 +12,9 @@ under `nodeca.model`:
 .
 ├─ models/
 │   ├─ foo/
-│   │   ├─ bar.js   # nodeca.model.foo.bar
+│   │   ├─ Bar.js   # nodeca.model.foo.Bar
 │   │   └─ ...
-│   └─ aha.js       # nodeca.model.aha
+│   └─ Aha.js       # nodeca.model.Aha
 │
 └─ ...
 ```
@@ -25,28 +25,11 @@ Simple case
 
 That's similar to server module: single or several functions can be exported.
 
-_Single model:_
-
 ``` javascript
-// file : models/vfs/file.js
-// api  : nodeca.model.vfs.file
+// file : models/vfs/File.js
+// api  : nodeca.model.vfs.File
 
 module.exports = function File() {
-  // ...
-};
-```
-
-_Several models:_
-
-``` javascript
-// file : models/user.js
-// api  : nodeca.model.user.create, nodeca.model.user.remove 
-
-module.exports.create = function create(..., cb) {
-  // ...
-};
-
-module.exports.remove = function remove(..., cb) {
   // ...
 };
 ```
@@ -64,8 +47,8 @@ sequence wll be the following:
 - `__init__` called, and result mapped to model tree.
 
 ``` javascript
-// file  : model/blog/entry.js
-// api   : nodeca.model.blog.entry
+// file  : model/blog/Entry.js
+// api   : nodeca.model.blog.Entry
 
 var mongoose = nodeca.runtime.mongoose;
 
@@ -88,7 +71,7 @@ var Entry = module.exports.BlogPost = new mongoose.Schema({
 });
 
 module.exports.__init__ = function() {
-  return mongoose.model('entry', Entry);
+  return mongoose.model('blog.Entry', Entry);
 };
 ```
 
@@ -100,7 +83,7 @@ changed via init phase hooks. Complex models (mongoose) require intrussion after
 schema load. That can be done with model hooks.
 
 ``` javascript
-nodeca.hooks.models.on('forum.posts', [priority=10, ]function (model) {
+nodeca.hooks.models.on('forum.Posts', {weight: 10}, function (model) {
   /* ... */
 });
 ```
@@ -125,7 +108,7 @@ function lastModPlugin(schema, options) {
   }
 }
 
-nodeca.hooks.models.on('blog.entry', 5, function (model) {
+nodeca.hooks.models.on('blog.Entry', function (model) {
   model.Comments.plugin(lastModPlugin);
   model.Entry.plugin(lastModPlugin, {index: true});
 }
