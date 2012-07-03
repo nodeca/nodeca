@@ -58,8 +58,8 @@ dev-deps:
 		echo "  See: http://npmjs.org/" >&2 ; \
 		exit 128 ; \
 		fi
-	which jshint > /dev/null || npm install jshint
-	which ndoc > /dev/null || npm install ndoc
+	which jshint > /dev/null || npm install jshint -g
+	which ndoc > /dev/null || npm install ndoc -g
 	npm install
 
 
