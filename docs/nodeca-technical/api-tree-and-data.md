@@ -27,25 +27,26 @@ nodeca
   filters                 # hooks for server modules (mostly to attach access rules)
   settings                # settings accessor (get/set, not tree)
   config                  # parsed config file.
-  logger                  # logger instance (winston on server)
+  logger                  # logger instance
 
   # server & client, dynamic data
 
   runtime                 # `dynamic` structures
     version               # "1.0.0"
-    assets_baseurl        # Root URL for assets `//nodeca.com/assets/`
     bundle                # info about namespaces from static builder
     router                # router instance, filled with routes from config
 
     # server-specific
 
     main_app              # main application (the one that started the process)
+    apps                  # array of { name, absolute_path } for each loaded app 
+    views                 # compiled views
     mongoose              # mongoose instanse (it's not part of nlib, depends on application)
     redis                 # redis instanse (also depends on application)
-    assets_path           # path to temp dir with bundled assets
-    assets_server         # assets Server filled with assets
+    assets                # assets-related data
+      environment         # Mincer.Environmant instanse
+      manifest            # Mincer manifest of assets
     i18n                  # translator (BabelFish) instance
-    apps                  # array of { name, absolute_path } for each loaded app 
 
     # client-specific
 

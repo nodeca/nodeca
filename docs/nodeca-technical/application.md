@@ -1,9 +1,9 @@
 Application
------------
+===========
 
 
 Dir Structure
-=============
+-------------
 
 Directores below are processed automaticallty during init.
 
@@ -55,14 +55,14 @@ Directores below are processed automaticallty during init.
 
 
 API Tree
-========
+--------
 
 Most components are available via `nodeca` object as nested parts.
 Details available in other files.
 
 
 Namespaces
-==========
+----------
 
 Namespaces are used to minimize client-side code. For example, regular users don't need
 to load admin templates, functions and translations. We use component name as it's namespace.
@@ -71,19 +71,3 @@ Physically, namespace is a directory.
 
 There are special `common` namespace for resources, that should be available everywhere.
 This namespace will be loaded to client for all pages.
-
-
-Hooks
-=====
-
-Hooks are used to attach external handlers on different modules. Most used cases
-are initialisation stages, models load and server methods invocation.
-
-_Examples for models and init_
-
-    nodeca.hooks.models.on('forum.posts', function (model, callback) { /* ... */ });
-    nodeca.hooks.init.before('forum.posts', function (callback) { /* ... */ });
-    nodeca.hooks.init.after('forum.posts', function (callback) { /* ... */ });
-
-Server modules hooks are called `filters` and described in server modules spec.
-

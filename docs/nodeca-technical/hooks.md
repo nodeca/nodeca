@@ -38,10 +38,21 @@ you want to avoid. You can use wildcards (`*`, `**`) in the exclude patterns:
 - `foo.**` matches `foo.bar`, `foo.baz`, `foo.bar.baz`, etc.
 
 
-## Known hooks managers and know hook names
+## Known hooks managers
 
 
 #### nodeca.hooks.init
+
+We fire init hooks on every initialization step.
+
+``` javascript
+nodeca.hooks.models.before('router', function (next) {
+  // do something...
+  next();
+});
+```
+
+Below is the list of known initialization steps:
 
 - *models-tree*:  `nodeca.models` tree population
 - *server-tree*:  `nodeca.server` tree population
