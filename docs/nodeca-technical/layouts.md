@@ -1,6 +1,11 @@
 Layouts
 =======
 
+**NOTICE**
+For simplicity, right now, we bundle and send layouts for all namespaces.
+
+---
+
 We provide nested layouts system, where each layout can have a parent layout,
 just like a Russian doll. Normally you don't need more than two levels, so we
 assume that top level of layout is so called "base" layout and second level is a
