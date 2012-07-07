@@ -24,7 +24,8 @@
                         "nodeca.blogs"  : "git://github.com/nodeca/nodeca.blogs.git"
                       },
   "devDependencies" : {
-                        "vows"        : "~ 0.6.0"
+                        "vows"        : "~ 0.6.0",
+                        "webkit-devtools-agent" : "~ 0.0.4"
                       },
   "engines"         : { "node": ">= 0.6.0" }
 }
