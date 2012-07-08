@@ -5,3 +5,5 @@
 --render        "html"
 --link-format   "{package.homepage}/blob/master/{file}#L{line}"
 --broken-links  "throw"
+
+lib client server shared models
