@@ -27,10 +27,11 @@ process.on('uncaughtException', function (err) {
   try {
     nodeca.logger.warn('Uncaught exception');
     nodeca.logger.error(err.stack || err.message || err.toString());
-  } catch (err) {
+  } catch (loggerError) {
     // THIS SHOULD NEVER-EVER-EVER HAPPEN -- THIS IS A WORST CASE SCENARIO
     // USAGE: ./nodeca.js 2>/var/log/nodeca-cf.log
-    process.stderr.write(err.stack || err.toString());
+    process.stderr.write('\nLogger failed write: ' + loggerError.stack);
+    process.stderr.write('\nOriginal error happened: ' + (err.stack || err));
   }
 });
 
