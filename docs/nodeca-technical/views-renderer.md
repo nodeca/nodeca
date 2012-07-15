@@ -41,6 +41,17 @@ We provide constants available in templates on both server and client:
 
 ### Helpers
 
-- `asset_path(logicalPath)`: Retuns full URL to asset (with digest)
-- `asset_include(logicalPath)`: Returns bundled source of asset (asset should be
-  precompiled)
+##### asset_path(logicalPath)
+
+Retuns full URL to asset (with digest)
+
+
+##### asset_include(logicalPath) -> String
+
+Returns bundled source of asset (asset should be precompiled)
+
+
+##### date(dateObjectOrString, format) -> String
+
+- dateObjectOrString (Date|String): Date object, or date string.
+- format (String): Output format `time`, `date`, `datetime` or `iso8601`.
