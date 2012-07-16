@@ -15,4 +15,4 @@
 # Paths with sources
 ################################################################################
 
-lib client server shared models
+lib client server shared models index.js
