@@ -10,7 +10,6 @@ REMOTE_REPO ?= $(shell git config --get remote.${REMOTE_NAME}.url)
 
 CURR_HEAD   := $(firstword $(shell git show-ref --hash HEAD | cut --bytes=-6) master)
 GITHUB_PROJ := nodeca/${NPM_PACKAGE}
-SRC_URL_FMT := https://github.com/${GITHUB_PROJ}/blob/${CURR_HEAD}/{file}\#L{line}
 
 
 help:
@@ -34,12 +33,12 @@ lint:
 
 
 test: lint
-	@if test ! `which vows` ; then \
-		echo "You need 'vows' installed in order to run tests." >&2 ; \
+	@if test ! `which mocha` ; then \
+		echo "You need 'mocha' installed in order to run tests." >&2 ; \
 		echo "  $ make dev-deps" >&2 ; \
 		exit 128 ; \
 		fi
-	NODE_ENV=test vows --spec
+	NODE_ENV=test mocha
 
 
 doc:
