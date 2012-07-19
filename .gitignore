@@ -2,6 +2,7 @@
 /doc/
 /tmp/
 *.log
+*.log.*
 *.swp
 *.sublime-project
 *.sublime-workspace
