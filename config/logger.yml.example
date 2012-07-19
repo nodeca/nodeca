@@ -1,0 +1,43 @@
+#
+# Logger configuration
+#
+
+logger:
+  level: debug
+
+  general:
+    file:
+      filename: log/general.log
+      logSize:  10 # MB
+      backups:  5
+
+  assets.static:
+    file:
+      filename: log/assets-static.log
+      logSize:  10 # MB
+      backups:  5
+
+  assets.attachments:
+    file:
+      filename: log/assets-attachments.log
+      logSize:  10 # MB
+      backups:  5
+
+  "[all]":
+    level: error
+    file:
+      filename: log/error.log
+      logSize:  10 # MB
+      backups:  5
+
+
+^production:
+  logger:
+    level: info
+
+    assets.static:
+      level: error
+
+
+#
+# vim:syntax=yaml
