@@ -24,25 +24,25 @@ logger:
   # Logger categories
   #
 
-  general:
+  system:
     - level:  debug
       file:   log/nodeca.log
     - level:  error
       file:   log/nodeca-error.log
 
-  assets:
+  server.static:
     - level:  debug
       file:   log/static.log
     - level:  error
       file:   log/static-error.log
 
-  mincer:
+  server.assets:
     - level:  debug
       file:   log/static.log
     - level:  error
       file:   log/static-error.log
 
-  http:
+  server:
     - level:  debug
       file:   log/http.log
     - level:  error
