@@ -37,9 +37,15 @@ logger:
 
   mincer:
     - level:  debug
-      file:   log/mincer.log
+      file:   log/static.log
     - level:  error
-      file:   log/mincer-error.log
+      file:   log/static-error.log
+
+  http:
+    - level:  debug
+      file:   log/http.log
+    - level:  error
+      file:   log/http-error.log
 
 
 ^production:
