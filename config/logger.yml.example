@@ -29,13 +29,13 @@ logger:
     - level:  error
       file:   log/nodeca-error.log
 
-  assets.static:
+  assets:
     - level:  debug
       file:   log/static.log
     - level:  error
       file:   log/static-error.log
 
-  assets.mincer:
+  mincer:
     - level:  debug
       file:   log/mincer.log
     - level:  error
