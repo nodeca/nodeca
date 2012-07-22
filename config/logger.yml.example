@@ -4,17 +4,18 @@
 
 logger:
 
-  #
-  # Global minimal error level
-  #
-
-  level: debug
-
-  #
-  # Appenders options
-  #
-
   options:
+
+    #
+    # Global minimal error level
+    #
+
+    level: debug
+
+    #
+    # Appenders options
+    #
+
     file:
       logSize: 10 # Max MB per log file
       backups: 5  # Amount of "old" log files
@@ -49,8 +50,9 @@ logger:
 
 
 ^production:
-  logger:
-    level: info
+  options:
+    logger:
+      level: info
 
 
 #
