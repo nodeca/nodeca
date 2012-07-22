@@ -3,40 +3,48 @@
 #
 
 logger:
+
+  #
+  # Global minimal error level
+  #
+
   level: debug
 
-  general:
+  #
+  # Appenders options
+  #
+
+  options:
     file:
-      filename: log/general.log
-      logSize:  10 # MB
-      backups:  5
+      logSize: 10 # Max MB per log file
+      backups: 5  # Amount of "old" log files
+
+  #
+  # Logger categories
+  #
+
+  general:
+    - level:  debug
+      file:   log/nodeca.log
+    - level:  error
+      file:   log/nodeca-error.log
 
   assets.static:
-    file:
-      filename: log/assets-static.log
-      logSize:  10 # MB
-      backups:  5
+    - level:  debug
+      file:   log/static.log
+    - level:  error
+      file:   log/static-error.log
 
-  assets.attachments:
-    file:
-      filename: log/assets-attachments.log
-      logSize:  10 # MB
-      backups:  5
-
-  "[all]":
-    level: error
-    file:
-      filename: log/error.log
-      logSize:  10 # MB
-      backups:  5
+  assets.mincer:
+    - level:  debug
+      file:   log/mincer.log
+    - level:  error
+      file:   log/mincer-error.log
 
 
 ^production:
   logger:
     level: info
-
-    assets.static:
-      level: error
 
 
 #
