@@ -70,7 +70,7 @@ Then, depending on your installation type, run:
 
 ## Configure
 
-Rename files in root config folder:
+Rename **ALL** files in root config folder (example below):
 
     cp config/application.example.yml config/application.yml
     cp config/database.example.yml config/databse.yml
@@ -81,16 +81,25 @@ purposes only.
 Edit `application.yml` and `database.yml` to fit your environment.
 For development - no changes usually needed.
 
-Init database:
+## Init database
+
+Apply migrations:
 
     ./nodeca.js migrate --all
 
+If you need test data, apply seed. List available:
+
+    ./nodeca.js seed
+
+Then use one by number:
+
+    ./nodeca.js seed -n <NUMBER>
 
 ## Run
 
     ./nodeca.js server
 
-Run with motitor (autorestart when you make changes):
+Run with monitor (autorestart when you make changes):
 
      make dev-server
 
