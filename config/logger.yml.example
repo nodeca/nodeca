@@ -26,9 +26,9 @@ logger:
 
   system:
     - level:  debug
-      file:   log/nodeca.log
+      file:   log/system.log
     - level:  error
-      file:   log/nodeca-error.log
+      file:   log/system-error.log
 
   server.static:
     - level:  debug
@@ -44,9 +44,9 @@ logger:
 
   server:
     - level:  debug
-      file:   log/http.log
+      file:   log/server.log
     - level:  error
-      file:   log/http-error.log
+      file:   log/server-error.log
 
 
 ^production:
