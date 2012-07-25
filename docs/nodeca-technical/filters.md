@@ -2,38 +2,11 @@ Known global before/after filters (nodeca.filters)
 ==================================================
 
 
-##### base\_assets (before, 50)
-
-*source:* `nodeca.core/lib/base_assets.js`
-
-Middleware that populates `env.response.head.assets` with generic assets
-needed for the given method (based on locale, theme and namespace).
-
-
-##### start_puncher (before, -9000)
-
-*source:* `nodeca.core/lib/puncher.js`
-
-Middleware that marks start of the request
-
-
-##### finish_puncher (after, 9000)
-
-*source:* `nodeca.core/lib/puncher.js`
-
-Middleware that embeds puncher results
-
-
-##### inject\_menu (after, 50)
-
-*source:* `nodeca.core/lib/inject_menu.js`
-
-Middleware that injects menus configuration into the environment.
-
-
-##### inject\_users (after, 50)
-
-*source:* `nodeca.users/lib/filters.js`
-
-Fetch and prepare users info.
-List of user id should be prepared in controller.
+- before, -9000,  *http|rt*,  `start_puncher`       *nodeca.core/lib/puncher.js*
+- before, -900,   *http*,     `fix_vhost`,          *nodeca.core/lib/init/http.js*
+- before, 50,     *http|rt*,  `inject_assets_info`  *nodeca.core/lib/inject_assets_info.js*
+- after,  50,     *http*,     `inject_menu`         *nodeca.core/lib/inject_menu.js*
+  *exclude: common.menus.permissions*
+- after,  50,     *http|rt*,  `inject_users`        *nodeca.users/lib/filters.js*
+- after,  900,    *http*,     `renderer`,           *nodeca.core/lib/init/http.js*
+- after,  9000,   *http|rt*,  `finish_puncher`      *nodeca.core/lib/puncher.js*
