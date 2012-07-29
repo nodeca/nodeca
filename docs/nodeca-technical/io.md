@@ -29,11 +29,6 @@ Unregister `handler` (or all handlers if it wasn't given) for an `event`.
 Initiates underlying connections and all necessary authentications.
 
 
-## nodeca.io.auth(callback)
-
-Authenticates reatime client on server and sets received session id.
-
-
 ## nodeca.io.subscribe(channel, handler)
 
 Register `handler` for messages on given `channel`.
@@ -77,19 +72,7 @@ nodeca.io.apiTree(params, {timeout: 15}, function (err, res) {
 });
 ```
 
-### API tree underlying channels
-
-We provide two private channels for request/response in format:
-
-- `/x/<secret>/api3-req` - channel for requests
-- `/x/<secret>/api3-res` - channel for responses
-
-Privacy is guaranteed by using a random 128 bit crypto-strong string.
-Clients are allowed to supscribe to _response_ and publish to _request_
-channels only.
-
-
-#### Communication protocol
+### Communication protocol
 
 Client sends a message to the _requests_ channel with following structure:
 

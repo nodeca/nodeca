@@ -125,10 +125,12 @@ env                     # `this` context of actions/filters
     t                   # babelfish.t proxy, without `language` param
 
   origin
-    http                # When request comes from HTTP, this will contain real
-      req               # server request and server response objects.
+    http                # When request comes from HTTP, this will contain
+      req               # real server request and server response objects.
       res               #
-    realtime            # Boolean `true` flag when request comes from realtime.
+    http                # When request comes from AJAX RPC, this will contain
+      req               # real server request and server response objects.
+      res               #
 
   skip                  # Array of strings used by "skippable" filters to decide
                         # whenever they need to be skipped or not.
