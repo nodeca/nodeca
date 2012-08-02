@@ -14,7 +14,7 @@ inotifywait -m -r --format '%w%f' -e modify -e move -e create -e delete node_mod
   # when not excluded
   (echo $f | egrep -v -q '\.swpx?$|/\.git/') && \
     # and actually included
-    (echo $f | egrep -q '\.(js|css|styl|less|ejs|jade)$') && \
+    (echo $f | egrep -q '\.(js|css|styl|less|ejs|jade|yml)$') && \
       # restart server
       start_nodeca
 done
