@@ -19,7 +19,7 @@ API
 ``` javascript
 // file: server/forum/thread.js
 
-nodeca.validate('forum.thread.show', {
+nodeca.validate('show', {
   properties: {
     id: { type: 'integer', minimal: 1 }
   },
