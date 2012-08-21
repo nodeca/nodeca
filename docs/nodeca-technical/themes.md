@@ -13,50 +13,49 @@ morphing of existing theme elements:
 
 - templates override / add / patch
 - binaries add / override (useful for images, smiles)
-- CLI tool to test consistency
 
 
 Theme files
 ===========
 
-Each theme consist of directories with templates (views), static files
-(js/css/images) and config. In nodeca, we use the following structure:
+In nodeca, theme files are placed under 2 paths: templates & assets:
 
 ```
 .
 ├─ assets/
-│   └─ theme-<id>/*.* 
-├─ views/
-│   └─ theme-<id>/*.* 
-└─ config/themes/<id>.yml
+│   └─ <theme-id>/*.* 
+└─ views/
+    └─ <theme-id>/*.* 
 ```
 
 1. Some directories can be missed. For example, in inherited themes.
-2. Theme can also add other files, those will not be used in inheritance rules.
-3. Files structure are nodeca-specific. Themer module is more generic: it just
-   care about inheritance & patching of directory trees.
+2. In nodeca, theme files are merged from all applications to single dir,
+   then patch rules applyed.
+3. We use `localised templates` concept - that means, each theme is built
+   separately for each language. That allows to reduce translation calls
 
 
 Theme config
 ============
 
+Theme can be extended and inherited. In nodeca, `extending` happens
+automatically on applications sources merge. Inheritance should be defined
+in config.
+
 ``` yaml
 ---
-  # Use `inherits` or `extends` if theme is based on another one.
-  # `inrerits` creates a new theme, `extends` modifies existing.
-  # When both absent, than means that it's a root theme with complete file set.
-  
-  # inherits: parent_id
-  # extends: parent_id
+theme_schemas:
 
-  name:  Mobile Theme       # Full name of theme. Don't mix up with theme id.
+  desktop:
+    name: Default Default Theme
 
-  ignore: /.*(txt|md)$/i    # Exclude those files (regex), prior to build theme.
-                            # Can be useful, to skip readme and other
-                            # description files.
+  # theme id
+  mobile:
+    # full name
+    name: Default Mobile Theme
+    # parent id
+    inherits: desktop
 ```
-
-Theme id is taken from config file name (without extension).
 
 
 Patches & overrides
@@ -91,24 +90,4 @@ Use this info to create better logs or debug tools.
 - failed to apply patch
 - no permissions
 - patch error (file not found or apply error)
-
-### Statistics
-
-total:
-
-- templates
-- files
-- build time
-
-for each skin:
-
-- description + dependencies (if other skins extend it)
-- total templates
-- total files
-- list of modified files
-  - source
-  - who overrides (list of skins)
-- list of added files
-  - source
-  - who added
 
