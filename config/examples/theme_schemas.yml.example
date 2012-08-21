@@ -1,14 +1,8 @@
-#theme_schemas:
-#  # Base theme
-#  core-desktop:
-#    name: Default Theme
+# themes:
+#   schemas:
+#     desktop:
+#       name: Default Desktop Theme
 #
-#  # Base theme extension
-#  core-desktop-mod:
-#    name: Extended Default Theme
-#    extends: core-desktop
-#
-#  # Inherited theme
-#  mobility:
-#    name: My First Mbile Theme
-#    inherits: core-desktop
+#     mobile:
+#       name: Default Mobile Theme
+#       inherits: desktop

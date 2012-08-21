@@ -44,10 +44,10 @@ in config.
 
 ``` yaml
 ---
-theme_schemas:
+themes:
 
   desktop:
-    name: Default Default Theme
+    name: Default Desktop Theme
 
   # theme id
   mobile:

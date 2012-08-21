@@ -31,14 +31,16 @@ applications:
 
 # You can specify either whitelist:
 #
-#   themes_whitelist:
-#     - deep-purple
-#     - pink-floyd
+#   themes:
+#     enabled:
+#       - deep-purple
+#       - pink-floyd
 #
 # or blacklist of enabled themes:
 #
-#   themes_blacklist:
-#     - yellow-submarine
+#   themes:
+#     disabled:
+#       - yellow-submarine
 #
 # All available themes re enabled by default, when no whitelist or blacklist
 # specified. When bothe white- and black- lists are provided, whitelist is used.
