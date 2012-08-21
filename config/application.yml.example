@@ -42,8 +42,8 @@ applications:
 #     disabled:
 #       - yellow-submarine
 #
-# All available themes re enabled by default, when no whitelist or blacklist
-# specified. When bothe white- and black- lists are provided, whitelist is used.
+# All available themes are enabled by default, when no whitelist or blacklist
+# specified. When both white and black lists are provided, whitelist is used.
 
 
 #

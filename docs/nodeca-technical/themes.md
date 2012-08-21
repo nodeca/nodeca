@@ -45,16 +45,31 @@ in config.
 ``` yaml
 ---
 themes:
+  # You can specify either whitelist:
+  #
+  # enabled:
+  #   - deep-purple
+  #   - pink-floyd
+  #
+  # or blacklist of enabled themes:
+  #
+  # disabled:
+  #   - yellow-submarine
+  #
+  # All available themes are enabled by default, when no whitelist or blacklist
+  # specified. When both white and black lists are provided, whitelist is used.
 
-  desktop:
-    name: Default Desktop Theme
+  schemas:
 
-  # theme id
-  mobile:
-    # full name
-    name: Default Mobile Theme
-    # parent id
-    inherits: desktop
+    desktop:
+      name: Default Desktop Theme
+
+    # theme id
+    mobile:
+      # full name
+      name: Default Mobile Theme
+      # parent id
+      inherits: desktop
 ```
 
 
