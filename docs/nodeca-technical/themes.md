@@ -77,17 +77,3 @@ Patches should be `unified diffs`, applyed with `patch` command. There only
 exclution is, when we need just add data to the start or to the end of template.
 Then create file with extention `.before` or `.after`.
 
-Unsorted
-========
-
-Use this info to create better logs or debug tools.
-
-### Detected errors
-
-- duplicated template filenames (from different folders)
-- can't add new template in inherited skin
-- try to modify not existing file
-- failed to apply patch
-- no permissions
-- patch error (file not found or apply error)
-
