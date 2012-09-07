@@ -1,7 +1,9 @@
-Forums / Blogs / Groups / Classfields / ... platform, for
-medium and big traffic projects, written with node.js
+Forums / Blogs / Groups / Classfields / ...
+===========================================
 
-* Bleeding edge demo: http://dev.nodeca.com
+Platform, for medium and big traffic projects, written with node.js
+
+* Bleeding edge demo: **http://dev.nodeca.com**
 * Design process: https://github.com/nodeca/nodeca-design
   (materials can be outdated)
 
@@ -23,7 +25,7 @@ under MIT licence.
 Here are ton's of reasons, why Nodeca started:
 
 1. __Easy development/maintenance__. No ancient manual downloads of php sources,
-   missed upgrades and other. Just use github, Luke! And node's npm.
+   boring upgrades and missed security fixes. Just use github, Luke! And node.js's npm.
 
 2. __Very fast, scaleable to infinity__. Forget about CPU load. Just add one more shard,
   when db is out of space. We use MongoDB, wich makes sharding/replication trivial,
@@ -50,7 +52,8 @@ You can participate
 
 If you have similar goals - you can participate in Nodeca development. Please, note,
 that we are not "free developpers for your needs", and we can not be hired. But we can
-coordinate our efforts with your ones.
+coordinate our efforts with your ones. Though, if you have better collaboration ideas -
+that's discussable.
 
 
 Contacts
