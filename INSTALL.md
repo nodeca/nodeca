@@ -2,6 +2,12 @@ installation instruction
 
 ## Install MongoDB/Redis (ubuntu/debian)
 
+Requirements: node.js, mongodb, redis. Also, we recommend
+[Hetzner](http://www.hetzner.de/en/hosting/produktmatrix/rootserver-produktmatrix/)
+and [OVH](http://www.ovh.com/fr/serveurs_dedies/) for dedicated
+server - very good price/quality ratio.
+
+
 ### MongoDB
 
 http://www.mongodb.org/display/DOCS/Ubuntu+and+Debian+packages
@@ -73,13 +79,14 @@ Then, depending on your installation type, run:
 Rename **ALL** files in root config folder (example below):
 
     cp config/application.example.yml config/application.yml
-    cp config/database.example.yml config/databse.yml
+    cp config/database.example.yml config/database.yml
 
 **Don't** touch files in `./config/examples` subfolders. Those are for education
 purposes only.
 
 Edit `application.yml` and `database.yml` to fit your environment.
 For development - no changes usually needed.
+
 
 ## Init database
 
@@ -95,13 +102,17 @@ Then use one by number:
 
     ./nodeca.js seed -n <NUMBER>
 
+
 ## Run
+
+In terminal (break with ctrl+c)
 
     ./nodeca.js server
 
-Run with monitor (autorestart when you make changes):
+Run with monitor (your dev location, autorestart when you make changes):
 
-     make dev-server
+    make dev-server
 
-Install supervisor globally, prior to do so: `npm install -g supervisor`
+Run on server (via `upstart`, learn script from `./etc` subfolder)
 
+    start nodeca
