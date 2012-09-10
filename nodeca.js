@@ -1,14 +1,27 @@
 #!/usr/bin/env node
+'use strict';
+
 
 /*global nodeca*/
 
-'use strict';
 
-// Create and run app
+//
+// Prolongify stack traces
+//
+
+
+require('longjohn');
+
+
+//
+// Create app
+//
+
 var app = require('nlib').Application.create({
   name: 'nodeca',
   root: __dirname
 });
+
 
 //
 // Preset application version
