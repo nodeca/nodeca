@@ -13,16 +13,16 @@ applications:
 # Locales
 #
 
-# locales:
-#
-#   # List of enabled locales (all found locales by default).
-#   enabled:
-#     - en-US
-#     - en-GB
-#     - ru-RU
-#
-#   # Application locale used by default (first enabled one if not set).
-#   default: ru-RU
+locales:
+
+  # Application locale used by default (first enabled one if not set).
+  default: en-US
+
+  # # List of enabled locales (all found locales by default).
+  # enabled:
+  #   - en-US
+  #   - en-GB
+  #   - ru-RU
 
 
 #
@@ -50,6 +50,7 @@ applications:
 # Listen
 #
 
-listen:
-  host: localhost
-  port: 3000
+router:
+  bind:
+    default:
+      listen: 0.0.0.0:3000
