@@ -10,7 +10,8 @@
 //
 
 
-//require('longjohn');
+// Uncomment to enable long stack traces and set max. to 50
+//require('longjohn').async_trace_limit = 50;
 
 
 //
