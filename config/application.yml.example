@@ -47,15 +47,20 @@ locales:
 
 
 #
-# Listen
+# Listening options
 #
 
-router:
-  bind:
-    default:
-      listen: 0.0.0.0:3000
-    #_: !!js/function |
-    #  function (req, res) {
-    #    res.writeHead(404, { 'Content-Type': 'text/plain' });
-    #    res.end('Invalid host ' + req.headers.host);
-    #  }
+bind:
+  default:
+    listen: 0.0.0.0:3000
+
+  # ACTION, WHEN REQUESTED HOST IS UNKNOWN
+  #
+  # _ is a special keyword that hold function called when hostname is not
+  # supposed to be served by server listener, by default 404 not found:
+  #
+  #_: !!js/function |
+  #  function (req, res) {
+  #    res.writeHead(404, { 'Content-Type': 'text/plain' });
+  #    res.end('Invalid host ' + req.headers.host);
+  #  }
