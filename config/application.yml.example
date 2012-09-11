@@ -50,6 +50,12 @@ locales:
 # Listen
 #
 
-listen:
-  default:
-    listen: 0.0.0.0:3000
+router:
+  bind:
+    default:
+      listen: 0.0.0.0:3000
+    #_: !!js/function |
+    #  function (req, res) {
+    #    res.writeHead(404, { 'Content-Type': 'text/plain' });
+    #    res.end('Invalid host ' + req.headers.host);
+    #  }

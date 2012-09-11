@@ -51,14 +51,3 @@ router:
   direct_invocators:
     forums.threads.show: on
     forums.threads.update: off
-
-  #
-  # Mount points
-  #
-
-  mount:
-    # Mount all nodeca.server.forum.* methods under domain `forums.nodeca.org`
-    forum:  //forums.nodeca.org
-
-    # Mount all ndoeca.server.blog.* methods under path `/blogs`
-    blog:   /blogs
