@@ -54,6 +54,16 @@ bind:
   default:
     listen: 0.0.0.0:3000
 
+  # SYNOPSIS:
+  #
+  # <apiPath>:
+  #   mount: [<proto>:][//<host>[:<port>]][/<path>]
+  #   listen: <address>[:<port = 80>]
+  #   ssl:
+  #     key:  /path/to/file.key
+  #     cert: /path/to/file.cert
+  #     pfs:  /path/to/file.pfx
+
   forum:
     mount: /forum
 
