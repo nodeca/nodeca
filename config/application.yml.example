@@ -54,6 +54,12 @@ bind:
   default:
     listen: 0.0.0.0:3000
 
+  forum:
+    mount: /forum
+
+  forum.index:
+    mount: /
+
   # ACTION, WHEN REQUESTED HOST IS UNKNOWN
   #
   # _ is a special keyword that hold function called when hostname is not
