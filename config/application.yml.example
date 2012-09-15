@@ -4,9 +4,9 @@
 
 applications:
   - nodeca.core
+  - nodeca.users
   - nodeca.forum
   - nodeca.blogs
-  - nodeca.users
 
 
 #
