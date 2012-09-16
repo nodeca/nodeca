@@ -60,9 +60,9 @@ bind:
   #   mount: [<proto>:][//<host>[:<port>]][/<path>]
   #   listen: <address>[:<port = 80>]
   #   ssl:
-  #     key:  /path/to/file.key
-  #     cert: /path/to/file.cert
-  #     pfs:  /path/to/file.pfx
+  #     key:  /path/to/file.key   # Path might be absolute
+  #     cert: /path/to/file.cert  # or relative to the root
+  #     pfs:  /path/to/file.pfx   # of main nodeca application
   #
   # SSL EXAMPLE:
   #
@@ -71,7 +71,7 @@ bind:
   #   mount:  https://localhost:3000
   #   ssl:
   #     key:  ./etc/server.key
-  #     cert: ./etc/server.crt
+  #     cert: ./etc/server.cert
 
   forum:
     mount: /forum
