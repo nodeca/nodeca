@@ -91,8 +91,6 @@ idea to cache full url (or md5) - to avoid recalculations on every request.
 
 ## Direct Invocators
 
-*Not fully implemented*
-
 Sometimes we want API methods to be accessible via direct HTTP links and browser
 history. For this purpose we use *direct invocator* rule which looks like:
 
@@ -182,6 +180,47 @@ Options are Objects of key-value pairs. All parts are optional:
 - **ssl** (Object): Contains paths to `pfx` or `key` and `cert` files. Paths are
   relative to the main app root, but you may specify _absolute_ pathname that
   starts with a leading slash.
+
+
+### HTTPS
+
+As you can see above you can make nodeca start SSL server. Here's an example
+configuration that starts an https server on 443 port:
+
+``` yaml
+bind:
+  default:
+    listen: 0.0.0.0:443
+    mount:  https://dev.nodeca.org
+    ssl:
+      key:  ./etc/server.key
+      cert: ./etc/server.cert
+```
+
+You may also want to use stunnel for HTTPS while running nodeca application in
+normal mode, for this purposes you MUST not specify `ssl` option, and provide
+only a protocol-specific mount point:
+
+``` yaml
+bind:
+  default:
+    listen: 127.0.0.1:3000
+    mount:  https://dev.nodeca.org
+```
+
+
+#### Generating self-signed SSLcertificate
+
+``` bash
+openssl genrsa -des3 -out server.key 1024
+openssl req -new -key server.key -out server.csr
+
+cp server.key server.key.orig
+openssl rsa -in server.key.orig -out server.key
+
+openssl x509 -req -days 365 -in server.csr \
+        -signkey server.key -out server.cert
+```
 
 
 ### Fallbacks
