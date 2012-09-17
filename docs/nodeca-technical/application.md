@@ -64,10 +64,11 @@ Details available in other files.
 Namespaces
 ----------
 
-Namespaces are used to minimize client-side code. For example, regular users don't need
-to load admin templates, functions and translations. We use component name as it's namespace.
+Namespaces are used to minimize client-side code. For example, regular users
+don't need to load admin templates, functions and translations. We use component
+name as it's namespace.
 
-Physically, namespace is a directory.
+Physically, namespace is a _first level_ under server|shared|client tree.
 
-There are special `common` namespace for resources, that should be available everywhere.
-This namespace will be loaded to client for all pages.
+There are special `common` namespace for resources, that should be available
+everywhere. This namespace will be loaded to client for all pages.
