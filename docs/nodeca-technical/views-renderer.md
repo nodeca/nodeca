@@ -20,14 +20,17 @@ callback, while upon HTTP request we can return it as JSON or as rendered HTML
 depending on requested `format`. By default upon HTTP request we render HTML and
 return it. When `format` is *JSON* we return whole `env.response` serialized.
 
+**TBD** Format dependent rendering is not yet supported.
+
 We look for the requested format in following places (first one found is used):
 
 - `env.format`
-- `env.params.format`
+- `env.response.format`
 
-**NOTICE** `html` renderer expect presence of `env.language` and `env.skin` in
-order to choose correct view. If it wasn't, we use default language (en) and
-skin (default) instead.
+
+**NOTICE** `html` renderer expect presence of `env.session.locale` and
+`env.session.theme` in order to choose correct view. If it wasn't, we use
+default language (en) and theme (default) instead.
 
 
 ## Helpers and Variables
@@ -45,13 +48,19 @@ We provide constants available in templates on both server and client:
 
 Retuns full URL to asset (with digest)
 
-
 ##### asset_include(logicalPath) -> String
 
 Returns bundled source of asset (asset should be precompiled)
 
+##### link_to(name, params) -> String
+
+Returns generated URL for `name` API path and given `params`.
 
 ##### date(dateObjectOrString, format) -> String
 
 - dateObjectOrString (Date|String): Date object, or date string.
 - format (String): Output format `time`, `date`, `datetime` or `iso8601`.
+
+##### t(phrase, params) -> String
+
+Returns translated `phrase`.
