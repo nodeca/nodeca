@@ -1,28 +1,6 @@
 IO
 ==
 
-## nodeca.io.on(event, handler)
-
-Regster `handler` for given io `event`.
-
-``` javascript
-nodeca.io.on('rpc:version-mismatch', function (versions) {
-  alert('Versions mismatch. Server is' + versions.server +
-        ' and client is ' + versions.client);
-});
-```
-
-
-#### Known events
-
-- `rpc:version-mismatch`
-
-
-## nodeca.io.off(event[, handler])
-
-Unregister `handler` (or all handlers if it wasn't given) for an `event`.
-
-
 ## nodeca.io.apiTree(data[, options][, callback])
 
 ``` javascript
@@ -32,7 +10,7 @@ nodeca.io.apiTree(params, {timeout: 15}, function (err, res) {
 ```
 
 
-### Communication protocol
+### RPC Communication protocol
 
 Client sends a message to the _requests_ channel with following structure:
 
