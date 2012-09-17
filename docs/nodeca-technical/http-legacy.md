@@ -13,12 +13,12 @@ Request flow
 
 **Before magic starts:**
 
+* Check host name and redirect if we don't  know it (to main).
 * Parse query params and fill `env.origin.http.req.query`
 * Fill `params` and call server method (with filters)
 
 **Server method pass:**
 
-* Check host name and redirect if we don't  know it (to main).
 * Call server method itself
 * Call Renderer
   - skip if not HTTP invocation

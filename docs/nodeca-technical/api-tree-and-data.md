@@ -33,7 +33,6 @@ nodeca
 
   runtime                 # `dynamic` structures
     version               # "1.0.0"
-    bundle                # info about namespaces from static builder
     router                # router instance, filled with routes from config
 
     # server-specific
@@ -46,6 +45,7 @@ nodeca
     assets                # assets-related data
       environment         # Mincer.Environmant instanse
       manifest            # Mincer manifest of assets
+      map                 # distribution map for `loadAssets.init`
     i18n                  # translator (BabelFish) instance
 
     # client-specific
@@ -54,30 +54,6 @@ nodeca
     user_id               #
     theme_id              #
     language              #
-```
-
-
-bundle
-------
-
-Collection of CRCs for loadable resources.  It helps to properly cache
-static data in local store, and refresh those on server upgrade.
-
-``` javascript
-{
-  phrases: {
-    forum:    "crc1"
-    blogs:    "crc2"
-    groups:   "crc3"
-    admin:    "crc4"
-  }
-  templates: {
-    forum:    "crc5"
-    blogs:    "crc6"
-    groups:   "crc7"
-    admin:    "crc8"
-  }
-}
 ```
 
 

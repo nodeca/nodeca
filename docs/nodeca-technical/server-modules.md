@@ -128,7 +128,7 @@ env                     # `this` context of actions/filters
     http                # When request comes from HTTP, this will contain
       req               # real server request and server response objects.
       res               #
-    http                # When request comes from AJAX RPC, this will contain
+    rpc                 # When request comes from AJAX RPC, this will contain
       req               # real server request and server response objects.
       res               #
 
@@ -142,7 +142,6 @@ env                     # `this` context of actions/filters
     theme
 
   request               # request details
-    origin (RT|HTTP)    # invocation method (readltime [websocket] / http)
     method              # called method name (e.g.: ‘forum.posts.show’)
     namespace           # called method namespace (e.g.: `forum`)
 

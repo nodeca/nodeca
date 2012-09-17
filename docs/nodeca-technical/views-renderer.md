@@ -15,7 +15,7 @@ If error occurs, `env.response` will have these fields as well:
 - **err.code** (Integer)
 - **err.message** (String)
 
-When request comes from RT origin, we simply pass `env.response` object to the
+When request comes from RPC origin, we simply pass `env.response` object to the
 callback, while upon HTTP request we can return it as JSON or as rendered HTML
 depending on requested `format`. By default upon HTTP request we render HTML and
 return it. When `format` is *JSON* we return whole `env.response` serialized.
