@@ -16,9 +16,9 @@ Known global before/after filters (nodeca.filters)
 - 50 - `inject_users` *nodeca.users/lib/filters/inject_users.js*
 - 50 - `inject_me` *nodeca.users/lib/filters/inject_me.js*
 - 900 (http only) - `renderer` *nodeca.core/lib/init/http.js*
+- 9999 - `finish_puncher` *nodeca.core/lib/puncher.js*
 
 **ensure**
 
 - 9000 - `save_session` *nodeca.core/lib/sessions.js*
 - 9500 - `set_cookies` *nodeca.core/lib/cookies.js*
-- 9999 - `finish_puncher` *nodeca.core/lib/puncher.js*
