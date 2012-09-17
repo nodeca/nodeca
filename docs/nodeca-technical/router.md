@@ -1,55 +1,48 @@
 # Router
 
-For server and client purposes we use [Pointer][router] router.
+For server and client purposes we use [Pointer][Pointer] router.
 Routes are described in YAML and bundled into main api tree file as
-`nodeca.config.routes` after init. Router instanse is placed at `nodeca.router`.
+`nodeca.config.routes` after init. Router instanse is accessible as
+`nodeca.runtime.router`.
 
-TBD:  Right now we load ONY `routes.yml`. Needs clarification what we really
-      need to load and how, especially if we are going to merge all config files
-      into config subtree (regrdless to the filenames).
+## Application Routes
 
-We use two types of files: `default_routes.yml` for application default routes
-and `routes.yml` in main application, that mounts routes and API tree nodes to
-domains and/or paths.
-
-## Application Default Routes
-
-Application default routes file defines routes and list of direct invocators
-only.
+Application routes are defined in `router.map` section of configs:
 
 ``` yaml
---- # file: ./config/default_routes.yml
-routes:
-  forums.list:
-    "/f{forum_id}/":
-      forum_id: /\d+/
-    "/f{forum_id}/index({page}).html":
-      forum_id: /\d+/
-      page:
-        match: /[2-9]|[1-9]\d+/
-        default: 1
+---
+router:
+  map:
+    forums.list:
+      "/f{forum_id}/":
+        forum_id: /\d+/
+      "/f{forum_id}/index({page}).html":
+        forum_id: /\d+/
+        page:
+          match: /[2-9]|[1-9]\d+/
+          default: 1
 
-  forums.threads.show:
-    "/f{forum_id}/thread{thread_id}(-{page}).html":
-      forum_id: /\d+/
-      thread_id: /\d+/
-      page:
-        match: /[2-9]|[1-9]\d+/
-        default: 1
+    forums.threads.show:
+      "/f{forum_id}/thread{thread_id}(-{page}).html":
+        forum_id: /\d+/
+        thread_id: /\d+/
+        page:
+          match: /[2-9]|[1-9]\d+/
+          default: 1
 
-  forums.threads.redirect:
-    "/f{forum_id}/thread{thread_id}-{goto}.html":
-      forum_id: /\d+/
-      thread_id: /\d+/
-      goto: /new-post|last-post/
+    forums.threads.redirect:
+      "/f{forum_id}/thread{thread_id}-{goto}.html":
+        forum_id: /\d+/
+        thread_id: /\d+/
+        goto: /new-post|last-post/
 
-  search:
-    "/search/": ~
+    search:
+      "/search/": ~
 
-  users.profile:
-    "#/users/profile/{user_id}/{tab}":
-      user_id: /\d+/
-      tab: /general|last-msgs/
+    users.profile:
+      "#/users/profile/{user_id}/{tab}":
+        user_id: /\d+/
+        tab: /general|last-msgs/
 ```
 
 **NOTICE** Routes with leading `#` are used by clients ONLY.
@@ -65,17 +58,18 @@ Each rule might be either `String` or `Object` that consist of fields:
     -   *match* Optional. Rule to match value of param, `Array` or `RegExp`.
     -   *default* Optional. Default value of param.
 
-See [Pointer][router] Route Options documentation for details of `params` options.
+See [Pointer][Pointer-Route] `new Route` documentation of `params` options.
 
 
 ### Slugs (optional)
 
-Routes can contain slugs.Thegnically, that's usual non obligatory params.
+Routes can contain slugs.Technically, that's usual optional params.
 
 ``` yaml
-routes:
-  faq.post.show:
-    "/qa/({categoryslug}/){post_id}(-{postslug}).html": ~
+router:
+  map:
+    faq.post.show:
+      "/qa/({categoryslug}/){post_id}(-{postslug}).html": ~
 ```
 
 The route above will match any of the following URLs:
@@ -91,7 +85,7 @@ with 302 code. This can be done with `before` filter. Note, that it's a good
 idea to cache full url (or md5) - to avoid recalculations on every request.
 
 
-## Direct Invocators
+## (!!!) Direct Invocators
 
 Sometimes we want API methods to be accessible via direct HTTP links and browser
 history. For this purpose we use *direct invocator* rule which looks like:
@@ -147,7 +141,7 @@ In this case, request to */!forums.list?forum_id=123&page_id=1* will be
 redirected to "/f{forum_id}/".
 
 
-## Redirects
+## (!!!) Redirects
 
 For simple redirects, which do not involve any calcualtions we use `redirect`
 map in the `routes` file. The syntax is dead-simple:
@@ -195,7 +189,7 @@ redirects:
       forum_id: /\d+/
 ```
 
-## Mounting Applications
+## (???) Mounting Applications
 
 You can "mount" API tree nodes under different domain name and/or paths.
 
@@ -219,14 +213,15 @@ mount:
 ```
 
 
-## Helpers
+## View Helpers
 
 These helpers are available on both client and server.
 
 ``` javascript
 // tries to find apropriate URL y server method and arguments
-link_to(forums.list, {forum_id: 123, page: 3});
+linkTo('forums.list', {forum_id: 123, page: 3});
 ```
 
 
-[router]: https://github.com/nodeca/pointer
+[Pointer]:        https://github.com/nodeca/pointer
+[Pointer-Route]:  http://nodeca.github.com/pointer/#Route.new
