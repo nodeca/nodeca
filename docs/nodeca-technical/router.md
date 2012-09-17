@@ -2,12 +2,14 @@
 
 For server and client purposes we use [Pointer][Pointer] router.
 Routes are described in YAML and bundled into main api tree file as
-`nodeca.config.routes` after init. Router instanse is accessible as
+`nodeca.config.router` after init. Router instanse is accessible as
 `nodeca.runtime.router`.
+
+Router config for the client is kept under `nodeca.runtime.client_routes`.
 
 ## Application Routes
 
-Application routes are defined in `router.map` section of configs:
+Application routes are defined in `router.map` section of config files:
 
 ``` yaml
 ---
@@ -45,7 +47,9 @@ router:
         tab: /general|last-msgs/
 ```
 
-**NOTICE** Routes with leading `#` are used by clients ONLY.
+**NOTICE**
+Routes with leading `#` are used by clients ONLY.
+*Not implemented yet*
 
 
 ### Route Params Options
@@ -55,15 +59,15 @@ OPTIONAL.
 Parameters rules hash of key => rules.
 Each rule might be either `String` or `Object` that consist of fields:
 
-    -   *match* Optional. Rule to match value of param, `Array` or `RegExp`.
-    -   *default* Optional. Default value of param.
+    - **match** (Optional) Rule to match value of param, `Array` or `RegExp`.
+    - **default** (Optional) Default value of param.
 
 See [Pointer][Pointer-Route] `new Route` documentation of `params` options.
 
 
-### Slugs (optional)
+### Slugs
 
-Routes can contain slugs.Technically, that's usual optional params.
+Routes can contain slugs. Technically, that's usual optional params.
 
 ``` yaml
 router:
@@ -85,7 +89,9 @@ with 302 code. This can be done with `before` filter. Note, that it's a good
 idea to cache full url (or md5) - to avoid recalculations on every request.
 
 
-## (!!!) Direct Invocators
+## Direct Invocators
+
+*Not fully implemented*
 
 Sometimes we want API methods to be accessible via direct HTTP links and browser
 history. For this purpose we use *direct invocator* rule which looks like:
@@ -95,10 +101,11 @@ history. For this purpose we use *direct invocator* rule which looks like:
 Technically, such link will run page loader first, then update page inline.
 
 ``` yaml
---- # file: ./config/default_routes.yml
-direct_invocators:
-  forums.threads.show: on
-  search: on
+---
+router:
+  direct_invocators:
+    forums.threads.show: on
+    search: on
 ```
 
 **CAUTION**. NEVER give direct access to methods, that posts data. That will
@@ -129,87 +136,104 @@ situation, so instead we can become more verbose, and rewrite our first route
 rule as:
 
 ``` yaml
-routes:
-  forums.list:
-    "/f{forum_id}/":
-      page: /[01]/
-      forum_id: /\d+/
-  # ...
+router:
+  map:
+    forums.list:
+      "/f{forum_id}/":
+        page: /[01]/
+        forum_id: /\d+/
+    # ...
 ```
 
 In this case, request to */!forums.list?forum_id=123&page_id=1* will be
 redirected to "/f{forum_id}/".
 
 
-## (!!!) Redirects
+## Mounting (and binding) applications
 
-For simple redirects, which do not involve any calcualtions we use `redirect`
-map in the `routes` file. The syntax is dead-simple:
+Mounting (and binding) of applications is described in `bind` section of config
+files. It has _API path_ as key and options of it's binding as values, e.g.:
 
 ``` yaml
----
-redirects:
-  "/f{forum_id}/thread{thread_id}.html":
-    to: [ 301, "/t-{forum_id}-{thread_id}.aspx" ]
-    params:
-      forum_id: /\d+/
-      thread_id: /\d+/
+bind:
+  default:
+    listen: 0.0.0.0:3000
+
+  forums:
+    mount: /forum
 ```
 
-For complex situations we recommend to use server API tree and normal routes
-instead, e.g.:
+
+Options are Objects of key-value pairs. All parts are optional:
+
+- **listen** (String): Which `address[:port = 80]` we should listen. It is
+  useful when you want to bind different parts of application on different
+  interfaces, e.g. use SSL for users only, or separate interface for assets.
+- **mount** (String): Mount point given in form of `[proto://host:port][/path]`,
+  `proto` and `port` are optional. Examples:
+  - `https://users.nodeca.org`:
+    mount to the root of `users.ndoca.org` host using HTTPS protocol only.
+  - `//beta.nodeca.org:3000`:
+    mount to the root of `beta.ndoca.org:3000` host using any protocol.
+  - `/forum`:
+    mount to the `/forum` path of any host using any protocol.
+  - `//dev.nodeca.org:3000/users`:
+    mount to the `/users` path of `dev.nodeca.org:3000` host using any protocol.
+- **ssl** (Object): Contains paths to `pfx` or `key` and `cert` files. Paths are
+  relative to the main app root, but you may specify _absolute_ pathname that
+  starts with a leading slash.
+
+
+### Fallbacks
+
+You can mount/bind any part of `nodeca.server` tree, even serve `forum.posts`
+and `forum.threads` by different address:port points (although if you do so,
+I recommend you to visit a doctor).
+
+When you specify mount/bind options for `forum` and `forum.posts`, the last one
+will use options of `forum` as "defaults". In this case we can describe the way
+of fallbacks as follows:
+
+   bind['default'] + bind['forum'] + bind['forum.posts']
+
+
+#### Default mount/binding point
+
+You can use `default` bind-level key to describe "default" fallback mount point.
+Options of this case are used as "defaults" for all API paths and take place,
+when API path has no mount/bind options:
 
 ``` yaml
----
-routes:
-  server.forums.redirect:
-    "/f{forum_id}/thread{thread_id}.html": ~
+default:
+  listen: 0.0.0.0:80
+
+forum:
+  mount: /forum
+
+#
+# equals to:
+#
+
+default:
+  listen: 0.0.0.0:80
+
+forum:
+  listen: 0.0.0.0:80
+  mount: /forum
 ```
 
-However, you are free to specify your function right in YAML file:
+
+### Handling invalid hosts
+
+There is a _special case_ bind-level key `_` for the _invalid hosts_ handler:
 
 ``` yaml
-redirects:
-  "/f{forum_id}.html":
-    to: !!js/function >
-      function redirect(forum_id, cb) {
-        // this is nodeca
-        var slugize = this.helpers.slugize;
-
-        this.models.forum.find(forum_id, function (err, forum) {
-          if (err) {
-            cb(err);
-            return;
-          }
-
-          cb(null, 301, '/forums/' + forum_id + '-' + sluggize(forum.title));
-        });
-      }
-    params:
-      forum_id: /\d+/
-```
-
-## (???) Mounting Applications
-
-You can "mount" API tree nodes under different domain name and/or paths.
-
-**NOTICE** You can mount only "first-level" nodes, e.g. `forum`, `blog`, etc.
-
-``` yaml
----
-mount:
-  # SYNOPSIS:
-  #
-  # <server api tree node>: <mount point>
-  #
-  # mount point: //<domain> || /<path> || //<domain>/<path>
-
-
-  # Mount all nodeca.server.forum.* methods under domain `forums.nodeca.org`
-  forum: //forums.nodeca.org
-
-  # Mount all ndoeca.server.blog.* methods under path `/blogs`
-  blog: /blogs
+bind:
+  _: !!js/function |
+    function (req, res) {
+      res.writeHead(404, { 'Content-Type': 'text/plain' });
+      res.end('Invalid host ' + req.headers.host);
+    }
 ```
 
 
