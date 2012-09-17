@@ -276,15 +276,5 @@ bind:
 ```
 
 
-## View Helpers
-
-These helpers are available on both client and server.
-
-``` javascript
-// tries to find apropriate URL y server method and arguments
-linkTo('forums.list', {forum_id: 123, page: 3});
-```
-
-
 [Pointer]:        https://github.com/nodeca/pointer
 [Pointer-Route]:  http://nodeca.github.com/pointer/#Route.new
