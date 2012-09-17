@@ -6,7 +6,7 @@ IO
 Regster `handler` for given io `event`.
 
 ``` javascript
-nodeca.io.on('api3:version-mismatch', function (versions) {
+nodeca.io.on('rpc:version-mismatch', function (versions) {
   alert('Versions mismatch. Server is' + versions.server +
         ' and client is ' + versions.client);
 });
@@ -15,54 +15,13 @@ nodeca.io.on('api3:version-mismatch', function (versions) {
 
 #### Known events
 
-- `api3:version-mismatch`
-- `init:auth-error`
+- `rpc:version-mismatch`
 
 
 ## nodeca.io.off(event[, handler])
 
 Unregister `handler` (or all handlers if it wasn't given) for an `event`.
 
-
-## nodeca.io.init()
-
-Initiates underlying connections and all necessary authentications.
-
-
-## nodeca.io.subscribe(channel, handler)
-
-Register `handler` for messages on given `channel`.
-
-``` javascript
-nodeca.io.subscribe('/stats/users_online', function handler(message) { /* ... */  })
-  .done(function () { /* ... subscribed ... */ })
-  .fail(function () { /* ... subscription failed ... */ });
-});
-```
-
-
-## nodeca.io.unsubscribe(channel[, handler])
-
-Removes `handler` (or all handlers) from given `channel`.
-
-``` javascript
-nodeca.io.unsubscribe('/stats/users_online', handler)
-  .done(function () { /* ... unsubscribed ... */ })
-  .fail(function () { /* ... unsubscription failed ... */ });
-});
-```
-
-
-## nodeca.io.publish(channel, message)
-
-Sends `message` to the `channel`.
-
-``` javascript
-nodeca.io.publish('/chat/rooms/debian', message)
-  .done(function () { /* ... published ... */ })
-  .fail(function () { /* ... publishing failed ... */ });
-});
-```
 
 ## nodeca.io.apiTree(data[, options][, callback])
 
@@ -71,6 +30,7 @@ nodeca.io.apiTree(params, {timeout: 15}, function (err, res) {
   // handle err/response
 });
 ```
+
 
 ### Communication protocol
 
