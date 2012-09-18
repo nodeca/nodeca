@@ -14,6 +14,7 @@ Known before/after filters
 * -80 - `load_session` *nodeca.core/lib/sessions.js*
 * -75 (rpc only) - `csrf_protection` *nodeca.core/lib/csrf_protection.js*
 * -70 - `load_current_user` *nodeca.users/lib/filters/load_current_user.js*
+* -65 - `preset_locale` *nodeca.core/lib/filters/preset_locale.js*
 
 **after**
 
