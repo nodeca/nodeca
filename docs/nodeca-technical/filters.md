@@ -12,8 +12,8 @@ Known before/after filters
 * -90 - `start_puncher` *nodeca.core/lib/puncher.js*
 * -85 - `get_cookies` *nodeca.core/lib/cookies.js*
 * -80 - `load_session` *nodeca.core/lib/sessions.js*
-* -75 - `load_current_user` *nodeca.users/lib/filters/load_current_user.js*
 * -75 (rpc only) - `csrf_protection` *nodeca.core/lib/csrf_protection.js*
+* -70 - `load_current_user` *nodeca.users/lib/filters/load_current_user.js*
 
 **after**
 
