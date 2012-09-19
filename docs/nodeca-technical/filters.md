@@ -21,7 +21,6 @@ Known before/after filters
 * 50 (http only) - `inject_menu` *nodeca.core/lib/inject_menu.js*
   *exclude: common.menus.permissions*
 * 50 - `join_users` *nodeca.users/lib/filters/join_users.js*
-* 50 (http only) - `inject_current_user_info` *nodeca.users/lib/filters/load_current_user.js*
 * 50 (http only) - `inject_assets_info`  *nodeca.core/lib/inject_assets_info.js*
 * 85 (http only) - `renderer` *nodeca.core/lib/init/http.js*
 * 90 - `finish_puncher` *nodeca.core/lib/puncher.js*
