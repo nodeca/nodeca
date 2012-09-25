@@ -144,6 +144,8 @@ env                     # `this` context of actions/filters
   request               # request details
     method              # called method name (e.g.: ‘forum.posts.show’)
     namespace           # called method namespace (e.g.: `forum`)
+    ip                  # request ip
+    user_agent          # browser/user agent
 
   data                  # raw data from models
 
