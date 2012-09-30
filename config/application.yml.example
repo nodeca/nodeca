@@ -47,6 +47,17 @@ locales:
 
 
 #
+# Recaptcha keys. Replace with your own
+#
+#
+#
+
+recaptcha:
+  private_key: 6LdSINcSAAAAABs6duZAvnuN2-PwceqKqZMMFEt2
+  public_key: 6LdSINcSAAAAAPUJnsQreWd-lT-ILxnoIWwLAepO
+
+
+#
 # Listening options
 #
 
