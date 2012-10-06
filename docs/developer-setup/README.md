@@ -41,7 +41,7 @@ sources to master tree. Usually, most repos have pre-built scripts to make check
 - `make lint` - run lint on sources
 - `make test` - run lint and then run tests
 
-We use [Travis](http://http://travis-ci.org) to automatically run tests on all commits
+We use [Travis](http://travis-ci.org) to automatically run tests on all commits
 If you received message, that your commit caused problems - fix that IMMEDIATELY. Repo managers
 will be notified about all such fuckups and revert commit if not fixes soon.
 
