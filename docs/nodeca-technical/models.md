@@ -50,7 +50,7 @@ sequence wll be the following:
 // file  : model/blog/Entry.js
 // api   : nodeca.model.blog.Entry
 
-var mongoose = nodeca.runtime.mongoose;
+var mongoose = nodeca.components.mongoose;
 
 var Comments = module.exports.Comments = new mongoose.Schema({
     title     : String

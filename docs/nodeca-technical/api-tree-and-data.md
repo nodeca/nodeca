@@ -28,6 +28,11 @@ nodeca
   settings                # settings accessor (get/set, not tree)
   config                  # parsed config file.
   logger                  # logger instance
+  components              # shared libraries, specific for application (can't be in nlib)
+    mongoose              # mongoose instanse
+    redis                 # redis instanse
+    redback               # redis advanced structures
+
 
   # server & client, dynamic data
 
@@ -40,8 +45,6 @@ nodeca
     main_app              # main application (the one that started the process)
     apps                  # array of { name, absolute_path } for each loaded app 
     views                 # compiled views
-    mongoose              # mongoose instanse (it's not part of nlib, depends on application)
-    redis                 # redis instanse (also depends on application)
     assets                # assets-related data
       environment         # Mincer.Environmant instanse
       manifest            # Mincer manifest of assets
