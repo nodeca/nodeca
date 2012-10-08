@@ -57,7 +57,6 @@ dev-deps:
 		echo "  See: http://npmjs.org/" >&2 ; \
 		exit 128 ; \
 		fi
-	npm install -g jshint
 	npm install
 
 
