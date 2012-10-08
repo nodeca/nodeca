@@ -29,7 +29,7 @@ lint:
 		echo "  $ make dev-deps" >&2 ; \
 		exit 128 ; \
 		fi
-	jshint . --show-non-errors
+	jshint .
 
 
 test: lint
