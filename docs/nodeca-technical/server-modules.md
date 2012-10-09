@@ -329,3 +329,17 @@ nodeca.permissions.before([
 
 Notice that permissions must be checked before action, so in comprison to
 filters they provide only `before` chain.
+
+
+## Request termination
+
+It's possible to terminate server request passing error as an argument of method
+callback. Passing `String` or `Error` will case 500 Application Error response
+(callback with `{ code: 500 }` as RPC response error).
+
+You can control response code, headers and JSON data by passing an `Object` with
+following fields:
+
+* code (Number) Status code
+* head (Object, Optional) Response headers, e.g. `{ Location: '/foobar' }`
+* data (Object, Optional) Response data, e.g. validation errors.
