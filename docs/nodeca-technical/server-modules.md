@@ -343,3 +343,8 @@ following fields:
 * code (Number) Status code
 * head (Object, Optional) Response headers, e.g. `{ Location: '/foobar' }`
 * data (Object, Optional) Response data, e.g. validation errors.
+
+### Syntax Sugar
+
+you might also pass error to callback as `Number` which is sugar for
+`{ code: ... }`. Thus `next(400)` equals `next({ code: 400 })`.
