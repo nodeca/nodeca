@@ -1,6 +1,8 @@
 Forums / Blogs / Groups / Classfields / ...
 ===========================================
 
+[![Build Status](https://secure.travis-ci.org/nodeca/nodeca.png)](http://travis-ci.org/nodeca/nodeca)
+
 Platform, for medium and big traffic projects, written with node.js
 
 * Bleeding edge demo: **http://dev.nodeca.com**
