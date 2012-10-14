@@ -58,6 +58,10 @@ process.on('uncaughtException', function (err) {
     process.stderr.write('\nLogger failed write: ' + loggerError.stack);
     process.stderr.write('\nOriginal error happened: ' + msg);
   }
+
+  if ('test' === nodeca.runtime.env) {
+    process.exit(1);
+  }
 });
 
 
