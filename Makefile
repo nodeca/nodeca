@@ -14,6 +14,7 @@ SRC_URL_FMT   := https://github.com/${GITHUB_PROJ}/blob/${CURR_HEAD}/{file}\#L{l
 
 APPLICATIONS   = nlib nodeca.core nodeca.users nodeca.forum nodeca.blogs
 NODE_MODULES   = $(foreach app,$(APPLICATIONS),node_modules/$(app))
+CONFIG_FILES   = $(basename $(wildcard ./config/*.yml.example))
 
 
 help:
@@ -37,13 +38,13 @@ lint:
 	jshint . --show-non-errors
 
 
-test: lint
-	@if test ! `which vows` ; then \
-		echo "You need 'vows' installed in order to run tests." >&2 ; \
-		echo "  $ make dev-setup" >&2 ; \
-		exit 128 ; \
-		fi
-	NODE_ENV=test vows --spec
+$(CONFIG_FILES):
+	test -f $@.example && ( test -f $@ || cp $@.example $@ )
+
+
+test: lint $(CONFIG_FILES)
+	NODECA_ENV=test node nodeca.js migrate --all
+	NODECA_ENV=test node nodeca.js test $(NODECA_APP)
 
 
 doc:
