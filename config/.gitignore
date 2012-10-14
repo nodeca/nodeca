@@ -1,4 +1,5 @@
 /application.yml
 /database.yml
 /logger.yml
+/production.yml
 /testing.yml
