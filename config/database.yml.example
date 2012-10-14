@@ -18,14 +18,3 @@ database:
     database: nodeca-dev
     #user: mongouser
     #password: m0NGoP4$$WORd
-
-^test:
-  database:
-    redis:
-      host: localhost
-      port: 6379
-
-    mongo:
-      host: localhost
-      port: 27017
-      database: nodeca-test

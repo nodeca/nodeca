@@ -1,0 +1,13 @@
+# Configuration for testing
+
+^test:
+  database:
+    redis:
+      host: localhost
+      port: 6379
+      index: 2
+
+    mongo:
+      host: localhost
+      port: 27017
+      database: nodeca-test
