@@ -25,8 +25,8 @@
                         "longjohn"      : "~ 0.0.3"
                       },
   "devDependencies" : {
-                        "vows"        : "~ 0.6.0",
-                        "webkit-devtools-agent" : "~ 0.0.4"
+                        "webkit-devtools-agent" : "~ 0.0.4",
+                        "jshint"                : "~ 0.9.1"
                       },
   "engines"         : { "node": ">= 0.6.0" }
 }

@@ -22,7 +22,7 @@ help:
 	echo "make lint       - Lint sources with JSHint"
 	echo "make test       - Lint sources and run all tests"
 	echo "make doc        - Build API docs"
-	echo "make dev-setup  - Install developer dependencies"
+	echo "make dev-deps   - Install developer dependencies"
 	echo "make gh-pages   - Build and push API docs into gh-pages branch"
 	echo "make publish    - Set new version tag and publish npm package"
 	echo "make todo       - Find and list all TODOs"
@@ -32,7 +32,7 @@ help:
 lint:
 	if test ! `which jshint` ; then \
 		echo "You need 'jshint' installed in order to run lint." >&2 ; \
-		echo "  $ make dev-setup" >&2 ; \
+		echo "  $ make dev-deps" >&2 ; \
 		exit 128 ; \
 		fi
 	jshint . --show-non-errors
@@ -57,9 +57,8 @@ doc:
 	ndoc --output ./doc --linkFormat "${SRC_URL_FMT}" ./lib
 
 
-dev-setup:
+dev-deps:
 	npm install
-	npm install -g jshint
 
 
 dev-server:
@@ -146,5 +145,5 @@ pull: $(NODE_MODULES)
 	git pull
 
 
-.PHONY: $(NODE_MODULES) publish lint test doc dev-setup gh-pages todo
+.PHONY: $(NODE_MODULES) publish lint test doc dev-deps gh-pages todo
 .SILENT: $(NODE_MODULES) help lint test doc todo
