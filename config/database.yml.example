@@ -19,8 +19,8 @@ database:
     #user: mongouser
     #password: m0NGoP4$$WORd
 
-database:
-  ^test:
+^test:
+  database:
     redis:
       host: localhost
       port: 6379
