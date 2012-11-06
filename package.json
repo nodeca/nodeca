@@ -17,7 +17,7 @@
                       },
 
   "dependencies"    : {
-                        "nlib"          : "git://github.com/nodeca/nlib.git",
+                        "nlib"          : "git://github.com/nodeca/nlib.git#b7128204d8228d7dc3d130283d178fd735b23d1a",
                         "nodeca.core"   : "git://github.com/nodeca/nodeca.core.git",
                         "nodeca.users"  : "git://github.com/nodeca/nodeca.users.git",
                         "nodeca.forum"  : "git://github.com/nodeca/nodeca.forum.git",
