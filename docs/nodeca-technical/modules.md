@@ -1,10 +1,10 @@
 Intro
 -----
 
-Application structure is inspired by [BEM](http://bem.info) metodology.
+Application structure is inspired by different "scaleable" metodologies.
 In practice that means:
 
-- Split all to ndepended modules (can be nested)
+- Split all to independed modules (can be nested)
 - All module resources (js, views, i18n, ...) are in single folder
 - No global modules availability - use events or local requires
 
@@ -100,13 +100,19 @@ packages:
       include: "/\.(gif|png|otf|ttf|svg)$/"
 ```
 
+(!) Sequience of module's JS/CSS should not make sense (use BEM's naming rules).
+The only exclusion are libraries. Then define `main` app, which can use mincer's
+directives. It can be ommited, if not needed.
+
 
 Local helpers, to simplify resources include
 --------------------------------------------
 
 We support extentions for jade / stylus / node, to simplify resource include:
 
-- `@` means root of current package
+- `@` means root of package:
+  - `@/path` - from the root of current package
+  - `@package/path` - from the root of foreign package
 - i18n names are always relative to current module
 - on client code, `require` automaticcaly bundle code, if not exists in
   any package
