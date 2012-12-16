@@ -113,20 +113,22 @@ We support extentions for jade / stylus / node, to simplify resource include:
 - `@` means root of package:
   - `@/path` - from the root of current package
   - `@package/path` - from the root of foreign package
+- `^` means root of application:
+  - `^/path` - from the root of current application
+  - `^app_name/path` - from the root of foreign application
 - i18n names are always relative to current module
 - on client code, `require` automaticcaly bundle code, if not exists in
   any package
 
 Helpers:
 
-- `require` in node
-  - understands `@`
+- `require` in node is not extended / monkey-patched
 - `require` in client
-  - understands `@`
-  - bundle code
-- `include` in jade
+  - understands `^`
+  - bundles code
+- `self.include()` (helper, do not miss with `include` directive) in jade
   - understands `@`
   - autopatch relative i18n paths
 - `import` in stylus
-  - understands `@`
+  - understands `@` (TBD)
 
