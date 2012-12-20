@@ -124,6 +124,8 @@ Helpers:
 
 - `require` in node is not extended / monkey-patched
 - `require` in client
+  - understands `.` (relative to current path)
+  - understands `@`
   - understands `^`
   - bundles code
 - `self.include()` (helper, do not miss with `include` directive) in jade
