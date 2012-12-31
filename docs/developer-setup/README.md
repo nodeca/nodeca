@@ -23,7 +23,7 @@ Reopen terminal. Install node (long), and set default version:
 
 ### Install global modules, used for development
 
-    npm install -g ndoc police jshint supervisor
+    npm install -g ndoc police jshint
 
 
 ## Read docs
