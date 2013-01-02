@@ -21,11 +21,9 @@
                         "nodeca.core"   : "git://github.com/nodeca/nodeca.core.git",
                         "nodeca.users"  : "git://github.com/nodeca/nodeca.users.git",
                         "nodeca.forum"  : "git://github.com/nodeca/nodeca.forum.git",
-                        "nodeca.blogs"  : "git://github.com/nodeca/nodeca.blogs.git",
-                        "longjohn"      : "~ 0.0.3"
+                        "nodeca.blogs"  : "git://github.com/nodeca/nodeca.blogs.git"
                       },
   "devDependencies" : {
-                        "webkit-devtools-agent" : "~ 0.0.4",
                         "jshint"                : "~ 0.9.1"
                       },
   "engines"         : { "node": ">= 0.6.0" }
