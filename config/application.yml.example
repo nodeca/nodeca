@@ -1,7 +1,10 @@
+# Flag to check, that you have not fogot to create (rename) config
 #
+configured: true
+
+
 # Applications
 #
-
 applications:
   - nodeca.core
   - nodeca.users
@@ -9,13 +12,12 @@ applications:
   - nodeca.blogs
 
 
-#
 # Locales
 #
-
 locales:
 
   # Application locale used by default (first enabled one if not set).
+  #
   default: en-US
 
   # # List of enabled locales (all found locales by default).
@@ -46,21 +48,19 @@ locales:
 # specified. When both white and black lists are provided, whitelist is used.
 
 
+# Options - different kind of constants, to keep root space clear
 #
-# Recaptcha keys. Replace with your own
-#
-#
-#
+Options:
 
-recaptcha:
-  private_key: 6LdSINcSAAAAABs6duZAvnuN2-PwceqKqZMMFEt2
-  public_key: 6LdSINcSAAAAAPUJnsQreWd-lT-ILxnoIWwLAepO
+  # Recaptcha keys. Replace with your own
+  #
+  recaptcha:
+    private_key: 6LdSINcSAAAAABs6duZAvnuN2-PwceqKqZMMFEt2
+    public_key: 6LdSINcSAAAAAPUJnsQreWd-lT-ILxnoIWwLAepO
 
 
-#
 # Listening options
 #
-
 bind:
   default:
     listen: 0.0.0.0:3000
@@ -83,7 +83,7 @@ bind:
   #   ssl:
   #     key:  ./etc/server.key
   #     cert: ./etc/server.cert
-
+  #
   forum:
     mount: /forum
 
