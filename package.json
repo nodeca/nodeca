@@ -17,14 +17,34 @@
                       },
 
   "dependencies"    : {
+                        "bcrypt"        : "~ 0.7.2",
+                        "cookie"        : "~ 0.0.4",
+                        "csso"          : "~ 1.3.4",
+                        "ejs"           : "~ 0.8.0",
+                        "less"          : "~ 1.3.0",
+                        "memoizee"      : "~ 0.2.3",
+                        "mincer"        : "~ 0.4.0",
+                        "mongoose"      : "~ 3.3.1",
+                        "nib"           : "~ 0.8.2",
                         "nlib"          : "git://github.com/nodeca/nlib.git#b7128204d8228d7dc3d130283d178fd735b23d1a",
                         "nodeca.core"   : "git://github.com/nodeca/nodeca.core.git",
                         "nodeca.users"  : "git://github.com/nodeca/nodeca.users.git",
                         "nodeca.forum"  : "git://github.com/nodeca/nodeca.forum.git",
-                        "nodeca.blogs"  : "git://github.com/nodeca/nodeca.blogs.git"
+                        "nodeca.blogs"  : "git://github.com/nodeca/nodeca.blogs.git",
+                        "puncher"       : "~ 1.1.0",
+                        "redis"         : "~ 0.8.1",
+                        "redback"       : "~ 0.3.0",
+                        "send"          : "~ 0.1.0",
+                        "stylus"        : "~ 0.30.1",
+                        "qs"            : "~ 0.5.0",
+                        "uglify-js"     : "~ 1.3.1",
+                        "xregexp"       : "~ 2.0.0"
                       },
   "devDependencies" : {
-                        "jshint"                : "~ 0.9.1"
+                        "sinon"   : "~ 1.5.0",
+                        "chai"    : "~ 1.3.0",
+                        "mocha"   : "~ 1.3.0",
+                        "jshint"  : "~ 0.9.1"
                       },
   "engines"         : { "node": ">= 0.6.0" }
 }
