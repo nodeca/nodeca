@@ -12,5 +12,5 @@ exports.init = function () {
 
 
 if (!module.parent) {
-  require('./lib/runner').bootstrap(exports);
+  require('nodeca.core/lib/system/runner').bootstrap(exports);
 }
