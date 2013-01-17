@@ -35,7 +35,6 @@
                         "mincer"            : "~ 0.4.0",
                         "mongoose"          : "~ 3.3.1",
                         "nib"               : "~ 0.8.2",
-                        "nlib"              : "git://github.com/nodeca/nlib.git",
                         "nodeca.core"       : "git://github.com/nodeca/nodeca.core.git",
                         "nodeca.users"      : "git://github.com/nodeca/nodeca.users.git",
                         "nodeca.forum"      : "git://github.com/nodeca/nodeca.forum.git",
