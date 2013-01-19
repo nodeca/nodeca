@@ -50,7 +50,7 @@ locales:
 
 # Options - different kind of constants, to keep root space clear
 #
-Options:
+options:
 
   # Recaptcha keys. Replace with your own
   #
