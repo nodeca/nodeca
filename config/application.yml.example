@@ -7,9 +7,9 @@ configured: true
 #
 applications:
   - nodeca.core
-  - nodeca.users
-  - nodeca.forum
-  - nodeca.blogs
+  #- nodeca.users
+  #- nodeca.forum
+  #- nodeca.blogs
 
 
 # Locales

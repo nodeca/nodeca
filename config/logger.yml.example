@@ -54,12 +54,3 @@ logger:
     - level:  error
       file:   log/rpc-error.log
 
-
-#^production:
-#  options:
-#    logger:
-#      level: info
-
-
-#
-# vim:syntax=yaml

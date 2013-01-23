@@ -5,21 +5,28 @@
 #
 
 
-#^production:
-#  listen:
-#    host: localhost
-#    port: 80
-#    #mount: //nodeca.com/
-#
-#  database:
-#    redis:
-#      host: localhost
-#      port: 6379
-#      #index: 0
-#
-#    mongo:
-#      host: localhost
-#      port: 27017
-#      database: nodeca
-#      #user: mongouser
-#      #password: m0NGoP4$$WORd
+^production:
+
+  bind:
+    default:
+      listen: 0.0.0.0:80
+    host: localhost
+    port: 80
+    #mount: //nodeca.com/
+
+  database:
+    redis:
+      host: localhost
+      port: 6379
+      index: 0
+
+    mongo:
+      host: localhost
+      port: 27017
+      database: nodeca
+      #user: mongouser
+      #password: m0NGoP4$$WORd
+
+  logger:
+    options:
+      level: info
