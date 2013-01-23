@@ -12,7 +12,7 @@ CURR_HEAD     := $(firstword $(shell git show-ref --hash HEAD | cut --bytes=-6) 
 GITHUB_PROJ   := nodeca/${NPM_PACKAGE}
 SRC_URL_FMT   := https://github.com/${GITHUB_PROJ}/blob/${CURR_HEAD}/{file}\#L{line}
 
-APPLICATIONS   = nlib nodeca.core nodeca.users nodeca.forum nodeca.blogs
+APPLICATIONS   = nodeca.core nodeca.users nodeca.forum nodeca.blogs
 NODE_MODULES   = $(foreach app,$(APPLICATIONS),node_modules/$(app))
 CONFIG_FILES   = $(basename $(wildcard ./config/*.yml.example))
 
@@ -105,14 +105,12 @@ todo:
 	grep 'TODO' -n -r ./lib 2>/dev/null || test true
 
 
-node_modules/nlib:            REPO_RW=git@github.com:nodeca/nlib.git
 node_modules/nodeca.core:     REPO_RW=git@github.com:nodeca/nodeca.core.git
 node_modules/nodeca.users:    REPO_RW=git@github.com:nodeca/nodeca.users.git
 node_modules/nodeca.forum:    REPO_RW=git@github.com:nodeca/nodeca.forum.git
 node_modules/nodeca.blogs:    REPO_RW=git@github.com:nodeca/nodeca.blogs.git
 
 
-node_modules/nlib:            REPO_RO=git://github.com/nodeca/nlib.git
 node_modules/nodeca.core:     REPO_RO=git://github.com/nodeca/nodeca.core.git
 node_modules/nodeca.users:    REPO_RO=git://github.com/nodeca/nodeca.users.git
 node_modules/nodeca.forum:    REPO_RO=git://github.com/nodeca/nodeca.forum.git
