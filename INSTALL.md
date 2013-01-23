@@ -10,7 +10,7 @@ server - very good price/quality ratio.
 
 ### MongoDB
 
-http://www.mongodb.org/display/DOCS/Ubuntu+and+Debian+packages
+http://docs.mongodb.org/manual/tutorial/install-mongodb-on-debian-or-ubuntu-linux/
 
 Follow instructions on link above. Then edit `/etc/mongodb.conf`,
 add `bind_ip = 127.0.0.1` to the start.
@@ -30,7 +30,7 @@ https://launchpad.net/~rwky/+archive/redis
     sudo apt-get update
     sudo apt-get install redis-server
 
-Edit `/etc/redis/redis/conf`, restrict listening to `127.0.0.1` only.
+Edit `/etc/redis/redis.conf`, restrict listening to `127.0.0.1` only.
 
     restart redis-server
 
