@@ -5,7 +5,8 @@ router:
   #
 
   map:
-    forum.list: !clean
+    forum.list:
+      ~override: true
       "/f{forum_id}/":
         forum_id: /\d+/
 

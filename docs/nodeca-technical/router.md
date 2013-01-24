@@ -147,6 +147,26 @@ In this case, request to */!forums.list?forum_id=123&page_id=1* will be
 redirected to "/f{forum_id}/".
 
 
+### Overrides
+
+If you are not satisfied with defaul routes, you can wish to override those at
+application-level config. Any config object can have special key
+`~override: true`. When such key found, branches from other configs will be
+wiped. Without this key, objects are reqursively merged.
+
+``` yaml
+router:
+  map:
+    forums.list:
+      ~override: true
+      "/forum{forum_id}/":
+        page: /[01]/
+        forum_id: /\d+/
+    # ...
+```
+
+
+
 ## Mounting (and binding) applications
 
 Mounting (and binding) of applications is described in `bind` section of config
