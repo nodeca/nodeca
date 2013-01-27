@@ -2,6 +2,9 @@ bundles:
   frontend:
     - lib
     - common
+    - forum
+    - users
+    - blogs
 
   backend:
     - lib
