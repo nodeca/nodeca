@@ -1,0 +1,8 @@
+bundles:
+  frontend:
+    - lib
+    - common
+
+  backend:
+    - lib
+    - admin
