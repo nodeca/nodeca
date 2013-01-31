@@ -1,8 +1,0 @@
-# themes:
-#   schemas:
-#     desktop:
-#       name: Default Desktop Theme
-#
-#     mobile:
-#       name: Default Mobile Theme
-#       inherits: desktop
