@@ -18,7 +18,7 @@
 
   "dependencies"    : {
                         "argparse"          : "~ 0.1.2",
-                        "async"             : "~ 0.1.22",
+                        "async"             : "~ 0.2.4",
                         "babelfish"         : "~ 0.1.1",
                         "bcrypt"            : "~ 0.7.2",
                         "cookie"            : "~ 0.0.4",
@@ -27,14 +27,14 @@
                         "ejs"               : "~ 0.8.0",
                         "find-requires"     : "~ 0.1.4",
                         "fs-tools"          : "~ 0.2.8",
-                        "jade"              : "~ 0.27.2",
-                        "js-yaml"           : "~ 1.0.3",
+                        "jade"              : "~ 0.28.1",
+                        "js-yaml"           : "~ 2.0.0",
                         "less"              : "~ 1.3.0",
                         "log4js"            : "~ 0.5.1",
                         "memoizee"          : "~ 0.2.3",
                         "mincer"            : "~ 0.4.4",
-                        "mongoose"          : "~ 3.3.1",
-                        "nib"               : "~ 0.8.2",
+                        "mongoose"          : "~ 3.5.5",
+                        "nib"               : "~ 0.9.1",
                         "nodeca.core"       : "git://github.com/nodeca/nodeca.core.git",
                         "nodeca.users"      : "git://github.com/nodeca/nodeca.users.git",
                         "nodeca.forum"      : "git://github.com/nodeca/nodeca.forum.git",
@@ -46,7 +46,7 @@
                         "redback"           : "~ 0.3.0",
                         "revalidator"       : "~ 0.1.5",
                         "send"              : "~ 0.1.0",
-                        "stylus"            : "~ 0.30.1",
+                        "stylus"            : "~ 0.32.0",
                         "uglify-js"         : "~ 2.2.4",
                         "lodash"            : "~ 0.10.0",
                         "underscore"        : "~ 1.4.3",
@@ -55,7 +55,7 @@
                         "Faker"             : "~ 0.5.6"
                       },
   "devDependencies" : {
-                        "chai"    : "~ 1.4.2",
+                        "chai"    : "~ 1.5.0",
                         "mocha"   : "*",
                         "jshint"  : "*"
                       },
