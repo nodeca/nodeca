@@ -48,7 +48,7 @@
                         "send"              : "~ 0.1.0",
                         "stylus"            : "~ 0.32.0",
                         "uglify-js"         : "~ 2.2.4",
-                        "lodash"            : "~ 0.10.0",
+                        "lodash"            : "~ 1.0.0",
                         "underscore"        : "~ 1.4.3",
                         "underscore.string" : "~ 2.3.0",
                         "xregexp"           : "~ 2.0.0",
