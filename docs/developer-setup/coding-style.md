@@ -61,22 +61,25 @@ for (var i = 0; i < 10; i++) {
 
 ### Hashes
 
-Keep the hash keys tight with no whitespace before or after them. Use one space
+Keep the hash keys tight with 1 space before or after them. Use one space
 after each comma.
 
 ``` javascript
 // Good
-{color: 'blue', part: hat}
+{ color: 'blue', part: hat }
 
 // Bad
 { color: 'blue', part: hat}
-{ color: 'blue', part: hat }
-{color: 'blue',part: hat}
+{color: 'blue', part: hat}
+{ color: 'blue',part: hat }
 ```
 
 Large hashes should be broken up so each key is on one line. This is also useful
 for hashes that are changed often, git can track a single key change easily
 since it's on a single line.
+
+For big hashes, use alternate comma separator location - place it on the start
+of new line.
 
 ``` javascript
 // Good
@@ -85,10 +88,13 @@ issue_attributes = {
   description: 'Bar'
 }
 
-// Good, passing a hash style
+// Good, passing a hash style, alternate comma place
 issue_attributes({
-  subject: 'Code standards',
-  description: 'Bar'
+  subject: 'Code standards'
+, description: 'Bar'
+, info: 'Baz'
+, very: 'long'
+, hash: 'list'
 })
 
 // Bad
