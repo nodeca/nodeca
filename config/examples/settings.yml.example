@@ -1,0 +1,118 @@
+setting_groups:
+  system: ~
+
+  cookies:
+    parent: system
+
+  email:
+    parent: system
+
+
+setting_schemas:
+  global:
+    cookie_domain:
+      type: string
+      default: ''
+      group_key: cookies
+      priority: 0
+
+    cookie_prefix:
+      type: string
+      default: ''
+      group_key: cookies
+      priority: 0
+
+    cookie_path:
+      type: string
+      default: ''
+      group_key: cookies
+      priority: 0
+
+    email_receiving_address:
+      type: string
+      default: ''
+      category_key: email_addresses
+      group_key: email
+      priority: 0
+
+    email_sending_address:
+      type: string
+      default: ''
+      category_key: email_addresses
+      group_key: email
+      priority: 0
+
+    smtp_enabled:
+      type: boolean
+      default: false
+      category_key: smtp
+      group_key: email
+      priority: 0
+
+    smtp_host:
+      type: string
+      default: ''
+      category_key: smtp
+      group_key: email
+      priority: 0
+
+    smtp_port:
+      type: string
+      default: ''
+      category_key: smtp
+      group_key: email
+      priority: 0
+
+    smtp_username:
+      type: string
+      default: ''
+      category_key: smtp
+      group_key: email
+      priority: 0
+
+    smtp_password:
+      type: string
+      default: ''
+      category_key: smtp
+      group_key: email
+      priority: 0
+
+
+i18n:
+  en-US:
+    admin:
+      setting:
+        group:
+          system: System
+          cookies: Cookies
+          cookies_help: This section allows you to manage your cookie settings.
+          email: Email Set-up
+          email_help: This section will allow you to change the incoming and outgoing
+            email addresses as well as the email method.
+
+        category:
+          email_addresses: Email Addresses
+          smtp: SMTP Set-up
+
+        cookie_domain: Cookie Domain
+        cookie_domain_help: Use .domain.com for site wide cookies
+        cookie_prefix: Cookie Prefix
+        cookie_prefix_help: Useful if you have multiple installations on one URL.
+        cookie_path: Cookie Path
+
+        email_receiving_address: Board incoming email address
+        email_receiving_address_help: This is the email address that all
+          incoming mail is addressed to.
+        email_sending_address: Board outgoing email address
+        email_sending_address_help: This is the email address that all mail
+          appears to come from.
+
+        smtp_enabled: Enable SMTP
+        smtp_host: Over-ride SMTP Host?
+        smtp_host_help: "Default is 'localhost'"
+        smtp_port: Over-ride SMTP Port?
+        smtp_port_help: Default is 25
+        smtp_username: SMTP UserName
+        smtp_username_help: "Not required in most cases when using 'localhost'"
+        smtp_password: SMTP Password
+        smtp_password_help: "Not required in most cases when using 'localhost'"
