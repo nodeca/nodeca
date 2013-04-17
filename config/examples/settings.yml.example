@@ -57,8 +57,8 @@ setting_schemas:
       priority: 0
 
     smtp_port:
-      type: string
-      default: ''
+      type: number
+      default: 25
       category_key: smtp
       group_key: email
       priority: 0
