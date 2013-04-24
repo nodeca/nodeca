@@ -41,7 +41,6 @@
                         "nodeca.blogs"      : "git://github.com/nodeca/nodeca.blogs.git",
                         "pointer"           : "~ 0.1.0",
                         "puncher"           : "~ 1.1.0",
-                        "qs"                : "~ 0.5.0",
                         "redis"             : "~ 0.8.1",
                         "redback"           : "~ 0.3.0",
                         "revalidator"       : "~ 0.1.5",
