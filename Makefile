@@ -16,6 +16,8 @@ APPLICATIONS   = nodeca.core nodeca.users nodeca.forum nodeca.blogs
 NODE_MODULES   = $(foreach app,$(APPLICATIONS),node_modules/$(app))
 CONFIG_FILES   = $(basename $(wildcard ./config/*.yml.example))
 
+INSTALL_DEPS  := $(shell test -d ./node_modules ; echo $$?)
+
 
 help:
 	echo "make help       - Print this help"
@@ -136,11 +138,17 @@ $(NODE_MODULES):
 pull-ro: REPO="REPO_RO"
 pull-ro: $(NODE_MODULES)
 	git pull
+	@if test $(INSTALL_DEPS) -ne 0 ; then \
+		npm install ; \
+		fi
 
 
 pull: REPO="REPO_RW"
 pull: $(NODE_MODULES)
 	git pull
+	@if test $(INSTALL_DEPS) -ne 0 ; then \
+		npm install ; \
+		fi
 
 
 .PHONY: $(NODE_MODULES) publish lint test doc dev-deps gh-pages todo
