@@ -85,10 +85,7 @@ i18n:
         group_names:
           system: System
           cookies: Cookies
-          cookies_help: This section allows you to manage your cookie settings.
           email: Email Set-up
-          email_help: This section will allow you to change the incoming and outgoing
-            email addresses as well as the email method.
 
         category_names:
           email_addresses: Email Addresses
