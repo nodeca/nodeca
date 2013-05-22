@@ -9,11 +9,27 @@ setting_schemas:
       category_key: email_common
       type: dropdown
       values:
-      - STUB     # None (disabled)
-      - SENDMAIL # Sendmail program
-      - SMTP     # Simple Mail Transfer Protocol
-      - SES      # Amazon Simple Email Service
-      default: STUB
+      - sendmail: SENDMAIL
+      - dummy:    STUB
+      - smtp:     SMTP
+      - ses:      SES
+      default: sendmail
+
+    #
+    # Sendmail
+    #
+    email_sendmail_path:
+      priority: 100
+      group_key: email
+      category_key: email_sendmail
+      type: string
+      default: sendmail
+
+    email_sendmail_args:
+      priority: 200
+      group_key: email
+      category_key: email_sendmail
+      type: string
 
     #
     # SMTP
@@ -125,10 +141,21 @@ i18n:
     admin:
       core:
         category_names:
+          email_sendmail: Sendmail-specific
           email_smtp: SMTP-specific
           email_ses: Amazon SES-specific
 
         setting_names:
+          #Rename "init:settings" event to "init:__settings".
+          # Sendmail
+          #
+          email_sendmail_path: Path
+          email_sendmail_path_help: Path to Sendmail executable.
+
+          email_sendmail_args: Arguments
+          email_sendmail_args_help: Extra arguments string for Sendmail. See
+            Sendmail manual for details.        
+
           #
           # SMTP
           #
@@ -177,8 +204,10 @@ i18n:
 
         setting_values:
           email_transport:
-            SMTP: SMTP
-            SES: Amazon SES
+            sendmail: sendmail
+            dummy: dummy (only log, for debug)
+            smtp: SMTP
+            ses: Amazon SES
 
           email_smtp_service:
             custom: '* Use custom configuration *'
