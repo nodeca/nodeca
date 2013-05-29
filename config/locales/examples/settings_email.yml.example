@@ -1,0 +1,69 @@
+i18n:
+  en-US:
+    admin:
+      core:
+        category_names:
+          email_sendmail: Sendmail-specific
+          email_smtp: SMTP-specific
+          email_ses: Amazon SES-specific
+
+        setting_names:
+          #Rename "init:settings" event to "init:__settings".
+          # Sendmail
+          #
+          email_sendmail_path: Path
+          email_sendmail_path_help: Path to Sendmail executable.
+
+          email_sendmail_args: Arguments
+          email_sendmail_args_help: Extra arguments string for Sendmail. See
+            Sendmail manual for details.        
+
+          #
+          # SMTP
+          #
+          email_smtp_service: Preset
+          email_smtp_service_help: An optional well known service identifier to
+            auto-configure host, port and secure connection settings.
+
+          email_smtp_host: Hostname
+          email_smtp_host_help: Hostname of the SMTP server.
+
+          email_smtp_port: Port
+          email_smtp_port_help: Port of the SMTP server.
+
+          email_smtp_ssl: Use SSL
+          email_smtp_ssl_help: Use connection encryption. If you're using port
+            587 then keep it NO, since the connection is started in insecure
+            plain text mode and only later upgraded with STARTTLS.
+
+          email_smtp_name: Name
+          email_smtp_name_help: The name of the client server. (defaults to
+            machine name)
+
+          email_smtp_user: User
+          email_smtp_user_help: User name for SMTP authentication.
+
+          email_smtp_pass: Password
+          email_smtp_pass_help: Password for SMTP authentication.
+
+          email_smtp_ignore_tls: Ignore TLS
+          email_smtp_ignore_tls_help: Ignore server support for STARTTLS.
+
+          email_smtp_max_connections: Max connections
+          email_smtp_max_connections_help: How many connections to keep in the pool.
+
+          #
+          # Amazon SES
+          #
+          email_ses_access_key: Access key
+          email_ses_access_key_help: AWS access key. (required for SES)
+
+          email_ses_secret_key: Secret key
+          email_ses_secret_key_help: AWS secret. (required for SES)
+
+          email_ses_service_url: Service URL
+          email_ses_service_url_help: Optional API end point URL.
+
+        setting_values:
+          email_smtp_service:
+            custom: '* Use custom configuration *'
