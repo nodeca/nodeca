@@ -8,7 +8,7 @@ i18n:
           email_ses: Amazon SES-specific
 
         setting_names:
-          #Rename "init:settings" event to "init:__settings".
+          #
           # Sendmail
           #
           email_sendmail_path: Path
