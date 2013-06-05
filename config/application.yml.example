@@ -64,6 +64,10 @@ options:
 bind:
   default:
     listen: 0.0.0.0:3000
+    ssl:
+      listen: 0.0.0.0:3001
+      key:  ./config/examples/ssl.key
+      cert: ./config/examples/ssl.crt
 
   # SYNOPSIS:
   #
