@@ -76,7 +76,7 @@ bind:
   #   listen: <address>[:<port = 80>]
   #   ssl:
   #     key:  /path/to/file.key   # Path might be absolute
-  #     cert: /path/to/file.cert  # or relative to the root
+  #     cert: /path/to/file.cert  # or relative to the main app
   #
   # SSL EXAMPLE:
   #
