@@ -77,7 +77,6 @@ bind:
   #   ssl:
   #     key:  /path/to/file.key   # Path might be absolute
   #     cert: /path/to/file.cert  # or relative to the root
-  #     pfs:  /path/to/file.pfx   # of main nodeca application
   #
   # SSL EXAMPLE:
   #
