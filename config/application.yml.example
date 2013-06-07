@@ -72,7 +72,7 @@ bind:
   # SYNOPSIS:
   #
   # <apiPath>:
-  #   mount: [<proto>:][//<host>[:<port>]][/<path>]
+  #   mount: [<proto>:][//[<host>][:<port>]][/<path>]
   #   listen: <address>[:<port = 80>]
   #   ssl:
   #     key:  /path/to/file.key   # Path might be absolute
