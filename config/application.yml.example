@@ -52,14 +52,6 @@ locales:
 #
 options:
 
-  # HTTP/HTTPS server settings.
-  #
-  server:
-    # Respect 'X-Forwarded-Proto' header when detecting request protocol.
-    # Use only if you have a frontend server that uses this header.
-    respect_forwarded_proto: false
-
-
   # Recaptcha keys. Replace with your own
   #
   recaptcha:
