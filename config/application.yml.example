@@ -58,8 +58,9 @@ options:
     private_key: 6LdSINcSAAAAABs6duZAvnuN2-PwceqKqZMMFEt2
     public_key: 6LdSINcSAAAAAPUJnsQreWd-lT-ILxnoIWwLAepO
 
-  # # Cache directory for compiled client files (js, css, etc)
-  # # relative to main app's root
+  # # Cache location for differend needs (styles compiler, mincer, ...),
+  # # anyone can create additional subfolders there.
+  # # Path is relative to main app's root. By default - './.cache'
   # #
   # cache_dir: ./.cache
   
