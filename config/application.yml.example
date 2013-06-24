@@ -58,6 +58,12 @@ options:
     private_key: 6LdSINcSAAAAABs6duZAvnuN2-PwceqKqZMMFEt2
     public_key: 6LdSINcSAAAAAPUJnsQreWd-lT-ILxnoIWwLAepO
 
+  # # Cache directory for compiled client files (js, css, etc)
+  # # relative to main app's root
+  # #
+  # cache_dir: ./.cache
+  
+
 
 # Listening options
 #
