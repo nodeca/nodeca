@@ -63,7 +63,6 @@ options:
   # # Path is relative to main app's root. By default - './.cache'
   # #
   # cache_dir: ./.cache
-  
 
 
 # Listening options
