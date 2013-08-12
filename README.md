@@ -10,6 +10,22 @@ Platform, for medium and big traffic projects, written with node.js
   (materials can be outdated)
 
 
+Requirements
+------------
+
+* node.js
+* MongoDB (big size, images are stored in GridFS)
+* redis
+* sphinx search
+* Image Magick
+* nginx (for production)
+
+Please, note, that since Nodeca is for medium/big projects, we have no goal to run it on
+cheapest VPS. Memory requirements depends on stored image volume - we use GridFS to simplify
+maintainability of big collections. May be, sometime, we will add alternate file store
+for starter projects, but now we just have no time for it.
+
+
 Installation
 ------------
 
