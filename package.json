@@ -36,7 +36,7 @@
                         "lodash"            : "~ 1.3.1",
                         "log4js"            : "~ 0.6.6",
                         "memoizee"          : "~ 0.2.4",
-                        "mincer"            : "~ 0.5.6",
+                        "mincer"            : "~ 0.5.7",
                         "mongoose"          : "~ 3.6.11",
                         "nodemailer"        : "~ 0.4.3",
                         "nodeca.core"       : "git://github.com/nodeca/nodeca.core.git",
