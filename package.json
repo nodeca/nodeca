@@ -52,7 +52,7 @@
                         "revalidator"       : "~ 0.1.5",
                         "send"              : "~ 0.1.0",
                         "stylus"            : "~ 0.32.1",
-                        "uglify-js"         : "~ 2.3.6",
+                        "uglify-js"         : "~ 2.4.1",
                         "xregexp"           : "~ 2.0.0"
                       },
   "devDependencies" : {
