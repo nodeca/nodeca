@@ -199,6 +199,38 @@ If your method use some formula, put it into the description:
 ```
 
 
+### try/catch
+
+DON'T make callbacks from `try`/`catch` scopes, if you can. That will make problems with asserts
+in test suites. Store error statuses in outer variables, and make callback after `try`/`catch` blocks.
+
+
+### if/else
+
+Avoid use big `else` blocks, that cause additional nesting level in scync programming. Instead, use
+multiple `if` conditions and return as early as possible:
+
+``` javascript
+function example(data, callback) {
+  ...
+  if (condition1) {
+    ...
+    callback();
+    return;
+  }
+  if (condition2) {
+    ...
+    callback();
+    return;
+  }
+  ...
+}
+```
+
+The same apply for sync function to keep style the same. Of cause, we don't projibit to use `else`,
+when it's reasonable and make code more simple.
+
+
 ## Nodeca-specific
 
 1. File with models, loaded into API Tree, must have capitalized first letter.
