@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 
-"use strict";
+'use strict';
 
 Error.stackTraceLimit = 30;
 
