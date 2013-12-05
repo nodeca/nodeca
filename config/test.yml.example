@@ -7,7 +7,12 @@
       port: 6379
       index: 2
 
-    mongo:
-      host: localhost
-      port: 27017
-      database: nodeca-test
+  # Examples:
+  #
+  # "mongodb://user:password@host:port/database"
+  # "user:password@host:port/database"
+  # "host/database"
+  #
+  # For replica set join all addresses into one string, separated by comma.
+  #
+  mongo: localhost/nodeca-test
