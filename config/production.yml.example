@@ -20,12 +20,7 @@
       port: 6379
       index: 0
 
-    mongo:
-      host: localhost
-      port: 27017
-      database: nodeca
-      #user: mongouser
-      #password: m0NGoP4$$WORd
+    mongo: localhost/nodeca
 
   logger:
     options:

@@ -12,9 +12,12 @@ database:
     port: 6379
     #index: 1
 
-  mongo:
-    host: localhost
-    port: 27017
-    database: nodeca-dev
-    #user: mongouser
-    #password: m0NGoP4$$WORd
+  # Examples:
+  #
+  # "mongodb://user:password@host:port/database"
+  # "user:password@host:port/database"
+  # "host/database"
+  #
+  # For replica set join all addresses into one string, separated by comma.
+  #
+  mongo: localhost/nodeca-dev
