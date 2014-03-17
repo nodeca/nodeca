@@ -59,9 +59,10 @@
                         "xregexp"           : "~ 2.0.0"
                       },
   "devDependencies" : {
-                        "chai"    : "*",
-                        "mocha"   : "*",
-                        "jshint"  : "*"
+                        "chai"              : "*",
+                        "mocha"             : "*",
+                        "supertest"         : "*",
+                        "jshint"            : "*"
                       },
   "engines"         : { "node": ">= 0.10.0" }
 }
