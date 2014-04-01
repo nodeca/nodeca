@@ -20,7 +20,7 @@
                         "argparse"          : "~ 0.1.5",
                         "async"             : "~ 0.2.9",
                         "autoprefixer"      : "~ 1.1.20140319",
-                        "babelfish"         : "~ 0.2.0",
+                        "babelfish"         : "~ 0.3.0",
                         "charlatan"         : "~ 0.1.4",
                         "cookie"            : "~ 0.1.0",
                         "csswring"          : "~ 0.0.4",
