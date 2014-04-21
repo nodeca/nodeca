@@ -58,6 +58,15 @@
                         "uglify-js"         : "~ 2.4.1",
                         "xregexp"           : "~ 2.0.0"
                       },
+
+  "bundledDependencies" : [
+                        "nodeca.core",
+                        "nodeca.users",
+                        "nodeca.forum",
+                        "nodeca.blogs",
+                        "nodeca.editor"
+                      ],
+
   "devDependencies" : {
                         "chai"              : "*",
                         "mocha"             : "*",
