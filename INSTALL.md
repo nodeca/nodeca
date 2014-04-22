@@ -37,6 +37,8 @@ Edit `/etc/redis/redis.conf`, restrict listening to `127.0.0.1` only.
 
 ## Install node.js
 
+Version 0.10+ required.
+
 See [developper's manual](https://github.com/nodeca/nodeca/tree/master/docs/developer-setup)
 
 
@@ -76,10 +78,13 @@ Then, depending on your installation type, run:
 
 ## Configure
 
-Rename **ALL** files in root config folder (example below):
+Copy **ALL** `*.example` files in root config folder to `*.yml`:
 
-    cp config/application.example.yml config/application.yml
-    cp config/database.example.yml config/database.yml
+```bash
+cp config/application.example.yml config/application.yml
+cp config/database.example.yml config/database.yml
+...
+```
 
 **Don't** touch files in `./config/examples` subfolders. Those are for education
 purposes only.
@@ -94,13 +99,13 @@ Apply migrations:
 
     ./nodeca.js migrate --all
 
-If you need test data, apply seed. List available:
+If you need test data, apply seeds. List available:
 
     ./nodeca.js seed
 
 Then use one by number:
 
-    ./nodeca.js seed -n <NUMBER>
+    ./nodeca.js seed -n <NUMBER_1> -n <NUMBER_2>
 
 
 ## Run
@@ -116,3 +121,7 @@ Run with monitor (your dev location, autorestart when you make changes):
 Run on server (via `upstart`, learn script from `./etc` subfolder)
 
     start nodeca
+
+Other commands:
+
+    ./nodeca.js -h

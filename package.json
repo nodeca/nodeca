@@ -68,7 +68,6 @@
                       ],
 
   "devDependencies" : {
-                        "chai"              : "*",
                         "mocha"             : "*",
                         "supertest"         : "*",
                         "jshint"            : "*"
