@@ -53,7 +53,6 @@
                         "resolve"           : "~ 0.6.1",
                         "revalidator"       : "~ 0.1.5",
                         "send"              : "~ 0.2.0",
-                        "streamifier"       : "~ 0.1.0",
                         "stream-buffers"    : "~ 0.2.5",
                         "stylus"            : "~ 0.42.3",
                         "uglify-js"         : "~ 2.4.1",
