@@ -1,11 +1,13 @@
 Developers' Manuals
 ===================
 
+Read recommendations [for beginners](for-beginners.md) prior to start.
+
 ## Prepare your environment
 
 ### Install node
 
-Install build dependencies of node:
+Install packages:
 
     sudo apt-get install build-essential git libssl-dev curl
     git clone git://github.com/creationix/nvm.git ~/.nvm
@@ -16,12 +18,12 @@ Add following code into the end of your shell startup script (`.bashrc` for BASH
         . ~/.nvm/nvm.sh # Loads NVM into a shell session.
     fi
 
-Reopen terminal. Install node (long), and set default version:
+Reopen terminal. Install node and set default version:
 
     nvm install 0.10
     nvm alias default 0.10
 
-### Install global modules, used for development
+### Install global node modules, used sometime:
 
     npm install -g ndoc police jshint
 
@@ -42,11 +44,11 @@ sources to master tree. Usually, most repos have pre-built scripts to make check
 - `make test` - run lint and then run tests
 
 We use [Travis](http://travis-ci.org) to automatically run tests on all commits
-If you received message, that your commit caused problems - fix that IMMEDIATELY. Repo managers
-will be notified about all such fuckups and revert commit if not fixes soon.
+If you receive message, that your commit caused problems - postpone everything
+and fix that IMMEDIATELY. Big boss will be notified about fuckups, and will check
+that you apply fixes ASAP.
 
 
 ## Github
 
-Read docs about [issues syntax](https://github.com/blog/831-issues-2-0-the-next-generation). Since we
-do code review, don't make commits, wich auto-close issues.
+Read docs about [issues syntax](https://github.com/blog/831-issues-2-0-the-next-generation). Since we do code review, don't make commits, wich auto-close issues.
