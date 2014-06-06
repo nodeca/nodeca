@@ -46,7 +46,7 @@
                         "nodeca.blogs"      : "git://github.com/nodeca/nodeca.blogs.git",
                         "nodeca.editor"     : "git://github.com/nodeca/nodeca.editor.git",
                         "pbkdf2-sha256"     : "~ 0.1.1",
-                        "pointer"           : "~ 0.1.8",
+                        "pointer"           : "~ 0.1.9",
                         "puncher"           : "~ 1.1.1",
                         "redis"             : "~ 0.10.1",
                         "redback"           : "~ 0.4.0",
