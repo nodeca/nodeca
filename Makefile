@@ -38,6 +38,10 @@ lint:
 	jshint . --show-non-errors
 
 
+eslint:
+	eslint $(NODECA_APP_PATH)
+
+
 $(CONFIG_FILES):
 	test -f $@.example && ( test -f $@ || cp $@.example $@ )
 
