@@ -1,3 +1,4 @@
 # enable additional rules from support/eslint_plugins
 rules:
   no-lodash-aliases: 2
+  no-async-aliases: 2

@@ -1,6 +1,6 @@
 /**
- * @fileoverview Rule to flag use an lodash aliases
- *
+* @fileoverview Rule to flag use of lodash (library) aliases
+  *
  */
 
 //------------------------------------------------------------------------------
