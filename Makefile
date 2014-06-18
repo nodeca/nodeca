@@ -39,7 +39,7 @@ lint:
 
 
 eslint:
-	eslint $(NODECA_APP_PATH)
+	eslint --rulesdir support/eslint_plugins/ $(NODECA_APP_PATH)
 
 
 $(CONFIG_FILES):
