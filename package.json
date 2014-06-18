@@ -69,6 +69,7 @@
                       ],
 
   "devDependencies" : {
+                        "eslint"            : "*",
                         "mocha"             : "*",
                         "supertest"         : "*",
                         "jshint"            : "*"
