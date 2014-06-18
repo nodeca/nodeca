@@ -38,28 +38,28 @@ var LODASH_NAMES = ['lodash', '_'];
 module.exports = function(context) {
 
   return {
-    'CallExpression': function(node) {
+    'CallExpression': function detectLodashAlias(node) {
 
       var callee = node.callee;
 
       // Check patterns like `_.each(..)`,
       // that should be <Identifier.MemberExpression>
+
       if (callee.type === 'MemberExpression' &&
-          callee.object.type === 'Identifier') {
+          LODASH_FN_ALIASES.hasOwnProperty(callee.property.name)) {
 
-        var objName = callee.object.name;
+        var parentName = callee.object.name;
 
-        if (LODASH_NAMES.indexOf(objName) !== -1 &&
-            LODASH_FN_ALIASES[callee.property.name]) {
-          var methodName = LODASH_FN_ALIASES[callee.property.name];
-          var methodAlias = callee.property.name;
+        if (callee.object.type === 'Identifier' &&
+            LODASH_NAMES.indexOf(parentName) !== -1) {
+
           context.report(
             node,
             '{{ldh}}.{{alias}}() is alias, use {{ldh}}.{{method}}() instead.',
             {
-              ldh: objName,
-              alias: methodAlias,
-              method: methodName
+              ldh:    parentName,
+              alias:  callee.property.name,
+              method: LODASH_FN_ALIASES[callee.property.name]
             }
           );
         }
