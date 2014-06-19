@@ -60,3 +60,4 @@ rules:
   no-lodash-aliases:      2
   no-async-aliases:       2
   eol-last:               2
+  indent:                 [2, spaces, 2]
