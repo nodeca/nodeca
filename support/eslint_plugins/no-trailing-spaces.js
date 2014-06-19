@@ -14,7 +14,7 @@ var TRAILER_RE = /([\t \u00a0\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2
 module.exports = function(context) {
 
   return {
-    'Program': function detectAsyncAlias(node) {
+    'Program': function detectTrailingSpaces(node) {
 
       var src = context.getSource(node, node.range[0]);
 
