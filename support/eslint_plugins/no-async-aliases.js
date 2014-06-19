@@ -1,11 +1,7 @@
 /**
  * @fileoverview Rule to flag use of async (library) aliases
- *
+ * @author Nodeca Team <https://github.com/nodeca>
  */
-
-//------------------------------------------------------------------------------
-// Rule Definition
-//------------------------------------------------------------------------------
 
 'use strict';
 
@@ -24,6 +20,10 @@ var ASYNC_FN_ALIASES = {
 
 var ASYNC_NAME = 'async';
 
+//------------------------------------------------------------------------------
+// Rule Definition
+//------------------------------------------------------------------------------
+
 module.exports = function(context) {
 
   return {
@@ -31,7 +31,7 @@ module.exports = function(context) {
 
       var callee = node.callee;
 
-      // Check patterns like `_.each(..)`,
+      // Check patterns like `async.forEach(..)`,
       // that should be <Identifier.MemberExpression>
 
       if (callee.type === 'MemberExpression' &&

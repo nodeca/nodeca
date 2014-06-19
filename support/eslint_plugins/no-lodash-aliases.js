@@ -1,11 +1,7 @@
 /**
-* @fileoverview Rule to flag use of lodash (library) aliases
-  *
+ * @fileoverview Rule to flag use of lodash (library) aliases
+ * @author Nodeca Team <https://github.com/nodeca>
  */
-
-//------------------------------------------------------------------------------
-// Rule Definition
-//------------------------------------------------------------------------------
 
 'use strict';
 
@@ -34,6 +30,10 @@ var LODASH_FN_ALIASES = {
 };
 
 var LODASH_NAMES = ['lodash', '_'];
+
+//------------------------------------------------------------------------------
+// Rule Definition
+//------------------------------------------------------------------------------
 
 module.exports = function(context) {
 
