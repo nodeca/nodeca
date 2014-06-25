@@ -59,3 +59,4 @@ rules:
   no-async-aliases:       2
   eol-last:               2
   indent:                 [2, spaces, 2]
+  no-wire-anonymous:      1
