@@ -54,17 +54,10 @@ module.exports = function(context) {
   // - indent        - (Number)  needed indent
   // - excludeCommas - (Boolean) skip comma on start of line
   //
-  // - skipLine      - (Number)  all elements in this line will be skipped.
-  //                             used to ignore condition, when array or object
-  //                             begins from inline declaration
-  //
-  var checkNodesIndent = function (nodes, indent, excludeCommas, skipLine) {
+  var checkNodesIndent = function (nodes, indent, excludeCommas) {
     nodes.forEach(function (node) {
       var nodeIndent = getNodeIndent(node, false, excludeCommas);
       if (nodeIndent !== indent) {
-        if (skipLine && node.loc.start.line === skipLine) {
-          return; // continue
-        }
         context.report(node, MESSAGE, { gotten: nodeIndent, needed: indent });
       }
     });
@@ -150,6 +143,11 @@ module.exports = function(context) {
 
     var elements = (node.type === 'ArrayExpression') ? node.elements : node.properties;
 
+    // Skip if first element is in same line with this node
+    if (elements.length > 0 && elements[0].loc.start.line === node.loc.start.line) {
+      return;
+    }
+
     var nodeIndent = getNodeIndent(node);
 
     var elementsIndent = nodeIndent + indentSize;
@@ -160,7 +158,7 @@ module.exports = function(context) {
     }
 
     // Comma can be placed before property name
-    checkNodesIndent(elements, elementsIndent, true, node.loc.start.line);
+    checkNodesIndent(elements, elementsIndent, true);
 
     if (elements.length > 0) {
       // Skip last block line check if last item in same line
