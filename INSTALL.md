@@ -35,6 +35,13 @@ Edit `/etc/redis/redis.conf`, restrict listening to `127.0.0.1` only.
     restart redis-server
 
 
+## Other dependencies
+
+You need GraphicsMagick or ImageMagick.
+
+    sudo apt-get install graphicsmagick
+
+
 ## Install node.js
 
 Version 0.10+ required.
