@@ -1,0 +1,13 @@
+# OAuth settings
+#
+# oauth:
+#   <provider>
+#     client: <client_id>
+#     secret: <secret_key>
+#
+# EXAMPLE:
+#
+# oauth:
+#   google:
+#     client: 812741506391.apps.googleusercontent.com  # insert your own client_id from Google Developer Console https://console.developers.google.com
+#     secret: x1kFwhdfA2nmKMKlBaUGx2  # insert your own from Google Developer Console
