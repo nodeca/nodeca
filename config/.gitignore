@@ -1,5 +1,1 @@
-/application.yml
-/database.yml
-/logger.yml
-/production.yml
-/test.yml
+*.yml
