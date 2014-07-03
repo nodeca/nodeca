@@ -23,6 +23,7 @@ rules:
   max-nested-callbacks: [ 1, 4 ]
   # string can exceed 80 chars, but should not overflow github website :)
   max-len:              [ 2, 120, 1000 ]
+  no-alert:             2
   no-bitwise:           2
   no-comma-dangle:      2
   no-console:           2
@@ -39,7 +40,6 @@ rules:
 
 
   # temporary
-  no-alert:             0
   no-yoda:              0 # Fixed in master
   consistent-return:    0
 
