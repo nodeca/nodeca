@@ -50,6 +50,7 @@
                         "pbkdf2-sha256"     : "~ 0.1.1",
                         "pointer"           : "~ 0.1.9",
                         "puncher"           : "~ 1.1.1",
+                        "request"           : "~ 2.37.0",
                         "redis"             : "~ 0.10.1",
                         "redback"           : "~ 0.4.0",
                         "resolve"           : "~ 0.7.0",
