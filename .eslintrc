@@ -50,7 +50,7 @@ rules:
   # postponed
   #
   #brace-style: [2, '1tbs']
-  #space-in-brackets:    [ 2, never ]
+  space-in-brackets:    [ 1, always ]
 
 
 
