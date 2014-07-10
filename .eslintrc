@@ -16,6 +16,7 @@ rules:
   consistent-this:      [ 2, self ]
   curly:                [ 2, all ]
   default-case:         2
+  eol-last:             2
   eqeqeq:               2
   guard-for-in:         2
   handle-callback-err:  2
@@ -33,6 +34,7 @@ rules:
   no-floating-decimal:  2
   no-lonely-if:         2
   no-process-exit:      0
+  no-trailing-spaces:   2
   no-underscore-dangle: 0
   quotes:               [ 2, single, avoid-escape ]
   radix:                2
@@ -42,7 +44,7 @@ rules:
   # temporary
   consistent-return:    0
   no-global-strict:     0
-  yoda:              0
+  yoda:                 0
 
 
   # postponed
@@ -55,9 +57,7 @@ rules:
   #
   # Our custom plugins
   #
-  no-trailing-spaces:     2
   no-lodash-aliases:      2
   no-async-aliases:       2
-  eol-last:               2
   indent:                 [2, spaces, 2]
   no-wire-anonymous:      1
