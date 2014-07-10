@@ -40,8 +40,9 @@ rules:
 
 
   # temporary
-  no-yoda:              0 # Fixed in master
   consistent-return:    0
+  no-global-strict:     0
+  yoda:              0
 
 
   # postponed
