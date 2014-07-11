@@ -29,17 +29,14 @@ help:
 	echo "make pull-ro    - Updates all sub-apps in read-only mode"
 
 
-lint:
-	if test ! `which jshint` ; then \
-		echo "You need 'jshint' installed in order to run lint." >&2 ; \
-		echo "  $ npm install" >&2 ; \
-		exit 128 ; \
-		fi
-	jshint . --show-non-errors
-
+lint: eslint
 
 eslint:
-	eslint --rulesdir support/eslint_plugins/ $(NODECA_APP_PATH)
+	@if test -z "$(NODECA_APP_PATH)"; then \
+		eslint --rulesdir support/eslint_plugins/ --ignore-path .eslintignore_root ./ ; \
+		else \
+		eslint --rulesdir support/eslint_plugins/ $(NODECA_APP_PATH) ; \
+		fi
 
 
 $(CONFIG_FILES):

@@ -1,5 +1,11 @@
 .*/**
 **/.*/**
 
+node_modules/**
+**/node_modules/**
+
+public/**
+support/**
+
 **/assets/vendor/**
 **/assets/backend/js/jquery.mjs.nestedSortable.js
