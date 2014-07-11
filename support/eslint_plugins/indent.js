@@ -13,6 +13,7 @@ module.exports = function(context) {
 
   var MESSAGE = 'Bad indentation ({{gotten}} instead {{needed}}).';
 
+  var extraColumnStart = 0;
   var indentType = (context.options[0] === 'tabs') ? context.options[0] : 'spaces';
   var indentSize = +(context.options[1] || 2);
 
@@ -26,7 +27,7 @@ module.exports = function(context) {
     byLastLine = byLastLine || false;
     excludeCommas = excludeCommas || false;
 
-    var src = context.getSource(node, node.loc.start.column);
+    var src = context.getSource(node, node.loc.start.column + extraColumnStart);
     var lines = src.split('\n');
     if (byLastLine) {
       src = lines[lines.length - 1];
@@ -172,6 +173,12 @@ module.exports = function(context) {
 
   return {
     'Program': function (node) {
+
+      var programCode = context.getSource(node);
+      if (programCode.length > 1 && programCode[0] === '#' && programCode[1] === '!') {
+        extraColumnStart = 2;
+      }
+
       var nodeIndent = getNodeIndent(node);
       // Root nodes should have no indent
       checkNodesIndent(node.body, nodeIndent);
@@ -238,7 +245,7 @@ module.exports = function(context) {
       //
       var casesIndent = indent + indentSize;
       if (node.cases.length > 0 && getNodeIndent(node.cases[0]) === indent) {
-      casesIndent = indent;
+        casesIndent = indent;
       }
 
       checkNodesIndent(node.cases, casesIndent);

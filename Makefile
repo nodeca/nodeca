@@ -29,7 +29,7 @@ help:
 	echo "make pull-ro    - Updates all sub-apps in read-only mode"
 
 
-lint:
+lint: eslint
 
 eslint:
 	@if test -z "$(NODECA_APP_PATH)"; then \
