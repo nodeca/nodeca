@@ -15,24 +15,27 @@ module.exports = function (context) {
 
   return {
     'CallExpression': function (node) {
-      if (node.callee && node.callee.property) {
-        var callee = node.callee;
+      if (!node.callee || !node.callee.property) {
+        return;
+      }
 
-        if ([ 'on', 'before', 'after' ].indexOf(callee.property.name) !== -1) {
-          var calleeObj = node.callee.object;
+      var callee = node.callee;
 
-          if (calleeObj && calleeObj.property && calleeObj.property.name === 'wire') {
+      if ([ 'on', 'before', 'after' ].indexOf(callee.property.name) === -1) {
+        return;
+      }
 
-            if (calleeObj.object && calleeObj.object.name === 'N') {
-              node.arguments.forEach(function (arg) {
-                // FunctionExpression with name will have 'id' property
-                if (arg.type === 'FunctionExpression' && !arg.id) {
-                  context.report(node, 'Don\'t use anonymous function here.');
-                }
-              });
-            }
+      var calleeObj = node.callee.object;
+
+      if ((calleeObj && calleeObj.property && calleeObj.property.name === 'wire') &&
+          (calleeObj.object && calleeObj.object.name === 'N')) {
+
+        node.arguments.forEach(function (arg) {
+          // FunctionExpression with name will have 'id' property
+          if (arg.type === 'FunctionExpression' && !arg.id) {
+            context.report(node, 'Don\'t use anonymous function here.');
           }
-        }
+        });
       }
     }
   };

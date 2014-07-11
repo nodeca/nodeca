@@ -15,7 +15,7 @@ var ASYNC_FN_ALIASES = {
   select:         'filter',
   selectSeries:   'filterSeries',
   any:            'some',
-  all:            'every',
+  all:            'every'
 };
 
 var ASYNC_NAME = 'async';

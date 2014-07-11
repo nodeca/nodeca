@@ -29,7 +29,7 @@ var LODASH_FN_ALIASES = {
   methods:   'functions'
 };
 
-var LODASH_NAMES = ['lodash', '_'];
+var LODASH_NAMES = [ 'lodash', '_' ];
 
 //------------------------------------------------------------------------------
 // Rule Definition
