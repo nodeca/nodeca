@@ -49,7 +49,7 @@
                         "nodeca.editor"     : "git://github.com/nodeca/nodeca.editor.git",
                         "oauth"             : "~ 0.9.11",
                         "pbkdf2-sha256"     : "~ 0.1.1",
-                        "pointer"           : "~ 0.1.9",
+                        "pointer"           : "~ 0.2.0",
                         "puncher"           : "~ 1.1.1",
                         "raf"               : "~ 2.0.1",
                         "request"           : "~ 2.37.0",
