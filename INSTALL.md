@@ -39,7 +39,17 @@ Edit `/etc/redis/redis.conf`, restrict listening to `127.0.0.1` only.
 
 You need GraphicsMagick or ImageMagick.
 
+For ubuntu:
+
     sudo apt-get install graphicsmagick
+
+You also need Cairo to generate identicons. If not installed (for example,
+at server), read instructions for [node-canvas](https://github.com/Automattic/node-canvas#installation)
+package.
+
+For ubuntu:
+
+    sudo apt-get install libcairo2-dev libjpeg8-dev libpango1.0-dev libgif-dev build-essential g++
 
 
 ## Install node.js
