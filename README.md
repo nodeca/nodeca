@@ -17,7 +17,7 @@ Requirements
 * MongoDB (big size, images are stored in GridFS)
 * redis
 * sphinx search
-* Image Magick
+* GraphicsMagick
 * nginx (for production)
 
 Please, note, that since Nodeca is for medium/big projects, we have no goal to run it on
