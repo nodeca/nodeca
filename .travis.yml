@@ -2,6 +2,7 @@ language: node_js
 node_js:
  - "0.10"
 before_script: npm install
+before_install: sudo apt-get install graphicsmagick -y
 script: make test
 services:
   - redis
