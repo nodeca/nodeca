@@ -47,6 +47,9 @@ test: lint $(CONFIG_FILES)
 	NODECA_ENV=test node nodeca.js migrate --all
 	NODECA_ENV=test NODECA_NOMINIFY=1 ./nodeca.js test $(NODECA_APP)
 
+# used from Travis-CI, to not repeat all deps install steps for all apps
+deps-ci:
+	sudo apt-get install graphicsmagick -y
 
 dev-server:
 	if test ! `which inotifywait` ; then \
