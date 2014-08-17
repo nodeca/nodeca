@@ -37,7 +37,7 @@ Edit `/etc/redis/redis.conf`, restrict listening to `127.0.0.1` only.
 
 ## Other dependencies
 
-You need GraphicsMagick or ImageMagick.
+You need GraphicsMagick.
 
 For ubuntu:
 
