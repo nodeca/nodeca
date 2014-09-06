@@ -33,9 +33,9 @@ lint: eslint
 
 eslint:
 	@if test -z "$(NODECA_APP_PATH)"; then \
-		eslint --rulesdir support/eslint_plugins/ --ignore-path .eslintignore_root ./ ; \
+		eslint --ignore-path .eslintignore_root ./ ; \
 		else \
-		eslint --rulesdir support/eslint_plugins/ $(NODECA_APP_PATH) ; \
+		eslint $(NODECA_APP_PATH) ; \
 		fi
 
 

@@ -10,6 +10,9 @@ env:
   #window: false
   #$: false
 
+plugins:
+    - nodeca
+
 rules:
   block-scoped-var:     2
   camelcase:            0
@@ -56,9 +59,9 @@ rules:
 
 
   #
-  # Our custom plugins
+  # Our custom rules from plugin
   #
-  no-lodash-aliases:      2
-  no-async-aliases:       2
-  indent:                 [2, spaces, 2]
-  no-wire-anonymous:      1
+  nodeca/no-lodash-aliases:      2
+  nodeca/no-async-aliases:       2
+  nodeca/indent:                 [2, spaces, 2]
+  nodeca/no-wire-anonymous:      1
