@@ -43,7 +43,8 @@ rules:
 
 
   # temporary
-  no-global-strict:     0
+  global-strict:        0
+  no-func-assign:       0
   yoda:                 0
 
 

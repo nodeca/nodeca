@@ -173,13 +173,8 @@ module.exports = function(context) {
 
   return {
     'Program': function (node) {
-
-      var programCode = context.getSource(node);
-      if (programCode.length > 1 && programCode[0] === '#' && programCode[1] === '!') {
-        extraColumnStart = 2;
-      }
-
       var nodeIndent = getNodeIndent(node);
+
       // Root nodes should have no indent
       checkNodesIndent(node.body, nodeIndent);
     },
