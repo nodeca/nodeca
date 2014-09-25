@@ -63,7 +63,7 @@
                         "revalidator"       : "~ 0.1.8",
                         "send"              : "~ 0.3.0",
                         "steady"            : "~ 1.1.0",
-                        "stream-buffers"    : "~ 0.2.5",
+                        "stream-buffers"    : "~ 1.0.0",
                         "stylus"            : "~ 0.45.1",
                         "uglify-js"         : "~ 2.4.1",
                         "xregexp"           : "~ 2.0.0"
