@@ -81,7 +81,7 @@
                         "eslint"            : "0.8.0",
                         "eslint-plugin-nodeca" : "~ 1.0.0",
                         "mocha"             : "*",
-                        "supertest"         : "*"
+                        "supertest"         : "0.13.0"
                       },
   "engines"         : { "node": ">= 0.10.0" }
 }
