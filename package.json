@@ -46,7 +46,6 @@
                         "nodeca.users"      : "git://github.com/nodeca/nodeca.users.git",
                         "nodeca.forum"      : "git://github.com/nodeca/nodeca.forum.git",
                         "nodeca.blogs"      : "git://github.com/nodeca/nodeca.blogs.git",
-                        "nodeca.editor"     : "git://github.com/nodeca/nodeca.editor.git",
                         "oauth"             : "~ 0.9.11",
                         "pbkdf2-sha256"     : "~ 0.1.1",
                         "pica"              : "~ 1.0.0",

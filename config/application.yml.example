@@ -10,7 +10,6 @@ applications:
   - nodeca.users
   - nodeca.forum
   - nodeca.blogs
-  - nodeca.editor
 
 
 # Locales
