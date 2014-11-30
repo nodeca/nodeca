@@ -54,6 +54,7 @@
                         "puncher"                 : "~ 1.1.1",
                         "prompt"                  : "~ 0.2.13",
                         "raf"                     : "~ 2.0.4",
+                        "readable-stream"         : "~ 1.0.33",
                         "request"                 : "~ 2.49.0",
                         "redis"                   : "~ 0.12.1",
                         "redback"                 : "~ 0.4.0",
@@ -63,7 +64,6 @@
                         "revalidator"             : "~ 0.3.0",
                         "send"                    : "~ 0.10.1",
                         "steady"                  : "~ 2.0.1",
-                        "stream-buffers"          : "~ 1.0.0",
                         "stylus"                  : "~ 0.49.3",
                         "uglify-js"               : "~ 2.4.1",
                         "xregexp"                 : "~ 2.0.0"
