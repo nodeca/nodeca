@@ -30,6 +30,10 @@ logger:
     - level:  error
       file:   log/system-error.log
 
+  mailer.dummy:
+    - level:  debug
+      file:   log/mailer_dummy.log
+
   bin@:
     - level:  debug
       file:   log/static.log

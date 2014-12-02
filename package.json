@@ -1,87 +1,92 @@
 {
-  "name"            : "nodeca",
-  "version"         : "0.0.0-dev",
-  "description"     : "Base nodeca application and kickstarter.",
-  "homepage"        : "https://github.com/nodeca/nodeca",
-
-  "author"          : "Aleksey V Zapparov <ixti@member.fsf.org> (http://ixti.net)",
-
-  "bugs"            : { "url": "https://github.com/nodeca/nodeca/issues" },
-  "license"         : { "type": "MIT", "url": "https://github.com/nodeca/nodeca/blob/master/LICENSE" },
-  "repository"      : { "type": "git", "url": "git://github.com/nodeca/nodeca.git" },
-
-  "main"            : "./index.js",
-
-  "scripts"         : {
-                        "test": "make test-all"
-                      },
-
-  "dependencies"    : {
-                        "argparse"                : "~ 0.1.16",
-                        "async"                   : "~ 0.9.0",
-                        "autoprefixer-core"       : "~ 4.0.0",
-                        "babelfish"               : "~ 1.0.1",
-                        "charlatan"               : "~ 0.1.9",
-                        "cheerio"                 : "~ 0.18.0",
-                        "cookie"                  : "~ 0.1.2",
-                        "csswring"                : "~ 2.0.0",
-                        "ejs"                     : "~ 1.0.0",
-                        "find-requires"           : "~ 0.2.0",
-                        "formidable"              : "~ 1.0.15",
-                        "fs-tools"                : "~ 0.2.11",
-                        "gm"                      : "~ 1.17.0",
-                        "gridfs-stream"           : "~ 0.5.3",
-                        "jade"                    : "~ 1.8.1",
-                        "javascript-state-machine": "~ 2.3.2",
-                        "js-yaml"                 : "~ 3.2.3",
-                        "knockout"                : "~ 3.2.0",
-                        "less"                    : "~ 1.7.0",
-                        "lodash"                  : "~ 2.4.1",
-                        "log4js"                  : "~ 0.6.21",
-                        "memoizee"                : "~ 0.3.8",
-                        "mimoza"                  : "~ 0.3.0",
-                        "mincer"                  : "~ 1.2.0",
-                        "mongoose"                : "~ 3.8.20",
-                        "nodemailer"              : "~ 0.6.1",
-                        "nodeca.core"             : "git://github.com/nodeca/nodeca.core.git",
-                        "nodeca.users"            : "git://github.com/nodeca/nodeca.users.git",
-                        "nodeca.forum"            : "git://github.com/nodeca/nodeca.forum.git",
-                        "nodeca.blogs"            : "git://github.com/nodeca/nodeca.blogs.git",
-                        "oauth"                   : "~ 0.9.12",
-                        "pbkdf2-sha256"           : "~ 1.0.1",
-                        "pica"                    : "~ 1.0.7",
-                        "pointer"                 : "~ 0.2.0",
-                        "puncher"                 : "~ 1.1.1",
-                        "prompt"                  : "~ 0.2.14",
-                        "raf"                     : "~ 2.0.4",
-                        "readable-stream"         : "~ 1.0.33",
-                        "request"                 : "~ 2.49.0",
-                        "redis"                   : "~ 0.12.1",
-                        "redback"                 : "~ 0.4.0",
-                        "resolve"                 : "~ 1.0.0",
-                        "retricon"                : "~ 0.0.3",
-                        "remarkable"              : "~ 1.4.2",
-                        "revalidator"             : "~ 0.3.0",
-                        "send"                    : "~ 0.10.1",
-                        "steady"                  : "~ 2.0.1",
-                        "stylus"                  : "~ 0.49.3",
-                        "uglify-js"               : "~ 2.4.15",
-                        "xregexp"                 : "~ 2.0.0"
-                      },
-
-  "bundledDependencies" : [
-                        "nodeca.core",
-                        "nodeca.users",
-                        "nodeca.forum",
-                        "nodeca.blogs",
-                        "nodeca.editor"
-                      ],
-
-  "devDependencies" : {
-                        "eslint"            : "0.9.1",
-                        "eslint-plugin-nodeca" : "~ 1.0.3",
-                        "mocha"             : "*",
-                        "supertest"         : "0.15.0"
-                      },
-  "engines"         : { "node": ">= 0.10.0" }
+  "name": "nodeca",
+  "version": "0.0.0-dev",
+  "description": "Base nodeca application and kickstarter.",
+  "homepage": "https://github.com/nodeca/nodeca",
+  "author": "Aleksey V Zapparov <ixti@member.fsf.org> (http://ixti.net)",
+  "bugs": {
+    "url": "https://github.com/nodeca/nodeca/issues"
+  },
+  "license": {
+    "type": "MIT",
+    "url": "https://github.com/nodeca/nodeca/blob/master/LICENSE"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nodeca/nodeca.git"
+  },
+  "main": "./index.js",
+  "scripts": {
+    "test": "make test-all"
+  },
+  "dependencies": {
+    "argparse": "~ 0.1.16",
+    "async": "~ 0.9.0",
+    "autoprefixer-core": "~ 4.0.0",
+    "babelfish": "~ 1.0.1",
+    "charlatan": "~ 0.1.9",
+    "cheerio": "~ 0.18.0",
+    "cookie": "~ 0.1.2",
+    "csswring": "~ 2.0.0",
+    "ejs": "~ 1.0.0",
+    "find-requires": "~ 0.2.0",
+    "formidable": "~ 1.0.15",
+    "fs-tools": "~ 0.2.11",
+    "gm": "~ 1.17.0",
+    "gridfs-stream": "~ 0.5.3",
+    "jade": "~ 1.8.1",
+    "javascript-state-machine": "~ 2.3.2",
+    "js-yaml": "~ 3.2.3",
+    "knockout": "~ 3.2.0",
+    "less": "~ 1.7.0",
+    "lodash": "~ 2.4.1",
+    "log4js": "~ 0.6.21",
+    "memoizee": "~ 0.3.8",
+    "mimoza": "~ 0.3.0",
+    "mincer": "~ 1.2.0",
+    "mongoose": "~ 3.8.20",
+    "nodeca.blogs": "git://github.com/nodeca/nodeca.blogs.git",
+    "nodeca.core": "git://github.com/nodeca/nodeca.core.git",
+    "nodeca.forum": "git://github.com/nodeca/nodeca.forum.git",
+    "nodeca.users": "git://github.com/nodeca/nodeca.users.git",
+    "nodemailer": "~ 1.3.0",
+    "nodemailer-sendmail-transport": "~ 1.0.0",
+    "nodemailer-stub-transport": "~ 0.1.5",
+    "oauth": "~ 0.9.12",
+    "pbkdf2-sha256": "~ 1.0.1",
+    "pica": "~ 1.0.7",
+    "pointer": "~ 0.2.0",
+    "prompt": "~ 0.2.14",
+    "puncher": "~ 1.1.1",
+    "raf": "~ 2.0.4",
+    "readable-stream": "~ 1.0.33",
+    "redback": "~ 0.4.0",
+    "redis": "~ 0.12.1",
+    "remarkable": "~ 1.4.2",
+    "request": "~ 2.49.0",
+    "resolve": "~ 1.0.0",
+    "retricon": "~ 0.0.3",
+    "revalidator": "~ 0.3.0",
+    "send": "~ 0.10.1",
+    "steady": "~ 2.0.1",
+    "stylus": "~ 0.49.3",
+    "uglify-js": "~ 2.4.15",
+    "xregexp": "~ 2.0.0"
+  },
+  "bundledDependencies": [
+    "nodeca.core",
+    "nodeca.users",
+    "nodeca.forum",
+    "nodeca.blogs",
+    "nodeca.editor"
+  ],
+  "devDependencies": {
+    "eslint": "0.9.1",
+    "eslint-plugin-nodeca": "~ 1.0.3",
+    "mocha": "*",
+    "supertest": "0.15.0"
+  },
+  "engines": {
+    "node": ">= 0.10.0"
+  }
 }
