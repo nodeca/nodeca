@@ -26,7 +26,7 @@ rules:
   handle-callback-err:  2
   key-spacing:          0
   max-depth:            [ 1, 3 ]
-  max-nested-callbacks: [ 1, 4 ]
+  max-nested-callbacks: [ 1, 5 ]
   # string can exceed 80 chars, but should not overflow github website :)
   max-len:              [ 2, 120, 1000 ]
   no-alert:             2
