@@ -69,7 +69,6 @@
     "redis": "~ 0.12.1",
     "request": "~ 2.49.0",
     "resolve": "~ 1.0.0",
-    "retricon": "~ 0.0.3",
     "revalidator": "~ 0.3.0",
     "send": "~ 0.10.1",
     "steady": "~ 2.0.1",
