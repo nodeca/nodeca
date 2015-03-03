@@ -42,9 +42,9 @@
     "lodash": "~ 2.4.1",
     "log4js": "~ 0.6.21",
     "markdown-it": "~3.0.1",
+    "markdown-it-footnote": "~0.1.0",
     "markdown-it-sub": "~0.1.0",
     "markdown-it-sup": "~0.1.0",
-    "markdown-it-footnote": "~0.1.0",
     "memoizee": "~ 0.3.8",
     "mimoza": "~ 0.3.0",
     "mincer": "~ 1.2.0",
@@ -86,6 +86,8 @@
     "eslint": "0.9.1",
     "eslint-plugin-nodeca": "~ 1.0.3",
     "mocha": "*",
+    "phantomjs": "~ 1.9.15",
+    "nightmare": "~ 1.7.0",
     "supertest": "0.15.0"
   },
   "engines": {
