@@ -83,6 +83,7 @@
     "nodeca.editor"
   ],
   "devDependencies": {
+    "chai": "~ 2.1.0",
     "eslint": "0.9.1",
     "eslint-plugin-nodeca": "~ 1.0.3",
     "mocha": "*",
