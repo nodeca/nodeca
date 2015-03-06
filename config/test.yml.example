@@ -1,18 +1,17 @@
 # Configuration for testing
 
 ^test:
+  bind:
+    default:
+      listen: 0.0.0.0:3000
+
+      # To have a complete URLs in the tests
+      mount:  http://localhost:3000
+
   database:
     redis:
       host: localhost
       port: 6379
       index: 2
 
-  # Examples:
-  #
-  # "mongodb://user:password@host:port/database"
-  # "user:password@host:port/database"
-  # "host/database"
-  #
-  # For replica set join all addresses into one string, separated by comma.
-  #
-  mongo: localhost/nodeca-test
+    mongo: localhost/nodeca-test
