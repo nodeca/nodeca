@@ -37,7 +37,7 @@
     "jade": "~ 1.9.2",
     "javascript-state-machine": "~ 2.3.2",
     "js-yaml": "~ 3.2.3",
-    "knockout": "~ 3.2.0",
+    "knockout": "~ 3.3.0",
     "less": "~ 1.7.5",
     "lodash": "~ 2.4.1",
     "log4js": "~ 0.6.21",
