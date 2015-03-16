@@ -39,7 +39,7 @@
     "js-yaml": "~ 3.2.3",
     "knockout": "~ 3.3.0",
     "less": "~ 1.7.5",
-    "lodash": "~ 2.4.1",
+    "lodash": "^ 3.5.0",
     "log4js": "~ 0.6.21",
     "markdown-it": "~ 4.0.1",
     "markdown-it-footnote": "~1.0.0",
