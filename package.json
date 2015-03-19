@@ -49,6 +49,7 @@
     "mimoza": "~ 1.0.0",
     "mincer": "~ 1.2.0",
     "mongoose": "~ 3.8.20",
+    "node-redis-warlock": "^0.1.2",
     "nodeca.blogs": "git://github.com/nodeca/nodeca.blogs.git",
     "nodeca.core": "git://github.com/nodeca/nodeca.core.git",
     "nodeca.forum": "git://github.com/nodeca/nodeca.forum.git",
