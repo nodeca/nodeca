@@ -6,3 +6,7 @@ script: make test
 services:
   - redis
   - mongodb
+addons:
+  apt_packages:
+    - graphicsmagick
+sudo: false
