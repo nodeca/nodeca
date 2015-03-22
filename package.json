@@ -26,6 +26,7 @@
     "babelfish": "~ 1.1.1",
     "charlatan": "~ 0.1.9",
     "cheerio": "~ 0.18.0",
+    "cldr-data": "^26.0.10",
     "cookie": "~ 0.1.2",
     "csswring": "~ 3.0.2",
     "ejs": "~ 1.0.0",
