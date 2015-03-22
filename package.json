@@ -23,7 +23,7 @@
     "argparse": "~ 1.0.1",
     "async": "~ 0.9.0",
     "autoprefixer-core": "~ 5.1.7",
-    "babelfish": "~ 1.1.0",
+    "babelfish": "~ 1.1.1",
     "charlatan": "~ 0.1.9",
     "cheerio": "~ 0.18.0",
     "cookie": "~ 0.1.2",
