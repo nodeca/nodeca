@@ -50,6 +50,9 @@ test: lint $(CONFIG_FILES)
 # used from Travis-CI, to not repeat all deps install steps for all apps
 deps-ci:
 	sudo apt-get install graphicsmagick -y
+	# don't know why, but it fails to install will all packages on travis
+	# force separate install.
+	npm install cldr-data
 
 dev-server:
 	if test ! `which inotifywait` ; then \
