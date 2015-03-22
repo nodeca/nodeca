@@ -32,7 +32,7 @@ rules:
   no-alert:             2
   no-bitwise:           2
   no-comma-dangle:      2
-  no-console:           2
+  no-console:           1
   no-div-regex:         2
   no-else-return:       2
   no-eq-null:           2
