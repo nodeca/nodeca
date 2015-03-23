@@ -28,6 +28,7 @@
     "cheerio": "~ 0.18.0",
     "cldr-data": "26.0.10",
     "cookie": "~ 0.1.2",
+    "cron": "^1.0.9",
     "csswring": "~ 3.0.2",
     "ejs": "~ 1.0.0",
     "find-requires": "~ 0.2.0",
