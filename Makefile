@@ -29,9 +29,7 @@ help:
 	echo "make pull-ro    - Updates all sub-apps in read-only mode"
 
 
-lint: eslint
-
-eslint:
+lint:
 	@if test -z "$(NODECA_APP_PATH)"; then \
 		eslint --ignore-path .eslintignore_root ./ ; \
 		else \
