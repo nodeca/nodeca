@@ -88,7 +88,7 @@
   ],
   "devDependencies": {
     "chai": "~ 2.1.0",
-    "eslint": "0.9.1",
+    "eslint": "0.18.0",
     "eslint-plugin-nodeca": "~ 1.0.3",
     "mocha": "*",
     "phantomjs": "~ 1.9.15",

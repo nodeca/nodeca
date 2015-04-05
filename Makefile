@@ -31,9 +31,10 @@ help:
 
 lint:
 	@if test -z "$(NODECA_APP_PATH)"; then \
-		eslint --ignore-path .eslintignore_root ./ ; \
+		eslint --reset ./ ; \
 		else \
-		eslint $(NODECA_APP_PATH) ; \
+		cd $(NODECA_APP_PATH) ; \
+		eslint --reset . ; \
 		fi
 
 
