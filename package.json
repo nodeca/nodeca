@@ -64,7 +64,7 @@
     "oauth": "~ 0.9.12",
     "pbkdf2-sha256": "~ 1.1.0",
     "pica": "~ 1.0.7",
-    "pointer": "~ 0.2.0",
+    "pointer": "~ 0.3.0",
     "prompt": "~ 0.2.14",
     "puncher": "~ 1.1.1",
     "punycode": "~ 1.3.2",
