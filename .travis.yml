@@ -9,4 +9,5 @@ services:
 addons:
   apt_packages:
     - graphicsmagick
+    - net-tools
 sudo: false
