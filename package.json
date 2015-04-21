@@ -22,7 +22,7 @@
   "dependencies": {
     "argparse": "~ 1.0.1",
     "async": "~ 0.9.0",
-    "autoprefixer-core": "~ 5.1.10",
+    "autoprefixer-core": "~ 5.1.11",
     "babelfish": "~ 1.1.1",
     "charlatan": "^ 1.0.0",
     "cheerio": "~ 0.19.0",
@@ -43,8 +43,8 @@
     "knockout": "~ 3.3.0",
     "less": "~ 1.7.5",
     "lodash": "^ 3.7.0",
-    "log4js": "~ 0.6.21",
-    "markdown-it": "~ 4.1.2",
+    "log4js": "~ 0.6.24",
+    "markdown-it": "~ 4.2.0",
     "markdown-it-footnote": "~1.0.0",
     "markdown-it-sub": "~1.0.0",
     "markdown-it-sup": "~1.0.0",
@@ -53,7 +53,6 @@
     "mincer": "~ 1.2.0",
     "mongoose": "~ 4.0.1",
     "node-whois": "^2.1.0",
-    "navit": "~ 1.0.0",
     "nodeca.blogs": "git://github.com/nodeca/nodeca.blogs.git",
     "nodeca.core": "git://github.com/nodeca/nodeca.core.git",
     "nodeca.forum": "git://github.com/nodeca/nodeca.forum.git",
@@ -77,7 +76,7 @@
     "send": "~ 0.12.2",
     "steady": "~ 2.0.1",
     "stylus": "~ 0.50.0",
-    "uglify-js": "~ 2.4.15",
+    "uglify-js": "~ 2.4.20",
     "xregexp": "~ 2.0.0"
   },
   "bundledDependencies": [
@@ -91,8 +90,8 @@
     "eslint": "0.18.0",
     "eslint-plugin-nodeca": "~ 1.0.3",
     "mocha": "*",
+    "navit": "~ 1.0.1",
     "phantomjs": "~ 1.9.15",
-    "nightmare": "~ 1.8.0",
     "supertest": "0.15.0"
   },
   "engines": {
