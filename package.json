@@ -31,6 +31,7 @@
     "cron": "^1.0.9",
     "csswring": "~ 3.0.2",
     "ejs": "~ 1.0.0",
+    "event-wire": "~1.0.0",
     "find-requires": "~ 0.2.0",
     "formidable": "~ 1.0.15",
     "fs-tools": "~ 0.2.11",
