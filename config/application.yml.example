@@ -30,13 +30,14 @@ locales:
 # Security settings (currently - policy headers)
 #
 security:
+  # We can't use 'self' in 'connect-src' because WebSocket require to use
+  # domain name with protocol. You can specify more precise rule if needed
+  #
+  # connect-src 'self' wss://yourdomain.com *.google-analytics.com *.google.com;
+  #
   Content-Security-Policy: >
     default-src *; style-src 'unsafe-inline' *;
     script-src 'self' 'unsafe-inline' 'unsafe-eval' *.google-analytics.com *.google.com;
-    # We can't use 'self' because WebSocket require to use domain name with
-    # protocol. You can specify more precise rule if needed
-    #
-    # connect-src 'self' wss://yourdomain.com *.google-analytics.com *.google.com;
     connect-src *;
   X-Frame-Options: DENY
 
