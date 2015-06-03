@@ -54,6 +54,7 @@
     "markdown-it-footnote": "~1.0.0",
     "markdown-it-sub": "~1.0.0",
     "markdown-it-sup": "~1.0.0",
+    "mdurl": "~1.0.0",
     "memoizee": "~ 0.3.8",
     "mimoza": "~ 1.0.0",
     "mincer": "~ 1.2.0",
