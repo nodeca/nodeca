@@ -1,5 +1,5 @@
 #
-# Environment-dependent configs. Use ^your_name to define enviroment,
+# Environment-dependent configs. Use ^your_name to define environment,
 # and define variables to override. Here is typical sample for production,
 # staging & testing.
 #
