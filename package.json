@@ -76,13 +76,15 @@
     "stylus": "~ 0.50.0",
     "tabex": "^1.0.3",
     "uglify-js": "~ 2.4.23",
-    "xregexp": "~ 2.0.0"
+    "xregexp": "~ 2.0.0",
+    "embedza": "git://github.com/nodeca/embedza#875986d065e491b403ef002d4ee025f876a5ae3d"
   },
   "bundledDependencies": [
     "nodeca.core",
     "nodeca.users",
     "nodeca.forum",
-    "nodeca.blogs"
+    "nodeca.blogs",
+    "embedza"
   ],
   "devDependencies": {
     "chai": "~ 2.2.0",
