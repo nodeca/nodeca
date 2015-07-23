@@ -77,7 +77,7 @@
     "tabex": "^1.0.3",
     "uglify-js": "~ 2.4.23",
     "xregexp": "~ 2.0.0",
-    "embedza": "git://github.com/nodeca/embedza#875986d065e491b403ef002d4ee025f876a5ae3d"
+    "embedza": "git://github.com/nodeca/embedza#04edf70464d8009011d6ddec37ffad6c7e333d37"
   },
   "bundledDependencies": [
     "nodeca.core",
