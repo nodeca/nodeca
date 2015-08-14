@@ -78,7 +78,7 @@
     "uglify-js": "~ 2.4.23",
     "xregexp": "~ 2.0.0",
     "url-unshort": "git://github.com/nodeca/url-unshort.git",
-    "embedza": "git://github.com/nodeca/embedza#3f84daaba2cac1341ff702b992c9436f2f546799"
+    "embedza": "git://github.com/nodeca/embedza"
   },
   "bundledDependencies": [
     "nodeca.core",
