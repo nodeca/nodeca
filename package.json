@@ -19,6 +19,7 @@
     "cron": "^1.0.9",
     "csswring": "~ 3.0.5",
     "ejs": "~ 1.0.0",
+    "embedza": "git://github.com/nodeca/embedza",
     "event-wire": "~1.0.0",
     "faye": "^1.1.1",
     "faye-redis": "^0.2.0",
@@ -77,8 +78,7 @@
     "tabex": "^1.0.3",
     "uglify-js": "~ 2.4.23",
     "xregexp": "~ 2.0.0",
-    "url-unshort": "git://github.com/nodeca/url-unshort.git",
-    "embedza": "git://github.com/nodeca/embedza"
+    "url-unshort": "^1.0.0"
   },
   "bundledDependencies": [
     "nodeca.core",
