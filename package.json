@@ -71,6 +71,7 @@
     "redis": "~ 0.12.1",
     "redis-url": "~ 1.2.0",
     "request": "~ 2.58.0",
+    "request-image-size": "~ 1.2.2",
     "resolve": "~ 1.1.5",
     "send": "~ 0.12.2",
     "steady": "~ 2.0.1",
