@@ -15,6 +15,7 @@
     "charlatan": "^ 1.0.0",
     "cheerio": "~ 0.19.0",
     "cldr-data": "27.0.2",
+    "codemirror": "^5.6.0",
     "cookie": "~ 0.1.2",
     "cron": "^1.0.9",
     "csswring": "~ 3.0.5",
