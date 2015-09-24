@@ -86,8 +86,7 @@
     "nodeca.core",
     "nodeca.users",
     "nodeca.forum",
-    "nodeca.blogs",
-    "embedza"
+    "nodeca.blogs"
   ],
   "devDependencies": {
     "chai": "~ 2.2.0",
