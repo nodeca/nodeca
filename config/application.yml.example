@@ -12,6 +12,11 @@ applications:
   - nodeca.blogs
 
 
+# Default application environment (can be used instead of NODECA_ENV, to change default)
+#
+# env_default: development
+
+
 # Locales
 #
 locales:
