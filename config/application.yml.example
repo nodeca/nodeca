@@ -44,7 +44,7 @@ security:
   #
   Content-Security-Policy: >
     default-src *; style-src 'unsafe-inline' *; img-src * data: blob:;
-    script-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: *.google-analytics.com *.google.com;
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: *.google-analytics.com *.google.com www.gstatic.com;
     connect-src *;
   X-Frame-Options: DENY
 
@@ -56,8 +56,8 @@ options:
   # Recaptcha keys. Replace with your own
   #
   recaptcha:
-    private_key: 6LdSINcSAAAAABs6duZAvnuN2-PwceqKqZMMFEt2
-    public_key: 6LdSINcSAAAAAPUJnsQreWd-lT-ILxnoIWwLAepO
+    private_key: 6LfzAQ8TAAAAAEyWHFSR79_h0EWKsPYL_ONuw28l
+    public_key: 6LfzAQ8TAAAAADVb8lwai8emdLWZnIu7X2jMbFHh
 
   # # Cache location for differend needs (styles compiler, mincer, ...),
   # # anyone can create additional subfolders there.
