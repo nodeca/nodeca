@@ -55,9 +55,9 @@ options:
 
   # Recaptcha keys. Replace with your own
   #
-  recaptcha:
-    private_key: 6LfzAQ8TAAAAAEyWHFSR79_h0EWKsPYL_ONuw28l
-    public_key: 6LfzAQ8TAAAAADVb8lwai8emdLWZnIu7X2jMbFHh
+  #recaptcha:
+  #  private_key: 6LfzAQ8TAAAAAEyWHFSR79_h0EWKsPYL_ONuw28l
+  #  public_key: 6LfzAQ8TAAAAADVb8lwai8emdLWZnIu7X2jMbFHh
 
   # # Cache location for differend needs (styles compiler, mincer, ...),
   # # anyone can create additional subfolders there.
