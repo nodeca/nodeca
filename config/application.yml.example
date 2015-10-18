@@ -53,7 +53,8 @@ security:
 #
 options:
 
-  # Recaptcha keys. Replace with your own
+  # Recaptcha keys. Define your own. Current keys are for example/testing only
+  # and should NOT be used on real sites.
   #
   #recaptcha:
   #  private_key: 6LfzAQ8TAAAAAEyWHFSR79_h0EWKsPYL_ONuw28l
