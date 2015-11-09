@@ -9,7 +9,7 @@ Social communication platform for medium and big traffic projects.
   - **http://dev.nodeca.com** (filled with lorem ipsum)
   - register with any email to make test posts, no confirmation required.
 - Converted RC Design Forum:
-  - **http://dev.rcdesign.com**
+  - **http://dev.rcopen.com**
   - WIP
 
 
