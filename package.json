@@ -62,7 +62,7 @@
     "pbkdf2-sha256": "~ 1.1.0",
     "permessage-deflate": "^0.1.3",
     "pica": "~ 1.0.7",
-    "pointer": "~ 0.3.1",
+    "pointer": "~ 0.3.2",
     "postcss": "^5.0.10",
     "probe-image-size": "~ 1.0.3",
     "prompt": "~ 0.2.14",
