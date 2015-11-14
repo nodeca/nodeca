@@ -1,6 +1,6 @@
 language: node_js
 node_js:
- - "4.0"
+ - "4"
 before_install: make deps-ci
 script: make test
 services:
@@ -9,5 +9,4 @@ services:
 addons:
   apt_packages:
     - graphicsmagick
-    - net-tools
 sudo: false
