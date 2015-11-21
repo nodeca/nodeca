@@ -49,6 +49,13 @@ security:
   X-Frame-Options: DENY
 
 
+# robots.txt custom content
+#
+#robots: |
+#  User-Agent: *
+#  #
+
+
 # Options - different kind of constants, to keep root space clear
 #
 options:
