@@ -49,7 +49,7 @@
     "memoizee": "~ 0.3.8",
     "mimoza": "^1.0.0",
     "mincer": "~ 1.4.0",
-    "mongoose": "~ 4.2.5",
+    "mongoose": "~ 4.2.7",
     "node-whois": "^2.1.0",
     "nodeca.blogs": "git://github.com/nodeca/nodeca.blogs.git",
     "nodeca.core": "git://github.com/nodeca/nodeca.core.git",
