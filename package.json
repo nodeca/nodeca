@@ -79,7 +79,7 @@
     "stylus": "~ 0.52.4",
     "tabex": "^1.0.3",
     "uglify-js": "~ 2.6.0",
-    "url-unshort": "^1.0.0",
+    "url-unshort": "^1.1.0",
     "xregexp": "^3.0.0"
   },
   "bundledDependencies": [
