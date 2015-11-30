@@ -12,16 +12,10 @@ Install packages:
     sudo apt-get install build-essential git libssl-dev curl
     git clone git://github.com/creationix/nvm.git ~/.nvm
 
-Add following code into the end of your shell startup script (`.bashrc` for BASH):
-
-    if [ -s "$HOME/.nvm/nvm.sh" ] ; then
-        . ~/.nvm/nvm.sh # Loads NVM into a shell session.
-    fi
-
 Reopen terminal. Install node and set default version:
 
-    nvm install 0.10
-    nvm alias default 0.10
+    nvm install 4
+    nvm alias default 4
 
 ### Install global node modules, used sometime:
 
