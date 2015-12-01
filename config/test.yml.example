@@ -11,3 +11,6 @@
   database:
     redis: redis://localhost:6379/2
     mongo: mongodb://localhost/nodeca-test
+
+  options:
+    recaptcha: ~
