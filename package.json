@@ -16,6 +16,7 @@
     "cheerio": "~ 0.19.0",
     "cldr-data": "28.0.2",
     "codemirror": "^5.9.0",
+    "compressible": "^2.0.6",
     "cookie": "~ 0.2.2",
     "cron": "^1.0.9",
     "csswring": "^4.0.0",
