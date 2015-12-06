@@ -73,34 +73,51 @@ options:
   # #
   # cache_dir: ./.cache
 
-  # Layout header injection
-  inject_header: |
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-      ga('create', 'UA-26895916-2', 'nodeca.com');
-      ga('send', 'pageview');
-    </script>
+  # # Layout header injection
+  # inject_header: |
+  #   <script>
+  #     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  #     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  #     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  #     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  #
+  #     ga('create', 'UA-26895916-2', 'nodeca.com');
+  #     ga('send', 'pageview');
+  #   </script>
 
 
 # Listening options
 #
 bind:
   default:
+    #
+    # Set 127.0.0.1:3000 on production for security
+    #
     listen: 0.0.0.0:3000
-    ssl:
-      listen: 0.0.0.0:3001
-      key:  ./config/examples/ssl.key
-      cert: ./config/examples/ssl.crt
+    #
+    # Enable on production, when behind proxy frontend.
+    # Set `X-Real-IP` & `X-Forwarded-Scheme` for proper proxy pass & logs.
+    #
+    #forwarded: true
+    #
+    # Add for https-only, behind frontend:
+    #
+    #mount: https://your.domain.com
+    #
+    # Not recommended to use. Setup SSL proxy frontend instead.
+    #
+    #ssl:
+    #  listen: 0.0.0.0:3001
+    #  key:  ./config/examples/ssl.key
+    #  cert: ./config/examples/ssl.crt
 
   # SYNOPSIS:
   #
   # <apiPath>:
   #   mount: [<proto>:][//[<host>][:<port>]][/<path>]
   #   listen: <address>[:<port = 80>]
+  #   forwarded: [true]           # Set true if service runs after proxy frontend
+  #                               # to override request url & IP.
   #   ssl:
   #     key:  /path/to/file.key   # Path might be absolute
   #     cert: /path/to/file.cert  # or relative to the main app
@@ -119,14 +136,3 @@ bind:
 
   forum.index:
     mount: /
-
-  # ACTION, WHEN REQUESTED HOST IS UNKNOWN
-  #
-  # _ is a special keyword that hold function called when hostname is not
-  # supposed to be served by server listener, by default 404 not found:
-  #
-  #_: !!js/function |
-  #  function (req, res) {
-  #    res.writeHead(404, { 'Content-Type': 'text/plain' });
-  #    res.end('Invalid host ' + req.headers.host);
-  #  }
