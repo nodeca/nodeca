@@ -51,7 +51,6 @@
     "mimoza": "^1.0.0",
     "mincer": "~ 1.4.0",
     "mongoose": "~ 4.2.9",
-    "node-whois": "^2.1.0",
     "nodeca.blogs": "git://github.com/nodeca/nodeca.blogs.git",
     "nodeca.core": "git://github.com/nodeca/nodeca.core.git",
     "nodeca.forum": "git://github.com/nodeca/nodeca.forum.git",
@@ -81,6 +80,7 @@
     "tabex": "^1.0.3",
     "uglify-js": "~ 2.6.1",
     "url-unshort": "^1.1.2",
+    "whois": "^2.1.5",
     "xregexp": "^3.0.0"
   },
   "bundledDependencies": [
