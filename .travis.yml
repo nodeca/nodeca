@@ -7,6 +7,8 @@ services:
   - redis
   - mongodb
 addons:
-  apt_packages:
-    - graphicsmagick
+  apt:
+    packages:
+      - redis
+      - graphicsmagick
 sudo: false
