@@ -7,6 +7,11 @@ services:
   - redis
   - mongodb
 addons:
-  apt_packages:
-    - graphicsmagick
+  apt:
+    sources:
+      - mongodb-3.0-precise
+    packages:
+      - mongodb-org-server
+      - redis-server
+      - graphicsmagick
 sudo: false
