@@ -10,9 +10,12 @@ addons:
   apt:
     sources:
       - mongodb-3.0-precise
-  apt:
+      - ubuntu-toolchain-r-test
     packages:
       - redis
       - mongodb-org
       - graphicsmagick
+      - g++-4.8
+env:
+  - CXX=g++-4.8
 sudo: false
