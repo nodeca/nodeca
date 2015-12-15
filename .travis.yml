@@ -12,7 +12,7 @@ addons:
       - mongodb-3.0-precise
       - ubuntu-toolchain-r-test
     packages:
-      - redis
+      - redis-server
       - mongodb-org
       - graphicsmagick
       - g++-4.8
