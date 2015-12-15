@@ -64,7 +64,7 @@
     "pica": "^1.1.1",
     "pointer": "~ 0.3.2",
     "postcss": "^5.0.10",
-    "probe-image-size": "~ 1.0.3",
+    "probe-image-size": "^1.0.5",
     "prompt": "~ 0.2.14",
     "puncher": "~ 1.1.1",
     "punycode": "^1.4.0",
