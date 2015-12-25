@@ -54,6 +54,7 @@
     "memoizee": "~ 0.3.8",
     "mimoza": "^1.0.0",
     "mincer": "~ 1.4.0",
+    "mkdirp": "^0.5.1",
     "mongoose": "~ 4.3.3",
     "nodeca.blogs": "git://github.com/nodeca/nodeca.blogs.git",
     "nodeca.core": "git://github.com/nodeca/nodeca.core.git",
