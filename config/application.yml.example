@@ -21,15 +21,10 @@ applications:
 #
 locales:
 
-  # Application locale used by default (first enabled one if not set).
-  #
-  default: en-US
-
-  # # List of enabled locales (all found locales by default).
-  # enabled:
-  #   - en-US
-  #   - en-GB
-  #   - ru-RU
+  # List of enabled locales (all found locales by default).
+  enabled:
+    - en-US
+    - ru-RU
 
 
 # Security settings (currently - policy headers)
