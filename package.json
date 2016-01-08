@@ -14,6 +14,7 @@
     "babel-preset-es2015": "^6.3.13",
     "babelfish": "~ 1.1.1",
     "babelify": "^7.2.0",
+    "bagjs": "^1.0.0",
     "blueimp-canvas-to-blob": "^2.2.4",
     "bootstrap": "3.2.0",
     "browserify": "^12.0.1",
