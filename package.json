@@ -95,6 +95,7 @@
     "typeahead.js": "0.10.2",
     "uglify-js": "~ 2.6.1",
     "url-unshort": "^1.1.2",
+    "webworkify": "^1.1.0",
     "whois": "^2.1.5",
     "xregexp": "^3.0.0"
   },
