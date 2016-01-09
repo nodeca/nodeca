@@ -30,7 +30,7 @@
     "csswring": "^4.1.1",
     "ejs": "~ 2.3.4",
     "embedza": "^1.0.3",
-    "event-wire": "~1.0.0",
+    "event-wire": "^2.0.0",
     "faye": "^1.1.1",
     "faye-redis": "^0.2.0",
     "find-requires": "~ 0.2.0",
