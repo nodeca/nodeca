@@ -94,6 +94,7 @@
     "steady": "~ 2.0.1",
     "stylus": "~ 0.53.0",
     "tabex": "^1.0.3",
+    "thenify": "^3.1.1",
     "typeahead.js": "0.10.2",
     "uglify-js": "~ 2.6.1",
     "url-unshort": "^1.1.2",
