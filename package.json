@@ -78,6 +78,7 @@
     "pointer": "~ 0.3.2",
     "postcss": "^5.0.14",
     "probe-image-size": "^1.0.5",
+    "promise-polyfill": "^3.0.0",
     "prompt": "~ 0.2.14",
     "puncher": "~ 1.1.1",
     "punycode": "^1.4.0",
