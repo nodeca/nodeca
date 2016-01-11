@@ -17,14 +17,11 @@ applications:
 # env_default: development
 
 
-# Locales
+# List of enabled locales (all found locales by default)
 #
 locales:
-
-  # List of enabled locales (all found locales by default).
-  enabled:
-    - en-US
-    - ru-RU
+  - en-US
+  - ru-RU
 
 
 # Security settings (currently - policy headers)
