@@ -3,10 +3,10 @@
 ^test:
   bind:
     default:
-      listen: 0.0.0.0:3000
+      listen: 0.0.0.0:3005
 
       # To have a complete URLs in the tests
-      mount:  http://localhost:3000
+      mount:  http://localhost:3005
 
   database:
     redis: redis://localhost:6379/2
