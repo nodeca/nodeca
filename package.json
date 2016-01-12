@@ -58,6 +58,7 @@
     "markdown-it-sup": "^1.0.0",
     "mdurl": "^1.0.0",
     "memoizee": "~ 0.3.8",
+    "mime-types": "^2.1.9",
     "mimoza": "^1.0.0",
     "mkdirp": "^0.5.1",
     "mongoose": "~ 4.3.5",
