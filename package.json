@@ -17,6 +17,7 @@
     "bagjs": "^1.0.0",
     "blueimp-canvas-to-blob": "^3.1.0",
     "bootstrap": "3.2.0",
+    "browser-pack": "^6.0.1",
     "browserify": "^13.0.0",
     "cacheify": "^0.4.1",
     "charlatan": "^ 1.0.0",
