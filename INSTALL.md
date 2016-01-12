@@ -32,26 +32,9 @@ Edit `/etc/redis/redis.conf`, restrict listening to `127.0.0.1` only.
     restart redis-server
 
 
-## Other dependencies
-
-You need GraphicsMagick.
-
-For ubuntu:
-
-    sudo apt-get install graphicsmagick
-
-You also need Cairo to generate identicons. If not installed (for example,
-at server), read instructions for [node-canvas](https://github.com/Automattic/node-canvas#installation)
-package.
-
-For ubuntu:
-
-    sudo apt-get install libcairo2-dev libjpeg8-dev libpango1.0-dev libgif-dev build-essential g++
-
-
 ## Install node.js
 
-Version 0.10+ required.
+Version 4+ required.
 
 See [developper's manual](https://github.com/nodeca/nodeca/tree/master/docs/developer-setup)
 
@@ -126,7 +109,7 @@ Then use one by number:
 
 In terminal (break with ctrl+c)
 
-    ./nodeca.js server
+    ./nodeca.js
 
 Run with monitor (your dev location, autorestart when you make changes):
 
