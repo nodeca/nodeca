@@ -36,7 +36,6 @@
     "faye-redis": "^0.2.0",
     "find-requires": "~ 0.2.0",
     "formidable": "~ 1.0.15",
-    "fs-tools": "~ 0.2.11",
     "glob": "^6.0.4",
     "gridfs-stream": "~ 1.1.0",
     "highlight.js": "^9.1.0",
