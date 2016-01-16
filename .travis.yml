@@ -13,7 +13,8 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - redis-server
-      - mongodb-org
+      - mongodb-org-server
+      - mongodb-org-shell
       - g++-4.8
 env:
   - CXX=g++-4.8
