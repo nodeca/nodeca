@@ -1,6 +1,4 @@
-public/**
 assets/**
 
-**/assets/vendor/**
 **/_vendor/**
 **/modernizr.custom.js
