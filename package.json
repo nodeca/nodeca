@@ -15,6 +15,7 @@
     "babelfish": "^1.1.2",
     "babelify": "^7.2.0",
     "bagjs": "^1.0.0",
+    "bluebird": "^3.1.1",
     "blueimp-canvas-to-blob": "^3.1.0",
     "bootstrap": "3.2.0",
     "browser-pack": "^6.0.1",
