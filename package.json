@@ -65,6 +65,7 @@
     "mkdirp": "^0.5.1",
     "mongoose": "~ 4.3.6",
     "mutexify": "^1.1.0",
+    "mz": "^2.1.0",
     "nodeca.blogs": "git://github.com/nodeca/nodeca.blogs.git",
     "nodeca.core": "git://github.com/nodeca/nodeca.core.git",
     "nodeca.forum": "git://github.com/nodeca/nodeca.forum.git",
