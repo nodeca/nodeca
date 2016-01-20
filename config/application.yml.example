@@ -131,3 +131,9 @@ bind:
 
   forum.index:
     mount: /
+
+# Amount of child processes to spawn in cluster.
+# "auto" means it equals to the number of CPU cores;
+# "false" means don't use cluster at all
+#
+#fork: auto

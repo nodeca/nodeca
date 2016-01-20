@@ -14,3 +14,5 @@
 
   options:
     recaptcha: ~
+
+  fork: 2
