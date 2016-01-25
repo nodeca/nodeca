@@ -114,7 +114,7 @@
     "eslint-plugin-nodeca": "~ 1.0.3",
     "mocha": "*",
     "navit": "^2.0.2",
-    "phantomjs": "~ 1.9.19",
+    "phantomjs": "~2.1.1",
     "supertest": "~1.1.0"
   },
   "engines": {
