@@ -156,15 +156,12 @@ rules:
   yoda:                   [ 2, never, { "exceptRange": true } ]
 
   # es6
-  # Postponed
-  #arrow-body-style:       [ 2, "as-needed" ]
-  # Postponed
-  #arrow-parens:           [ 2, "as-needed" ]
+  arrow-body-style:       [ 1, "as-needed" ]
+  arrow-parens:           [ 1, "as-needed" ]
   arrow-spacing:          2
   constructor-super:      2
   generator-star-spacing: [ 2, {"before": false, "after": true } ]
-  # Postponed
-  #no-arrow-condition:     2
+  no-arrow-condition:     1
   no-class-assign:        2
   no-const-assign:        2
   no-dupe-class-members:  2
