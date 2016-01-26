@@ -155,7 +155,9 @@ rules:
   valid-typeof:           2
   yoda:                   [ 2, never, { "exceptRange": true } ]
 
+  #
   # es6
+  #
   arrow-body-style:       [ 1, "as-needed" ]
   arrow-parens:           [ 1, "as-needed" ]
   arrow-spacing:          2
@@ -168,8 +170,7 @@ rules:
   no-this-before-super:   2
   # Postponed
   #no-var:                 2
-  # Postponed
-  #object-shorthand:       1
+  object-shorthand:       1
   # Postponed
   #prefer-arrow-callback:  1
   # Postponed
