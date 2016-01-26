@@ -31,10 +31,10 @@ help:
 
 lint:
 	@if test -z "$(NODECA_APP_PATH)"; then \
-		eslint --reset ./ ; \
+		eslint . ; \
 		else \
 		cd $(NODECA_APP_PATH) ; \
-		eslint --reset . ; \
+		eslint . ; \
 		fi
 
 
