@@ -31,7 +31,7 @@
     "cron": "^1.1.0",
     "csswring": "^4.1.1",
     "embedza": "^1.1.0",
-    "event-wire": "^2.0.3",
+    "event-wire": "git://github.com/nodeca/event-wire.git#dev",
     "faye": "^1.1.1",
     "faye-redis": "^0.2.0",
     "formidable": "~ 1.0.15",
@@ -103,6 +103,7 @@
     "xregexp": "^3.0.0"
   },
   "bundledDependencies": [
+    "event-wire",
     "nodeca.core",
     "nodeca.users",
     "nodeca.forum",
