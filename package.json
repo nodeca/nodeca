@@ -109,7 +109,7 @@
     "nodeca.blogs"
   ],
   "devDependencies": {
-    "chai": "~ 3.4.1",
+    "chai": "~3.5.0",
     "eslint": "2.0.0-beta.2",
     "eslint-plugin-nodeca": "~ 1.0.3",
     "mocha": "*",
