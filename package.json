@@ -100,6 +100,7 @@
     "url-unshort": "^1.1.3",
     "webworkify": "^1.1.0",
     "whois": "^2.1.5",
+    "write-file-atomic": "^1.1.4",
     "xregexp": "^3.0.0"
   },
   "bundledDependencies": [
