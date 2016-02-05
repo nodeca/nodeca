@@ -132,8 +132,34 @@ bind:
   forum.index:
     mount: /
 
+
 # Amount of child processes to spawn in cluster.
-# "auto" means it equals to the number of CPU cores;
-# "false" means don't use cluster at all
+# "auto" / "true" means it equals to the number of CPU cores;
+# "false" / 0  means don't use cluster at all.
 #
 #fork: auto
+
+
+#
+# Email configs
+#
+email:
+
+  # outgoing email
+  #
+  from: noreply@example.com
+
+  # mail transport options:
+  #
+  # - "sendmail" - use sendmail transport
+  # - "dummy"    - for debug, log content to `mailer.dummy` namespace
+  #
+  # Other:
+  #
+  # - "smtps://user%40gmail.com:pass@smtp.gmail.com"
+  # - "direct:?name=hostname"
+  #
+  # see http://nodemailer.com/2-0-0-beta/migration-from-1-0-to-2-0/ for
+  # description of possible string formats
+  #
+  transport: sendmail
