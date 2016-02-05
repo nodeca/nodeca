@@ -12,6 +12,9 @@
     redis: redis://localhost:6379/2
     mongo: mongodb://localhost/nodeca-test
 
+  email:
+    transport: smtp://localhost:2525?ignoreTLS=true
+
   options:
     recaptcha: ~
 

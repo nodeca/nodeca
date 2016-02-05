@@ -1,0 +1,17 @@
+#
+# Email configs
+#
+email:
+
+  # outgoing email
+  #
+  from: noreply@example.com
+
+  # nodemailer transport options
+  #
+  # - smtps - smtps://user%40gmail.com:pass@smtp.gmail.com
+  # - direct - direct:?name=hostname
+  # - sendmail
+  # - dummy
+  #
+  transport: sendmail
