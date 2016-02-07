@@ -79,7 +79,7 @@
     "pointer": "~ 0.3.3",
     "postcss": "^5.0.14",
     "probe-image-size": "^1.0.5",
-    "prompt": "~ 0.2.14",
+    "prompt": "~0.3.0",
     "puncher": "~ 1.1.1",
     "punycode": "^1.4.0",
     "raf.js": "0.0.4",
