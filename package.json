@@ -38,7 +38,7 @@
     "faye-redis": "^0.2.0",
     "formidable": "~ 1.0.15",
     "fresh": "^0.3.0",
-    "glob": "^6.0.4",
+    "glob": "^7.0.0",
     "gridfs-stream": "~ 1.1.0",
     "highlight.js": "^9.1.0",
     "is-my-json-valid": "~ 2.12.3",
