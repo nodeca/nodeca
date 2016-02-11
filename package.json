@@ -118,7 +118,7 @@
     "mocha": "*",
     "navit": "^2.1.0",
     "phantomjs": "~ 1.9.19",
-    "supertest": "~1.1.0"
+    "supertest": "~1.2.0"
   },
   "engines": {
     "node": ">= 0.10.0"
