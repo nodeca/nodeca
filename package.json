@@ -80,6 +80,7 @@
     "postcss": "^5.0.15",
     "probe-image-size": "^1.0.5",
     "prompt": "^1.0.0",
+    "pump": "^1.0.1",
     "puncher": "^1.1.1",
     "punycode": "^1.4.0",
     "raf.js": "0.0.4",
