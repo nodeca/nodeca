@@ -77,7 +77,7 @@
     "nodemailer-sendmail-transport": "~ 1.0.0",
     "nodemailer-stub-transport": "~ 1.0.0",
     "oauth": "~ 0.9.13",
-    "permessage-deflate": "^0.1.4",
+    "permessage-deflate": "^0.1.5",
     "pica": "^1.1.1",
     "pointer": "~ 0.3.3",
     "postcss": "^5.0.16",
