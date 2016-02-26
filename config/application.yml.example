@@ -145,7 +145,7 @@ bind:
 # You can connect to it using `socat ./nodeca.sock stdin`
 # or `nc -U ./nodeca.sock` (netcat-openbsd package)
 #
-#repl: ./nodeca.sock
+#repl: ./repl.sock
 
 
 #
