@@ -53,7 +53,7 @@
     "less": "~ 2.6.0",
     "level": "^1.4.0",
     "linkify-it": "~ 1.2.0",
-    "lodash": "^4.5.1",
+    "lodash": "^4.6.0",
     "log4js": "~ 0.6.31",
     "markdown-it": "^6.0.0",
     "markdown-it-container": "^2.0.0",
