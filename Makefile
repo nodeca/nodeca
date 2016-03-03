@@ -3,14 +3,7 @@ PATH          := ./node_modules/.bin:${PATH}
 NPM_PACKAGE   := $(shell node -e 'process.stdout.write(require("./package.json").name)')
 NPM_VERSION   := $(shell node -e 'process.stdout.write(require("./package.json").version)')
 
-TMP_PATH      := /tmp/${NPM_PACKAGE}-$(shell date +%s)
-
-REMOTE_NAME   ?= origin
-REMOTE_REPO   ?= $(shell git config --get remote.${REMOTE_NAME}.url)
-
-CURR_HEAD     := $(firstword $(shell git show-ref --hash HEAD | sed 's/^\(.\{6\}\).*$$/\1/') master)
 GITHUB_PROJ   := nodeca/${NPM_PACKAGE}
-SRC_URL_FMT   := https://github.com/${GITHUB_PROJ}/blob/${CURR_HEAD}/{file}\#L{line}
 
 APPLICATIONS   = nodeca.core nodeca.users nodeca.forum nodeca.blogs
 NODE_MODULES   = $(foreach app,$(APPLICATIONS),node_modules/$(app))
@@ -55,9 +48,6 @@ repl:
 
 # used from Travis-CI, to not repeat all deps install steps for all apps
 deps-ci:
-	# Docker disables sudo. Install via config
-	#sudo apt-get install graphicsmagick -y
-
 	# don't know why, but it fails to install with all other packages on travis
 	# force separate install.
 	npm install cldr-data
