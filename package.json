@@ -99,7 +99,7 @@
     "sharp": "^0.13.0",
     "simplesmtp": "^0.3.35",
     "steady": "~ 2.0.1",
-    "stylus": "~ 0.53.0",
+    "stylus": "~0.54.0",
     "tabex": "^1.0.3",
     "thenify": "^3.2.0",
     "through2": "^2.0.1",
