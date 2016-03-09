@@ -49,7 +49,7 @@
     "javascript-state-machine": "~ 2.3.2",
     "jquery": "^2.2.1",
     "jquery-ui": "^1.10.5",
-    "js-yaml": "^3.5.3",
+    "js-yaml": "^3.5.4",
     "knockout": "~ 3.3.0",
     "less": "~ 2.6.0",
     "level": "^1.4.0",
