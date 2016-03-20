@@ -87,7 +87,7 @@
     "pump": "^1.0.1",
     "pumpify": "^1.3.4",
     "puncher": "^1.1.1",
-    "punycode": "^1.4.0",
+    "punycode": "^1.4.1",
     "raf.js": "0.0.4",
     "readable-stream": "^2.0.5",
     "redback": "~ 0.4.0",
