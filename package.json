@@ -67,7 +67,7 @@
     "memoizee": "~ 0.3.8",
     "mime-types": "^2.1.10",
     "mkdirp": "^0.5.1",
-    "mongoose": "~ 4.4.9",
+    "mongoose": "~4.4.10",
     "multistream": "^2.0.5",
     "mutexify": "^1.1.0",
     "mz": "^2.3.1",
