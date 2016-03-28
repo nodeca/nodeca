@@ -51,7 +51,7 @@
     "jquery": "^2.2.2",
     "jquery-ui": "^1.10.5",
     "js-yaml": "^3.5.5",
-    "knockout": "~ 3.3.0",
+    "knockout": "~ 3.4.0",
     "less": "~ 2.6.1",
     "level": "^1.4.0",
     "linkify-it": "~ 1.2.0",
