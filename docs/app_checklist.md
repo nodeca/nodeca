@@ -9,6 +9,7 @@ should extend those too:
 - internal:common.content.quote_wrap
 - internal:common.embed.local
 - internal:common.sitemap.collect
+- internal:users.tracker.fetch
 - internal:users.infraction.info
 - internal:users.notify.deliver
 - internal:users.subscriptions.fetch
