@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if [ "$1" = "" ] || [ "$2" = "" ] ; then
+  echo "Usage: $0 DB_NAME DUMP_PATH" >&2
+  exit 1
+fi
+
+mongodump --db $1 --out $2 -c core.embedzacaches -c core.unshortcaches -c core.expandurls
