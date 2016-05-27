@@ -30,7 +30,7 @@
     "cldr-data": "29.0.1",
     "codemirror": "^5.15.2",
     "compression": "^1.6.2",
-    "cookie": "~ 0.2.4",
+    "cookie": "~0.3.1",
     "cron": "^1.1.0",
     "csswring": "^5.0.0",
     "embedza": "^1.2.0",
