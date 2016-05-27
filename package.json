@@ -121,7 +121,7 @@
   ],
   "devDependencies": {
     "chai": "^3.5.0",
-    "eslint": "~2.10.2",
+    "eslint": "~2.11.0",
     "eslint-plugin-nodeca": "~ 1.0.3",
     "mocha": "^2.5.3",
     "navit": "^2.2.0",
