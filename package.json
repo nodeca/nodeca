@@ -84,7 +84,7 @@
     "pointer": "~ 0.3.3",
     "postcss": "^5.0.21",
     "probe-image-size": "^1.2.1",
-    "promise-memoize": "^0.1.1",
+    "promise-memoize": "^1.0.0",
     "prompt": "^1.0.0",
     "pump": "^1.0.1",
     "pumpify": "^1.3.4",
