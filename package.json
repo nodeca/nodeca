@@ -87,7 +87,7 @@
     "promise-memoize": "^1.0.0",
     "prompt": "^1.0.0",
     "pump": "^1.0.1",
-    "pumpify": "^1.3.4",
+    "pumpify": "^1.3.5",
     "puncher": "^1.1.1",
     "punycode": "^1.4.1",
     "raf.js": "0.0.4",
