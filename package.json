@@ -127,7 +127,6 @@
     "eslint-plugin-nodeca": "~ 1.0.3",
     "mocha": "^2.5.3",
     "navit": "git://github.com/nodeca/navit.git#electron",
-    "slimerjs": "^0.906.1",
     "supertest": "~1.2.0"
   },
   "engines": {
