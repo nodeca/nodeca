@@ -54,7 +54,7 @@
     "knockout": "~ 3.4.0",
     "less": "~ 2.7.1",
     "level": "^1.4.0",
-    "linkify-it": "^1.2.4",
+    "linkify-it": "^2.0.0",
     "lodash": "^4.13.1",
     "log4js": "^0.6.37",
     "markdown-it": "^6.0.5",
