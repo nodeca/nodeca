@@ -26,7 +26,7 @@
     "cacheify": "^0.4.1",
     "charcount": "^1.0.0",
     "charlatan": "^ 1.0.0",
-    "cheerio": "~0.20.0",
+    "cheerio": "~0.21.0",
     "cldr-data": "29.0.1",
     "codemirror": "^5.16.0",
     "compression": "^1.6.2",
