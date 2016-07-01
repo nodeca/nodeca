@@ -83,7 +83,7 @@
     "pica": "^2.0.3",
     "pointer": "~ 0.3.3",
     "postcss": "^5.0.21",
-    "probe-image-size": "^1.2.1",
+    "probe-image-size": "^2.0.1",
     "promise-memoize": "^1.0.0",
     "prompt": "^1.0.0",
     "pump": "^1.0.1",
