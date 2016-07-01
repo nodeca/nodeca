@@ -44,7 +44,7 @@
     "from2": "^2.1.1",
     "glob": "^7.0.5",
     "gridfs-stream": "~ 1.1.0",
-    "highlight.js": "^9.3.0",
+    "highlight.js": "^9.4.0",
     "is-my-json-valid": "^2.13.1",
     "jade": "~ 1.11.0",
     "javascript-state-machine": "~ 2.3.2",
