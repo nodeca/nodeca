@@ -13,3 +13,8 @@ database:
   # For replica set join all addresses into one string, separated by comma.
   #
   mongo: mongodb://localhost/nodeca-dev
+
+  # You can define separate database for gridfs files.
+  # If not set - default database will be used
+  #
+  # mongo_files: mongodb://localhost/nodeca-dev
