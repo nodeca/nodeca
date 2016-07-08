@@ -47,7 +47,7 @@
     "is-my-json-valid": "^2.13.1",
     "jade": "~ 1.11.0",
     "javascript-state-machine": "~ 2.3.2",
-    "jquery": "^2.2.4",
+    "jquery": "^3.1.0",
     "jquery-ui": "^1.10.5",
     "js-yaml": "^3.6.1",
     "knockout": "~ 3.4.0",
