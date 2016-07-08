@@ -19,7 +19,7 @@
     "bluebird": "^3.4.1",
     "bluebird-co": "^2.1.2",
     "blueimp-canvas-to-blob": "^3.3.0",
-    "bootstrap": "git://github.com/twbs/bootstrap.git#v4-dev",
+    "bootstrap": "git://github.com/twbs/bootstrap.git#eb7c13bba7775032745bf53e245948746ac406c4",
     "brfs": "^1.4.3",
     "browser-pack": "^6.0.1",
     "browserify": "^13.0.1",
