@@ -8,3 +8,4 @@ fi
 mongodump --db $1 --out $2 -c core.embedzacaches
 mongodump --db $1 --out $2 -c core.unshortcaches
 mongodump --db $1 --out $2 -c core.expandurls
+mongodump --db $1 --out $2 -c core.imagesizecaches
