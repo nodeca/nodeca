@@ -80,7 +80,7 @@
     "permessage-deflate": "^0.1.5",
     "pica": "^2.0.3",
     "pointer": "~ 0.3.3",
-    "postcss": "^5.0.21",
+    "postcss": "^5.1.0",
     "probe-image-size": "^2.0.1",
     "promise-memoize": "^1.0.0",
     "prompt": "^1.0.0",
