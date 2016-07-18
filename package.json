@@ -36,7 +36,7 @@
     "end-of-stream": "^1.1.0",
     "es6-promise": "^3.2.1",
     "event-wire": "^3.2.2",
-    "faye": "^1.2.1",
+    "faye": "^1.2.2",
     "faye-redis": "^0.2.0",
     "formidable": "~ 1.0.15",
     "fresh": "^0.3.0",
