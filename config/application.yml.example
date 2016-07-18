@@ -30,16 +30,18 @@ security:
   # We can't use 'self' in 'connect-src' because WebSocket require to use
   # domain name with protocol. You can specify more precise rule if needed
   #
-  # connect-src 'self' wss://yourdomain.com *.google-analytics.com *.google.com;
+  # connect-src 'self' wss://yourdomain.com https://*.google-analytics.com https://*.google.com;
   #
   # 'data:' & 'blob:' needed to load avatars & create webworkers from string.
+  #
+  # !!! Safary allows http only, if protocol not defined.
   #
   Content-Security-Policy: >
     default-src *;
     style-src 'unsafe-inline' *;
     img-src * data: blob:;
     child-src * data: blob:;
-    script-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: *.google-analytics.com *.google.com www.gstatic.com;
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://*.google-analytics.com https://*.google.com https://www.gstatic.com;
     connect-src *;
   X-Frame-Options: DENY
 
