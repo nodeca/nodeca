@@ -81,7 +81,7 @@
     "oauth": "~ 0.9.13",
     "permessage-deflate": "^0.1.5",
     "pica": "^2.0.5",
-    "pointer": "~ 0.3.3",
+    "pointer": "~1.0.0",
     "postcss": "^5.1.0",
     "probe-image-size": "^2.1.0",
     "promise-memoize": "^1.0.0",
