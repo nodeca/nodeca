@@ -1,5 +1,3 @@
-PATH          := ./node_modules/.bin:${PATH}
-
 NPM_PACKAGE   := $(shell node -e 'process.stdout.write(require("./package.json").name)')
 NPM_VERSION   := $(shell node -e 'process.stdout.write(require("./package.json").version)')
 
@@ -23,7 +21,7 @@ help:
 
 
 lint:
-	eslint .
+	./node_modules/.bin/eslint .
 
 $(CONFIG_FILES):
 	test -f $@.example && ( test -f $@ || cp $@.example $@ )
