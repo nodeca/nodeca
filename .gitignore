@@ -1,5 +1,6 @@
 /assets/
 /node_modules/
+/nodeca_modules/
 *.log
 *.log.*
 *.swp
