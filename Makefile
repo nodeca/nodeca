@@ -41,10 +41,7 @@ repl:
 
 
 # used from Travis-CI, to not repeat all deps install steps for all apps
-deps-ci:
-	# don't know why, but it fails to install with all other packages on travis
-	# force separate install.
-	npm install cldr-data
+deps-ci: pull-ro
 
 todo:
 	grep 'TODO' -n -r --exclude-dir=public --exclude-dir=\.cache --exclude-dir=\.git --exclude-dir=node_modules --exclude=Makefile . 2>/dev/null || test true
