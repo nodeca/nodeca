@@ -1,11 +1,10 @@
 language: node_js
 node_js:
- - "4"
-before_install: make deps-ci
+ - "6"
+before_install: make pull-ro
 before_script:
   - export DISPLAY=:99.0
   - "sh -e /etc/init.d/xvfb start"
-script: make test
 services:
   - redis
   - mongodb

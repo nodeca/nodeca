@@ -9,7 +9,8 @@ const execSync = require('child_process').execSync;
 /* global test, mkdir, rm */
 
 const appMain     = 'nodeca';
-const appMainDir  = __dirname;
+const appMainDir  = pj(__dirname, '../');
+console.log(appMainDir);
 
 const appsRepoOrg = 'nodeca';
 const appsDir     = pj(appMainDir, 'nodeca_modules');
@@ -28,7 +29,10 @@ function init(callback) {
 
   try {
     execSync('npm install shelljs', { stdio: 'inherit', cwd: appMainDir });
-  } catch (e) { process.exit(1); }
+  } catch (e) {
+    console.log(e);
+    process.exit(1);
+  }
 
   process.nextTick(() => {
     // That should be done in callback, to not fail in node 6
