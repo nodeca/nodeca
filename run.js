@@ -15,16 +15,26 @@ const appsRepoOrg = 'nodeca';
 const appsDir     = pj(appMainDir, 'nodeca_modules');
 
 
-try {
-  require('shelljs/global');
-} catch (e) {
+// Install shelljs if not exists
+function init(callback) {
+  try {
+    require('shelljs/global');
+    callback();
+    return;
+
+  } catch (e) {}
+
   console.log('-- Pre-install dependencies');
 
   try {
     execSync('npm install shelljs', { stdio: 'inherit', cwd: appMainDir });
-  } catch (e2) { process.exit(1); }
+  } catch (e) { process.exit(1); }
 
-  require('shelljs/global');
+  process.nextTick(() => {
+    // That should be done in callback, to not fail in node 6
+    require('shelljs/global');
+    callback();
+  });
 }
 
 const argv = process.argv;
@@ -44,22 +54,6 @@ const cmd = [
 ];
 
 let task = {};
-
-
-task.forward = function () {
-  task.nodeca([ '', '', '' ].concat(argv.slice(2)));
-};
-
-
-task.nodeca = function (args) {
-  args = args || argv;
-  try {
-    execSync(
-      [ 'node', 'nodeca.js' ].concat(args.slice(3)).join(' '),
-      { stdio: 'inherit', cwd: appMainDir }
-    );
-  } catch (e) { process.exit(1); }
-};
 
 
 // `git pull` in all apps repos.
@@ -149,6 +143,9 @@ task.push = function () {
 
 let command = argv[2];
 
+if (cmd.indexOf(command) === -1) {
+  console.log(`Help: run [${cmd.join('|')}]`);
+  return;
+}
 
-if (cmd.indexOf(command) >= 0) task[command]();
-else console.log(`Help: run [${cmd.join('|')}]`);
+init(() => task[command]());
