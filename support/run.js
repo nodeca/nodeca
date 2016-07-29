@@ -84,6 +84,27 @@ function relink() {
 }
 
 
+// Install applications dependencies
+function app_deps_install() {
+  console.log('-- Check app dependencies');
+
+  try {
+    readdir(appsDir)
+      .filter(name => test('-d', pj(appsDir, name, '.git')))
+      .filter(name => test('-f', pj(appsDir, name, 'package.json')))
+      .filter(name => !test('-d', pj(appsDir, name, 'node_modules')))
+      .filter(name => require(pj(appsDir, name, 'package.json')).dependencies)
+      .forEach(name => {
+        console.log(`-- Install deps for '${name}'`);
+        execSync('npm install', { stdio: 'inherit', cwd: pj(appsDir, name) });
+      });
+  } catch (e) {
+    console.log(e);
+    process.exit(1);
+  }
+}
+
+
 // `git pull` in all apps repos.
 // if app not exists or .git subfolder missed - reclone, relink & npm install
 //
@@ -138,6 +159,7 @@ function do_pull(readOnly) {
     execSync('git pull', { stdio: 'inherit', appMainDir });
   } catch (e) { process.exit(1); }
 
+  app_deps_install();
   relink();
 
   if (freshApps.length) {
