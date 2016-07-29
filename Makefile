@@ -44,14 +44,17 @@ deps-ci: pull-ro
 todo:
 	grep 'TODO' -n -r --exclude-dir=public --exclude-dir=\.cache --exclude-dir=\.git --exclude-dir=node_modules --exclude=Makefile . 2>/dev/null || test true
 
-pull-ro:
-	./support/run.js pull-ro
-
 pull:
 	./support/run.js pull
 
+pull-ro:
+	./support/run.js pull-ro
+
 push:
 	./support/run.js push
+
+status:
+	./support/run.js status
 
 .PHONY: $(NODE_MODULES) lint test todo
 .SILENT: $(NODE_MODULES) help todo
