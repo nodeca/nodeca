@@ -54,8 +54,10 @@ security:
 
 
 # Options - different kind of constants, to keep root space clear
+# keep commented of no subkeys set. In other case it will be `null`,
+# and can override values from other files.
 #
-options:
+#options:
 
   # Recaptcha keys. Define your own. Current keys are for example/testing only
   # and should NOT be used on real sites.
