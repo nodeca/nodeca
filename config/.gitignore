@@ -1,1 +1,7 @@
+!application.yml
+!database.yml
+!logger.yml
+!oauth.yml
+!test.yml
+
 *.yml
