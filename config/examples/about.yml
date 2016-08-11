@@ -1,0 +1,25 @@
+# Custom "about me" fields
+#
+# users:
+#   about:
+#     <name>
+#       # Shows where to display this field:
+#       #  - 1-99 - display it in the profile and usercards (higher number means lower on the page)
+#       #  - >= 100 - display it in the profile hidden under "more..." button
+#       #  - <= 0 or falsy - don't display it at all
+#       priority: <priority>
+#       index: [true|sparse]
+#
+# EXAMPLE:
+#
+# users:
+#   about:
+#     skype:
+#       priority: 110
+#       index: sparse
+#
+# i18n:
+#   en-US:
+#     users:
+#       about:
+#         skype: Skype
