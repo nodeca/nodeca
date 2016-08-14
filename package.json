@@ -65,7 +65,7 @@
     "mdurl": "^1.0.0",
     "mime-types": "^2.1.11",
     "mkdirp": "^0.5.1",
-    "mongoose": "~ 4.5.8",
+    "mongoose": "~4.5.9",
     "multistream": "^2.0.5",
     "mutexify": "^1.1.0",
     "mz": "^2.3.1",
