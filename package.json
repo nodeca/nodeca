@@ -27,7 +27,7 @@
     "charlatan": "^ 1.0.0",
     "cheerio": "~0.20.0",
     "cldr-data": "29.0.2",
-    "codemirror": "^5.17.0",
+    "codemirror": "^5.18.2",
     "compression": "^1.6.2",
     "cookie": "~ 0.3.1",
     "cron": "^1.1.0",
