@@ -67,7 +67,6 @@
     "mkdirp": "^0.5.1",
     "mongoose": "~ 4.5.10",
     "multistream": "^2.0.5",
-    "mutexify": "^1.1.0",
     "mz": "^2.3.1",
     "node-sass": "^3.8.0",
     "nodeca.blogs": "git://github.com/nodeca/nodeca.blogs.git",
