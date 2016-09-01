@@ -15,7 +15,7 @@
     "babelfish": "^1.1.2",
     "babelify": "^7.3.0",
     "bagjs": "^2.0.2",
-    "bluebird": "^3.4.3",
+    "bluebird": "^3.4.6",
     "bluebird-co": "^2.1.2",
     "blueimp-canvas-to-blob": "^3.3.0",
     "bootstrap": "git://github.com/twbs/bootstrap.git#3a0fed1590c8abc166bb8ed2c3853396dbe3801d",
