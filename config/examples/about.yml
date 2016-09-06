@@ -23,3 +23,7 @@
 #     users:
 #       about:
 #         skype: Skype
+#     admin:
+#       users:
+#         about:
+#           skype: Skype
