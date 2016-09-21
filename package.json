@@ -81,6 +81,7 @@
     "oauth": "~ 0.9.13",
     "permessage-deflate": "^0.1.5",
     "pica": "^2.0.6",
+    "pikaday": "^1.4.0",
     "pointer": "^1.0.1",
     "postcss": "^5.2.0",
     "probe-image-size": "^2.1.1",
