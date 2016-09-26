@@ -31,7 +31,7 @@ test: lint $(CONFIG_FILES)
 	mongo nodeca-test --eval "printjson(db.dropDatabase())"
 	redis-cli -n 2 flushdb
 	NODECA_ENV=test node nodeca.js migrate --all
-	NODECA_ENV=test NODECA_NOMINIFY=1 ./nodeca.js test $(NODECA_APP)
+	DEBUG=navit* NODECA_ENV=test NODECA_NOMINIFY=1 ./nodeca.js test $(NODECA_APP)
 
 
 repl:
