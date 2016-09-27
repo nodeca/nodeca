@@ -35,7 +35,7 @@
     "csswring": "^5.1.0",
     "embedza": "^1.2.3",
     "end-of-stream": "^1.1.0",
-    "es6-promise": "^3.3.1",
+    "es6-promise": "^4.0.1",
     "event-wire": "^3.2.2",
     "faye": "^1.2.2",
     "faye-redis": "^0.2.0",
