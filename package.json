@@ -10,7 +10,7 @@
   "dependencies": {
     "any-promise": "^1.3.0",
     "argparse": "^1.0.7",
-    "autoprefixer": "^6.4.1",
+    "autoprefixer": "^6.5.0",
     "babel-preset-es2015": "^6.14.0",
     "babelfish": "^1.1.2",
     "babelify": "^7.3.0",
@@ -55,7 +55,7 @@
     "less": "~ 2.7.1",
     "level": "^1.4.0",
     "linkify-it": "^2.0.0",
-    "lodash": "^4.16.1",
+    "lodash": "^4.16.2",
     "log4js": "^0.6.38",
     "markdown-it": "^8.0.0",
     "markdown-it-container": "^2.0.0",
@@ -77,13 +77,13 @@
     "nodemailer": "^2.6.4",
     "nodemailer-sendmail-transport": "~ 1.0.0",
     "nodemailer-stub-transport": "~ 1.1.0",
-    "npm": "^3.10.7",
+    "npm": "^3.10.8",
     "oauth": "~ 0.9.13",
     "permessage-deflate": "^0.1.5",
     "pica": "^2.0.6",
     "pikaday": "^1.4.0",
     "pointer": "^1.0.1",
-    "postcss": "^5.2.0",
+    "postcss": "^5.2.2",
     "probe-image-size": "^2.1.1",
     "promise-memoize": "^1.0.0",
     "prompt": "^1.0.0",
@@ -114,7 +114,7 @@
     "whois": "^2.3.3",
     "write-file-atomic": "^1.2.0",
     "xregexp": "^3.1.1",
-    "zxcvbn": "^4.3.0"
+    "zxcvbn": "^4.4.0"
   },
   "bundledDependencies": [
     "nodeca.core",
@@ -126,10 +126,10 @@
     "acorn": "^4.0.3",
     "chai": "^3.5.0",
     "electron-prebuilt": "^1.4.1",
-    "eslint": "^3.5.0",
+    "eslint": "^3.6.1",
     "eslint-plugin-nodeca": "~ 1.0.3",
-    "mocha": "^3.0.2",
-    "navit": "^3.0.0",
+    "mocha": "^3.1.0",
+    "navit": "^3.0.1",
     "supertest": "~2.0.0"
   },
   "engines": {
