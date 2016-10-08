@@ -112,7 +112,7 @@
     "uglifyify": "^3.0.3",
     "url-unshort": "^2.1.0",
     "webworkify": "^1.4.0",
-    "whois": "^2.3.4",
+    "whois": "^2.3.5",
     "write-file-atomic": "^1.2.0",
     "xregexp": "^3.1.1",
     "zxcvbn": "^4.4.0"
