@@ -96,7 +96,7 @@
     "request": "^2.75.0",
     "resolve": "~ 1.1.7",
     "send": "~ 0.14.1",
-    "sharp": "^0.16.0",
+    "sharp": "^0.16.1",
     "shelljs": "^0.7.4",
     "simplesmtp": "^0.3.35",
     "steady": "~ 2.0.1",
