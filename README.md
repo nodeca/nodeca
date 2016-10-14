@@ -9,11 +9,13 @@ Forums / Blogs / Groups /  ...
 > - **http://dev.nodeca.com** - zero install, filled with lorem ipsum.
 
 Nodeca itself is not expected for wide use. It's intended to replace
-[RC Design](http://forum.rcdesign.ru) and make programmer's life more
-confortable. But during development we create a lot of useful packages for
+[RC Design](http://forum.rcdesign.ru) software and make programmer's life more
+confortable.
+
+But during development we create a lot of useful and popular packages for
 node.js. See organizations in profile of
-[Vitaly Puzrin](https://github.com/puzrin/)/. Everything we do is published
-on github. Enjoy!
+[Vitaly Puzrin](https://github.com/puzrin/). Everything we do is published on
+github. Enjoy!
 
 
 Requirements
