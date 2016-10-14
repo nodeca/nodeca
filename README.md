@@ -3,18 +3,23 @@ Forums / Blogs / Groups /  ...
 
 [![Build Status](https://travis-ci.org/nodeca/nodeca.svg?branch=master)](https://travis-ci.org/nodeca/nodeca)
 
-WIP.
+> Social communication platform for medium and big traffic projects. Live demos:
+>
+> - **http://dev.rcopen.com** - converted RC Design Forum.
+> - **http://dev.nodeca.com** - zero install, filled with lorem ipsum.
 
-Social communication platform for medium and big traffic projects. Live demos:
-
-- **http://dev.rcopen.com** - converted RC Design Forum.
-- **http://dev.nodeca.com** - zero install, filled with lorem ipsum.
+Nodeca itself is not expected for wide use. It's intended to replace
+[RC Design](http://forum.rcdesign.ru) and make programmer's life more
+confortable. But during development we create a lot of useful packages for
+node.js. See organizations in profile of
+[Vitaly Puzrin](https://github.com/puzrin/)/. Everything we do is published
+on github. Enjoy!
 
 
 Requirements
 ------------
 
-- node.js 4.3+
+- node.js 6.7+
 - MongoDB 3.2+ (big size, images are stored in GridFS)
 - redis 3.0+
 - sphinx search
@@ -25,17 +30,6 @@ Installation
 ------------
 
 See [instructions](https://github.com/nodeca/nodeca/blob/master/INSTALL.md).
-
-
-About
------
-
-Basically, this project was started as [RC Design](http://forum.rcdesign.ru)'s
-next generation platform, and funded by me, Vitaly Puzrin :) . But since i'm
-opensource fan, source code has no specific locks to my needs, and distributed
-under MIT licence.
-
-Nodeca includes a lot of modern web technologies and is designed for high loads.
 
 
 Contacts
