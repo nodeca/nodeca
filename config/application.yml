@@ -139,10 +139,13 @@ bind:
 
 
 # Amount of child processes to spawn in cluster.
-# "auto" / "true" means it equals to the number of CPU cores;
-# "false" / 0  means don't use cluster at all.
+# "auto" means it equals to the number of CPU cores;
+# 0 means don't use cluster at all.
 #
-#fork: auto
+#fork:
+#  www: auto
+#  qlight: 2
+#  qhard: auto
 
 
 # Path to REPL socket
