@@ -1,8 +1,8 @@
 #!/bin/sh
 
 if [ "$1" = "" ] || [ "$2" = "" ] ; then
-  echo "Usage: $0 DB_NAME DUMP_PATH" >&2
+  echo "Usage: $0 DB_NAME DUMP_DIR_PATH" >&2
   exit 1
 fi
 
-mongorestore --drop --db $1 $2/*
+mongorestore --drop --db $1 $2
