@@ -51,12 +51,12 @@
     "jquery": "^3.1.1",
     "js-yaml": "^3.6.1",
     "knockout": "~ 3.4.0",
-    "level": "^1.4.0",
+    "level": "^1.5.0",
     "lie": "^3.1.0",
     "linkify-it": "^2.0.1",
     "lodash": "^4.16.4",
     "log4js": "^0.6.38",
-    "markdown-it": "^8.0.0",
+    "markdown-it": "^8.0.1",
     "markdown-it-container": "^2.0.0",
     "markdown-it-emoji": "^1.3.0",
     "markdown-it-footnote": "^3.0.1",
@@ -65,7 +65,7 @@
     "mdurl": "^1.0.0",
     "mime-types": "^2.1.12",
     "mkdirp": "^0.5.1",
-    "mongoose": "~ 4.6.3",
+    "mongoose": "~ 4.6.4",
     "multistream": "^2.0.5",
     "mz": "^2.3.1",
     "node-sass": "^3.10.1",
@@ -125,12 +125,12 @@
   "devDependencies": {
     "acorn": "^4.0.3",
     "chai": "^3.5.0",
-    "electron": "^1.4.3",
-    "eslint": "^3.7.1",
+    "electron": "^1.4.4",
+    "eslint": "^3.8.1",
     "eslint-plugin-nodeca": "~ 1.0.3",
     "mocha": "^3.1.2",
     "navit": "^3.0.2",
-    "supertest": "~2.0.0"
+    "supertest": "^2.0.1"
   },
   "engines": {
     "node": ">= 0.10.0"
