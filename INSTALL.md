@@ -94,22 +94,22 @@ For development - no changes usually needed.
 
 Apply migrations:
 
-    ./nodeca.js migrate --all
+    ./server.js migrate --all
 
 If you need test data, apply seeds. List available:
 
-    ./nodeca.js seed
+    ./server.js seed
 
 Then use one by number:
 
-    ./nodeca.js seed -n <NUMBER_1> -n <NUMBER_2>
+    ./server.js seed -n <NUMBER_1> -n <NUMBER_2>
 
 
 ## Run
 
 In terminal (break with ctrl+c)
 
-    ./nodeca.js
+    ./server.js
 
 Run with monitor (your dev location, autorestart when you make changes):
 
@@ -121,4 +121,4 @@ Run on server (via `upstart`, learn script from `./etc` subfolder)
 
 Other commands:
 
-    ./nodeca.js -h
+    ./server.js -h
