@@ -18,7 +18,7 @@
     "bagjs": "^2.0.2",
     "bluebird": "^3.4.6",
     "blueimp-canvas-to-blob": "^3.4.0",
-    "bootstrap": "git://github.com/twbs/bootstrap.git#dad1c88653827fb57a5fe431f4ef8606b33392da",
+    "bootstrap": "4.0.0-alpha.5",
     "bootstrap-multiselect": "0.9.13-1",
     "brfs": "^1.4.3",
     "browser-pack": "^6.0.1",
