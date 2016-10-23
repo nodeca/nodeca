@@ -96,7 +96,7 @@ function app_deps_install() {
       .filter(name => require(pj(appsDir, name, 'package.json')).dependencies)
       .forEach(name => {
         console.log(`-- Install deps for '${name}'`);
-        execSync('npm install', { stdio: 'inherit', cwd: pj(appsDir, name) });
+        execSync('npm install --production', { stdio: 'inherit', cwd: pj(appsDir, name) });
       });
   } catch (e) {
     console.log(e);
