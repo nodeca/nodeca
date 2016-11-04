@@ -44,7 +44,7 @@
     "glob": "^7.1.1",
     "gridfs-stream": "~ 1.1.0",
     "highlight.js": "^9.8.0",
-    "ido": "git://github.com/nodeca/ido.git#master",
+    "idoit": "git://github.com/nodeca/idoit.git#master",
     "is-my-json-valid": "^2.15.0",
     "javascript-state-machine": "~ 2.3.2",
     "jqtree": "^1.3.5",
