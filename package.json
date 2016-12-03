@@ -84,7 +84,7 @@
     "pikaday": "^1.5.1",
     "pointer": "^1.0.1",
     "postcss": "^5.2.6",
-    "probe-image-size": "^2.2.0",
+    "probe-image-size": "^3.0.0",
     "promise-memoize": "^1.0.0",
     "prompt": "^1.0.0",
     "pug": "^2.0.0-beta6",
