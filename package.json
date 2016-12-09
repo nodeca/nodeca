@@ -109,6 +109,7 @@
     "typeahead.js": "0.11.1",
     "uglify-js": "~ 2.7.5",
     "uglifyify": "^3.0.3",
+    "unhomoglyph": "^1.0.1",
     "url-unshort": "^3.1.0",
     "webworkify": "^1.4.0",
     "whois": "^2.3.6",
