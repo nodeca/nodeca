@@ -127,7 +127,7 @@
     "acorn": "^4.0.3",
     "chai": "^3.5.0",
     "electron": "^1.4.10",
-    "eslint": "^3.11.1",
+    "eslint": "^3.12.0",
     "eslint-plugin-nodeca": "~ 1.0.3",
     "mocha": "^3.2.0",
     "navit": "^3.0.2",
