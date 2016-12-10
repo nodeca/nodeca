@@ -70,7 +70,7 @@
     "mongoose": "~ 4.7.2",
     "multistream": "^2.0.5",
     "mz": "^2.6.0",
-    "node-sass": "^3.13.0",
+    "node-sass": "^4.0.0",
     "nodeca.blogs": "git://github.com/nodeca/nodeca.blogs.git",
     "nodeca.core": "git://github.com/nodeca/nodeca.core.git",
     "nodeca.forum": "git://github.com/nodeca/nodeca.forum.git",
