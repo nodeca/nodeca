@@ -45,7 +45,7 @@
     "glob": "^7.1.1",
     "got": "^6.6.3",
     "gridfs-stream": "^1.1.0",
-    "highlight.js": "^9.8.0",
+    "highlight.js": "^9.9.0",
     "idoit": "^1.0.0",
     "is-my-json-valid": "^2.15.0",
     "javascript-state-machine": "^2.4.0",
