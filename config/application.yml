@@ -26,7 +26,7 @@ locales:
 
 # Security settings (currently - policy headers)
 #
-security:
+#security:
   # We can't use 'self' in 'connect-src' because WebSocket require to use
   # domain name with protocol. You can specify more precise rule if needed
   #
@@ -36,14 +36,14 @@ security:
   #
   # !!! Safary allows http only, if protocol not defined.
   #
-  Content-Security-Policy: >
-    default-src *;
-    style-src 'unsafe-inline' *;
-    img-src * data: blob:;
-    child-src * data: blob:;
-    script-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://*.google-analytics.com https://*.google.com https://www.gstatic.com;
-    connect-src *;
-  X-Frame-Options: DENY
+  #Content-Security-Policy: >
+  #  default-src *;
+  #  style-src 'unsafe-inline' *;
+  #  img-src * data: blob:;
+  #  child-src * data: blob:;
+  #  script-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://*.google-analytics.com https://*.google.com https://www.gstatic.com;
+  #  connect-src *;
+  #X-Frame-Options: DENY
 
 
 # robots.txt custom content
