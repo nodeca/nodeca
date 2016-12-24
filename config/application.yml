@@ -10,6 +10,7 @@ applications:
   - nodeca.users
   - nodeca.forum
   - nodeca.blogs
+  - nodeca.search
 
 
 # Default application environment (can be used instead of NODECA_ENV, to change default)
