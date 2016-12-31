@@ -1,6 +1,7 @@
 /assets/
 /node_modules/
 /nodeca_modules/
+/sphinx_data/
 *.log
 *.log.*
 *.swp
