@@ -97,7 +97,7 @@ function app_deps_install() {
       .filter(name => require(pj(appsDir, name, 'package.json')).dependencies)
       .forEach(name => {
         console.log(`-- Install deps for '${name}'`);
-        execSync('npm install --production', { stdio: 'inherit', cwd: pj(appsDir, name) });
+        execSync('npm install --production --unsafe-perm', { stdio: 'inherit', cwd: pj(appsDir, name) });
       });
   } catch (e) {
     console.log(e);
@@ -138,7 +138,7 @@ function do_pull(readOnly) {
         freshApps.push(app);
 
         console.log(`-- Installing '${app}' dependencies`);
-        execSync('npm install', { stdio: 'inherit', cwd: appDir });
+        execSync('npm install --production --unsafe-perm', { stdio: 'inherit', cwd: appDir });
       }
     } catch (e) { process.exit(1); }
   });
