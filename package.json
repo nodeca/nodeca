@@ -22,7 +22,7 @@
     "bootstrap-multiselect": "0.9.13-1",
     "brfs": "^1.4.3",
     "browser-pack": "^6.0.2",
-    "browserify": "^13.3.0",
+    "browserify": "^14.0.0",
     "cacheify": "^0.4.1",
     "charcount": "^1.0.0",
     "charlatan": "^1.1.0",
