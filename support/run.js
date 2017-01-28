@@ -203,15 +203,15 @@ task.status = function () {
     readdir(appsDir)
       .filter(name => test('-d', pj(appsDir, name, '.git')))
       .forEach(name => {
-        console.log(`-- Status of '${name}'`);
-        execSync('git status', { stdio: 'inherit', cwd: pj(appsDir, name) });
+        console.log(name);
+        execSync('git status -s -b --porcelain', { stdio: 'inherit', cwd: pj(appsDir, name) });
         console.log('');
       });
   } catch (e) {}
 
   try {
-    console.log(`-- Status of '${appMain}'`);
-    execSync('git status', { stdio: 'inherit', cwd: appMainDir });
+    console.log(appMain);
+    execSync('git status -s -b --porcelain', { stdio: 'inherit', cwd: appMainDir });
     console.log('');
   } catch (e) {}
 };
