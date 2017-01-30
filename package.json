@@ -36,7 +36,7 @@
     "embedza": "^2.1.0",
     "end-of-stream": "^1.1.0",
     "event-wire": "^3.3.1",
-    "faye": "^1.2.3",
+    "faye": "^1.2.4",
     "faye-redis": "^0.2.0",
     "formidable": "^1.1.1",
     "fresh": "^0.3.0",
@@ -67,7 +67,7 @@
     "mdurl": "^1.0.0",
     "mime-types": "^2.1.14",
     "mkdirp": "^0.5.1",
-    "mongoose": "~ 4.7.9",
+    "mongoose": "~ 4.8.0",
     "multistream": "^2.0.5",
     "mz": "^2.6.0",
     "node-sass": "^4.4.0",
@@ -88,7 +88,7 @@
     "probe-image-size": "^3.0.0",
     "promise-memoize": "^1.0.0",
     "prompt": "^1.0.0",
-    "pug": "^2.0.0-beta9",
+    "pug": "^2.0.0-beta10",
     "pug-runtime": "^2.0.3",
     "pump": "^1.0.2",
     "pumpify": "^1.3.5",
@@ -132,7 +132,7 @@
     "eslint-plugin-nodeca": "^1.0.3",
     "mocha": "^3.2.0",
     "navit": "^3.0.3",
-    "supertest": "^2.0.1"
+    "supertest": "^3.0.0"
   },
   "engines": {
     "node": ">= 6"
