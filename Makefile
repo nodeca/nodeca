@@ -31,7 +31,13 @@ test: lint $(CONFIG_FILES)
 	mongo nodeca-test --eval "printjson(db.dropDatabase())"
 	redis-cli -n 2 flushdb
 	NODECA_ENV=test node server.js migrate --all
-	NODECA_ENV=test NODECA_NOMINIFY=1 ./server.js test $(NODECA_APP)
+
+	# Always run ALL tests on CI
+	if [ "$${TRAVIS:-}"  ]; then \
+		NODECA_ENV=test NODECA_NOMINIFY=1 ./server.js test; \
+	else \
+		NODECA_ENV=test NODECA_NOMINIFY=1 ./server.js test $(NODECA_APP); \
+	fi
 
 
 repl:
