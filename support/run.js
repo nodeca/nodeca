@@ -107,9 +107,10 @@ function app_deps_install() {
 
 
 // `git pull` in all apps repos.
-// if app not exists or .git subfolder missed - reclone, relink & npm install
+// if app not exists or .git subfolder missed - reclone, relink & npm install;
+// if branch is specified, try to move to that branch if it exists
 //
-function do_pull(readOnly) {
+function do_pull(readOnly, branch) {
   let freshApps = []; // New apps, installed on this call
 
   if (!test('-d', appsDir)) mkdir(appsDir);
@@ -135,6 +136,16 @@ function do_pull(readOnly) {
       } else {
         console.log(`-- Cloning '${app}', ${repo}`);
         execSync(`git clone ${repo}`, { stdio: 'inherit', cwd: appsDir });
+
+        if (branch && branch !== 'master') {
+          console.log(`-- Moving to '${branch}' branch`);
+          try {
+            execSync(`git rev-parse --verify 'origin/${branch}' && ` +
+                     `git checkout -b '${branch}' 'origin/${branch}'`,
+                     { stdio: 'inherit', cwd: appDir });
+          } catch (err) {}
+        }
+
         freshApps.push(app);
 
         console.log(`-- Installing '${app}' dependencies`);
@@ -172,13 +183,13 @@ function do_pull(readOnly) {
 
 let task = {};
 
-task.pull = function () {
-  do_pull();
+task.pull = function (branch) {
+  do_pull(false, branch);
 };
 
 
-task['pull-ro'] = function () {
-  do_pull(true);
+task['pull-ro'] = function (branch) {
+  do_pull(true, branch);
 };
 
 
@@ -226,4 +237,4 @@ if (!task.hasOwnProperty(command)) {
   return;
 }
 
-init(() => task[command]());
+init(() => task[command].apply(null, argv.slice(3)));
