@@ -78,7 +78,7 @@
     "nodeca.forum": "git://github.com/nodeca/nodeca.forum.git",
     "nodeca.search": "git://github.com/nodeca/nodeca.search.git",
     "nodeca.users": "git://github.com/nodeca/nodeca.users.git",
-    "nodemailer": "^2.7.2",
+    "nodemailer": "^3.0.1",
     "nodemailer-sendmail-transport": "^1.0.0",
     "nodemailer-stub-transport": "^1.1.0",
     "oauth": "^0.9.15",
