@@ -137,6 +137,7 @@ function do_pull(readOnly, branch) {
         console.log(`-- Cloning '${app}', ${repo}`);
         execSync(`git clone ${repo}`, { stdio: 'inherit', cwd: appsDir });
 
+        /* eslint-disable max-depth */
         if (branch && branch !== 'master') {
           console.log(`-- Moving to '${branch}' branch`);
           try {
