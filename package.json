@@ -137,9 +137,6 @@
     "navit": "^3.0.3",
     "supertest": "^3.0.0"
   },
-  "engines": {
-    "node": ">= 6"
-  },
   "cldr-data-urls-filter": "(cldr-core|cldr-dates-modern)",
   "greenkeeper": {
     "ignore": [
