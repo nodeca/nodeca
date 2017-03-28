@@ -128,7 +128,7 @@
     "nodeca.blogs"
   ],
   "devDependencies": {
-    "acorn": "^4.0.11",
+    "acorn": "^5.0.0",
     "chai": "^3.5.0",
     "electron": "^1.6.4",
     "eslint": "^3.18.0",
