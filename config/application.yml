@@ -11,6 +11,7 @@ applications:
   - nodeca.forum
   - nodeca.blogs
   - nodeca.search
+  - nodeca.nntp
 
 
 # Default application environment (can be used instead of NODECA_ENV, to change default)
@@ -139,6 +140,16 @@ bind:
     mount: /
 
 
+nntp:
+  bind:
+    listen: 0.0.0.0:1119
+#    listen: 0.0.0.0:119
+#    ssl:
+#      listen: 0.0.0.0:563
+#      key:    ./config/examples/ssl.key
+#      cert:   ./config/examples/ssl.crt
+
+
 # Amount of child processes to spawn in cluster.
 # "auto" means it equals to the number of CPU cores;
 # 0 means don't use cluster at all.
@@ -147,6 +158,7 @@ bind:
 #  www: auto
 #  qlight: 2
 #  qhard: auto
+#  nntp: 1
 
 
 # Path to REPL socket

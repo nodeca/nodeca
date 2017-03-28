@@ -8,6 +8,10 @@
       # To have a complete URLs in the tests
       mount:  http://localhost:3005
 
+  nntp:
+    bind:
+      listen: 0.0.0.0:2119
+
   database:
     redis: redis://localhost:6379/2
     mongo: mongodb://localhost/nodeca-test
@@ -22,6 +26,7 @@
     www: 1
     qlight: 1
     qhard: 1
+    nntp: 1
 
   search:
     api_endpoint: http://localhost:9314/
