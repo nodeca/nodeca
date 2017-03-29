@@ -127,7 +127,9 @@
     "nodeca.core",
     "nodeca.users",
     "nodeca.forum",
-    "nodeca.blogs"
+    "nodeca.blogs",
+    "nodeca.search",
+    "nodeca.nntp"
   ],
   "devDependencies": {
     "acorn": "^5.0.0",
