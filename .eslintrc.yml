@@ -155,7 +155,7 @@ rules:
   #
   # es6
   #
-  arrow-body-style:       [ 1, "as-needed" ]
+  #arrow-body-style:       [ 1, "as-needed" ]
   arrow-parens:           [ 1, "as-needed" ]
   arrow-spacing:          2
   constructor-super:      2
