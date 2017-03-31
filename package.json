@@ -113,7 +113,7 @@
     "tabex": "^1.0.6",
     "tether": "^1.4.0",
     "through2": "^2.0.3",
-    "uglify-js": "^2.8.16",
+    "uglify-js": "^2.8.20",
     "uglifyify": "^3.0.3",
     "unhomoglyph": "^1.0.2",
     "url-unshort": "^4.0.0",
@@ -132,10 +132,10 @@
     "nodeca.nntp"
   ],
   "devDependencies": {
-    "acorn": "^5.0.0",
+    "acorn": "^5.0.2",
     "chai": "^3.5.0",
-    "electron": "^1.6.4",
-    "eslint": "^3.18.0",
+    "electron": "^1.6.5",
+    "eslint": "^3.19.0",
     "eslint-plugin-nodeca": "^1.0.3",
     "gulp": "^3.9.1",
     "gulp-real-favicon": "^0.2.2",
