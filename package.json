@@ -135,7 +135,7 @@
     "acorn": "^5.0.0",
     "chai": "^3.5.0",
     "electron": "^1.6.4",
-    "eslint": "^3.18.0",
+    "eslint": "^3.19.0",
     "eslint-plugin-nodeca": "^1.0.3",
     "gulp": "^3.9.1",
     "gulp-real-favicon": "^0.2.2",
