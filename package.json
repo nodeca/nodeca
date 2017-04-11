@@ -86,7 +86,7 @@
     "oauth": "^0.9.15",
     "on-finished": "^2.3.0",
     "permessage-deflate": "^0.1.5",
-    "pica": "^2.0.8",
+    "pica": "^3.0.0",
     "pikaday": "^1.5.1",
     "pointer": "^1.0.1",
     "postcss": "^5.2.16",
