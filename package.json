@@ -73,7 +73,7 @@
     "multistream": "^2.0.5",
     "mz": "^2.6.0",
     "negotiator": "^0.6.1",
-    "node-sass": "^4.5.1",
+    "node-sass": "^4.5.2",
     "nodeca.blogs": "git://github.com/nodeca/nodeca.blogs.git",
     "nodeca.core": "git://github.com/nodeca/nodeca.core.git",
     "nodeca.forum": "git://github.com/nodeca/nodeca.forum.git",
