@@ -140,16 +140,6 @@ bind:
     mount: /
 
 
-nntp:
-  bind:
-    listen: 0.0.0.0:1119
-#    listen: 0.0.0.0:119
-#    ssl:
-#      listen: 0.0.0.0:563
-#      key:    ./config/examples/ssl.key
-#      cert:   ./config/examples/ssl.crt
-
-
 # Amount of child processes to spawn in cluster.
 # "auto" means it equals to the number of CPU cores;
 # 0 means don't use cluster at all.
