@@ -120,7 +120,7 @@
     "url-unshort": "^4.0.0",
     "webworkify": "^1.4.0",
     "whois": "^2.3.9",
-    "write-file-atomic": "^1.3.3",
+    "write-file-atomic": "^2.0.0",
     "xregexp": "^3.2.0",
     "zxcvbn": "^4.4.2"
   },
