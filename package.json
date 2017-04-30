@@ -24,7 +24,7 @@
     "brfs": "^1.4.3",
     "browser-pack": "^6.0.2",
     "browserify": "^14.3.0",
-    "cacheify": "^0.4.1",
+    "cacheify": "^0.4.2",
     "charcount": "^1.0.0",
     "charlatan": "^1.1.0",
     "cheerio": "^0.22.0",
@@ -121,7 +121,7 @@
     "url-unshort": "^4.0.0",
     "webworkify": "^1.4.0",
     "whois": "^2.3.9",
-    "write-file-atomic": "^1.3.3",
+    "write-file-atomic": "^2.0.0",
     "xregexp": "^3.2.0",
     "zxcvbn": "^4.4.2"
   },
