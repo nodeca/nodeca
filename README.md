@@ -1,6 +1,8 @@
 Forums / Blogs / Groups /  ...
 ==============================
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/nodeca/nodeca.svg)](https://greenkeeper.io/)
+
 [![Build Status](https://travis-ci.org/nodeca/nodeca.svg?branch=master)](https://travis-ci.org/nodeca/nodeca)
 
 > Social communication platform for medium and big traffic projects. Live demos:
