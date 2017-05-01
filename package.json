@@ -80,9 +80,7 @@
     "nodeca.nntp": "git://github.com/nodeca/nodeca.nntp.git",
     "nodeca.search": "git://github.com/nodeca/nodeca.search.git",
     "nodeca.users": "git://github.com/nodeca/nodeca.users.git",
-    "nodemailer": "^2.7.2",
-    "nodemailer-sendmail-transport": "^1.0.2",
-    "nodemailer-stub-transport": "^1.1.0",
+    "nodemailer": "^4.0.1",
     "nntp-server": "git://github.com/nodeca/nntp-server.git",
     "oauth": "^0.9.15",
     "on-finished": "^2.3.0",
@@ -144,10 +142,5 @@
     "navit": "^3.0.3",
     "supertest": "^3.0.0"
   },
-  "cldr-data-urls-filter": "(cldr-core|cldr-dates-modern)",
-  "greenkeeper": {
-    "ignore": [
-      "nodemailer"
-    ]
-  }
+  "cldr-data-urls-filter": "(cldr-core|cldr-dates-modern)"
 }
