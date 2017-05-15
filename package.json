@@ -80,7 +80,6 @@
     "nodeca.search": "git://github.com/nodeca/nodeca.search.git",
     "nodeca.users": "git://github.com/nodeca/nodeca.users.git",
     "nodemailer": "^4.0.1",
-    "nntp-server": "git://github.com/nodeca/nntp-server.git",
     "oauth": "^0.9.15",
     "on-finished": "^2.3.0",
     "permessage-deflate": "^0.1.5",
