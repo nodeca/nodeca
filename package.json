@@ -33,6 +33,7 @@
     "cookie": "^0.3.1",
     "corejs-typeahead": "^1.1.1",
     "csswring": "^6.0.0",
+    "diff": "^3.2.0",
     "email-regex": "^1.0.0",
     "embedza": "^2.2.0",
     "end-of-stream": "^1.4.0",
