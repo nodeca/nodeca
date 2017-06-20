@@ -35,6 +35,7 @@
     "csswring": "^6.0.0",
     "diff": "^3.2.0",
     "email-regex": "^1.0.0",
+    "emailjs-mime-codec": "^1.0.3",
     "embedza": "^2.3.0",
     "end-of-stream": "^1.4.0",
     "event-wire": "^3.4.0",
