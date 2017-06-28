@@ -28,22 +28,37 @@ const defaultApps = [
 ];
 
 
-// Install shelljs if not exists
-function init(callback) {
-  try {
-    require('shelljs/global');
-    callback();
-    return;
-
-  } catch (e) {}
-
-  console.log('-- Pre-install dependencies');
+// Install all dependencies
+function install_deps(callback) {
+  let yarn_ver;
 
   try {
-    execSync('npm install shelljs', { stdio: 'inherit', cwd: appMainDir });
-  } catch (e) {
-    console.log(e);
-    process.exit(1);
+    yarn_ver = require('child_process').execFileSync('yarn', [ '-V' ]);
+  } catch (__) {}
+
+  let m = String(yarn_ver).match(/^(\d+)\.(\d+)\.(\d+)/);
+
+  // install/update yarn to at least 0.23 for --silent and --non-interactive options
+  if (!(m && (Number(m[1]) > 0 || Number(m[2]) > 22))) {
+    console.log('-- Installing yarn');
+    execSync('npm install yarn -g', { stdio: 'inherit', cwd: appMainDir });
+  }
+
+  let deps_installed;
+
+  try {
+    execSync('yarn check --non-interactive', { stdio: 'ignore', cwd: appMainDir });
+    deps_installed = true;
+  } catch (__) {}
+
+  if (!deps_installed) {
+    try {
+      console.log('-- Installing dependencies');
+      execSync('yarn install --non-interactive', { stdio: 'inherit', cwd: appMainDir });
+    } catch (e) {
+      console.log(e);
+      process.exit(1);
+    }
   }
 
   process.nextTick(() => {
@@ -54,9 +69,9 @@ function init(callback) {
 }
 
 
-// Create synlinks for all app repos if not exist
+// Create symlinks for all app repos if not exist
 function relink() {
-  console.log('-- Check npm links');
+  console.log('-- Check symlinks');
 
   try {
     readdir(appsDir)
@@ -74,9 +89,9 @@ function relink() {
 
         rm('-rf', pkgPath); // Remove [folder|broken symlink] prior to create new
 
-        console.log(`-- Add npm link for '${name}'`);
-        execSync('npm link', { stdio: 'inherit', cwd: pj(appsDir, name) });
-        execSync(`npm link ${pkgName}`, { stdio: 'inherit', cwd: appMainDir });
+        console.log(`-- Add link for '${name}'`);
+        execSync('yarn link --non-interactive', { stdio: 'ignore', cwd: pj(appsDir, name) });
+        execSync(`yarn link ${pkgName} --non-interactive`, { stdio: 'ignore', cwd: appMainDir });
         console.log('');
       });
   } catch (e) {
@@ -86,29 +101,8 @@ function relink() {
 }
 
 
-// Install applications dependencies
-function app_deps_install() {
-  console.log('-- Check app dependencies');
-
-  try {
-    readdir(appsDir)
-      .filter(name => test('-d', pj(appsDir, name, '.git')))
-      .filter(name => test('-f', pj(appsDir, name, 'package.json')))
-      .filter(name => !test('-d', pj(appsDir, name, 'node_modules')))
-      .filter(name => require(pj(appsDir, name, 'package.json')).dependencies)
-      .forEach(name => {
-        console.log(`-- Install deps for '${name}'`);
-        execSync('npm install --production --unsafe-perm', { stdio: 'inherit', cwd: pj(appsDir, name) });
-      });
-  } catch (e) {
-    console.log(e);
-    process.exit(1);
-  }
-}
-
-
 // `git pull` in all apps repos.
-// if app not exists or .git subfolder missed - reclone, relink & npm install;
+// if app not exists or .git subfolder missed - reclone, relink & install;
 // if branch is specified, try to move to that branch if it exists
 //
 function do_pull(readOnly, branch) {
@@ -149,9 +143,6 @@ function do_pull(readOnly, branch) {
         }
 
         freshApps.push(app);
-
-        console.log(`-- Installing '${app}' dependencies`);
-        execSync('npm install --production --unsafe-perm', { stdio: 'inherit', cwd: appDir });
       }
     } catch (e) { process.exit(1); }
   });
@@ -173,12 +164,30 @@ function do_pull(readOnly, branch) {
     execSync('git pull', { stdio: 'inherit', appMainDir });
   } catch (e) { process.exit(1); }
 
-  app_deps_install();
+  readdir(appsDir)
+    .filter(name => test('-d', pj(appsDir, name, '.git')))
+    .forEach(name => {
+      let deps_installed;
+
+      try {
+        execSync('yarn check --non-interactive', { stdio: 'ignore', cwd: pj(appsDir, name) });
+        deps_installed = true;
+      } catch (__) {}
+
+      if (!deps_installed) {
+        try {
+          console.log(`-- Installing '${name}' dependencies`);
+          execSync('yarn install --production --non-interactive',
+                   { stdio: 'inherit', cwd: pj(appsDir, name) });
+        } catch (e) { process.exit(1); }
+      }
+    });
+
   relink();
 
   if (freshApps.length) {
     console.log(`-- Installing '${appMain}' dependencies`);
-    execSync('npm install', { stdio: 'inherit', cwd: appMainDir });
+    execSync('yarn install --non-interactive', { stdio: 'inherit', cwd: appMainDir });
   }
 }
 
@@ -239,4 +248,6 @@ if (!task.hasOwnProperty(command)) {
   return;
 }
 
-init(() => task[command].apply(null, argv.slice(3)));
+install_deps(() => {
+  task[command].apply(null, argv.slice(3));
+});
