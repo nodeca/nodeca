@@ -28,12 +28,13 @@ const defaultApps = [
 ];
 
 
-// Install all dependencies
+// Install yarn and shelljs
+//
 function install_deps(callback) {
   let yarn_ver;
 
   try {
-    yarn_ver = require('child_process').execFileSync('yarn', [ '-V' ]);
+    yarn_ver = execSync('yarn -V');
   } catch (__) {}
 
   let m = String(yarn_ver).match(/^(\d+)\.(\d+)\.(\d+)/);
@@ -44,26 +45,31 @@ function install_deps(callback) {
     execSync('npm install yarn -g', { stdio: 'inherit', cwd: appMainDir });
   }
 
-  let deps_installed;
-
   try {
-    execSync('yarn check --non-interactive', { stdio: 'ignore', cwd: appMainDir });
-    deps_installed = true;
+    require('shelljs/global');
+    callback();
+    return;
   } catch (__) {}
 
-  if (!deps_installed) {
-    try {
-      console.log('-- Installing dependencies');
-      execSync('yarn install --non-interactive', { stdio: 'inherit', cwd: appMainDir });
-    } catch (e) {
-      console.log(e);
-      process.exit(1);
-    }
+  try {
+    // Install shelljs into main node_modules, but keep nodeca/support as cwd
+    // to avoid yarn installing all dependencies
+    console.log('-- Installing shelljs');
+    execSync(`yarn add shelljs --modules-folder "${appMainDir}/node_modules"`,
+             { stdio: 'inherit', cwd: __dirname });
+  } catch (e) {
+    console.log(e);
+    process.exit(1);
   }
 
   process.nextTick(() => {
     // That should be done in callback, to not fail in node 6
     require('shelljs/global');
+
+    // remove support/package.json and support/yarn.lock created by `yarn add` above
+    rm(pj(__dirname, 'package.json'));
+    rm(pj(__dirname, 'yarn.lock'));
+
     callback();
   });
 }
@@ -188,6 +194,23 @@ function do_pull(readOnly, branch) {
   if (freshApps.length) {
     console.log(`-- Installing '${appMain}' dependencies`);
     execSync('yarn install --non-interactive', { stdio: 'inherit', cwd: appMainDir });
+  }
+
+  let deps_installed;
+
+  try {
+    execSync('yarn check --non-interactive', { stdio: 'ignore', cwd: appMainDir });
+    deps_installed = true;
+  } catch (__) {}
+
+  if (!deps_installed) {
+    try {
+      console.log('-- Installing all dependencies');
+      execSync('yarn install --non-interactive', { stdio: 'inherit', cwd: appMainDir });
+    } catch (e) {
+      console.log(e);
+      process.exit(1);
+    }
   }
 }
 
