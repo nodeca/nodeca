@@ -2,6 +2,7 @@
 /node_modules/
 /nodeca_modules/
 /sphinx_data/
+/support/node_modules/
 *.log
 *.log.*
 *.swp
