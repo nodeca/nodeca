@@ -34,13 +34,13 @@ function install_deps(callback) {
   let yarn_ver;
 
   try {
-    yarn_ver = execSync('yarn -V');
+    yarn_ver = execSync('yarn --version');
   } catch (__) {}
 
   let m = String(yarn_ver).match(/^(\d+)\.(\d+)\.(\d+)/);
 
-  // install/update yarn to at least 0.23 for --silent and --non-interactive options
-  if (!(m && (Number(m[1]) > 0 || Number(m[2]) > 22))) {
+  // install/update yarn to at least 1.0.0 for --silent, --non-interactive, --version options
+  if (!(m && Number(m[1]) >= 1)) {
     console.log('-- Installing yarn');
     execSync('npm install yarn -g', { stdio: 'inherit', cwd: appMainDir });
   }

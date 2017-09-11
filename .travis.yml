@@ -15,4 +15,3 @@ addons:
       - redis-server
 sudo: false
 dist: trusty
-cache: yarn
