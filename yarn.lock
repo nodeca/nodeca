@@ -1206,8 +1206,8 @@ code-point-at@^1.0.0:
   resolved "https://registry.yarnpkg.com/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
 
 codemirror@^5.29.0:
-  version "5.29.0"
-  resolved "https://registry.yarnpkg.com/codemirror/-/codemirror-5.29.0.tgz#e68de1350e2f0ce804a3930576d0ae318736e967"
+  version "5.30.0"
+  resolved "https://registry.yarnpkg.com/codemirror/-/codemirror-5.30.0.tgz#86e57dd5ea5535acbcf9c720797b4cefe05b5a70"
 
 color-convert@^1.8.2, color-convert@^1.9.0:
   version "1.9.0"
@@ -2001,9 +2001,9 @@ esutils@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/esutils/-/esutils-2.0.2.tgz#0abf4f1caa5bcb1f7a9d8acc6dea4faaa04bac9b"
 
-etag@~1.8.0:
-  version "1.8.0"
-  resolved "https://registry.yarnpkg.com/etag/-/etag-1.8.0.tgz#6f631aef336d6c46362b51764044ce216be3c051"
+etag@~1.8.1:
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/etag/-/etag-1.8.1.tgz#41ae2eeb65efa62268aebfea83ac7d79299b0887"
 
 event-emitter@~0.3.5:
   version "0.3.5"
@@ -2263,11 +2263,7 @@ formidable@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/formidable/-/formidable-1.1.1.tgz#96b8886f7c3c3508b932d6bd70c4d3a88f35f1a9"
 
-fresh@0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/fresh/-/fresh-0.5.0.tgz#f474ca5e6a9246d6fd8e0953cfa9b9c805afa78e"
-
-fresh@^0.5.0:
+fresh@0.5.2, fresh@^0.5.0:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/fresh/-/fresh-0.5.2.tgz#3d8cadd90d976569fa835ab1f8e4b23a105605a7"
 
@@ -3917,8 +3913,8 @@ mongodb@2.2.31:
     readable-stream "2.2.7"
 
 mongoose@^4.11.9:
-  version "4.11.11"
-  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-4.11.11.tgz#ae9baf860241e086c90b226fdda52f1afddc6a7b"
+  version "4.11.12"
+  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-4.11.12.tgz#48ebd5cad051f6ddfd46648b86a19c7fd30e36db"
   dependencies:
     async "2.1.4"
     bson "~1.0.4"
@@ -4138,15 +4134,15 @@ node-uuid@~1.4.7:
 
 "nodeca.blogs@git://github.com/nodeca/nodeca.blogs.git":
   version "0.0.1"
-  resolved "git://github.com/nodeca/nodeca.blogs.git#617612e7f18447dda14e5c09f52888670e359285"
+  resolved "git://github.com/nodeca/nodeca.blogs.git#7be3dedee1b43fd4a3656ab3d4cf1e95b18dd457"
 
 "nodeca.core@git://github.com/nodeca/nodeca.core.git":
   version "0.0.1"
-  resolved "git://github.com/nodeca/nodeca.core.git#049d67e38dc4d6811131734642b156eed2241cae"
+  resolved "git://github.com/nodeca/nodeca.core.git#da41a7db8918f530d1c45e79ac58b7cbdc2ca941"
 
 "nodeca.forum@git://github.com/nodeca/nodeca.forum.git":
   version "0.0.1"
-  resolved "git://github.com/nodeca/nodeca.forum.git#c0a4dcbc1cbcf975628a154385496232e418d383"
+  resolved "git://github.com/nodeca/nodeca.forum.git#03943f5a7ccb4f41a59dea8a6525cef721362632"
 
 "nodeca.nntp@git://github.com/nodeca/nodeca.nntp.git":
   version "0.0.1"
@@ -4170,7 +4166,7 @@ node-uuid@~1.4.7:
 
 "nodeca.users@git://github.com/nodeca/nodeca.users.git":
   version "0.0.1"
-  resolved "git://github.com/nodeca/nodeca.users.git#210c31f951f9c3ab09dda07a78b838f9f261a230"
+  resolved "git://github.com/nodeca/nodeca.users.git#187a0a80b0b32628227d3afba1d9ba2ee92c3a99"
 
 nodemailer@^4.1.0:
   version "4.1.0"
@@ -5322,16 +5318,16 @@ semver@~5.3.0:
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.3.0.tgz#9b2ce5d3de02d17c6012ad326aa6b4d0cf54f94f"
 
 send@^0.15.4:
-  version "0.15.4"
-  resolved "https://registry.yarnpkg.com/send/-/send-0.15.4.tgz#985faa3e284b0273c793364a35c6737bd93905b9"
+  version "0.15.5"
+  resolved "https://registry.yarnpkg.com/send/-/send-0.15.5.tgz#32ef6c8d820c9756597c3174b8c9dd51e3319be2"
   dependencies:
     debug "2.6.8"
     depd "~1.1.1"
     destroy "~1.0.4"
     encodeurl "~1.0.1"
     escape-html "~1.0.3"
-    etag "~1.8.0"
-    fresh "0.5.0"
+    etag "~1.8.1"
+    fresh "0.5.2"
     http-errors "~1.6.2"
     mime "1.3.4"
     ms "2.0.0"
@@ -5374,8 +5370,8 @@ sha.js@^2.4.0, sha.js@^2.4.8, sha.js@~2.4.4:
     inherits "^2.0.1"
 
 sharp@^0.18.2:
-  version "0.18.3"
-  resolved "https://registry.yarnpkg.com/sharp/-/sharp-0.18.3.tgz#1cedcb9b8a02fef8a22cbe38e0227c221e686a8a"
+  version "0.18.4"
+  resolved "https://registry.yarnpkg.com/sharp/-/sharp-0.18.4.tgz#fe329c0f06896c28aa24376df1fff02ae57f2d34"
   dependencies:
     caw "^2.0.0"
     color "^2.0.0"
@@ -5982,8 +5978,8 @@ uglify-js@^2.6.1:
     uglify-to-browserify "~1.0.0"
 
 uglify-js@^3.0.28:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.1.0.tgz#92fae17b88dfbc3c394175a935044cdbcf4085ae"
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.1.1.tgz#e7144307281a1bc38a9a20715090b546c9f44791"
   dependencies:
     commander "~2.11.0"
     source-map "~0.5.1"
