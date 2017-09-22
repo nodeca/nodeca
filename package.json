@@ -138,7 +138,7 @@
     "gulp": "^3.9.1",
     "gulp-real-favicon": "^0.2.2",
     "mocha": "^3.4.2",
-    "navit": "^3.0.3",
+    "navit": "^3.1.0",
     "supertest": "^3.0.0"
   },
   "cldr-data-urls-filter": "(cldr-core|cldr-dates-modern)"

@@ -4032,9 +4032,9 @@ natural-compare@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
 
-navit@^3.0.3:
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/navit/-/navit-3.0.4.tgz#3fec0b81d4eee929f617c82563cb609730f7f263"
+navit@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/navit/-/navit-3.1.0.tgz#20cd82644301eed06242d4ee4a04e8b100d080c3"
   dependencies:
     async "^2.0.1"
     chai "^4.0.0"
