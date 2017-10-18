@@ -1594,7 +1594,7 @@ delegates@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/delegates/-/delegates-1.0.0.tgz#84c6e159b81904fdca59a0ef44cd870d31250f9a"
 
-denque@^1.1.1:
+denque@^1.1.1, denque@^1.2.0:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/denque/-/denque-1.2.2.tgz#e06cf7cf0da8badc88cbdaabf8fc0a70d659f1d4"
 
@@ -5116,6 +5116,14 @@ regjsparser@^0.1.4:
   resolved "https://registry.yarnpkg.com/regjsparser/-/regjsparser-0.1.5.tgz#7ee8f84dc6fa792d3fd0ae228d24bd949ead205c"
   dependencies:
     jsesc "~0.5.0"
+
+"relimit@git://github.com/nodeca/relimit.git":
+  version "1.0.0"
+  resolved "git://github.com/nodeca/relimit.git#4771094f8516f92d1a83ad39b69d8e5e90bc1ba6"
+  dependencies:
+    bluebird "^3.4.7"
+    denque "^1.2.0"
+    redis "^2.6.3"
 
 remove-trailing-separator@^1.0.1:
   version "1.1.0"
