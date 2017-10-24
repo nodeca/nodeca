@@ -5145,7 +5145,7 @@ regjsparser@^0.1.4:
 
 "relimit@git://github.com/nodeca/relimit.git":
   version "1.0.0"
-  resolved "git://github.com/nodeca/relimit.git#4771094f8516f92d1a83ad39b69d8e5e90bc1ba6"
+  resolved "git://github.com/nodeca/relimit.git#68a15c775a390e32f7a03cbed2cd41ed00f1d65f"
   dependencies:
     bluebird "^3.4.7"
     denque "^1.2.0"
