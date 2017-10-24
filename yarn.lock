@@ -5143,13 +5143,11 @@ regjsparser@^0.1.4:
   dependencies:
     jsesc "~0.5.0"
 
-"relimit@git://github.com/nodeca/relimit.git":
+relimit@^1.0.0:
   version "1.0.0"
-  resolved "git://github.com/nodeca/relimit.git#68a15c775a390e32f7a03cbed2cd41ed00f1d65f"
+  resolved "https://registry.yarnpkg.com/relimit/-/relimit-1.0.0.tgz#6da368c5890478510cbf13128eae122d51660588"
   dependencies:
-    bluebird "^3.4.7"
     denque "^1.2.0"
-    redis "^2.6.3"
 
 remove-trailing-separator@^1.0.1:
   version "1.1.0"
