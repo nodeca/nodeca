@@ -2997,6 +2997,10 @@ ip@^1.1.4:
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/ip/-/ip-1.1.5.tgz#bdded70114290828c0a039e72ef25f5aaec4354a"
 
+ipv6-normalize@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/ipv6-normalize/-/ipv6-normalize-1.0.1.tgz#1b3258290d365fa83239e89907dde4592e7620a8"
+
 is-absolute@^0.2.3:
   version "0.2.6"
   resolved "https://registry.yarnpkg.com/is-absolute/-/is-absolute-0.2.6.tgz#20de69f3db942ef2d87b9c2da36f172235b1b5eb"
@@ -4207,6 +4211,10 @@ node-uuid@~1.4.7:
   version "0.0.1"
   resolved "git://github.com/nodeca/nodeca.users.git#187a0a80b0b32628227d3afba1d9ba2ee92c3a99"
 
+nodemailer@^4.1.2:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/nodemailer/-/nodemailer-4.3.1.tgz#40e162f54193ba2fecca200d544e8f6c1106d694"
+
 nodemailer@^4.3.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/nodemailer/-/nodemailer-4.3.0.tgz#59cbfcb7aa39dbc469b31439d11e2a3f924208d8"
@@ -4919,10 +4927,6 @@ raf.js@0.0.4:
   version "0.0.4"
   resolved "https://registry.yarnpkg.com/raf.js/-/raf.js-0.0.4.tgz#f15af445d241b27fa7131a57450b67ef9c402fec"
 
-rai@~0.1.11:
-  version "0.1.12"
-  resolved "https://registry.yarnpkg.com/rai/-/rai-0.1.12.tgz#8ccfd014d0f9608630dd73c19b8e4b057754a6a6"
-
 randomatic@^1.1.3:
   version "1.1.7"
   resolved "https://registry.yarnpkg.com/randomatic/-/randomatic-1.1.7.tgz#c7abe9cc8b87c0baa876b19fde83fd464797e38c"
@@ -5520,13 +5524,6 @@ simple-swizzle@^0.2.2:
   dependencies:
     is-arrayish "^0.3.1"
 
-simplesmtp@^0.3.35:
-  version "0.3.35"
-  resolved "https://registry.yarnpkg.com/simplesmtp/-/simplesmtp-0.3.35.tgz#017b1eb8b26317ac36d2a2a8a932631880736a03"
-  dependencies:
-    rai "~0.1.11"
-    xoauth2 "~0.1.8"
-
 single-line-log@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/single-line-log/-/single-line-log-1.1.2.tgz#c2f83f273a3e1a16edb0995661da0ed5ef033364"
@@ -5558,6 +5555,13 @@ sliced@1.0.1, sliced@^1.0.1:
 smart-buffer@^1.0.13:
   version "1.1.15"
   resolved "https://registry.yarnpkg.com/smart-buffer/-/smart-buffer-1.1.15.tgz#7f114b5b65fab3e2a35aa775bb12f0d1c649bf16"
+
+smtp-server@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/smtp-server/-/smtp-server-3.3.0.tgz#89556984f1d8fe33386c8b4d6c4be9faf1bf7a9f"
+  dependencies:
+    ipv6-normalize "^1.0.1"
+    nodemailer "^4.1.2"
 
 sntp@1.x.x:
   version "1.0.9"
@@ -6369,10 +6373,6 @@ xml2js@>=0.2.4:
 xmlbuilder@~9.0.1:
   version "9.0.4"
   resolved "https://registry.yarnpkg.com/xmlbuilder/-/xmlbuilder-9.0.4.tgz#519cb4ca686d005a8420d3496f3f0caeecca580f"
-
-xoauth2@~0.1.8:
-  version "0.1.8"
-  resolved "https://registry.yarnpkg.com/xoauth2/-/xoauth2-0.1.8.tgz#b916ff10ecfb54320f16f24a3e975120653ab0d2"
 
 xregexp@^3.2.0:
   version "3.2.0"
