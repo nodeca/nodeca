@@ -189,8 +189,6 @@ function do_pull(readOnly, branch) {
       }
     });
 
-  relink();
-
   if (freshApps.length) {
     console.log(`-- Installing '${appMain}' dependencies`);
     execSync('yarn install --non-interactive', { stdio: 'inherit', cwd: appMainDir });
@@ -212,6 +210,8 @@ function do_pull(readOnly, branch) {
       process.exit(1);
     }
   }
+
+  relink();
 }
 
 
