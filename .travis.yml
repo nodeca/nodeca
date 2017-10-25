@@ -1,7 +1,7 @@
 language: node_js
 node_js:
  - "8"
-before_install:
+install:
   - make deps-ci
 before_script:
   - export DISPLAY=:99.0
