@@ -1378,9 +1378,9 @@ core-util-is@1.0.2, core-util-is@~1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
 
-corejs-typeahead@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/corejs-typeahead/-/corejs-typeahead-1.1.1.tgz#62b2ab841de200256e36548c223b35b45fd7157e"
+corejs-typeahead@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/corejs-typeahead/-/corejs-typeahead-1.2.1.tgz#345a8afe664cc494075b59b64777807f0b3f132b"
   dependencies:
     jquery ">=1.11"
 
