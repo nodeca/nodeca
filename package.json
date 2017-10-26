@@ -59,7 +59,7 @@
     "lie": "^3.1.1",
     "linkify-it": "^2.0.1",
     "lodash": "^4.17.4",
-    "log4js": "^1.1.1",
+    "log4js": "^2.3.10",
     "markdown-it": "^8.4.0",
     "markdown-it-container": "^2.0.0",
     "markdown-it-emoji": "^1.3.0",
