@@ -1214,9 +1214,9 @@ cldr-data-downloader@0.3.x:
     request "~2.74.0"
     request-progress "0.3.1"
 
-cldr-data@^31.0.2:
-  version "31.0.2"
-  resolved "https://registry.yarnpkg.com/cldr-data/-/cldr-data-31.0.2.tgz#cffccc06eac7700e95c63c5d1ea61c2543d4086d"
+cldr-data@^32.0.0:
+  version "32.0.0"
+  resolved "https://registry.yarnpkg.com/cldr-data/-/cldr-data-32.0.0.tgz#872db56c30f59c2e6c05514a6cd30c68793f94d5"
   dependencies:
     cldr-data-downloader "0.3.x"
     glob "5.x.x"

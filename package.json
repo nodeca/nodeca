@@ -27,7 +27,7 @@
     "charcount": "^1.0.0",
     "charlatan": "^1.1.0",
     "cheerio": "^0.22.0",
-    "cldr-data": "^31.0.2",
+    "cldr-data": "^32.0.0",
     "codemirror": "^5.31.0",
     "compression": "^1.7.1",
     "cookie": "^0.3.1",
