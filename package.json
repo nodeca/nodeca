@@ -76,6 +76,7 @@
     "negotiator": "^0.6.1",
     "node-sass": "^4.7.2",
     "nodeca.blogs": "git://github.com/nodeca/nodeca.blogs.git",
+    "nodeca.clubs": "git://github.com/nodeca/nodeca.clubs.git",
     "nodeca.core": "git://github.com/nodeca/nodeca.core.git",
     "nodeca.forum": "git://github.com/nodeca/nodeca.forum.git",
     "nodeca.nntp": "git://github.com/nodeca/nodeca.nntp.git",

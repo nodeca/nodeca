@@ -23,6 +23,7 @@ const defaultApps = [
   'nodeca.users',
   'nodeca.forum',
   'nodeca.blogs',
+  'nodeca.clubs',
   'nodeca.search',
   'nodeca.nntp'
 ];
