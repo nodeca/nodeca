@@ -4838,6 +4838,10 @@ node-uuid@~1.4.7:
   version "0.0.1"
   resolved "git://github.com/nodeca/nodeca.forum.git#ae1ec9ab4e89e892a37c5b1f0da09152a823fb57"
 
+"nodeca.market@git://github.com/nodeca/nodeca.market.git":
+  version "0.0.1"
+  resolved "git://github.com/nodeca/nodeca.market.git#abcfe98e04913fc9e04ddb117143c98ed505d268"
+
 "nodeca.nntp@git://github.com/nodeca/nodeca.nntp.git":
   version "0.0.1"
   resolved "git://github.com/nodeca/nodeca.nntp.git#626439d1df85f4d9f5e3f85d2c4ea0b26873add2"

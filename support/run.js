@@ -24,6 +24,7 @@ const defaultApps = [
   'nodeca.forum',
   'nodeca.blogs',
   'nodeca.clubs',
+  'nodeca.market',
   'nodeca.search',
   'nodeca.nntp'
 ];

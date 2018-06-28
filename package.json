@@ -79,6 +79,7 @@
     "nodeca.clubs": "git://github.com/nodeca/nodeca.clubs.git",
     "nodeca.core": "git://github.com/nodeca/nodeca.core.git",
     "nodeca.forum": "git://github.com/nodeca/nodeca.forum.git",
+    "nodeca.market": "git://github.com/nodeca/nodeca.market.git",
     "nodeca.nntp": "git://github.com/nodeca/nodeca.nntp.git",
     "nodeca.search": "git://github.com/nodeca/nodeca.search.git",
     "nodeca.users": "git://github.com/nodeca/nodeca.users.git",
