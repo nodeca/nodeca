@@ -138,7 +138,7 @@
   "devDependencies": {
     "acorn": "^6.0.6",
     "electron": "^2.0.0",
-    "eslint": "^3.19.0",
+    "eslint": "^5.13.0",
     "eslint-plugin-nodeca": "^1.0.3",
     "gulp": "^4.0.0",
     "gulp-real-favicon": "^0.3.2",
