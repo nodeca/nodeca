@@ -46,7 +46,6 @@
     "from2": "^2.3.0",
     "glob": "^7.1.2",
     "got": "^9.6.0",
-    "gridfs-stream": "^1.1.0",
     "highlight.js": "^9.12.0",
     "idoit": "^2.0.0",
     "is-my-json-valid": "^2.16.1",
