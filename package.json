@@ -53,7 +53,7 @@
     "jqtree": "^1.4.3",
     "jquery": "^3.2.1",
     "js-yaml": "^3.9.0",
-    "knockout": "~ 3.4.2",
+    "knockout": "^3.5.0",
     "leaflet": "~1.4.0",
     "level": "^4.0.0",
     "lie": "^3.1.1",
