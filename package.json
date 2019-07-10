@@ -145,5 +145,10 @@
     "navit": "^3.1.0",
     "supertest": "^4.0.2"
   },
-  "cldr-data-urls-filter": "(cldr-core|cldr-dates-modern)"
+  "cldr-data-urls-filter": "(cldr-core|cldr-dates-modern)",
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "Firefox ESR"
+  ]
 }
