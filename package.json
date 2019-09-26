@@ -123,7 +123,6 @@
     "webworkify": "^1.5.0",
     "whois": "^2.4.1",
     "write-file-atomic": "^3.0.0",
-    "xregexp": "^4.0.0",
     "zxcvbn": "^4.4.2"
   },
   "bundledDependencies": [
