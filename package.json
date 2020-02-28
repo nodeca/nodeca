@@ -108,6 +108,7 @@
     "request": "^2.83.0",
     "resolve": "^1.5.0",
     "send": "^0.17.1",
+    "serialize-error": "^5.0.0",
     "sharp": "^0.24.1",
     "shelljs": "^0.8.1",
     "smtp-server": "^3.3.0",
