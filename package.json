@@ -71,7 +71,7 @@
     "mkdirp": "^1.0.3",
     "mongoose": "~5.9.1",
     "multiparty": "^4.1.3",
-    "multistream": "^4.0.0",
+    "multistream": "git://github.com/feross/multistream#21d963195dfd511e523715cb5eee62cf7cb0cca9",
     "negotiator": "^0.6.1",
     "node-sass": "^4.7.2",
     "nodeca.blogs": "git://github.com/nodeca/nodeca.blogs.git",
