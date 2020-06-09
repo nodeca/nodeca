@@ -6273,9 +6273,9 @@ permessage-deflate@^0.1.5:
     safe-buffer "*"
 
 pica@^5.0.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/pica/-/pica-5.1.0.tgz#042d58730f32f3f014eb099e7d204474f7d14e49"
-  integrity sha512-1sr5HOypUfWT+oP/PXEZaF+kOBxhr+iMo4MEBSTNIHSjF/aGOCIWcjHjKTa0FKZ+BsPx5LmxYuNf4FoCckI3lQ==
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/pica/-/pica-5.3.0.tgz#4b7f425fe1450f21acd9087437b35c870e1ad18d"
+  integrity sha512-kuHSj8OEgEiqKdfMKGrzZZb7IPWj1XeQpuvTQ+HGKRGxvFK9wIRPpWhOlq6S0BnDD3+4AQN5BoKwkvxAZWhUEg==
   dependencies:
     inherits "^2.0.3"
     multimath "^2.0.0"
