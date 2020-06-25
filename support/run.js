@@ -4,6 +4,7 @@
 
 const pj       = require('path').join;
 const execSync = require('child_process').execSync;
+const exists   = require('fs').existsSync;
 const readdir  = require('fs').readdirSync;
 const realpath = require('fs').realpathSync;
 
@@ -47,31 +48,20 @@ function install_deps(callback) {
     execSync('npm install yarn -g', { stdio: 'inherit', cwd: appMainDir });
   }
 
-  try {
-    require('shelljs/global');
-    callback();
-    return;
-  } catch (__) {}
-
-  try {
-    // Install shelljs into main node_modules, but keep nodeca/support as cwd
-    // to avoid yarn installing all dependencies
-    console.log('-- Installing shelljs');
-    execSync(`yarn add shelljs --modules-folder "${appMainDir}/node_modules"`,
-             { stdio: 'inherit', cwd: __dirname });
-  } catch (e) {
-    console.log(e);
-    process.exit(1);
+  if (!exists(pj(__dirname, 'node_modules', 'shelljs'))) {
+    try {
+      // Install shelljs, avoid yarn installing all dependencies
+      execSync('yarn install --production --non-interactive',
+               { stdio: 'inherit', __dirname });
+    } catch (e) {
+      console.log(e);
+      process.exit(1);
+    }
   }
 
   process.nextTick(() => {
     // That should be done in callback, to not fail in node 6
     require('shelljs/global');
-
-    // remove support/package.json and support/yarn.lock created by `yarn add` above
-    rm(pj(__dirname, 'package.json'));
-    rm(pj(__dirname, 'yarn.lock'));
-
     callback();
   });
 }
