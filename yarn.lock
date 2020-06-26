@@ -4221,6 +4221,13 @@ ignore@^4.0.6:
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-4.0.6.tgz#750e3db5862087b4737ebac8207ffd1ef27b25fc"
   integrity sha512-cyFDKrqc/YdcWFniJhzI42+AzS+gNwmUzOSFcRCQYwySuBBBy/KjuxWLZ/FHEH6Moq1NizMOBWyTcv8O4OZIMg==
 
+image-blob-reduce@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/image-blob-reduce/-/image-blob-reduce-1.0.1.tgz#b7065a8fcc9d21964f8b6a041fcf8be0439a02bd"
+  integrity sha512-3LneWt/saL+beD3s4JerpQyQsOM9MsgkUTI5G4mk6EaE7aO0Tt6q3JycNi7SUe7BEGT0Y5Sb4QSm85hMyHYHHw==
+  dependencies:
+    pica "^6.0.0"
+
 immediate@^3.2.3:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/immediate/-/immediate-3.3.0.tgz#1aef225517836bcdf7f2a2de2600c79ff0269266"
@@ -6402,10 +6409,10 @@ permessage-deflate@^0.1.5:
   dependencies:
     safe-buffer "*"
 
-pica@^5.0.0:
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/pica/-/pica-5.3.0.tgz#4b7f425fe1450f21acd9087437b35c870e1ad18d"
-  integrity sha512-kuHSj8OEgEiqKdfMKGrzZZb7IPWj1XeQpuvTQ+HGKRGxvFK9wIRPpWhOlq6S0BnDD3+4AQN5BoKwkvxAZWhUEg==
+pica@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/pica/-/pica-6.0.0.tgz#5850cb9fcac04e234636583d583f9d7d0a9f772a"
+  integrity sha512-aIJm2InsHFufKIEmeqgGWJK2ujMq9XPE+XJv/2nvpSGAGzUyeCKt9puEGURgr6WLXuPOTmX4xtQttwu3fERzRg==
   dependencies:
     inherits "^2.0.3"
     multimath "^2.0.0"
