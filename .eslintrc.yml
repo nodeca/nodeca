@@ -7,6 +7,10 @@ env:
 parserOptions:
   ecmaVersion: '2018'
 
+ignorePatterns:
+  - assets/
+  - '**/node_modules/'
+
 plugins:
     - nodeca
 
