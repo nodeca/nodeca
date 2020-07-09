@@ -3,6 +3,8 @@
 /nodeca_modules/
 /sphinx_data/
 /support/node_modules/
+/deploy/
+docker-compose.yml
 *.log
 *.log.*
 *.swp
