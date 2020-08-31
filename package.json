@@ -39,6 +39,7 @@
     "emailjs-mime-codec": "^2.0.0",
     "embedza": "^4.0.0",
     "event-wire": "^3.4.0",
+    "fast-sourcemap-concat": "^2.1.0",
     "faye": "^1.2.4",
     "faye-redis": "^0.2.0",
     "fresh": "^0.5.0",
