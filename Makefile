@@ -31,22 +31,17 @@ test: lint $(CONFIG_FILES)
 	mongo nodeca-test --eval "printjson(db.dropDatabase())"
 	redis-cli -n 2 flushdb
 	NODECA_ENV=test node server.js migrate --all
+	NODECA_ENV=test ./server.js test $(NODECA_APP)
 
-	# Always run ALL tests on CI
-	if [ "$${TRAVIS:-}"  ]; then \
-		NODECA_ENV=test NODECA_NOMINIFY=1 ./server.js test; \
-	else \
-		NODECA_ENV=test NODECA_NOMINIFY=1 ./server.js test $(NODECA_APP); \
-	fi
+test-ci: lint $(CONFIG_FILES)
+	NODECA_ENV=test node server.js migrate --all
+	NODECA_ENV=test ./server.js test
 
+deps-ci:
+	./support/run.js pull-ro ${GITHUB_BRANCH}
 
 repl:
 	rlwrap socat ./repl.sock stdin
-
-
-# used from Travis-CI, to not repeat all deps install steps for all apps
-deps-ci:
-	./support/run.js pull-ro ${TRAVIS_BRANCH}
 
 todo:
 	grep 'TODO' -n -r --exclude-dir=public --exclude-dir=\.cache --exclude-dir=\.git --exclude-dir=node_modules --exclude=Makefile . 2>/dev/null || test true

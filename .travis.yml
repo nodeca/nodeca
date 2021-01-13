@@ -1,9 +1,0 @@
-language: node_js
-node_js:
-  - 14
-install:
-  - make deps-ci
-services:
-  - xvfb
-  - redis-server
-  - mongodb
