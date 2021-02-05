@@ -37,7 +37,7 @@
     "ekko-lightbox": "^5.3.0",
     "email-regex": "^4.0.0",
     "emailjs-mime-codec": "^2.0.0",
-    "embedza": "^4.0.0",
+    "embedza": "^4.0.1",
     "event-wire": "^3.4.0",
     "faye": "^1.2.4",
     "faye-redis": "^0.2.0",

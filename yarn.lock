@@ -2975,10 +2975,10 @@ emailjs-mime-codec@^2.0.0:
     ramda "^0.26.1"
     text-encoding "^0.7.0"
 
-embedza@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/embedza/-/embedza-4.0.0.tgz#4dbc0ab75058bfed28cb914f732a16e4ab7e6236"
-  integrity sha512-bBcKVlyhVuwW0/vaCPL8bpkARQiM3CR1mnOH6bUXBEk/f/AzrTjCppYzue4EvICmn/8kWLsLK6F5ZSJ6QQaodQ==
+embedza@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/embedza/-/embedza-4.0.1.tgz#848a0a3fa367d40bdbc3db7c59fc07c5914d67e1"
+  integrity sha512-c2FGY/Jl2cOAxC0NiHRoydt7jfBFBu9oZ4n9Dw9JSaTyeF4dElfo7tiG0Sqoe2E5Xf2vUPLuMba1nrLqDY709w==
   dependencies:
     cheerio "^0.22.0"
     debug "^4.1.1"
