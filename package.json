@@ -93,7 +93,7 @@
     "probe-image-size": "^6.0.0",
     "promise-memoize": "^1.2.1",
     "prompt": "^1.0.0",
-    "pug": "^3.0.0",
+    "pug": "^3.0.1",
     "pug-runtime": "^3.0.0",
     "puncher": "^1.1.1",
     "raw-body": "^2.3.0",
