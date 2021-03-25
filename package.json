@@ -89,7 +89,7 @@
     "pointer": "^1.0.2",
     "popper.js": "^1.12.9",
     "postcss": "^8.0.3",
-    "probe-image-size": "^6.0.0",
+    "probe-image-size": "^7.0.0",
     "promise-memoize": "^1.2.1",
     "prompt": "^1.0.0",
     "pug": "^3.0.0",
