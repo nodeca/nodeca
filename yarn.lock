@@ -4449,10 +4449,10 @@ ignore@^4.0.6:
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-4.0.6.tgz#750e3db5862087b4737ebac8207ffd1ef27b25fc"
   integrity sha512-cyFDKrqc/YdcWFniJhzI42+AzS+gNwmUzOSFcRCQYwySuBBBy/KjuxWLZ/FHEH6Moq1NizMOBWyTcv8O4OZIMg==
 
-image-blob-reduce@^2.2.1:
-  version "2.2.2"
-  resolved "https://registry.yarnpkg.com/image-blob-reduce/-/image-blob-reduce-2.2.2.tgz#0c1c1817ee8666bcd174f191a125ea70a2f041d2"
-  integrity sha512-4pfusXGLRfMyASVr/nvHxHoYDcB+VbfYnOrLdK2VWO56yhkLvSP9l2HXwYIJUFBw4bPqQoZPWFm7rz01lgaOgA==
+image-blob-reduce@^2.2.3:
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/image-blob-reduce/-/image-blob-reduce-2.2.3.tgz#b5be0ee5dfbcd6a827edab27a051887be77ada77"
+  integrity sha512-VZTYIQ4x8F+gNn4KKP6us5ASkv65FyHNQT0TLuVbnqsfcvbSDwFekraiz81B14e0AX5i2P5osUxyUT8fUTwMzQ==
   dependencies:
     pica "^6.1.1"
 
@@ -5548,10 +5548,10 @@ markdown-it-sup@^1.0.0:
   resolved "https://registry.yarnpkg.com/markdown-it-sup/-/markdown-it-sup-1.0.0.tgz#cb9c9ff91a5255ac08f3fd3d63286e15df0a1fc3"
   integrity sha1-y5yf+RpSVawI8/09YyhuFd8KH8M=
 
-markdown-it@^12.0.0:
-  version "12.0.5"
-  resolved "https://registry.yarnpkg.com/markdown-it/-/markdown-it-12.0.5.tgz#982907947dc1f72f9d651c5286678fd95af13f2e"
-  integrity sha512-9KB992Yy2TedaoKETgZPL2n3bmqqZxzUsZ4fxe2ho+/AYuQUz+iDKpfjLgKbg/lHcG6cGOj+L3gDrn9S2CxoRg==
+markdown-it@^12.0.6:
+  version "12.0.6"
+  resolved "https://registry.yarnpkg.com/markdown-it/-/markdown-it-12.0.6.tgz#adcc8e5fe020af292ccbdf161fe84f1961516138"
+  integrity sha512-qv3sVLl4lMT96LLtR7xeRJX11OUFjsaD5oVat2/SNBIb21bJXwal2+SklcRbTwGwqWpWH/HRtYavOoJE+seL8w==
   dependencies:
     argparse "^2.0.1"
     entities "~2.1.0"
@@ -5854,10 +5854,10 @@ mongoose-legacy-pluralize@1.0.2:
   resolved "https://registry.yarnpkg.com/mongoose-legacy-pluralize/-/mongoose-legacy-pluralize-1.0.2.tgz#3ba9f91fa507b5186d399fb40854bff18fb563e4"
   integrity sha512-Yo/7qQU4/EyIS8YDFSeenIvXxZN+ld7YdV9LqFVQJzTLye8unujAWPZ4NWKfFA+RNjh+wvTWKY9Z3E5XM6ZZiQ==
 
-mongoose@~5.12.4:
-  version "5.12.4"
-  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.12.4.tgz#6b7087177380658084912cc115092e35d7d8befb"
-  integrity sha512-iVREPLK/35ylEdaNBCStwTugyUYDv7ZuI7maSW7CdCgAX4dMW4be1CdKvZHJtlexO/ugKphMMFL9/bppcWXQ9Q==
+mongoose@~5.12.5:
+  version "5.12.5"
+  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.12.5.tgz#70d11d3e68a3aeeb6960262633e1ba80cb620385"
+  integrity sha512-VVoqiELZcoI2HhHDuPpfN3qmExrtIeXSWNb1nihf4w1SJoWGXilU/g2cQgeeSMc2vAHSZd5Nv2sNPvbZHFw+pg==
   dependencies:
     "@types/mongodb" "^3.5.27"
     bson "^1.1.4"
@@ -7726,6 +7726,13 @@ serialize-error@^8.0.1:
   version "8.0.1"
   resolved "https://registry.yarnpkg.com/serialize-error/-/serialize-error-8.0.1.tgz#7a67f8ecbbf28973b5a954a2852ff9f4eef52d99"
   integrity sha512-r5o60rWFS+8/b49DNAbB+GXZA0SpDpuWE758JxDKgRTga05r3U5lwyksE91dYKDhXSmnu36RALj615E6Aj5pSg==
+  dependencies:
+    type-fest "^0.20.2"
+
+serialize-error@^8.1.0:
+  version "8.1.0"
+  resolved "https://registry.yarnpkg.com/serialize-error/-/serialize-error-8.1.0.tgz#3a069970c712f78634942ddd50fbbc0eaebe2f67"
+  integrity sha512-3NnuWfM6vBYoy5gZFvHiYsVbafvI9vZv/+jlIigFn4oP4zjNPK3LhcY0xSCgeb1a5L8jO71Mit9LlNoi2UfDDQ==
   dependencies:
     type-fest "^0.20.2"
 
