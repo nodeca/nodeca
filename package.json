@@ -98,7 +98,6 @@
     "redis-if": "^1.0.0",
     "redis-url": "^1.2.1",
     "relimit": "^1.0.0",
-    "request": "^2.88.2",
     "resolve": "^1.20.0",
     "send": "^0.17.1",
     "serialize-error": "^8.1.0",
