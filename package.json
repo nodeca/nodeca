@@ -133,5 +133,5 @@
     "supertest": "^6.1.3"
   },
   "cldr-data-urls-filter": "(cldr-core|cldr-dates-modern)",
-  "browserslist": "defaults, not ie 11"
+  "browserslist": "defaults, ie 11"
 }
