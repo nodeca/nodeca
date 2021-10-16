@@ -10,3 +10,4 @@ docker-compose.yml
 *.swp
 *.sublime-project
 *.sublime-workspace
+*.code-workspace
