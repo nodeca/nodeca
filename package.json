@@ -43,7 +43,7 @@
     "fresh": "^0.5.2",
     "glob": "^7.1.7",
     "handlebars": "^4.7.7",
-    "highlight.js": "^10.7.2",
+    "highlight.js": "^11.2.0",
     "idoit": "^4.0.0",
     "image-blob-reduce": "^3.0.0",
     "ioredis": "^4.27.3",
