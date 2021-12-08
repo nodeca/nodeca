@@ -73,7 +73,7 @@
     "multistream": "^4.1.0",
     "needle": "^2.6.0",
     "negotiator": "^0.6.2",
-    "node-sass": "^6.0.0",
+    "node-sass": "^7.0.0",
     "nodeca.blogs": "git://github.com/nodeca/nodeca.blogs.git",
     "nodeca.clubs": "git://github.com/nodeca/nodeca.clubs.git",
     "nodeca.core": "git://github.com/nodeca/nodeca.core.git",
@@ -129,7 +129,7 @@
     "gulp": "^4.0.2",
     "gulp-real-favicon": "^0.3.2",
     "mocha": "^9.1.3",
-    "navit": "^5.0.0",
+    "navit": "^5.0.1",
     "smtp-server": "^3.8.0",
     "supertest": "^6.1.3"
   },
