@@ -4392,12 +4392,12 @@ ignore@^4.0.6:
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-4.0.6.tgz#750e3db5862087b4737ebac8207ffd1ef27b25fc"
   integrity sha512-cyFDKrqc/YdcWFniJhzI42+AzS+gNwmUzOSFcRCQYwySuBBBy/KjuxWLZ/FHEH6Moq1NizMOBWyTcv8O4OZIMg==
 
-image-blob-reduce@^3.0.0:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/image-blob-reduce/-/image-blob-reduce-3.0.1.tgz#812be7655a552031635799ae64e846b106f7a489"
-  integrity sha512-/VmmWgIryG/wcn4TVrV7cC4mlfUC/oyiKIfSg5eVM3Ten/c1c34RJhMYKCWTnoSMHSqXLt3tsrBR4Q2HInvN+Q==
+image-blob-reduce@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/image-blob-reduce/-/image-blob-reduce-4.0.0.tgz#b7089a9ae756f8c573df001ee037eace68da3d4d"
+  integrity sha512-wUtdrMBKIAmC5O+shMIIUkBOMwl9uCeRX69zc1ihtxyzhvgVaVPvYfXdpwDhXG7U81XuK2TQyA7Lg3Wvh/r1ig==
   dependencies:
-    pica "^7.1.0"
+    pica "^8.0.0"
 
 import-fresh@^3.0.0, import-fresh@^3.2.1:
   version "3.3.0"
@@ -5526,9 +5526,9 @@ markdown-it-sup@^1.0.0:
   integrity sha1-y5yf+RpSVawI8/09YyhuFd8KH8M=
 
 markdown-it@^12.0.6:
-  version "12.2.0"
-  resolved "https://registry.yarnpkg.com/markdown-it/-/markdown-it-12.2.0.tgz#091f720fd5db206f80de7a8d1f1a7035fd0d38db"
-  integrity sha512-Wjws+uCrVQRqOoJvze4HCqkKl1AsSh95iFAeQDwnyfxM09divCBSXlDR1uTvyUP3Grzpn4Ru8GeCxYPM8vkCQg==
+  version "12.3.0"
+  resolved "https://registry.yarnpkg.com/markdown-it/-/markdown-it-12.3.0.tgz#11490c61b412b8f41530319c005ecdcd4367171f"
+  integrity sha512-T345UZZ6ejQWTjG6PSEHplzNy5m4kF6zvUpHVDv8Snl/pEU0OxIK0jGg8YLVNwJvT8E0YJC7/2UvssJDk/wQCQ==
   dependencies:
     argparse "^2.0.1"
     entities "~2.1.0"
@@ -6658,10 +6658,10 @@ permessage-deflate@^0.1.7:
   dependencies:
     safe-buffer "*"
 
-pica@^7.1.0:
-  version "7.1.0"
-  resolved "https://registry.yarnpkg.com/pica/-/pica-7.1.0.tgz#eb0b11abb3f2234ba8bdd0a839460f8fcd20e32a"
-  integrity sha512-4D1E1lssL/yJD4La23Kbh5CSJPeXMO8NgJTsR/VWtG7aV92fD2g2t/PABg/Abp8Ug3yJNw7y7x1ftkJuIPLpEw==
+pica@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/pica/-/pica-8.0.0.tgz#3f75d7d1f48546a94cd1579ff20a8cd5da06ac76"
+  integrity sha512-++qm7BcT4tWWrGRU+scHKHB3CTLvGpXB8F9hrS6Dn4jyJ20M7sbLL5jZvYsp5f2DJItZ6o8pDawhOpSDw1dJ2A==
   dependencies:
     glur "^1.1.2"
     inherits "^2.0.3"

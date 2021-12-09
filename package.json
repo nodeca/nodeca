@@ -46,7 +46,7 @@
     "handlebars": "^4.7.7",
     "highlight.js": "^11.2.0",
     "idoit": "^4.0.0",
-    "image-blob-reduce": "^3.0.0",
+    "image-blob-reduce": "^4.0.0",
     "ioredis": "^4.27.3",
     "is-my-json-valid": "^2.20.5",
     "javascript-state-machine": "^2.4.0",
