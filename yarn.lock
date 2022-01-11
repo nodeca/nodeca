@@ -2652,7 +2652,7 @@ debug@3.1.0:
   dependencies:
     ms "2.0.0"
 
-debug@4.3.2, debug@^4.0.0:
+debug@4.3.2:
   version "4.3.2"
   resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.2.tgz#f0a49c18ac8779e31d4a0c6029dfb76873c7428b"
   integrity sha512-mOp8wKcvj7XxC78zLgw/ZA+6TSgkoE2C/ienthhRD298T7UNwAg9diBpLRxC0mOezLl4B0xV7M0cCO6P/O0Xhw==
@@ -2666,7 +2666,7 @@ debug@^3.2.6:
   dependencies:
     ms "^2.1.1"
 
-debug@^4.1.0, debug@^4.1.1, debug@^4.3.1, debug@^4.3.2:
+debug@^4.1.0, debug@^4.1.1, debug@^4.3.1, debug@^4.3.2, debug@^4.3.3:
   version "4.3.3"
   resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.3.tgz#04266e0b70a98d4462e6e288e38259213332b664"
   integrity sha512-/zxw5+vh1Tfv+4Qn7a5nsbcJKPaSvCDhojn6FEl9vupwK2VCSDtEiEtqr8DFtzYFOdz63LBkxec7DYuc2jon6Q==
@@ -2811,7 +2811,7 @@ delegates@^1.0.0:
   resolved "https://registry.yarnpkg.com/delegates/-/delegates-1.0.0.tgz#84c6e159b81904fdca59a0ef44cd870d31250f9a"
   integrity sha1-hMbhWbgZBP3KWaDvRM2HDTElD5o=
 
-denque@^1.1.0, denque@^1.1.1, denque@^1.2.0, denque@^1.4.1, denque@^1.5.0:
+denque@^1.1.0, denque@^1.2.0, denque@^1.4.1, denque@^1.5.0:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/denque/-/denque-1.5.1.tgz#07f670e29c9a78f8faecb2566a1e2c11929c5cbf"
   integrity sha512-XwE+iZ4D6ZUB7mfYRMb5wByE8L74HCn30FBN7sWnXksWc1LO1bPDl67pBR9o/kC4z/xSNAwkMYcGgqDV3BE3Hw==
@@ -6150,15 +6150,15 @@ next-tick@~1.0.0:
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
   integrity sha1-yobR/ogoFpsBICCOPchCS524NCw=
 
-nntp-server@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/nntp-server/-/nntp-server-2.0.0.tgz#59166c4b6566bbbaa324836e6e6b083bfc77be80"
-  integrity sha512-wBOXbYY5ehy4MLE8WMhBFkqD7ZacF2QD3PwzZSD8vyRcsIX2SgK78flknbNxNEbOKvjsIiNEw82czvw4gbx7Kg==
+nntp-server@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/nntp-server/-/nntp-server-3.1.0.tgz#c48e71899385f5ba394888524f8a1bae024a9c75"
+  integrity sha512-L8U2CnFPHXfDKF+eaYpx07fCW7gbk7gNB0faDWg5fLIEofEP7O/RIUEonl0jGRDf9/eGMj7CRil1faG5YZq4bw==
   dependencies:
-    debug "^4.0.0"
-    denque "^1.1.1"
-    serialize-error "^7.0.1"
-    split2 "^3.2.2"
+    debug "^4.3.3"
+    denque "^2.0.1"
+    serialize-error "^8.1.0"
+    split2 "^4.1.0"
 
 node-abi@^3.3.0:
   version "3.5.0"
@@ -6238,45 +6238,48 @@ node-unzip-2@^0.2.7:
     readable-stream "~1.0.0"
     setimmediate "~1.0.1"
 
-"nodeca.blogs@git://github.com/nodeca/nodeca.blogs.git":
+"nodeca.blogs@git+https://github.com/nodeca/nodeca.blogs.git":
   version "0.0.1"
-  resolved "git://github.com/nodeca/nodeca.blogs.git#cfcc10a56e7603756f80b9f73a1329942cf88a77"
+  resolved "git+https://github.com/nodeca/nodeca.blogs.git#e0e8f00b729af3e60c5baf96c276ae331c3e380c"
 
-"nodeca.clubs@git://github.com/nodeca/nodeca.clubs.git":
+"nodeca.clubs@git+https://github.com/nodeca/nodeca.clubs.git":
   version "0.0.1"
-  resolved "git://github.com/nodeca/nodeca.clubs.git#188b5ee30628ca07e79671793fb45421b08fb923"
+  resolved "git+https://github.com/nodeca/nodeca.clubs.git#fe72307a49e507b2b474a4573ceb95058aafd623"
 
-"nodeca.core@git://github.com/nodeca/nodeca.core.git":
+"nodeca.core@git+https://github.com/nodeca/nodeca.core.git":
   version "0.0.1"
-  resolved "git://github.com/nodeca/nodeca.core.git#672ecce69b9e9f225b675e702edffdc88644a0bb"
+  resolved "git+https://github.com/nodeca/nodeca.core.git#deec6128cc59fd357093868b00dec52bff679068"
 
-"nodeca.forum@git://github.com/nodeca/nodeca.forum.git":
+"nodeca.forum@git+https://github.com/nodeca/nodeca.forum.git":
   version "0.0.1"
-  resolved "git://github.com/nodeca/nodeca.forum.git#74d0311a97a12fd29e70e18497f16a76f3220027"
+  resolved "git+https://github.com/nodeca/nodeca.forum.git#c3f176a62050832635d1e5c639b62dca583dde23"
 
-"nodeca.market@git://github.com/nodeca/nodeca.market.git":
+"nodeca.market@git+https://github.com/nodeca/nodeca.market.git":
   version "0.0.1"
-  resolved "git://github.com/nodeca/nodeca.market.git#0af543e6f851c60406a1f346a1bc95e97f37ddb3"
+  resolved "git+https://github.com/nodeca/nodeca.market.git#f575b5c6dc1d2442642c28a78efa76e6f7994448"
 
-"nodeca.nntp@git://github.com/nodeca/nodeca.nntp.git":
+"nodeca.nntp@git+https://github.com/nodeca/nodeca.nntp.git":
   version "0.0.1"
-  resolved "git://github.com/nodeca/nodeca.nntp.git#3b2bc3dae2e69f2bd9b0cf88862b8fe7d67fb30a"
+  resolved "git+https://github.com/nodeca/nodeca.nntp.git#29d9c7ec1a6232be46d5ccfb41043cdc2b551975"
   dependencies:
-    nntp-server "^2.0.0"
+    nntp-server "^3.1.0"
 
-"nodeca.search@git://github.com/nodeca/nodeca.search.git":
+"nodeca.search@git+https://github.com/nodeca/nodeca.search.git":
   version "0.0.1"
-  resolved "git://github.com/nodeca/nodeca.search.git#46dfeab3b63b0ed9c170ff230dd6f957f1eaa864"
+  resolved "git+https://github.com/nodeca/nodeca.search.git#013d30bb0f09b392e1048885886669de9689e8d5"
   dependencies:
+    argparse "^2.0.1"
+    js-yaml "^4.1.0"
+    log4js "^6.3.0"
     mkdirp "^1.0.3"
     mysql2 "^2.1.0"
     rimraf "^3.0.2"
     serialize-error "^7.0.1"
     write-file-atomic "^3.0.0"
 
-"nodeca.users@git://github.com/nodeca/nodeca.users.git":
+"nodeca.users@git+https://github.com/nodeca/nodeca.users.git":
   version "0.0.1"
-  resolved "git://github.com/nodeca/nodeca.users.git#fc8815e4bd78558d3f23afd624575bb148614a69"
+  resolved "git+https://github.com/nodeca/nodeca.users.git#27f8b3791612bed1d6e4ec807d419dc2fd3b134f"
 
 nodemailer@6.6.1:
   version "6.6.1"
@@ -7325,7 +7328,7 @@ readable-stream@^2.0.0, readable-stream@^2.0.1, readable-stream@^2.0.2, readable
     string_decoder "~1.1.1"
     util-deprecate "~1.0.1"
 
-readable-stream@^3.0.0, readable-stream@^3.1.1, readable-stream@^3.4.0, readable-stream@^3.5.0, readable-stream@^3.6.0:
+readable-stream@^3.1.1, readable-stream@^3.4.0, readable-stream@^3.5.0, readable-stream@^3.6.0:
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-3.6.0.tgz#337bbda3adc0706bd3e024426a286d4b4b2c9198"
   integrity sha512-BViHy7LKeTz4oNnkcLJ+lVSL6vpiFeX6/d3oSH8zCW7UxP2onchk+vTGB143xuFjHS3deTgkKoXXymXqymiIdA==
@@ -8127,12 +8130,10 @@ split-string@^3.0.1, split-string@^3.0.2:
   dependencies:
     extend-shallow "^3.0.0"
 
-split2@^3.2.2:
-  version "3.2.2"
-  resolved "https://registry.yarnpkg.com/split2/-/split2-3.2.2.tgz#bf2cf2a37d838312c249c89206fd7a17dd12365f"
-  integrity sha512-9NThjpgZnifTkJpzTZ7Eue85S49QwpNhZTq6GRJwObb6jnLFNGB7Qm73V5HewTROPyxD0C29xqmaI68bQtV+hg==
-  dependencies:
-    readable-stream "^3.0.0"
+split2@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/split2/-/split2-4.1.0.tgz#101907a24370f85bb782f08adaabe4e281ecf809"
+  integrity sha512-VBiJxFkxiXRlUIeyMQi8s4hgvKCSjtknJv/LVYbrgALPwf5zSKmEwV9Lst25AkvMDnvxODugjdl6KZgwKM1WYQ==
 
 sprintf-js@^1.1.2:
   version "1.1.2"
