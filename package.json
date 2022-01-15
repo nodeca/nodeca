@@ -103,7 +103,7 @@
     "send": "^0.17.1",
     "serialize-error": "^8.1.0",
     "sharp": "^0.29.1",
-    "shelljs": "^0.8.4",
+    "shelljs": "^0.8.5",
     "steady": "^2.0.1",
     "stylus": "^0.56.0",
     "tabex": "^1.1.0",
