@@ -60,7 +60,7 @@
     "level": "^7.0.0",
     "linkify-it": "^3.0.2",
     "lodash": "^4.17.21",
-    "log4js": "^6.3.0",
+    "log4js": "^6.4.0",
     "markdown-it": "^12.0.6",
     "markdown-it-container": "^3.0.0",
     "markdown-it-emoji": "^2.0.0",
