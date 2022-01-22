@@ -69,7 +69,6 @@
     "markdown-it-sup": "^1.0.0",
     "mdurl": "^1.0.1",
     "mime-types": "^2.1.30",
-    "mkdirp": "^1.0.4",
     "mongoose": "~5.12.10",
     "multiparty": "^4.2.2",
     "multistream": "^4.1.0",
