@@ -112,7 +112,7 @@
     "unhomoglyph": "^1.0.6",
     "url-unshort": "^5.0.0",
     "whois": "^2.13.3",
-    "write-file-atomic": "^3.0.3",
+    "write-file-atomic": "^4.0.0",
     "zxcvbn": "^4.4.2"
   },
   "bundledDependencies": [
