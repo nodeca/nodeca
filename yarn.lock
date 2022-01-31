@@ -8700,11 +8700,6 @@ syntax-error@^1.1.1:
   dependencies:
     acorn-node "^1.2.0"
 
-tabex@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/tabex/-/tabex-1.1.0.tgz#03fe8a1a8e060b2585e8b0505566c84ea1934d07"
-  integrity sha512-FGXFIg0zjEmp5bHlMBXTW/0t7XaSAHV61m0ciauMUH+CZXyTif9YLz+Rv05uHsXerhXjFpCgQYQyifcMah7Zpg==
-
 tar-fs@^2.0.0, tar-fs@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/tar-fs/-/tar-fs-2.1.1.tgz#489a15ab85f1f0befabb370b7de4f9eb5cbe8784"
