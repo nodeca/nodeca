@@ -128,6 +128,7 @@
     "eslint-plugin-nodeca": "^1.0.3",
     "gulp": "^4.0.2",
     "gulp-real-favicon": "^0.3.2",
+    "mailparser": "^3.4.0",
     "mocha": "^9.1.3",
     "navit": "^5.0.1",
     "smtp-server": "^3.8.0",
