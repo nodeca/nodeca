@@ -1690,9 +1690,9 @@ bindings@^1.5.0:
     file-uri-to-path "1.0.0"
 
 bkv@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/bkv/-/bkv-1.0.1.tgz#757ae1d1ba784bb6efb98f72bb14eef2eb21118b"
-  integrity sha512-1f/8IU/VSEyea88yFq08STgZW6UiJJM01HxJiZyJwwR8KksdkpSiGqBXI0PmDQ86Q5gmsLyuv0Zjg8ZuQRkSXQ==
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/bkv/-/bkv-1.0.2.tgz#01269acac270ad3a39b59495b0da065ca1eb5452"
+  integrity sha512-Mpb98zs+h0MgNMMSVaRp8oHcT7yQiTdXZLx3uVLbAWJOGeZxzdAOwf9dbi1GI7mGaEKZeeD6FDzOVJJkwGTk+g==
 
 bl@^2.2.1:
   version "2.2.1"
