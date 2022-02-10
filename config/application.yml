@@ -28,28 +28,6 @@ locales:
   - ru-RU
 
 
-# Security settings (currently - policy headers)
-#
-#security:
-  # We can't use 'self' in 'connect-src' because WebSocket require to use
-  # domain name with protocol. You can specify more precise rule if needed
-  #
-  # connect-src 'self' wss://yourdomain.com https://*.google-analytics.com https://*.google.com;
-  #
-  # 'data:' & 'blob:' needed to load avatars & create webworkers from string.
-  #
-  # !!! Safary allows http only, if protocol not defined.
-  #
-  #Content-Security-Policy: >
-  #  default-src *;
-  #  style-src 'unsafe-inline' *;
-  #  img-src * data: blob:;
-  #  child-src * data: blob:;
-  #  script-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://*.google-analytics.com https://*.google.com https://www.gstatic.com;
-  #  connect-src *;
-  #X-Frame-Options: DENY
-
-
 # robots.txt custom content
 #
 #robots: |
@@ -88,6 +66,9 @@ locales:
   #       ga('create', 'UA-26895916-2', 'nodeca.com');
   #       ga('send', 'pageview');
   #     </script>
+
+  # # Content of Content-Security-Policy header
+  # csp_header: frame-ancestors 'self';
 
 
 # Listening options
