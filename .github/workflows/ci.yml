@@ -13,6 +13,13 @@ jobs:
     steps:
       - run: echo GITHUB_BRANCH=${GITHUB_REF##*/} >> $GITHUB_ENV
 
+      - name: Install searchd
+        run: |
+          wget https://repo.manticoresearch.com/manticore-repo.noarch.deb &&
+          sudo dpkg -i manticore-repo.noarch.deb &&
+          sudo apt-get update &&
+          sudo apt-get install manticore
+
       - uses: actions/checkout@v2
 
       - name: Use Node.js
