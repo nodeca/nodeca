@@ -109,7 +109,7 @@
     "terser": "^5.7.0",
     "ua-parser-js": "^0.7.28",
     "unhomoglyph": "^1.0.6",
-    "url-unshort": "^5.0.0",
+    "url-unshort": "^6.0.0",
     "whois": "^2.13.3",
     "write-file-atomic": "^4.0.0",
     "zxcvbn": "^4.4.2"
