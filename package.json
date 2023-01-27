@@ -107,7 +107,7 @@
     "steady": "^2.0.1",
     "stylus": "^0.57.0",
     "terser": "^5.13.1",
-    "ua-parser-js": "^0.7.31",
+    "ua-parser-js": "^0.7.33",
     "unhomoglyph": "^1.0.6",
     "url-unshort": "^6.0.0",
     "whois": "^2.13.3",
